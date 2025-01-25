@@ -33,6 +33,16 @@ class Solution:
             
         return i  
 
+  def countDigits1(self, n:int): #O(log10(n) + 1)
+        i = 0
+        while (n > 0):
+            i += 1
+            n = int(n/10)
+        return i  
+
+  def countDigits2(self, n:int): #O(log10(n) + 1)
+        i = math.log(n, 10) + 1
+        return i  
 
 if __name__ == "__main__":
   n = int(input("Please enter a number: \n"))
