@@ -31,12 +31,18 @@ if __name__ == "__main__":
   n = int(input("Please enter a number: \n"))
   print(Solution().findSolution(n))
 
-  def factorial(self, n, i, response):
+  def factorialtillN(self, n, i, response):
     if (response[-1]*i <= n):
       response.append(response[-1]*i)
       self.factorial(n, i+1, response)
     else:
       return
+    
+  def factorial(self, n):
+    if (n <= 1):
+      return 1
+    else:
+      return n * self.factorial(n-1)
   
   def factorialNumbers(self, n):
     #code here 

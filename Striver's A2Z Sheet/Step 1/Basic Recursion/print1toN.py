@@ -29,10 +29,21 @@ class Solution:
       print(i, end=" ")
       self.printNos(i+1, n)
 
-  def findSolution(self, n:int): 
+  def findSolution1(self, n:int): 
     i = 1
     self.printNos(i, n)
 
+
+  # BackTracking Approach (First Complete Internal Recursion and then print)
+  def printNos(self, i:int, n: int):
+    if (i < 1):
+      return
+    else:
+      self.printNos(i-1, n)
+      print(i, end=" ")
+
+  def findSolution(self, n:int): 
+    self.printNos(n, n)
 
 if __name__ == "__main__":
   n = int(input("Please enter a number: \n"))

@@ -22,6 +22,14 @@ from collections import Counter
 
 class Solution:
 
+  #Parameterised Approach
+  def sumofNumbers1(self, n: int, sum: int) -> int:
+    if (i < 1):
+      return sum
+    else:
+      return self.sumofNumbers1(n-1, sum+n)
+
+  # Functional Approach
   def sumofNumbers(self, n: int) -> int:
     if (n > 0):
       return n + self.sumofNumbers(n-1)

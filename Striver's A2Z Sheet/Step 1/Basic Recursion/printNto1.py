@@ -21,7 +21,18 @@ from collections import Counter
 
 
 class Solution:
+  def printNos(self, i:int, n: int):
+    if (i <= n):
+      print(i, end=" ")
+      self.printNos(i-1, n)
+    else:
+      return
 
+  def findSolution(self, n:int): 
+    i = 1
+    self.printNos(i, n)
+
+  # BackTracking Approach (First Complete Internal Recursion and then print)
   def printNos(self, i:int, n: int):
     if (i > n):
       return
@@ -29,10 +40,8 @@ class Solution:
       self.printNos(i+1, n)
       print(i, end=" ")
 
-  def findSolution(self, n:int): 
-    i = 1
-    self.printNos(i, n)
-
+  def findSolution1(self, n:int): 
+    self.printNos(1, n)
 
 if __name__ == "__main__":
   n = int(input("Please enter a number: \n"))
