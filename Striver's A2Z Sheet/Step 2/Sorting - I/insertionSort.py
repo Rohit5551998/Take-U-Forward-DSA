@@ -22,16 +22,27 @@ from collections import Counter
 
 class Solution:   
   def insertionSort(self, arr:List[int], n: int): 
-    for i in range(1, n-1):
+    for i in range(1, n):
       for j in range(i, -1, -1):
-        if (j < n and arr[j] > arr[j+1]):
+        if (j+1 < n and arr[j] > arr[j+1]):
           arr[j], arr[j+1] = arr[j+1], arr[j]
       print(arr)
+
+  def insertionSortRecursive(self, arr: List[int], n: int):
+    for i in range(n, -1, -1):
+      if (i+1 < n and arr[i] > arr[i+1]):
+        arr[i], arr[i+1] = arr[i+1], arr[i]
+    print(arr)
+    if (n < len(arr)):
+      self.insertionSortRecursive(arr, n+1)
 
 if __name__ == "__main__":
   arr = [5, 4, 10, 3, 1, 6, 17, 2]
   n = len(arr)
   Solution().insertionSort(arr, n)
+  arr = [9717, 8876, 5460, 449, 4716, 9333]
+  n = len(arr)
+  Solution().insertionSortRecursive(arr, 1)
   print(arr)
 
 
