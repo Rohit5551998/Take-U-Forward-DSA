@@ -53,7 +53,7 @@ if __name__ == "__main__":
 Compare Last Element with Current Element to check if it is smaller or not
 TC: O(n), SC: O(1)
 
-For Sorted Array the number of rotation points should be less than equal to 1
+For Sorted Rotated Array the number of rotation points should be less than equal to 1
 This means atmost you can encounter one position where a[i-1] > a[i]
 If this count exceeds 1 then the rotated array is not sorted
 """
