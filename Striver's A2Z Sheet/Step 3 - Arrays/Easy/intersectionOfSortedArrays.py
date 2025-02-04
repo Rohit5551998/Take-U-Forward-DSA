@@ -67,7 +67,7 @@ Intersection of Sorted Arrays
 Brute Force
 Use A Visited Array With Nested For Loops to Determine Whether to Add to Intersection Set
 
-TC -> O((m+n)*(m+n))  SC-> O(m+n) Visited Array
+TC -> O((m+n)*(m+n))  SC-> O(m) Visited Array
 
 Optimal Approach
 Two Pointer Approach
