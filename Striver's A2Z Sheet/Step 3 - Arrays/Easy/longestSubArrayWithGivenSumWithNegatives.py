@@ -67,7 +67,7 @@ TC -> O(n**2), SC -> O(1)
 #Better Approach (Optimal If Array Contains Negatives):
 1. Initialize Hash Map To Store Prefix Sum of Elements With Index Upto A Given Index
 2. Check If Current Sum if Equal to K if yes then take max
-3. When a element x check whether k-x exists in prefixSumMap. 
+3. When at element with sum x check whether k-x exists in prefixSumMap. 
 4. If it exists Take Difference Of current position and stored index To Get Length of SubArray
 5. Take Max of Current Longest and the New Length of SubArray
 6. Edge Case: If Prefix Sum Already exists in Array do not update as in case of zeroes we want to take sum from
