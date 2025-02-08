@@ -24,8 +24,8 @@ class Solution:
 
   def findSolution1(self, arr:List[int], k: int):
     for i in range(len(arr)):
-      for j in range(len(arr)):
-        if (i != j and arr[i] + arr[j] == k):
+      for j in range(i+1, len(arr)):
+        if (arr[i] + arr[j] == k):
           return [i, j]
 
   def findSolution2(self, arr:List[int], k: int):
