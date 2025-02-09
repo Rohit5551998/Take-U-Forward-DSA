@@ -56,7 +56,6 @@ class Solution:
     for i in range(1, len(arr)):
       if (counter == 0):
         majorityElement = arr[i]
-        counter = 0
 
       if (arr[i] == majorityElement):
         counter += 1
