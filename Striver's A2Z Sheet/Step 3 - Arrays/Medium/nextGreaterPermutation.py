@@ -67,7 +67,7 @@ Better Approach:
 Optimal Approach:
 1. Find the first element from right which is smaller than the element 
 next to it (referred as break point).
-2. If not array is in decreasing order, reverse the array.
+2. If not found, array is in decreasing order, reverse the array.
 3. Find the first element from right which is greater than the element found in step 1.
 4. Swap the elements found step 1(break point) and step 3.
 5. Reverse the array from the (break point + 1) to the end.
