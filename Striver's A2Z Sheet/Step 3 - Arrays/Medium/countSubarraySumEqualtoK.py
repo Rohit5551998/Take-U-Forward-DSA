@@ -81,6 +81,11 @@ TC -> O(n**3), SC -> O(1)
 TC -> O(n**2), SC -> O(1)
 
 #Optimal Solution (Prefix Sum Approach):
-
+1. Initialize prefixSumHash with Default Value of ) with prefixSumHash[0] = 1 
+(Required If any element is k itself and the cnt should be incremented by 1) & prefixSum = 0
+2. Loop through the array by adding element to prefix sum
+3. Check if x = prefixSum - k is present in prefixSumHash which means the subarray sum uptill that element 
+can be encountered it's values times in the array
+4. Store the current calculated prefixSum in prefixSumHash by incrementing it's count by 1
 TC -> O(n*log(n)) / O(n) Depending on Map Used, SC -> O(n)
 """

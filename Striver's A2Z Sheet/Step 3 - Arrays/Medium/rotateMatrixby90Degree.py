@@ -59,7 +59,7 @@ Rotate Matrix By 90:
 
 Brute Force:
 1. Use Another Array to Store Elements after rotation.
-2. After Rotation a[i][j] will be a[j][(n-1)+i]
+2. After Rotation a[i][j] will be a[j][(n-1)-i]
 TC -> O(N*N), SC -> O(N*N)
 
 Optimal Approach:
