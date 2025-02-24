@@ -82,7 +82,7 @@ TC -> O(n**3), SC -> O(1)
 TC -> O(n**2), SC -> O(1)
 
 #Optimal Solution (Prefix Xor Approach):
-1. Initialize prefixXorHash with Default Value of ) with prefixXorHash[0] = 1 
+1. Initialize prefixXorHash with Default Value of 0 with prefixXorHash[0] = 1 
 (Required If any element is k itself and the cnt should be incremented by 1) & prefixXor = 0
 2. Loop through the array by adding element to prefix xor
 3. Check if x = prefixXor ^ k is present in prefixXorHash which means the subarray xor uptill that element 
