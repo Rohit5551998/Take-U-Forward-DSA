@@ -47,7 +47,7 @@ class Solution:
 
   def findSolution2(self, n: int, m: int, arr1: List[int], arr2: List[int]):
     end, start = len(arr1)-1, 0
-    while (end > 0 and start < len(arr2)):
+    while (end >= 0 and start < len(arr2)):
       if (arr1[end] > arr2[start]):
         arr1[end], arr2[start] = arr2[start], arr1[end]
         end -= 1
@@ -104,17 +104,17 @@ Merge Two Sorted Arrays
 2. Use Loops to compare and store elements in third array and exhaust both arrays in case length in not reached
 3. Once done run loop till length of 3rd Array and if i < n then assign tof first array
 4. Else arr2[i-n] = arr[i]
-TC ->O(n+m) + O(n+m), SC -> O(1)
+TC ->O(n+m) + O(n+m), SC -> O(n+m)
 
 #Optimal Solution 1:
 1. Start from end of first array and start of second array
 2. Exchange elements till arr1[end] > arr2[start] break once not found anymore
 3. Sort both arrays
-TC -> O(min(n, m)) + O(n*logn) + O(m*logm), SC -> O(n+m)
+TC -> O(min(n, m)) + O(n*logn) + O(m*logm), SC -> O(1)
 
 #Optimal Solution 2 (Gap Method --> Shell Sort):
 1. Compute Gap = ceil((size of arr1 + size of arr2)/2) and assume both elements as single array
-2. Initialize left as 0 and right = left + gap and run a loop while right < len(arr2) 
+2. Initialize left as 0 and right = left + gap and run a loop while right < len(arr1+arr2) 
 3. If left > right swap both elements (ensure swapping is done based on array positions and 
 only if left element is greater than right)
 4. Decrease gap = ceil(gap/2) and continue till old gap is not 1
