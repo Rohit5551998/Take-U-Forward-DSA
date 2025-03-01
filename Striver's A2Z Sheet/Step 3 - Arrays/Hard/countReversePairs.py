@@ -95,5 +95,5 @@ Tc -> O(N**2), SC -> O(1)
 2. Just Before Merging Arrays Declare A Function To Calculate Reverse Pairs Uptill Right Pointer
 3. The count needs to be returned from merging algorithm and the count of left and right subarrays
 4. Return the final count
-TC -> O(n*log(n)), SC -> O(n)
+TC -> O(2n*log(n)), SC -> O(n)
 """
