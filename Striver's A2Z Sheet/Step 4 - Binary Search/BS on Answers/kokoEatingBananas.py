@@ -70,5 +70,5 @@ Optimal Approach
 3. Calculate Total Hours for Mid and If value is less than k assign it to ans and eliminate right half with high = mid - 1
 4. Else assign low = mid + 1
 5. Return ans.
-TC -> O(log(n)), SC -> O(1)
+TC -> O(log(max(arr)*n)), SC -> O(1)
 """
