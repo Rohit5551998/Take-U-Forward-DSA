@@ -21,12 +21,6 @@ from collections import Counter
 
 
 class Solution:   
-  def calculateTotalHours(self, arr: List[int], rate: int):
-    hours = 0
-    for i in range(0, len(arr)):
-      hours += math.ceil(arr[i]/rate)
-    return hours
-
   def findSolution1(self, arr: List[int], k:int):
     for i in range(0, len(arr)):
       if (arr[i] <= k):

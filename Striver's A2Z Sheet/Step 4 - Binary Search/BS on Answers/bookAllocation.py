@@ -70,7 +70,7 @@ if __name__ == "__main__":
 Book Allocation Problem
 Brute Force
 1. Run a Loop From Max(arr) to Sum(arr) and allocate books for i only if m > n is not valid(return -1)
-2. Inside Calculate Capacity initialize students = 1 and pagesStudent = 0
+2. Inside Allocate Books initialize students = 1 and pagesStudent = 0
 use array loop with logic if pagesStudent + arr[i] <= pages threshold then add pages to current student
 3. Else Increment Student By 1 and Set pagesStudent to Current Pages
 5. If Allocated Student is equal to limit return i 
@@ -80,10 +80,10 @@ TC -> O(n * (sum(arr[])-max(arr[])+1)), SC -> O(1)
 Optimal Approach
 1. Initialize two pointers low = max(arr), high = sum(arr), ans = max(arr) only if m > n is not valid(return -1)
 2. In loop calculate mid = low + (high - low) // 2
-3. Inside Calculate Capacity initialize students = 1 and pagesStudent = 0
+3. Inside Allocate Books initialize students = 1 and pagesStudent = 0
 use array loop with logic if pagesStudent + arr[i] <= pages threshold then add pages to current student
 4. Else Increment Student By 1 and Set pagesStudent to Current Pages
-5. If Allocated Student is less than m then set low = mid + 1
+5. If Allocated Student is greater than m then set low = mid + 1
 6. Else high = mid - 1 and ans = mid
 7. Return ans.
 TC -> O(n * log(sum(arr[])-max(arr[])+1)), SC -> O(1)

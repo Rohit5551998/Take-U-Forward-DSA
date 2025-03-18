@@ -76,7 +76,7 @@ Optimal Approach
 2. In loop calculate mid = low + (high - low) // 2
 3. Inside Calculate Capacity initialize days = 1 and load = 0
 use array loop with logic if load + arr[i] < capacity threshold increment load by current weight
-4. Else Increment Day By 1 and Set Load to Current Weight4. If Bouquets is less than m assign low = mid + 1
+4. Else Increment Day By 1 and Set Load to Current Weight4. If Days is greater than d assign low = mid + 1
 6. Else high = mid - 1 and ans = mid
 7. Return ans.
 TC -> O(n * log(sum(weights[]) - max(weights[]) + 1)), SC -> O(1)

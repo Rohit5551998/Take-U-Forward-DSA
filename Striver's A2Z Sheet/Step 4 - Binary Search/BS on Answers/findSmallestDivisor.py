@@ -70,8 +70,8 @@ Optimal Approach
 1. Initialize two pointers low = 1, high = max(arr), ans = -1
 2. In loop calculate mid = low + (high - low) // 2
 3. Inside Calculate Sum of Divisors do the operation sum += ceil(arr[i]/divisor)
-4. If Sum is less than or equal to m return i 
-5. At End of Loop Return -1
+4. If Sum is less than or equal to m, assign ans = mid and high = mid - 1
+5. Else set low = mid + 1
 6. Return ans.
 TC -> O(log(max(arr[]))*N), SC -> O(1)
 """
