@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
 
 """
-Segregate Even And Odd Nodes in LL
+Add Two Numbers in Linked List
 Optimal Approach
 1. Create New Sum Linked List with Dummy Element and assign SumListHead equal to this node.
 2. Assign Carry to 0 and Traverse through both linked lists until either exists.

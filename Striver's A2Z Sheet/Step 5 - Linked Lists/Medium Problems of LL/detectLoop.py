@@ -63,32 +63,51 @@ class Solution:
 
     return temp
   
-  def middleElement(self, head):
-    if head is None or head.next is None:
-      return head
+  def detectLoop1(self, head):
+    hashMap = {}
 
+    temp = head
+    resp = False
+    while (temp is not None):
+      if (temp in hashMap):
+        resp = True
+        break
+
+      hashMap[temp] = 1
+      temp = temp.next
+
+    return resp  
+  
+  def detectLoop(self, head):
     slow, fast = head, head
-
+    resp = False
     while (fast is not None and fast.next is not None):
       slow = slow.next
       fast = fast.next.next
 
-    return slow 
-      
+      if (slow == fast):
+        resp = True
+        break
+
+    return resp
+    
 if __name__ == "__main__":
   arr = [1, 2, 3, 2, 1]
   head = Solution().convertArr2LL(arr)
-  print(Solution().middleElement(head).data)
+  head.next.next.next.next = head.next.next
+  print(Solution().detectLoop(head))
 
 """
-Find Middle of Linked List
+Detect Loop In Linked List
 Brute Force
-1. Loop through linked list and maintain count of elements
-2. Calculate mid = n/2 + 1 element and run another loop to find the element at this position.
-TC -> O(n + n/2), SC -> O(1)
+1. Initialize HashMap and store all nodes in hashmap by looping over list
+2. Before Adding to HashMap check if Node already exists in Linked List and Return True
+3. At End of Loop Return False
+TC -> O(n * 2log(n)), SC -> O(n)
 
 Optimal Approach
 1. Initialize slow = head, fast = head and Run a loop till fast is not None or fast.next is not None.
-2. At end of loop slow will point to middle element.
-TC -> O(n/2), O(1)
+2. If At Point slow == fast, return True
+3. At End of Loop if the linked list is linear return False
+TC -> O(n), SC -> O(1)
 """

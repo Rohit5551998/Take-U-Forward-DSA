@@ -108,5 +108,5 @@ Optimal Approach
 1. Initialize temp1 = head1, temp2 = head2 and Run a loop till node 1 != node 2.
 2. If temp1 is None assign it to head2 and if temp2 is None assign it to head1.
 3. Return the first matched element
-TC -> O(2*max(length of list1,length of list2)), O(1)
+TC -> O(2*max(length of list1,length of list2)), SC -> O(1)
 """
