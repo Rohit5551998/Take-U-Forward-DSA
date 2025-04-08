@@ -90,5 +90,5 @@ TC -> O(n + n/2), SC -> O(1)
 Optimal Approach
 1. Initialize slow = head, fast = head and Run a loop till fast is not None or fast.next is not None.
 2. At end of loop slow will point to middle element.
-TC -> O(n/2), O(1)
+TC -> O(n/2), SC -> O(1)
 """

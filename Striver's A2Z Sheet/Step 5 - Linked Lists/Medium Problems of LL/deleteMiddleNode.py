@@ -94,7 +94,7 @@ Brute Force
 TC -> O(n + n/2), SC -> O(1)
 
 Optimal Approach
-1. Initialize slow = head, fast = head.next and Run a loop till fast is not None or fast.next is not None.
+1. Initialize slow = head, fast = head.next and Run a loop till fast.next is not None or fast.next.next is not None.
 2. At end of loop slow will point to prev of middle element.
 3. Assign slow.next = slow.next.next
 TC -> O(n/2), SC -> O(1)

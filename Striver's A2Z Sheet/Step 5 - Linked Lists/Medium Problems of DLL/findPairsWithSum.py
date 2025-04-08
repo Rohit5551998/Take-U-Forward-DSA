@@ -93,11 +93,11 @@ Brute Force
 TC -> O(n**2), SC -> O(1)
 
 Optimal Approach
-1. Initialize ans = [], left = head, right = tail(run loop) and Run a right.next != left
+1. Initialize ans = [], left = head, right = tail(run loop) and Run till right is not None and right.data > left.data
 2. Calculate sum = left.data + right.data
 3. If sum < k left = left.next
 4. If sum > k right = right.prev
 4. If sum == k append tuple to ans array
 5. Return final ans array
-TC -> O(n), O(1)
+TC -> O(n), SC -> O(1)
 """

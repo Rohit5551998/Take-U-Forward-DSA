@@ -120,5 +120,5 @@ Optimal Approach
 3. If At Point slow == fast, reset slow to head and run a loop till slow != fast
 4. Both Pointers Will Collide At Start of Loop
 5. At End of Loop if the linked list is linear return -1
-TC -> O(n), O(1)
+TC -> O(n), SC -> O(1)
 """

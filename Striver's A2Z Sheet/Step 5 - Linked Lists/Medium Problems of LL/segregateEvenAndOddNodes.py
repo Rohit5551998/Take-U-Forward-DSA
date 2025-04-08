@@ -90,6 +90,6 @@ oddTail = oddHead and evenTail = evenHead.
 2. Loop through linked list and add elements to respective linked lists to element exists.
 3. Assign Current Element to Temp, Move to Next Element and then remove next of temp.
 4. Afterwards check count and assign to respective linked list.
-5. At end of loop, assign evenHead.next to oddTail.next and return evenHead.next.
+5. At end of loop, assign evenHead.next to oddTail.next and return oddHead.next.
 TC -> O(n), SC -> O(1)
 """
