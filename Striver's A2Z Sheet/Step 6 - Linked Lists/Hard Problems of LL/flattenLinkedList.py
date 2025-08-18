@@ -113,7 +113,7 @@ Flatten Linked List
 Brute Force
 1. Initialize empty array to store all linked list elements
 2. Traverse the linked list and if child exists traverse downwards and add all elements to an array.
-3. Sort the entire array and create new linked list from thos sorted array
+3. Sort the entire array and create new linked list from this sorted array
 Time Complexity: O(N*M) + O(N*M log(N*M)) + O(N*M), Space Complexity: O(N*M) + O(N*M)
 
 Optimal Approach
