@@ -24,7 +24,7 @@ class Solution:
     stack = LifoQueue()
     ans = [0 for i in range(len(arr))] 
     for i in range(len(arr)-1, -1, -1):
-      while(not stack.empty() and arr[i] > stack.queue[-1]):
+      while(not stack.empty() and arr[i] >= stack.queue[-1]):
         stack.get()
       ans[i] = -1 if stack.empty() else stack.queue[-1]
       stack.put(arr[i])
