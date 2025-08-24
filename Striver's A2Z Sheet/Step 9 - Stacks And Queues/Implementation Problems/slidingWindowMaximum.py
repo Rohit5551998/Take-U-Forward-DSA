@@ -27,12 +27,9 @@ class Solution:
       if(queue and queue[0] < i-k+1):
         queue.popleft()
 
-      print(queue, arr[i])
       #Remove elements from monotonic stack till new element is greater than top of stack
       while(queue and arr[queue[-1]] <= arr[i]):
         queue.pop()
-
-      print(queue, arr[i])
 
       queue.append(i)
 
