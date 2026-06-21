@@ -1,6 +1,5 @@
 # QUESTION: BST iterator
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "BST iterator" "Binary Search Tree Part-II" to fetch from the web)
+# Given two BSTs, return elements of merged BSTs in sorted form.
 
 
 """

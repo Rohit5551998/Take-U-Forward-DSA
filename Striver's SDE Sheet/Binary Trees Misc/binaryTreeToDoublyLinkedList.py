@@ -1,6 +1,5 @@
 # QUESTION: Binary Tree to Doubly Linked List
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Binary Tree to Doubly Linked List" "Binary Trees Misc" to fetch from the web)
+# Given a Binary Tree, convert it into a Doubly Linked List (DLL) in-place. The conversion should maintain the in-order traversal of the binary tree. In the DLL: The left pointer of each node should point to the previous node. The right point….
 
 
 """

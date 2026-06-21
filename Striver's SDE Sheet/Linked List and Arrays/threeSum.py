@@ -1,6 +1,16 @@
 # QUESTION: 3 Sum
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "3 Sum" "Linked List and Arrays" to fetch from the web)
+# Given an array of N integers, your task is to find unique triplets that add up to give a sum of zero. In short, you need to return  an array of all the unique triplets [arr[a.
+#
+# Examples:
+# Example 1:
+# Input: nums = [-1,0,1,2,-1,-4]
+# Output: [[-1,-1,2],[-1,0,1]]
+# Explanation: Out of all possible unique triplets possible, [-1,-1,2] and [-1,0,1] satisfy the condition of summing up to zero with i!=j!=k
+#
+# Example 2:
+# Input: nums=[-1,0,1,0]
+# Output: Output: [[-1,0,1],[-1,1,0]]
+# Explanation: Out of all possible unique triplets possible, [-1,0,1] and [-1,1,0] satisfy the condition of summing up to zero with i!=j!=k
 
 
 """

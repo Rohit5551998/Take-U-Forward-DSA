@@ -1,6 +1,5 @@
 # QUESTION: Longest Consecutive Sequence in an Array
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Longest Consecutive Sequence in an Array" "Arrays Part-IV" to fetch from the web)
+# Given an array nums of n integers. Return the length of the longest sequence of consecutive integers. The integers in this sequence can appear in any order.
 
 
 """

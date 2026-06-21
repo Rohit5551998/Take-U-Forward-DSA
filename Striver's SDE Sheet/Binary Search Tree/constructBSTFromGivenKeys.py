@@ -1,6 +1,5 @@
 # QUESTION: Construct BST from given keys
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Construct BST from given keys" "Binary Search Tree" to fetch from the web)
+# Can you solve this real interview question? Convert Sorted Array to Binary Search Tree - Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
 
 
 """

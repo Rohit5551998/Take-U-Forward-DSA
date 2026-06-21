@@ -1,6 +1,14 @@
 # QUESTION: Rotten Oranges
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Rotten Oranges" "Stack and Queue Part-II" to fetch from the web)
+# Given an n x m grid, where each cell has the following values : 2 - represents a rotten orange , 1 - represents a Fresh orange , 0 - represents an Empty Cell . Every minute, if a.
+#
+# Examples:
+# Input :grid = [ [2, 1, 1] , [0, 1, 1] , [1, 0, 1] ]
+# Output :-1
+# Explanation : Orange at (3,0) cannot be rotten.
+#
+# Input :grid = [ [2,1,1] , [1,1,0] , [0,1,1] ]
+# Output :4
+# Explanation :
 
 
 """

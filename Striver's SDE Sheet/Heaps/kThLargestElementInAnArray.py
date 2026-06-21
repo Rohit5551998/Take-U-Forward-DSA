@@ -1,6 +1,5 @@
 # QUESTION: K-th Largest element in an array
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "K-th Largest element in an array" "Heaps" to fetch from the web)
+# Given an array nums, return the kth largest element in the array.
 
 
 """

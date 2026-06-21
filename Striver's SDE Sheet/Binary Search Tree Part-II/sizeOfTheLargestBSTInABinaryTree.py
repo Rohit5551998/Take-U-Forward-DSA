@@ -1,6 +1,5 @@
 # QUESTION: Size of the largest BST in a Binary Tree
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Size of the largest BST in a Binary Tree" "Binary Search Tree Part-II" to fetch from the web)
+# Given a root of Binary Tree, where the nodes have integer values. Return the size of the largest subtree of the binary tree which is also a BST. A binary search tree (BST) is a binary tree data structure which has the following properties. ….
 
 
 """

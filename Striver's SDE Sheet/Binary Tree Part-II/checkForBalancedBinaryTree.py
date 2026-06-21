@@ -1,6 +1,18 @@
 # QUESTION: Check for balanced binary tree
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Check for balanced binary tree" "Binary Tree Part-II" to fetch from the web)
+# Given a Binary Tree, return true if it is a Balanced Binary Tree else return false. A Binary Tree is balanced if, for all nodes in the tree, the difference between left and right.
+#
+# Examples:
+# Example 1:
+# Input : [3, 9, 20, null, null, 15, 7]
+#
+# Output : Yes
+# Explanation:
+#
+# Example 2:
+# Input : [1, 2, null, null, 3]
+#
+# Output : No
+# Explanation:
 
 
 """

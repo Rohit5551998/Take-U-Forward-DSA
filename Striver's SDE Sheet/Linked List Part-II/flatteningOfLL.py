@@ -1,6 +1,5 @@
 # QUESTION: Flattening of LL
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Flattening of LL" "Linked List Part-II" to fetch from the web)
+# Given a linked list containing ‘N’ head nodes where every node in the linked list contains two pointers: ‘Next’ points to the next node in the list ‘Child’ pointer to.
 
 
 """

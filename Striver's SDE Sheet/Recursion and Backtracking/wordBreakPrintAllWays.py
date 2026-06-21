@@ -1,6 +1,5 @@
 # QUESTION: Word Break (print all ways)
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Word Break (print all ways)" "Recursion and Backtracking" to fetch from the web)
+# Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words otherwise return false. Note : The same word in dictionary can be used multiple times i….
 
 
 """

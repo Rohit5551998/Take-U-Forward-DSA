@@ -1,6 +1,5 @@
 # QUESTION: Maximum XOR of two numbers in an array
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum XOR of two numbers in an array" "Trie" to fetch from the web)
+# Given an integer array nums, return the maximum result of nums[i] XOR nums[j], where 0.
 
 
 """

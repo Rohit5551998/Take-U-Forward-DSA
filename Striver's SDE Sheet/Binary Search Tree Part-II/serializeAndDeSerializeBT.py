@@ -1,6 +1,5 @@
 # QUESTION: Serialize and De-serialize BT
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Serialize and De-serialize BT" "Binary Search Tree Part-II" to fetch from the web)
+# Given a Binary Tree, design an algorithm to serialise and deserialise it. There is no restriction on how the serialisation and deserialization takes place. But it needs to be ens.
 
 
 """

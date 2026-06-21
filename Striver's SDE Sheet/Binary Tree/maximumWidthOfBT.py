@@ -1,6 +1,5 @@
 # QUESTION: Maximum Width of BT
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum Width of BT" "Binary Tree" to fetch from the web)
+# Given a Binary Tree, return its maximum width. The maximum width of a Binary Tree is the maximum diameter among all its levels. The width or diameter of a level is the number of.
 
 
 """

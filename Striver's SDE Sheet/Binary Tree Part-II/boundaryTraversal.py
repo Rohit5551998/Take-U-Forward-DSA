@@ -1,6 +1,5 @@
 # QUESTION: Boundary Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Boundary Traversal" "Binary Tree Part-II" to fetch from the web)
+# Boundary Traversal of a Binary Tree . Problem Statement: Given a Binary Tree, perform the boundary traversal of the tree. The boundary traversal is the process of visiting the boundary nodes of the.
 
 
 """

@@ -1,6 +1,11 @@
 # QUESTION: Largest rectangle in a histogram
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Largest rectangle in a histogram" "Stack and Queue Part-II" to fetch from the web)
+# Given an array of integers heights representing the histogram's bar height where the width of each bar is 1 return the area of the largest rectangle in histogram. .
+#
+# Examples:
+# Example:
+#
+# Input: N =6, heights[] = {2,1,5,6,2,3}
+# Output: 10
 
 
 """

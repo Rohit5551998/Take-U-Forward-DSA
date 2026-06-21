@@ -1,6 +1,5 @@
 # QUESTION: Vertical Order Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Vertical Order Traversal" "Binary Tree" to fetch from the web)
+# Given a Binary Tree, return the Vertical Order Traversal of it starting from the Leftmost level to the Rightmost level. If there are multiple nodes passing through a vertical lin.
 
 
 """

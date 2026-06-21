@@ -1,6 +1,5 @@
 # QUESTION: Stock span problem
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Stock span problem" "Stack and Queue Part-II" to fetch from the web)
+# Given an array arr of size n, where each element arr[i] represents the stock price on day i. Calculate the span of stock prices for each day. The span Sᵢ for a specific day i i.
 
 
 """

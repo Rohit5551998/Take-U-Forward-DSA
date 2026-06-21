@@ -1,6 +1,5 @@
 # QUESTION: Find the starting point in LL
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Find the starting point in LL" "Linked List Part-II" to fetch from the web)
+# Given the head of a linked list that may contain a cycle, return the starting point of that cycle. If there is no cycle in the linked list return null.
 
 
 """

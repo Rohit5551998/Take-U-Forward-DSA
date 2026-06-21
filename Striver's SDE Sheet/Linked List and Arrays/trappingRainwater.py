@@ -1,6 +1,5 @@
 # QUESTION: Trapping Rainwater
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Trapping Rainwater" "Linked List and Arrays" to fetch from the web)
+# Given an array of non-negative integers representation elevation of ground. Your task is to find the water that can be trapped after rain .
 
 
 """

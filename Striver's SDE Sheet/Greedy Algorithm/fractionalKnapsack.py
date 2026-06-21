@@ -1,6 +1,5 @@
 # QUESTION: Fractional Knapsack
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Fractional Knapsack" "Greedy Algorithm" to fetch from the web)
+# The weight of N items and their corresponding values are given. We have to put these items in a knapsack of weight W such that the total value obtained is maximized. Note: We can.
 
 
 """

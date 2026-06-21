@@ -1,6 +1,5 @@
 # QUESTION: Largest Subarray with K sum
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Largest Subarray with K sum" "Arrays Part-IV" to fetch from the web)
+# Given an array containing both positive and negative integers, we have to find the length of the longest subarray with the sum of all elements equal to zero.
 
 
 """

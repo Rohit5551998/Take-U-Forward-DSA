@@ -1,6 +1,5 @@
 # QUESTION: M Coloring Problem
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "M Coloring Problem" "Recursion and Backtracking" to fetch from the web)
+# Coloring Problem - Problem Statement: Given an undirected graph and a number m, determine if the graph can be colored with at most m colors such that no two adjacent vertices of the graph are colored with the same co.
 
 
 """

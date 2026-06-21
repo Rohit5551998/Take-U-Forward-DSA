@@ -1,6 +1,14 @@
 # QUESTION: Merge two Sorted Lists
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Merge two Sorted Lists" "Linked List" to fetch from the web)
+# Given the heads of two linked lists, list1 and list2, where each linked list has its elements sorted in non-decreasing order, merge them into a single sorted linked list and retu.
+#
+# Examples:
+# Input : List1: 2 4 8 10, List2: 1 3 3 6 11 14
+# Output : Combined List: 1 2 3 3 6 8 10 11 14
+# Explanation : Below is the image of original and sorted list.
+#
+# Input : List1: 7 8, List2: 1 3 4 6
+# Output : Combined List: 1 3 4 6 7 8
+# Explanation : Below is the image of original and sorted list.
 
 
 """

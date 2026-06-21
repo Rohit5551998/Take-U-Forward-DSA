@@ -1,6 +1,5 @@
 # QUESTION: Preorder Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Preorder Traversal" "Binary Tree" to fetch from the web)
+# Given the root of a Binary Tree, return the preorder, inorder and postorder traversal sequence of the given tree by making just one traversal.
 
 
 """

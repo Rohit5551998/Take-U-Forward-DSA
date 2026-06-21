@@ -1,6 +1,14 @@
 # QUESTION: Matrix chain multiplication
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Matrix chain multiplication" "Dynamic Programming" to fetch from the web)
+# Detailed solution for Matrix Chain Multiplication | (DP-48) - Problem Statement: Given a chain of matrices A1,..., An denoted by an array of size n+1, find out the minimum number of operations to multiply these n matrices .
+#
+# Examples:
+# Input : [40, 20, 30, 10, 30]
+# Output : 26000
+# Explanation : Best parenthesization is ( (A1 x (A2 x A3)) x A4 ).
+#
+# Input : [10, 20, 30, 40, 30]
+# Output : 30000
+# Explanation : Optimal parenthesization minimizes cost.
 
 
 """

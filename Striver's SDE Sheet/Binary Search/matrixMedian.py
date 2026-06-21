@@ -1,6 +1,5 @@
 # QUESTION: Matrix Median
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Matrix Median" "Binary Search" to fetch from the web)
+# Given a row-wise sorted matrix of size M*N, where M is no. of rows and N is no. of columns, find the median in the given matrix. Note: M*N is odd.
 
 
 """

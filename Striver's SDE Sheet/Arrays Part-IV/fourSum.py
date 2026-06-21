@@ -1,6 +1,5 @@
 # QUESTION: 4 Sum
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "4 Sum" "Arrays Part-IV" to fetch from the web)
+# Given an array of N integers, your task is to find unique quads that add up to give a target value. In short, you need to return an array of all the unique quadruplets [arr[a].
 
 
 """

@@ -1,6 +1,5 @@
 # QUESTION: Find Median in a Stream
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Find Median in a Stream" "Binary Trees Misc" to fetch from the web)
+# You are given a stream of integers arr[], arriving one by one. After each new integer is added to the stream, output the median of all elements seen so far. Return a list of medians — one after each insertion — where: If the number of eleme….
 
 
 """

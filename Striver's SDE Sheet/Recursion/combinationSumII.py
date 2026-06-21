@@ -1,6 +1,21 @@
 # QUESTION: Combination Sum II
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Combination Sum II" "Recursion" to fetch from the web)
+# Find all unique combinations - Problem Statement: Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target. Each numb.
+#
+# Examples:
+# Example 1:
+# Input: candidates = [10,1,2,7,6,1,5], target = 8
+# Output:
+# [
+# [1,1,6],
+# [1,2,5],
+# [1,7],
+# [2,6]]
+# Explanation: These are the unique combinations whose sum is equal to target.
+#
+# Example 2:
+# Input: candidates = [2,5,2,1,2], target = 5
+# Output: [[1,2,2],[5]]
+# Explanation: These are the unique combinations whose sum is equal to target.
 
 
 """

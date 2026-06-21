@@ -1,6 +1,5 @@
 # QUESTION: Balanced Paranthesis
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Balanced Paranthesis" "Stack and Queue" to fetch from the web)
+# Check Balanced Parentheses. Given string str containing just the characters '(', ')', '{', '}', '[' and ']', check if the input string is valid and return true if the string is b.
 
 
 """

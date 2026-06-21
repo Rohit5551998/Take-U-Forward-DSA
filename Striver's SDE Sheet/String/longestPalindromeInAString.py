@@ -1,6 +1,5 @@
 # QUESTION: Longest Palindrome in a string
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Longest Palindrome in a string" "String" to fetch from the web)
+# Given a string s , return the longest palindromic substring in s. A palindromic substring is a contiguous sequence of characters within the string that reads the same forward and backward .
 
 
 """

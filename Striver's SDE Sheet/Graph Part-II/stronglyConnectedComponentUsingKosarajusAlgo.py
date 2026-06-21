@@ -1,6 +1,5 @@
 # QUESTION: Strongly Connected Component(using Kosaraju's algo)
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Strongly Connected Component(using Kosaraju's algo)" "Graph Part-II" to fetch from the web)
+# Kosaraju's Algorithm: G-54 - Problem Statement: Given a Directed Graph with V vertices (Numbered from 0 to V-1) and E edges, Find the number of strongly connected components in the graph.
 
 
 """

@@ -1,6 +1,5 @@
 # QUESTION: Word Break
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Word Break" "Dynamic Programming Part-II" to fetch from the web)
+# Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words otherwise return false. Note : The same word in dictionary can be used multiple times i….
 
 
 """

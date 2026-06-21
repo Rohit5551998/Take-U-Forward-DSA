@@ -1,6 +1,5 @@
 # QUESTION: Maximum path sum
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum path sum" "Binary Tree Part-III" to fetch from the web)
+# Given a Binary Tree, determine the maximum sum achievable along any path within the tree. A path in a binary tree is defined as a sequence of nodes where each pair of adjacent no.
 
 
 """

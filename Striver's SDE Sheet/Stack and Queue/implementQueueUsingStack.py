@@ -1,6 +1,28 @@
 # QUESTION: Implement Queue using Stack
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Implement Queue using Stack" "Stack and Queue" to fetch from the web)
+# Implement a First-In-First-Out (FIFO) queue using two stacks. The implemented queue should support the following operations: push, pop, peek, and isEmpty. Implement the StackQueu.
+#
+# Examples:
+# Example 1:
+# Input:
+# ["StackQueue", "push", "push", "pop", "peek", "isEmpty"]
+# [[], [4], [8], [], [], []]
+# Output: [null, null, null, 4, 8, false]
+# Explanation:
+# StackQueue queue = new StackQueue();
+# - queue.push(4);
+# - queue.push(8);
+# - queue.pop(); // returns 4
+# - queue.peek(); // returns 8
+# - queue.isEmpty(); // returns false
+#
+# Example 2:
+# Input:
+# ["StackQueue", "isEmpty"]
+# [[]]
+# Output: [null, true]
+# Explanation:
+# StackQueue queue = new StackQueue();
+# - queue.isEmpty(); // returns true
 
 
 """

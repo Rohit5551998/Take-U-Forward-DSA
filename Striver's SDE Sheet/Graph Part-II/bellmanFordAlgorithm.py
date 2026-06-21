@@ -1,6 +1,5 @@
 # QUESTION: Bellman ford algorithm
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Bellman ford algorithm" "Graph Part-II" to fetch from the web)
+# Detailed solution for Bellman Ford Algorithm: G-41 - Problem Statement: Given a weighted, directed and connected graph of V vertices and E edges, Find the shortest distance of all the vertices from the source vertex S. Note: If the Graph contains a n.
 
 
 """

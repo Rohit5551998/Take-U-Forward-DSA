@@ -1,6 +1,5 @@
 # QUESTION: Detect A cycle in Undirected Graph using BFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Detect A cycle in Undirected Graph using BFS" "Graph" to fetch from the web)
+# Given an undirected graph with V vertices and E edges, check whether it contains any cycle or not.&nbsp;.
 
 
 """

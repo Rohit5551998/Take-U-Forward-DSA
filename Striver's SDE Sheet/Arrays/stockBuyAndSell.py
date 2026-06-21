@@ -1,6 +1,5 @@
 # QUESTION: Stock Buy and Sell
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Stock Buy and Sell" "Arrays" to fetch from the web)
+# You are given an array of prices where prices[i] is the price of a given stock on an ith day. You want to maximize your profit by choosing a single day to buy one stock and choos.
 
 
 """

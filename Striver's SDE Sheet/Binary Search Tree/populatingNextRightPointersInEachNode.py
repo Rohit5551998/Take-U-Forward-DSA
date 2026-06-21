@@ -1,6 +1,5 @@
 # QUESTION: Populating Next Right Pointers in Each Node
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Populating Next Right Pointers in Each Node" "Binary Search Tree" to fetch from the web)
+# You are given a perfect binary tree where: All leaves are on the same level, and Every parent has exactly two children. You need to populate each next pointer so that it points to its next right node. If there is no next right node, the nex….
 
 
 """

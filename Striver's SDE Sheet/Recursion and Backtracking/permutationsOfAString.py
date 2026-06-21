@@ -1,6 +1,5 @@
 # QUESTION: Permutations of a String
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Permutations of a String" "Recursion and Backtracking" to fetch from the web)
+# Problem Description: Given an array arr of distinct integers, print all permutations of the given array.
 
 
 """

@@ -1,6 +1,16 @@
 # QUESTION: Number of islands(Do in Grid and Graph Both)
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Number of islands(Do in Grid and Graph Both)" "Graph" to fetch from the web)
+# Given a boolean 2D matrix grid of size N x M. You have to find the number of distinct islands where a group of connected 1s (horizontally or vertically) forms an island. Two isla.
+#
+# Examples:
+# Input:
+#
+# Output: 1
+# Explanation: Island at the top left corner is the same as the island at the bottom right corner.
+#
+# Input :
+#
+# Output: 3
+# Explanation : Island at the top right corner is the same as the island at the bottom left corner.
 
 
 """

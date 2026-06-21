@@ -1,6 +1,5 @@
 # QUESTION: Implement Max Heap
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Implement Max Heap" "Heaps" to fetch from the web)
+# You need to implement the Max Heap with the following given methods. insert (x) -&gt; insert value x to the max heap getMax -&gt; Output the maximum value from the max heap exctractMax -&gt; Remove the maximum element from the heap heapSize….
 
 
 """

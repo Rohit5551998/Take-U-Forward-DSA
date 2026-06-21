@@ -1,6 +1,5 @@
 # QUESTION: LRU Cache
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "LRU Cache" "Stack and Queue Part-II" to fetch from the web)
+# Design a data structure that follows the constraints of a Least Recently Used (LRU) cache. Implement the LRUCache class: LRUCache(int capacity) : Initialize the LRU cache with po.
 
 
 """

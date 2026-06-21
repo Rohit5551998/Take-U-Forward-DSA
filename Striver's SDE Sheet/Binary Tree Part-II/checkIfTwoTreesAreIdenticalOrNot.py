@@ -1,6 +1,16 @@
 # QUESTION: Check if two trees are identical or not
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Check if two trees are identical or not" "Binary Tree Part-II" to fetch from the web)
+# Given two Binary Trees, return if true if the two trees are identical, otherwise return false.. Two trees are said to be identical if these three conditions are met for every pai.
+#
+# Examples:
+# Example 1:
+# Input:Binary Tree 1: 1 2 3 -1 -1 4 5, Binary Tree 2: 1 2 3 -1 -1 4 5
+#
+# Output: True, these trees are identical.
+#
+# Example 2:
+# Input:Binary Tree 1: 1 2 3 -1 -1 4 5, Binary Tree 2: 1 2 3 -1 -1 4
+#
+# Output : False, these trees are not identical.
 
 
 """

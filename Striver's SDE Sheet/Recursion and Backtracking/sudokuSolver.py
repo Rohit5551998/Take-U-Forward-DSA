@@ -1,6 +1,18 @@
 # QUESTION: Sudoku Solver
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Sudoku Solver" "Recursion and Backtracking" to fetch from the web)
+# Create a program that fills in the blank cells in a Sudoku puzzle to solve it. Every sudoku solution needs to follow to these guidelines: 1) In every row, the numbers 1 through 9.
+#
+# Examples:
+# Input :
+#
+# Output :
+#
+# Explanation : The output is a valid Sudoku solution that fills in all empty cells such that each number 1 through 9 appears exactly once in every row, column, and 3x3 sub-box.
+#
+# Input :
+#
+# Output :
+#
+# Explanation : The output is one of the possible valid Sudoku solutions that fills all empty cells following the Sudoku rules.
 
 
 """

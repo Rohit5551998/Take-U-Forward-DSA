@@ -1,6 +1,34 @@
 # QUESTION: Trie Implementation and Operations
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Trie Implementation and Operations" "Trie" to fetch from the web)
+# 1 - Problem Statement: Implement the Trie class: Trie(): Initializes the trie object. void insert (String word): Inserts the string word into the trie. boolean search (String word): Returns true if the.
+#
+# Examples:
+# Example 1:
+# Input:
+# ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+# [ [] , ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"] ]
+# Output:
+# [null, null, true, false, true, null, true]
+# Explanation:
+# - Trie trie = new Trie()
+# - trie.insert("apple")
+# - trie.search("apple") // returns True
+# - trie.search("app") // returns False
+# - trie.startsWith("app") // returns True
+# - trie.insert("app")
+# - trie.search("app") // returns True
+#
+# Example 2:
+# Input:
+# ["Trie", "insert", "insert", "startsWith", "search"]
+# [ [] , "takeu" , "banana" , "bana" , "takeu" ]
+# Output:
+# [null, null, null, true, true]
+# Explanation:
+# - Trie trie = new Trie()
+# - trie.insert("takeu")
+# - trie.insert("banana")
+# - trie.startsWith("bana") // returns True
+# - trie.search("takeu") // returns True
 
 
 """

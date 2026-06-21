@@ -1,6 +1,5 @@
 # QUESTION: DFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "DFS" "Graph" to fetch from the web)
+# Given an undirected graph, return a vector of all nodes by traversing the graph using depth-first search (DFS).
 
 
 """

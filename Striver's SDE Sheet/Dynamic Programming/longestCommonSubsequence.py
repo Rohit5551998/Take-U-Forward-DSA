@@ -1,6 +1,14 @@
 # QUESTION: Longest common subsequence
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Longest common subsequence" "Dynamic Programming" to fetch from the web)
+# 26) - Problem Description: Given two strings str1 and str2, print the longest common subsequence of the two strings. A subsequence of a string is a list of characters of the string where zero or more cha.
+#
+# Examples:
+# Input: str1 = "abcd", str2="bdef"
+# Output: "bd"
+# Explanation: LCS of two strings is "bd".
+#
+# Input: str1 = "apple" str2 = "waffle"
+# Output: "ale"
+# Explanation: LCS of two strings is "ale".
 
 
 """

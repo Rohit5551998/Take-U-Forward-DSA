@@ -1,6 +1,5 @@
 # QUESTION: Flatten Binary Tree to Linked List
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Flatten Binary Tree to Linked List" "Binary Tree Part-III" to fetch from the web)
+# Given a Binary Tree, convert it to a Linked List where the linked list nodes follow the same order as the pre-order traversal of the binary tree. Use the right pointer of the Bin.
 
 
 """

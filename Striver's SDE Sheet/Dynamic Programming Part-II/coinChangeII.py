@@ -1,6 +1,20 @@
 # QUESTION: Coin change II
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Coin change II" "Dynamic Programming Part-II" to fetch from the web)
+# 22) - Problem Statement: We are given an array Arr with N distinct coins and a target. We have an infinite supply of each coin denomination. We need to find the number of ways we sum up the coin values t.
+#
+# Examples:
+# Example 1:
+# Input: coins = [2, 4,10], amount = 10
+# Output: 4
+# Explanation: The four combinations are:
+# 10 = 10
+# 10 = 4 + 4 + 2
+# 10 = 4 + 2 + 2 + 2
+# 10 = 2 + 2 + 2 + 2 + 2
+#
+# Example 2:
+# Input: coins = [5], amount = 5
+# Output: 1
+# Explanation: There is one combination: 5 = 5.
 
 
 """

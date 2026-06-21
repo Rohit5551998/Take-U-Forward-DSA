@@ -1,6 +1,5 @@
 # QUESTION: Maximum Profit in Job Scheduling
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum Profit in Job Scheduling" "Dynamic Programming Part-II" to fetch from the web)
+# You are given n jobs, where every job is represented by: startTime[i]: the start time of the job, endTime[i]: the end time of the job, profit[i]: the profit earned from completing the job. You cannot take two jobs that overlap in time. Retu….
 
 
 """

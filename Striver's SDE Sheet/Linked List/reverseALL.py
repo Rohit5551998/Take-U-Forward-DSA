@@ -1,6 +1,5 @@
 # QUESTION: Reverse a LL
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Reverse a LL" "Linked List" to fetch from the web)
+# Given the head of a singly linked list, write a program to reverse the linked list, and return the head pointer to the reversed list.
 
 
 """

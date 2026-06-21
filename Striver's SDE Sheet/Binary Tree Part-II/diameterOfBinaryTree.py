@@ -1,6 +1,5 @@
 # QUESTION: Diameter of Binary Tree
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Diameter of Binary Tree" "Binary Tree Part-II" to fetch from the web)
+# Given the root of the Binary Tree, return the length of its diameter. The Diameter of a Binary Tree is the longest distance between any two nodes of that tree. This path may or m.
 
 
 """

@@ -1,6 +1,5 @@
 # QUESTION: Distinct Numbers in Each Subarray
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Distinct Numbers in Each Subarray" "Binary Trees Misc" to fetch from the web)
+# Given an integer array nums and an integer k , construct an array ans of size n-k+1 where ans[i] represents the number of distinct numbers in the subarray nums[i:i+k-1] = [nums[i], nums[i+1], ..., nums[i+k-1]] . Return the array ans.
 
 
 """

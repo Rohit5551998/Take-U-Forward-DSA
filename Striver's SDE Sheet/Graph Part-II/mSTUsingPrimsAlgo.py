@@ -1,6 +1,5 @@
 # QUESTION: MST using Prim's Algo
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "MST using Prim's Algo" "Graph Part-II" to fetch from the web)
+# Minimum Spanning Tree - C++ and Java: G-45 - Problem Statement: Given a weighted, undirected, and connected graph of V vertices and E edges. The task is to find the sum of weights of the edges of the Minimum Spanning Tree. ( Sometimes it may.
 
 
 """

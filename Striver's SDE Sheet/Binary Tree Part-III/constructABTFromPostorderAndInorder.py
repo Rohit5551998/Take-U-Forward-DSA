@@ -1,6 +1,16 @@
 # QUESTION: Construct a BT from Postorder and Inorder
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Construct a BT from Postorder and Inorder" "Binary Tree Part-III" to fetch from the web)
+# Given the Postorder and Inorder traversal of a Binary Tree, construct the Unique Binary Tree represented by them.
+#
+# Examples:
+# Example :
+# Input: Inorder: [ 40, 20 , 50, 10, 60, 30], Postorder: [40, 50, 20, 60, 30, 10]
+#
+# Explanation: The unique Binary Tree hence created has inorder traversal: [40, 20, 50, 10, 60, 30] and postorder traversal: [40, 50, 20, 60, 30, 10].
+#
+# Example :
+# Input: Inorder: [9, 3, 15, 20, 7], Postorder: [9, 15, 7, 20, 3]
+#
+# Explanation: The unique Binary Tree hence created has inorder traversal: [9, 3, 15, 20, 7] and postorder traversal: [9, 15, 7, 20, 3].
 
 
 """

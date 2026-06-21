@@ -1,6 +1,5 @@
 # QUESTION: Symmetric Binary Tree
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Symmetric Binary Tree" "Binary Tree Part-III" to fetch from the web)
+# Given a Binary Tree, determine whether the given tree is symmetric or not. A Binary Tree would be Symmetric, when its mirror image is exactly the same as the original tree. If we.
 
 
 """

@@ -1,6 +1,5 @@
 # QUESTION: Compare version numbers
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Compare version numbers" "String Part-II" to fetch from the web)
+# Given two version numbers, version1 and version2, compare them. A version number is a string consisting of dot . separated integers. Each segment (called a revision) is a non-negative integer, and leading zeroes should be ignored during com….
 
 
 """

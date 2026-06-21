@@ -1,6 +1,5 @@
 # QUESTION: Longest Substring Without Repeating Characters
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Longest Substring Without Repeating Characters" "Arrays Part-IV" to fetch from the web)
+# Given a string, S. Find the length of the longest substring without repeating characters.
 
 
 """

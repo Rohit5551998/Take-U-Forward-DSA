@@ -1,6 +1,5 @@
 # QUESTION: Celebrity Problem
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Celebrity Problem" "Stack and Queue Part-II" to fetch from the web)
+# A celebrity is a person who is known by everyone else at the party but does not know anyone in return. Given a square matrix M of size N x N where M[i][j] is 1 if person i knows.
 
 
 """

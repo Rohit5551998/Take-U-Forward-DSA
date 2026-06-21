@@ -1,6 +1,5 @@
 # QUESTION: Ceil in a BST
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Ceil in a BST" "Binary Search Tree Part-II" to fetch from the web)
+# Given a root of binary search tree and a key (node) value, find the floor and ceil value for that particular key value. Floor Value Node: Node with the greatest data lesser than or equal to the key value.&nbsp; Ceil Value Node: Node with th….
 
 
 """

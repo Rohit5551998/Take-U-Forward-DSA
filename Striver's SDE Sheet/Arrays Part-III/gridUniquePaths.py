@@ -1,6 +1,23 @@
 # QUESTION: Grid unique paths
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Grid unique paths" "Arrays Part-III" to fetch from the web)
+# Given two integers m and n, representing the number of rows and columns of a 2d array named matrix. Return the number of unique ways to go from the top-left cell (matrix[0][0]) t.
+#
+# Examples:
+# Example 1:
+# Input: m = 3, n = 2
+# Output: 3
+# Explanation: There are 3 unique ways to go from the top-left to the bottom-right cell:
+# 1) right → down → down
+# 2) down → right → down
+# 3) down → down → right
+#
+# Example 2:
+# Input: m = 2, n = 4
+# Output: 4
+# Explanation: There are 4 unique ways to go from the top-left to the bottom-right cell:
+# 1) down → right → right → right
+# 2) right → down → right → right
+# 3) right → right → down → right
+# 4) right → right → right → down
 
 
 """

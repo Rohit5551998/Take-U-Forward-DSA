@@ -1,6 +1,5 @@
 # QUESTION: Print root to leaf path in BT
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Print root to leaf path in BT" "Binary Tree" to fetch from the web)
+# Given a Binary Tree and a reference to a root belonging to it. Return the path from the root node to the given leaf node. Note : No two nodes in the tree have the same data value.
 
 
 """

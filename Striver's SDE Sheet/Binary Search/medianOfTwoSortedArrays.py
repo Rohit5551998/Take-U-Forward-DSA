@@ -1,6 +1,5 @@
 # QUESTION: Median of 2 sorted arrays
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Median of 2 sorted arrays" "Binary Search" to fetch from the web)
+# Given two sorted arrays arr1 and arr2 of size m and n respectively, return the median of the two sorted arrays. The median is defined as the middle value of a sorted list of numbers. In case the length of the list is even, the median is the….
 
 
 """

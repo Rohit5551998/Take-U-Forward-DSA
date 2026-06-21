@@ -1,6 +1,5 @@
 # QUESTION: Detect A cycle in a Directed Graph using BFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Detect A cycle in a Directed Graph using BFS" "Graph" to fetch from the web)
+# Given a directed graph with V vertices labeled from 0 to V-1. The graph is represented using an adjacency list where adj[i] lists all nodes connected to node. Determine if the graph contains any cycles .
 
 
 """

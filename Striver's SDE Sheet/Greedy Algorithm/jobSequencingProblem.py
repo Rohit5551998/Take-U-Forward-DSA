@@ -1,6 +1,5 @@
 # QUESTION: Job sequencing Problem
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Job sequencing Problem" "Greedy Algorithm" to fetch from the web)
+# You are given a set of N jobs where each job comes with a deadline and profit. The profit can only be earned upon completing the job within its deadline. Find the number of jobs.
 
 
 """

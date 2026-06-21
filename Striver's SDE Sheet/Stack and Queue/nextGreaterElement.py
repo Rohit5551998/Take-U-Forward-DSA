@@ -1,6 +1,5 @@
 # QUESTION: Next Greater Element
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Next Greater Element" "Stack and Queue" to fetch from the web)
+# Given an integer array A, return the next greater element for every element in A. The next greater element for an element x is the first element greater than x that we come acros.
 
 
 """

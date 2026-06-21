@@ -1,6 +1,5 @@
 # QUESTION: Topological Sort BFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Topological Sort BFS" "Graph" to fetch from the web)
+# Problem statement: Given a graph, find the topological order for the given graph. Topological sort: The linear ordering of nodes/vertices such that if there exists an edge between 2 nodes u,v then.
 
 
 """

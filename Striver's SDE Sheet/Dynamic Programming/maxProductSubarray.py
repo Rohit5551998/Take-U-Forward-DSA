@@ -1,6 +1,5 @@
 # QUESTION: Max Product Subarray
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Max Product Subarray" "Dynamic Programming" to fetch from the web)
+# Given an array that contains both negative and positive integers, find the maximum product subarray.
 
 
 """

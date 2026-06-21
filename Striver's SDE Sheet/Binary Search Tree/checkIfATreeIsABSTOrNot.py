@@ -1,6 +1,5 @@
 # QUESTION: Check if a tree is a BST or not
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Check if a tree is a BST or not" "Binary Search Tree" to fetch from the web)
+# Given the root node of a binary tree. Return true if the given binary tree is a binary search tree(BST) else false . A valid BST is defined as follows: The left&nbsp;subtree of a node contains only nodes with key strictly less than the node….
 
 
 """

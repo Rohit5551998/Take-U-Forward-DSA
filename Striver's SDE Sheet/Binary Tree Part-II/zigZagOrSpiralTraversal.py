@@ -1,6 +1,5 @@
 # QUESTION: Zig Zag or Spiral Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Zig Zag or Spiral Traversal" "Binary Tree Part-II" to fetch from the web)
+# Given a Binary Tree, print the zigzag traversal of the Binary Tree. Zigzag traversal of a binary tree is a way of visiting the nodes of the tree in a zigzag pattern, alternating.
 
 
 """

@@ -1,6 +1,16 @@
 # QUESTION: Detect A cycle in Undirected Graph using DFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Detect A cycle in Undirected Graph using DFS" "Graph" to fetch from the web)
+# Given an undirected graph with V vertices and E edges, check whether it contains any cycle or not using DFS.
+#
+# Examples:
+# Input : V = 8, E = 7
+#
+# Output : False
+# Explanation : No cycle is present in the given graph
+#
+# Input : V = 8, E = 6
+#
+# Output : True
+# Explanation : 4->5->6->4 is a cycle.
 
 
 """

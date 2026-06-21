@@ -1,6 +1,5 @@
 # QUESTION: Level Order Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Level Order Traversal" "Binary Tree Part-II" to fetch from the web)
+# Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
 
 """

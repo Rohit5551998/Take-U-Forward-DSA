@@ -1,6 +1,5 @@
 # QUESTION: Maximum of Minimums for Every Window Size
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum of Minimums for Every Window Size" "Stack and Queue Part-II" to fetch from the web)
+# Given an array arr[] of size n, for every window size i from 1 to n, find the maximum of the minimum of all contiguous subarrays of size i. Return an array of size n where the i-th element contains the maximum of minimums for window size i ….
 
 
 """

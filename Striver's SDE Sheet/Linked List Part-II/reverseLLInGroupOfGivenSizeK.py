@@ -1,6 +1,15 @@
 # QUESTION: Reverse LL in group of given size K
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Reverse LL in group of given size K" "Linked List Part-II" to fetch from the web)
+# Given the head of a singly linked list containing integers, reverse the nodes of the list in groups of k and return the head of the modified list. If the number of nodes is not a.
+#
+# Examples:
+# Input : head -> 1 -> 2 -> 3 -> 4 -> 5, k = 2
+# Output :head -> 2 -> 1 -> 4 -> 3 -> 5
+# Explanation :The groups 1 -> 2 and 3 -> 4 were reversed as 2 -> 1 and 4 -> 3.
+#
+# Input :head -> 1 -> 2 -> 3 -> 4 -> 5, k = 3
+# Output :head -> 3 -> 2 -> 1 -> 4 -> 5
+# Explanation :The groups 1 -> 2 -> 3 were reversed as 3 -> 2 -> 1.
+# Note that 4 -> 5 was not reversed.
 
 
 """

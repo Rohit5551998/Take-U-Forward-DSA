@@ -1,6 +1,5 @@
 # QUESTION: Implement Min Stack
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Implement Min Stack" "Stack and Queue Part-II" to fetch from the web)
+# Design a stack that supports the following operations in constant time: push, pop, top, and retrieving the minimum element. Implement the MinStack class: MinStack(): Initializes.
 
 
 """

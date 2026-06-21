@@ -1,6 +1,5 @@
 # QUESTION: Longest Word with All Prefixes
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Longest Word with All Prefixes" "Trie" to fetch from the web)
+# Given a string array nums of length n. A string is called a complete string if every prefix of this string is also present in the array nums. Find the longest complete string in the array nums. If there are multiple strings with the same le….
 
 
 """

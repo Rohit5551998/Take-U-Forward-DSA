@@ -1,6 +1,5 @@
 # QUESTION: Pre, Post, Inorder in one traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Pre, Post, Inorder in one traversal" "Binary Tree" to fetch from the web)
+# Given the root of a Binary Tree, return the preorder, inorder and postorder traversal sequence of the given tree by making just one traversal.
 
 
 """

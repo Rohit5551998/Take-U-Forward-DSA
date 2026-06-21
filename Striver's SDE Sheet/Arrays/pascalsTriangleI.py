@@ -1,6 +1,5 @@
 # QUESTION: Pascal's Triangle I
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Pascal's Triangle I" "Arrays" to fetch from the web)
+# Write a program to generate Pascal's triangle. In Pascal’s triangle, each number is the sum of the two numbers directly above it as shown in the figure below:.
 
 
 """

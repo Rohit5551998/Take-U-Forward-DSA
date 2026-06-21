@@ -1,6 +1,5 @@
 # QUESTION: Topological Sort DFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Topological Sort DFS" "Graph" to fetch from the web)
+# Given a DAG( Directed Acyclic Graph ), print all the vertex of the graph in a topologically sorted order. If there are multiple solutions, print any. Pre-req : DFS traversal, Gr.
 
 
 """

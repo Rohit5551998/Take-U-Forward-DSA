@@ -1,6 +1,5 @@
 # QUESTION: Maximum Consecutive Ones
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum Consecutive Ones" "Linked List and Arrays" to fetch from the web)
+# Given an array that contains only 1 and 0 return the count of maximum consecutive ones in the array.
 
 
 """

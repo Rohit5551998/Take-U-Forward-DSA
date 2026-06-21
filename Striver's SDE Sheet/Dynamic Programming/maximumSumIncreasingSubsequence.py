@@ -1,6 +1,5 @@
 # QUESTION: Maximum Sum Increasing Subsequence
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Maximum Sum Increasing Subsequence" "Dynamic Programming" to fetch from the web)
+# Given an array arr[] of positive integers, find the maximum possible sum of a subsequence such that the elements of the subsequence are in strictly increasing order. The subsequence does not need to be contiguous. You must choose elements s….
 
 
 """

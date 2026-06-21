@@ -1,6 +1,5 @@
 # QUESTION: Merge K Sorted Arrays
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Merge K Sorted Arrays" "Heaps" to fetch from the web)
+# You are given k sorted arrays, each of size k. Merge all the arrays into one sorted array and return it. You should use an efficient algorithm with O(k² log k) time complexity.
 
 
 """

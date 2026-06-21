@@ -1,6 +1,5 @@
 # QUESTION: Top View of BT
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Top View of BT" "Binary Tree" to fetch from the web)
+# Given a Binary Tree, return its Top View. The Top View of a Binary Tree is the set of nodes visible when we see the tree from the top.
 
 
 """

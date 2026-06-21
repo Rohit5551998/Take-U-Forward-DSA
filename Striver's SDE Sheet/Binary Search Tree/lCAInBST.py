@@ -1,6 +1,5 @@
 # QUESTION: LCA in BST
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "LCA in BST" "Binary Search Tree" to fetch from the web)
+# Given the root node of a binary search tree (BST) and two node values p,q. Return the lowest common ancestors (LCA) of the two nodes in BST.
 
 
 """

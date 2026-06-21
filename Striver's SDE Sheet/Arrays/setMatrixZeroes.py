@@ -1,6 +1,5 @@
 # QUESTION: Set Matrix Zeroes
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Set Matrix Zeroes" "Arrays" to fetch from the web)
+# Given a matrix if an element in the matrix is 0 then you will have to set its entire column and row to 0 and then return the matrix.
 
 
 """

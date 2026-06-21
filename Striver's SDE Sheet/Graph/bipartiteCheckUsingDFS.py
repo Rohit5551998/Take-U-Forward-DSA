@@ -1,6 +1,5 @@
 # QUESTION: Bipartite Check using DFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Bipartite Check using DFS" "Graph" to fetch from the web)
+# Given an adjacency list of a graph adj of V no. of vertices having 0 based index. Check whether the graph is bipartite or not. If we are able to colour a graph with two colours s.
 
 
 """

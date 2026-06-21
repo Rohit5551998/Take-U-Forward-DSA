@@ -1,6 +1,5 @@
 # QUESTION: Find the Duplicate Number
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Find the Duplicate Number" "Arrays Part-II" to fetch from the web)
+# Given an array of N + 1 size, where each element is between 1 and N. Assuming there is only one duplicate number, your task is to find the duplicate number.
 
 
 """

@@ -1,6 +1,16 @@
 # QUESTION: Check if LL is palindrome or not
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Check if LL is palindrome or not" "Linked List Part-II" to fetch from the web)
+# Given the head of a singly linked list representing a positive integer number. Each node of the linked list represents a digit of the number, with the 1st node containing the lef.
+#
+# Examples:
+# Example 1:
+# Input: head -> 3 -> 7 -> 5 -> 7 -> 3
+# Output: true
+# Explanation: 37573 is a palindrome.
+#
+# Example 2:
+# Input: head -> 1 -> 1 -> 2 -> 1
+# Output: false
+# Explanation: 1121 is not a palindrome.
 
 
 """

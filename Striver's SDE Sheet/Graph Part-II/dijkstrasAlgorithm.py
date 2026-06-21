@@ -1,6 +1,5 @@
 # QUESTION: Dijkstra's algorithm
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Dijkstra's algorithm" "Graph Part-II" to fetch from the web)
+# Using Priority Queue : G-32 - Problem Statement: Given a weighted, undirected, and connected graph of V vertices and E edges, find the shortest distance of all the vertex's from the source vertex S. Note: The Graph doesn't cont.
 
 
 """

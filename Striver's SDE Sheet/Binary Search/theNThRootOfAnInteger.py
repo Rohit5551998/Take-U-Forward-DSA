@@ -1,6 +1,14 @@
 # QUESTION: The N-th root of an integer
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "The N-th root of an integer" "Binary Search" to fetch from the web)
+# Given two numbers N and M, find the Nth root of M. The nth root of a number M is defined as a number X when raised to the power N equals M. If the 'nth root is not an integer, re.
+#
+# Examples:
+# Input: N = 3, M = 27
+# Output: 3
+# Explanation: The cube root of 27 is equal to 3.
+#
+# Input : N = 4, M = 69
+# Output: -1
+# Explanation : The 4th root of 69 does not exist. So, the answer is -1.
 
 
 """

@@ -1,6 +1,5 @@
 # QUESTION: Right/Left View of BT
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Right/Left View of BT" "Binary Tree" to fetch from the web)
+# Assuming standing on the right side of a binary tree and given its root, return the values of the nodes visible, arranged from top to bottom.
 
 
 """

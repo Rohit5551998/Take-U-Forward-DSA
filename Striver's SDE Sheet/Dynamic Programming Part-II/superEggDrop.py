@@ -1,6 +1,5 @@
 # QUESTION: Super Egg Drop
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Super Egg Drop" "Dynamic Programming Part-II" to fetch from the web)
+# You are given n identical eggs and a building with k floors numbered from 1 to k. There exists an unknown floor f such that: Any egg dropped from a floor higher than f will break. Any egg dropped from f or below will not break. Your goal is….
 
 
 """

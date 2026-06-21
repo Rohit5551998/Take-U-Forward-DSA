@@ -1,6 +1,5 @@
 # QUESTION: Morris Preorder Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Morris Preorder Traversal" "Binary Tree" to fetch from the web)
+# Given a Binary Tree, implement Morris Preorder Traversal and return the array containing its preorder sequence. Morris Preorder Traversal is a tree traversal algorithm aiming to.
 
 
 """

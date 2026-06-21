@@ -1,6 +1,5 @@
 # QUESTION: Single element in sorted array
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Single element in sorted array" "Binary Search" to fetch from the web)
+# Given an array of N integers. Every number in the array except one appears twice. Find the single number in the array.
 
 
 """

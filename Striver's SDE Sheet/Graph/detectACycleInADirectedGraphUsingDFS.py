@@ -1,6 +1,5 @@
 # QUESTION: Detect A cycle in a Directed Graph using DFS
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Detect A cycle in a Directed Graph using DFS" "Graph" to fetch from the web)
+# Detailed solution for Detect a Cycle in Directed Graph | Topological Sort | Kahn's Algorithm | G-23 - Problem Statement: Given a Directed Graph with V vertices and E edges, check whether it contains any cycle or not using BFS.
 
 
 """

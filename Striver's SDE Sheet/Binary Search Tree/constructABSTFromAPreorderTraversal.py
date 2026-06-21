@@ -1,6 +1,5 @@
 # QUESTION: Construct a BST from a preorder traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Construct a BST from a preorder traversal" "Binary Search Tree" to fetch from the web)
+# Given an array of integers preorder , which represents the preorder traversal of a BST (i.e., binary search tree), construct the tree and return its root. It is guaranteed that it is always possible to find a binary search tree with the giv….
 
 
 """

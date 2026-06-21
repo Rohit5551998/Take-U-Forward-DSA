@@ -1,6 +1,16 @@
 # QUESTION: Sort a Stack
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Sort a Stack" "Stack and Queue" to fetch from the web)
+# You are given a stack of integers. Your task is to sort the stack in descending order using recursion, such that the top of the stack contains the greatest element. You are not a.
+#
+# Examples:
+# Example 1:
+# Input: stack = [4, 1, 3, 2]
+# Output: [4, 3, 2, 1]
+# Explanation: After sorting, the largest element (4) is at the top, and the smallest (1) is at the bottom.
+#
+# Example 2:
+# Input: stack = [1]
+# Output: [1]
+# Explanation: A single-element stack is already sorted.
 
 
 """

@@ -1,6 +1,5 @@
 # QUESTION: Palindrome Partitioning (MCM Variation)
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Palindrome Partitioning (MCM Variation)" "Dynamic Programming Part-II" to fetch from the web)
+# Given a string s partition string s such that every substring of partition is palindrome. Return all possible palindrome partition of string s .
 
 
 """

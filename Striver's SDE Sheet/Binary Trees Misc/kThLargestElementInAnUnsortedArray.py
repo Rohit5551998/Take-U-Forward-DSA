@@ -1,6 +1,5 @@
 # QUESTION: K-th largest element in an unsorted array.
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "K-th largest element in an unsorted array." "Binary Trees Misc" to fetch from the web)
+# Given an array nums , return the k th largest element in the array.
 
 
 """

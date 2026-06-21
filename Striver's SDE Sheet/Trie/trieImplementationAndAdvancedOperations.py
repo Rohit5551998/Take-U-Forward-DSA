@@ -1,6 +1,5 @@
 # QUESTION: Trie Implementation and Advanced Operations
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Trie Implementation and Advanced Operations" "Trie" to fetch from the web)
+# II - Problem Statement: Implement "TRIE” data structure from scratch with the following functions. Trie(): Initialize the object of this “TRIE” data structure. insert(“WORD”): Insert the strin.
 
 
 """

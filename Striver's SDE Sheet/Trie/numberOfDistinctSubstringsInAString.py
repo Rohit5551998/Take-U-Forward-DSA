@@ -1,6 +1,14 @@
 # QUESTION: Number of distinct substrings in a string
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Number of distinct substrings in a string" "Trie" to fetch from the web)
+# Problem Description: Implement a program that takes a string 'S' as input and returns the number of distinct substrings of the given string, including the empty substring. Use a trie data structure.
+#
+# Examples:
+# Input: s = "aba"
+# Output: 6
+# Explanation: The distinct substrings are "a", "ab", "ba", "b", "aba", "".
+#
+# Input: s = "abc"
+# Output: 7
+# Explanation: The distinct substrings are "a", "ab", "abc", "b", "bc", "c", "".
 
 
 """

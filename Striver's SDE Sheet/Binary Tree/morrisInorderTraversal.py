@@ -1,6 +1,5 @@
 # QUESTION: Morris Inorder Traversal
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Morris Inorder Traversal" "Binary Tree" to fetch from the web)
+# Given a Binary Tree, implement Morris Inorder Traversal and return the array containing its inorder sequence. Morris Inorder Traversal is a tree traversal algorithm aiming to ach.
 
 
 """

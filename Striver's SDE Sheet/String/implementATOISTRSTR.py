@@ -1,6 +1,5 @@
 # QUESTION: Implement ATOI/STRSTR
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Implement ATOI/STRSTR" "String" to fetch from the web)
+# Implement the function myAtoi(s) which converts the given string s to a 32-bit signed integer (similar to the C/C++ atoi function). Steps to Implement: First, ignore any leading whitespace characters ' ' until the first non-whitespace chara….
 
 
 """

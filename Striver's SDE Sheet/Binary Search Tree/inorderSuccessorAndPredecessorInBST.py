@@ -1,6 +1,5 @@
 # QUESTION: Inorder successor and predecessor in BST
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Inorder successor and predecessor in BST" "Binary Search Tree" to fetch from the web)
+# Given a Binary Search Tree and a ‘key’ value which represents the data data of a node in this tree. Return the inorder predecessor and successor of the given node in the BST.
 
 
 """

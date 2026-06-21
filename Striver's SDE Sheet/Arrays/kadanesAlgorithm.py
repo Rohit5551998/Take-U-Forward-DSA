@@ -1,6 +1,5 @@
 # QUESTION: Kadane's Algorithm
-# TODO: fill in the problem description, examples, and constraints
-# (use /solve "Kadane's Algorithm" "Arrays" to fetch from the web)
+# Given an integer array nums, find the subarray with the largest sum and return the sum of the elements present in that subarray. A subarray is a contiguous non-empty sequence of.
 
 
 """
