@@ -1,0 +1,8 @@
+.claude/*
+!.claude/settings.json
+!.claude/skills/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.DS_Store

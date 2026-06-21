@@ -1,0 +1,33 @@
+# QUESTION: Pre, Post, Inorder in one traversal
+# TODO: fill in the problem description, examples, and constraints
+# (use /solve "Pre, Post, Inorder in one traversal" "Binary Tree" to fetch from the web)
+
+
+"""
+#Brute Force:
+1.
+TC -> O(), SC -> O()
+
+#Better Approach:
+1.
+TC -> O(), SC -> O()
+
+#Optimal Approach:
+1.
+TC -> O(), SC -> O()
+
+#KEY INSIGHT:
+-
+"""
+
+
+def pre_post_inorder_in_one_traversal_brute() -> None:
+    pass
+
+
+def pre_post_inorder_in_one_traversal_better() -> None:
+    pass
+
+
+def pre_post_inorder_in_one_traversal_optimal() -> None:
+    pass

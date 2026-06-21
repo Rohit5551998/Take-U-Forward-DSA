@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_response.filePath // .tool_input.file_path' | { read -r f; echo \"$f\" | grep -q '\\.py$' && python3 -m ruff format \"$f\" && python3 -m ruff check --fix \"$f\"; } 2>/dev/null || true",
+            "timeout": 15,
+            "statusMessage": "Running ruff format + lint..."
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_response.filePath // .tool_input.file_path' | { read -r f; echo \"$f\" | grep -q '\\.py$' && python3 -m mypy \"$f\" --no-error-summary 2>/dev/null; } || true",
+            "timeout": 15,
+            "statusMessage": "Type-checking..."
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | { read -r f; if echo \"$f\" | grep -q 'index\\.html$'; then echo '{\"decision\":\"block\",\"reason\":\"Blocked: index.html is the tracker. Confirm with user before editing.\"}'; elif echo \"$f\" | grep -q 'sync_notes\\.py$'; then echo '{\"decision\":\"block\",\"reason\":\"Blocked: sync_notes.py is infrastructure. Confirm with user before editing.\"}'; else echo '{}'; fi; }",
+            "timeout": 5,
+            "statusMessage": "Checking file..."
+          }
+        ]
+      }
+    ]
+  },
+  "attribution": {
+    "commit": ""
+  }
+}

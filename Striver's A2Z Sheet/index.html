@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Striver A2Z Sheet Tracker</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #1a1a24;
+    --surface-hover: #22222f;
+    --border: #2a2a3a;
+    --text: #e4e4ed;
+    --text-dim: #8888a0;
+    --accent: #7c5cfc;
+    --accent-glow: rgba(124, 92, 252, 0.15);
+    --green: #34d399;
+    --green-dim: rgba(52, 211, 153, 0.15);
+    --orange: #fb923c;
+    --orange-dim: rgba(251, 146, 60, 0.15);
+    --red: #f87171;
+    --red-dim: rgba(248, 113, 113, 0.15);
+    --yellow: #fbbf24;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+
+  .header h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  .stat-card.total .value { color: var(--accent); }
+  .stat-card.done .value { color: var(--green); }
+  .stat-card.remaining .value { color: var(--orange); }
+
+  .overall-progress {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+
+  .overall-progress .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .overall-progress .top-row h2 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .overall-progress .percentage {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 10px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #a78bfa);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .section-header:hover { background: var(--surface-hover); }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .chevron {
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .section.open .chevron { transform: rotate(90deg); }
+
+  .section-title h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .section-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-count {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .section-count .done-count { color: var(--green); font-weight: 600; }
+
+  .section-bar {
+    width: 80px;
+    height: 6px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .section-bar-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 999px;
+    transition: width 0.3s;
+  }
+
+  .problem-list {
+    display: none;
+    padding: 0 20px 16px;
+  }
+
+  .section.open .problem-list { display: block; }
+
+  .problem-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    transition: opacity 0.2s;
+    flex-wrap: wrap;
+  }
+
+  .problem-item.completed { opacity: 0.5; }
+  .problem-item.completed .problem-name { text-decoration: line-through; }
+
+  .problem-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .problem-checkbox:checked {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .problem-checkbox:checked::after {
+    content: '\2713';
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .problem-name { flex: 1; cursor: pointer; min-width: 200px; }
+
+  .problem-substep {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .problem-difficulty {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  .diff-easy { background: var(--green-dim); color: var(--green); }
+  .diff-medium { background: var(--orange-dim); color: var(--orange); }
+  .diff-hard { background: var(--red-dim); color: var(--red); }
+
+  .notes-btn, .question-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .notes-btn:hover, .question-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .question-btn.has-content {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .notes-area, .question-area {
+    display: none;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    padding: 8px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    resize: vertical;
+    overflow: hidden;
+  }
+
+  .notes-area { min-height: 80px; }
+  .question-area { min-height: 80px; }
+
+  .notes-area.visible, .question-area.visible { display: block; }
+
+  .reset-bar {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .reset-btn {
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--red);
+    color: var(--red);
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover { background: var(--red-dim); }
+
+  @media (max-width: 600px) {
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .section-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Striver <span>A2Z</span> Sheet</h1>
+    <div class="subtitle">Comprehensive DSA &mdash; takeuforward.org</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card total"><div class="value" id="stat-total">0</div><div class="label">Total</div></div>
+    <div class="stat-card done"><div class="value" id="stat-done">0</div><div class="label">Done</div></div>
+    <div class="stat-card remaining"><div class="value" id="stat-remaining">0</div><div class="label">Remaining</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <div class="top-row">
+      <h2>Overall Progress</h2>
+      <div class="percentage" id="overall-pct">0%</div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="overall-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="pending">Pending</button>
+    <button class="filter-btn" data-filter="completed">Completed</button>
+    <button class="filter-btn" data-filter="easy">Easy</button>
+    <button class="filter-btn" data-filter="medium">Medium</button>
+    <button class="filter-btn" data-filter="hard">Hard</button>
+  </div>
+
+  <div id="sections-container"></div>
+
+  <div class="reset-bar">
+    <button class="reset-btn" id="reset-btn">Reset All Progress</button>
+  </div>
+</div>
+
+<script>
+const DATA = [
+  {
+    name: "Step 1 - Basics", problems: [
+      { name: "Count Frequencies", sub: "Basic Hashing", d: "medium" },
+      { name: "Highest & Lowest Frequency", sub: "Basic Hashing", d: "medium" },
+      { name: "Armstrong Numbers", sub: "Basic Maths", d: "medium" },
+      { name: "Check Palindrome", sub: "Basic Maths", d: "medium" },
+      { name: "Check Prime", sub: "Basic Maths", d: "medium" },
+      { name: "Count Numbers", sub: "Basic Maths", d: "medium" },
+      { name: "Gcd Orhcf", sub: "Basic Maths", d: "medium" },
+      { name: "Print All Divisors", sub: "Basic Maths", d: "medium" },
+      { name: "Reverse Integer", sub: "Basic Maths", d: "medium" },
+      { name: "Factorial of N", sub: "Basic Recursion", d: "medium" },
+      { name: "Fibonacci Numbers", sub: "Basic Recursion", d: "medium" },
+      { name: "Palindrome String", sub: "Basic Recursion", d: "medium" },
+      { name: "Print1to N", sub: "Basic Recursion", d: "medium" },
+      { name: "Print Nto1", sub: "Basic Recursion", d: "medium" },
+      { name: "Print Word NTimes", sub: "Basic Recursion", d: "medium" },
+      { name: "Reverse Array", sub: "Basic Recursion", d: "medium" },
+      { name: "Sumof N", sub: "Basic Recursion", d: "medium" },
+      { name: "Pattern1", sub: "Patterns", d: "medium" },
+      { name: "Pattern10", sub: "Patterns", d: "medium" },
+      { name: "Pattern11", sub: "Patterns", d: "medium" },
+      { name: "Pattern12", sub: "Patterns", d: "medium" },
+      { name: "Pattern13", sub: "Patterns", d: "medium" },
+      { name: "Pattern14", sub: "Patterns", d: "medium" },
+      { name: "Pattern15", sub: "Patterns", d: "medium" },
+      { name: "Pattern16", sub: "Patterns", d: "medium" },
+      { name: "Pattern17", sub: "Patterns", d: "medium" },
+      { name: "Pattern18", sub: "Patterns", d: "medium" },
+      { name: "Pattern19", sub: "Patterns", d: "medium" },
+      { name: "Pattern2", sub: "Patterns", d: "medium" },
+      { name: "Pattern20", sub: "Patterns", d: "medium" },
+      { name: "Pattern21", sub: "Patterns", d: "medium" },
+      { name: "Pattern22", sub: "Patterns", d: "medium" },
+      { name: "Pattern3", sub: "Patterns", d: "medium" },
+      { name: "Pattern4", sub: "Patterns", d: "medium" },
+      { name: "Pattern5", sub: "Patterns", d: "medium" },
+      { name: "Pattern6", sub: "Patterns", d: "medium" },
+      { name: "Pattern7", sub: "Patterns", d: "medium" },
+      { name: "Pattern8", sub: "Patterns", d: "medium" },
+      { name: "Pattern9", sub: "Patterns", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 2 - Sorting Techniques", problems: [
+      { name: "Bubble Sort", sub: "Sorting - I", d: "medium" },
+      { name: "Insertion Sort", sub: "Sorting - I", d: "medium" },
+      { name: "Selection Sort", sub: "Sorting - I", d: "medium" },
+      { name: "Merge Sort", sub: "Sorting - II", d: "medium" },
+      { name: "Quick Sort", sub: "Sorting - II", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 3 - Arrays", problems: [
+      { name: "Check Sorted Array", sub: "Easy", d: "easy" },
+      { name: "Find Missing Number in Array", sub: "Easy", d: "easy" },
+      { name: "Find Number That Appears Once", sub: "Easy", d: "easy" },
+      { name: "Intersection of Sorted Arrays", sub: "Easy", d: "easy" },
+      { name: "Largest Element", sub: "Easy", d: "easy" },
+      { name: "Linear Search", sub: "Easy", d: "easy" },
+      { name: "Longest Sub Array with Given Sum Only Positives", sub: "Easy", d: "easy" },
+      { name: "Longest Sub Array with Given Sum with Negatives", sub: "Easy", d: "easy" },
+      { name: "Max Consecutive Ones", sub: "Easy", d: "easy" },
+      { name: "Move Zeroesto End", sub: "Easy", d: "easy" },
+      { name: "Remove Duplicates", sub: "Easy", d: "easy" },
+      { name: "Rotate Left By1 Place", sub: "Easy", d: "easy" },
+      { name: "Rotate Left by KPlaces", sub: "Easy", d: "easy" },
+      { name: "Second Largest Element", sub: "Easy", d: "easy" },
+      { name: "Union of Sorted Arrays", sub: "Easy", d: "easy" },
+      { name: "3 Sum", sub: "Hard", d: "hard" },
+      { name: "4 Sum", sub: "Hard", d: "hard" },
+      { name: "Count Inversions", sub: "Hard", d: "hard" },
+      { name: "Count Reverse Pairs", sub: "Hard", d: "hard" },
+      { name: "Count Subarray with Xor K", sub: "Hard", d: "hard" },
+      { name: "Find Missing and Repeating Numbers", sub: "Hard", d: "hard" },
+      { name: "Length of Longest Sub Array with Zero Sum", sub: "Hard", d: "hard" },
+      { name: "Majority Element II", sub: "Hard", d: "hard" },
+      { name: "Maximum Product Sub Array", sub: "Hard", d: "hard" },
+      { name: "Merge Overlapping Sub Intervals", sub: "Hard", d: "hard" },
+      { name: "Merge Two Sorted Arrays", sub: "Hard", d: "hard" },
+      { name: "Pascal Triangle", sub: "Hard", d: "hard" },
+      { name: "2 Sum", sub: "Medium", d: "medium" },
+      { name: "Count Subarray Sum Equalto K", sub: "Medium", d: "medium" },
+      { name: "Leaders in Array", sub: "Medium", d: "medium" },
+      { name: "Longest Consecutive Subsequence", sub: "Medium", d: "medium" },
+      { name: "Majority Element", sub: "Medium", d: "medium" },
+      { name: "Next Greater Permutation", sub: "Medium", d: "medium" },
+      { name: "Print Subarray with Max Sum(Kadane)", sub: "Medium", d: "medium" },
+      { name: "Rearrange Positives & Negatives", sub: "Medium", d: "medium" },
+      { name: "Rotate Matrixby90 Degree", sub: "Medium", d: "medium" },
+      { name: "Set Array Zeroes", sub: "Medium", d: "medium" },
+      { name: "Sort Array Of012", sub: "Medium", d: "medium" },
+      { name: "Spiral Traversal of Matrix", sub: "Medium", d: "medium" },
+      { name: "Stock Buy & Sell", sub: "Medium", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 4 - Binary Search", problems: [
+      { name: "Binary Search", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Ceil Floor", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Count Occurences", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Find First and Last Occurence", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Lower Bound", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Minimum in Rotated Sorted Array", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Peak Element", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Search in Rotated Sorted Array", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Search in Rotated Sorted Array II", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Search Insert Position", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Search Single Element in Sorted Array", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Times Array Is Rotated", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Upper Bound", sub: "BS on 1D Arrays", d: "medium" },
+      { name: "Find Row with Max1", sub: "BS on 2D Arrays", d: "medium" },
+      { name: "Median of Row Sorted Matrix", sub: "BS on 2D Arrays", d: "medium" },
+      { name: "Peak Element II", sub: "BS on 2D Arrays", d: "medium" },
+      { name: "Search In2 DMatrix", sub: "BS on 2D Arrays", d: "medium" },
+      { name: "Search in Row & Column Sorted Matrix", sub: "BS on 2D Arrays", d: "medium" },
+      { name: "Kth Missing Positive Number", sub: "BS on Answers", d: "medium" },
+      { name: "Aggressive Cows", sub: "BS on Answers", d: "medium" },
+      { name: "Book Allocation", sub: "BS on Answers", d: "medium" },
+      { name: "Capacity to Ship Packages", sub: "BS on Answers", d: "medium" },
+      { name: "Find Nth Root of Number", sub: "BS on Answers", d: "medium" },
+      { name: "Find Smallest Divisor", sub: "BS on Answers", d: "medium" },
+      { name: "Find Sqrt of Number", sub: "BS on Answers", d: "medium" },
+      { name: "Gas Station Problem", sub: "BS on Answers", d: "medium" },
+      { name: "Koko Eating Bananas", sub: "BS on Answers", d: "medium" },
+      { name: "Kth Elementof Two Sorted Arrays", sub: "BS on Answers", d: "medium" },
+      { name: "Median Of2 Sorted Arrays", sub: "BS on Answers", d: "medium" },
+      { name: "Min Days to Make Bouquets", sub: "BS on Answers", d: "medium" },
+      { name: "Painters Problem", sub: "BS on Answers", d: "medium" },
+      { name: "Split Array Largest Sum", sub: "BS on Answers", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 5 - Strings", problems: []
+  },
+  {
+    name: "Step 6 - Linked Lists", problems: [
+      { name: "Clone LLWith Random Pointer", sub: "Hard Problems of LL", d: "hard" },
+      { name: "Flatten Linked List", sub: "Hard Problems of LL", d: "hard" },
+      { name: "Merge2 Sorted LL", sub: "Hard Problems of LL", d: "hard" },
+      { name: "Merge KSorted LL", sub: "Hard Problems of LL", d: "hard" },
+      { name: "Reverse LLIn KGroups", sub: "Hard Problems of LL", d: "hard" },
+      { name: "Rotate LL", sub: "Hard Problems of LL", d: "hard" },
+      { name: "Arrayto Linked List", sub: "Learn 1D Linked List", d: "medium" },
+      { name: "Delete in Linked List", sub: "Learn 1D Linked List", d: "medium" },
+      { name: "Insert in Linked List", sub: "Learn 1D Linked List", d: "medium" },
+      { name: "Lengthof Linked List", sub: "Learn 1D Linked List", d: "medium" },
+      { name: "Search in Linked List", sub: "Learn 1D Linked List", d: "medium" },
+      { name: "Arrayto Doubly Linked List", sub: "Learn Doubly Linked List", d: "medium" },
+      { name: "Delete in Doubly Linked List", sub: "Learn Doubly Linked List", d: "medium" },
+      { name: "Insert in Doubly Linked List", sub: "Learn Doubly Linked List", d: "medium" },
+      { name: "Reverse DLL", sub: "Learn Doubly Linked List", d: "medium" },
+      { name: "Delete All Occurences", sub: "Medium Problems of DLL", d: "medium" },
+      { name: "Find Pairs with Sum", sub: "Medium Problems of DLL", d: "medium" },
+      { name: "Remove Duplicates in Sorted DLL", sub: "Medium Problems of DLL", d: "medium" },
+      { name: "Add1to List", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Add Two Number", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Delete Middle Node", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Detect Loop", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Find Intersection", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Length of Loop", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Middle of Linked List", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Palindrome Linked List", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Remove Nth Element From End", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Reverse Linked List", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Segregate Even and Odd Nodes", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Sort LL", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Sort Linked List Of012", sub: "Medium Problems of LL", d: "medium" },
+      { name: "Starting Pointof Loop", sub: "Medium Problems of LL", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 7 - Recursion", problems: []
+  },
+  {
+    name: "Step 8 - Bit Manipulation", problems: []
+  },
+  {
+    name: "Step 9 - Stacks And Queues", problems: [
+      { name: "Celebrity Problem", sub: "Implementation Problems", d: "medium" },
+      { name: "Implement LFU", sub: "Implementation Problems", d: "medium" },
+      { name: "Implement LRU", sub: "Implementation Problems", d: "medium" },
+      { name: "Online Stock Spam", sub: "Implementation Problems", d: "medium" },
+      { name: "Sliding Window Maximum", sub: "Implementation Problems", d: "medium" },
+      { name: "Implement Queue Using Array", sub: "Learning", d: "medium" },
+      { name: "Implement Queue Using Linked List", sub: "Learning", d: "medium" },
+      { name: "Implement Queue Using Stack", sub: "Learning", d: "medium" },
+      { name: "Implement Stack Using Array", sub: "Learning", d: "medium" },
+      { name: "Implement Stack Using Linked List", sub: "Learning", d: "medium" },
+      { name: "Implement Stack Using Queue", sub: "Learning", d: "medium" },
+      { name: "Min Stack", sub: "Learning", d: "medium" },
+      { name: "Valid Parentheses", sub: "Learning", d: "medium" },
+      { name: "Asteriod Collision", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Largest Rectangle in Histogram", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Maximal Rectangle", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Nearest Smaller Element", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Next Greater Element", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Next Greater Element II", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Remove KDigits", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Sum of Sub Array Ranges", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Sumof Sub Array Minimums", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Trapping Rainwater", sub: "Monotonic Stack & Queue Problems", d: "medium" },
+      { name: "Infix to Postfix", sub: "Prefix, Infix, Postfix Conversion Problems", d: "medium" },
+      { name: "Infixto Prefix", sub: "Prefix, Infix, Postfix Conversion Problems", d: "medium" },
+      { name: "Postfix to Infix", sub: "Prefix, Infix, Postfix Conversion Problems", d: "medium" },
+      { name: "Postfix to Prefix", sub: "Prefix, Infix, Postfix Conversion Problems", d: "medium" },
+      { name: "Prefix to Infix", sub: "Prefix, Infix, Postfix Conversion Problems", d: "medium" },
+      { name: "Prefix to Postfix", sub: "Prefix, Infix, Postfix Conversion Problems", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 10 - Sliding Window & Two Pointer Combined", problems: [
+      { name: "Longest Substring with at Most KDistinct Characters", sub: "Hard Problems", d: "hard" },
+      { name: "Minimum Window Substring", sub: "Hard Problems", d: "hard" },
+      { name: "Subarrays with KDifferent Integers", sub: "Hard Problems", d: "hard" },
+      { name: "Binary Subarray with Sum K", sub: "Medium Problems", d: "medium" },
+      { name: "Count Numberof Nice Sub Arrays", sub: "Medium Problems", d: "medium" },
+      { name: "Fruits Into Baskets", sub: "Medium Problems", d: "medium" },
+      { name: "Longest Repeating Character Replacement", sub: "Medium Problems", d: "medium" },
+      { name: "Longest Substring Without Repeating Characters", sub: "Medium Problems", d: "medium" },
+      { name: "Max Consecutive Ones III", sub: "Medium Problems", d: "medium" },
+      { name: "Maximum Points From Cards", sub: "Medium Problems", d: "medium" },
+      { name: "Number of Substring Containing All Characters", sub: "Medium Problems", d: "medium" }
+    ]
+  },
+  {
+    name: "Step 11 - Heaps", problems: []
+  },
+  {
+    name: "Step 12 - Greedy Algorithms", problems: []
+  },
+  {
+    name: "Step 13 - Binary Trees", problems: []
+  },
+  {
+    name: "Step 14 - Binary Search Trees", problems: []
+  },
+  {
+    name: "Step 15 - Graphs", problems: []
+  },
+  {
+    name: "Step 16 - Dynamic Programming", problems: []
+  },
+  {
+    name: "Step 17 - Tries", problems: []
+  }
+];
+
+const STORAGE_KEY = "striver-a2z-tracker-v1";
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+
+function saveState(st) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
+}
+
+function getKey(si, pi) { return si + "-" + pi; }
+function getNoteKey(si, pi) { return "n-" + si + "-" + pi; }
+function getQuestionKey(si, pi) { return "q-" + si + "-" + pi; }
+
+var state = loadState();
+var currentFilter = "all";
+var openSections = {};
+var openNotes = {};
+var openQuestions = {};
+
+function autoResize(el) {
+  el.style.height = "auto";
+  el.style.height = el.scrollHeight + "px";
+}
+
+function buildProblemItem(p, si, pi) {
+  var key = getKey(si, pi);
+  var noteKey = getNoteKey(si, pi);
+  var questionKey = getQuestionKey(si, pi);
+  var isChecked = key in state ? !!state[key] : !!p.s;
+  var note = state[noteKey] || p.n || "";
+  var question = state[questionKey] || p.q || "";
+
+  var wrapper = document.createDocumentFragment();
+
+  var item = document.createElement("div");
+  item.className = "problem-item" + (isChecked ? " completed" : "");
+
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.className = "problem-checkbox";
+  checkbox.checked = isChecked;
+  checkbox.addEventListener("change", function() {
+    toggleProblem(si, pi, this.checked);
+  });
+
+  var nameSpan = document.createElement("span");
+  nameSpan.className = "problem-name";
+  nameSpan.textContent = p.name;
+  nameSpan.addEventListener("click", function() { checkbox.click(); });
+
+  item.appendChild(checkbox);
+  item.appendChild(nameSpan);
+
+  if (p.sub) {
+    var subSpan = document.createElement("span");
+    subSpan.className = "problem-substep";
+    subSpan.textContent = p.sub;
+    item.appendChild(subSpan);
+  }
+
+  var diffSpan = document.createElement("span");
+  diffSpan.className = "problem-difficulty diff-" + p.d;
+  diffSpan.textContent = p.d;
+  item.appendChild(diffSpan);
+
+  var questionBtn = document.createElement("button");
+  questionBtn.className = "question-btn" + (question ? " has-content" : "");
+  questionBtn.textContent = "question";
+
+  var notesBtn = document.createElement("button");
+  notesBtn.className = "notes-btn";
+  notesBtn.textContent = "notes";
+
+  item.appendChild(questionBtn);
+  item.appendChild(notesBtn);
+
+  var noteId = si + "-" + pi;
+
+  var questionArea = document.createElement("textarea");
+  questionArea.className = "question-area" + (openQuestions[noteId] ? " visible" : "");
+  questionArea.placeholder = "Paste the problem statement here...";
+  questionArea.value = question;
+  questionArea.addEventListener("input", function() { autoResize(this); });
+  questionArea.addEventListener("blur", function() {
+    var qKey = getQuestionKey(si, pi);
+    if (this.value.trim()) state[qKey] = this.value.trim();
+    else delete state[qKey];
+    saveState(state);
+  });
+
+  questionBtn.addEventListener("click", function() {
+    var wasVisible = openQuestions[noteId];
+    document.querySelectorAll(".question-area.visible, .notes-area.visible").forEach(function(el) {
+      el.classList.remove("visible");
+    });
+    openNotes = {};
+    openQuestions = {};
+    if (!wasVisible) {
+      questionArea.classList.add("visible");
+      openQuestions[noteId] = true;
+      autoResize(questionArea);
+      questionArea.focus();
+    }
+  });
+
+  var textarea = document.createElement("textarea");
+  textarea.className = "notes-area" + (openNotes[noteId] ? " visible" : "");
+  textarea.placeholder = "Add notes...";
+  textarea.value = note;
+  textarea.addEventListener("input", function() { autoResize(this); });
+  textarea.addEventListener("blur", function() {
+    saveNote(si, pi, this.value);
+  });
+
+  notesBtn.addEventListener("click", function() {
+    var wasVisible = openNotes[noteId];
+    document.querySelectorAll(".notes-area.visible, .question-area.visible").forEach(function(el) {
+      el.classList.remove("visible");
+    });
+    openNotes = {};
+    openQuestions = {};
+    if (!wasVisible) {
+      textarea.classList.add("visible");
+      openNotes[noteId] = true;
+      autoResize(textarea);
+      textarea.focus();
+    }
+  });
+
+  wrapper.appendChild(item);
+  wrapper.appendChild(questionArea);
+  wrapper.appendChild(textarea);
+  return wrapper;
+}
+
+function render() {
+  var container = document.getElementById("sections-container");
+  container.textContent = "";
+
+  var totalDone = 0;
+  var totalAll = 0;
+
+  DATA.forEach(function(section, si) {
+    var sectionDone = 0;
+    section.problems.forEach(function(_, pi) {
+      var k = getKey(si, pi);
+      if (k in state ? state[k] : section.problems[pi].s) sectionDone++;
+    });
+    totalDone += sectionDone;
+    totalAll += section.problems.length;
+
+    var filteredProblems = [];
+    section.problems.forEach(function(p, pi) {
+      var dominated = false;
+      var fk = getKey(si, pi);
+      var fChecked = fk in state ? !!state[fk] : !!p.s;
+      if (currentFilter === "pending" && fChecked) dominated = true;
+      if (currentFilter === "completed" && !fChecked) dominated = true;
+      if (currentFilter === "easy" && p.d !== "easy") dominated = true;
+      if (currentFilter === "medium" && p.d !== "medium") dominated = true;
+      if (currentFilter === "hard" && p.d !== "hard") dominated = true;
+      if (!dominated) filteredProblems.push({ p: p, pi: pi });
+    });
+
+    if (filteredProblems.length === 0 && currentFilter !== "all") return;
+
+    var pct = section.problems.length > 0 ? (sectionDone / section.problems.length * 100) : 0;
+    var isComplete = sectionDone === section.problems.length && section.problems.length > 0;
+
+    var div = document.createElement("div");
+    div.className = "section" + (openSections[si] ? " open" : "");
+
+    var header = document.createElement("div");
+    header.className = "section-header";
+    (function(idx) {
+      header.addEventListener("click", function() {
+        openSections[idx] = !openSections[idx];
+        div.classList.toggle("open");
+      });
+    })(si);
+
+    var titleDiv = document.createElement("div");
+    titleDiv.className = "section-title";
+
+    var chevron = document.createElement("span");
+    chevron.className = "chevron";
+    chevron.textContent = "▶";
+
+    var h3 = document.createElement("h3");
+    h3.textContent = (isComplete ? "✓ " : "") + section.name;
+
+    titleDiv.appendChild(chevron);
+    titleDiv.appendChild(h3);
+
+    var metaDiv = document.createElement("div");
+    metaDiv.className = "section-meta";
+
+    var countSpan = document.createElement("span");
+    countSpan.className = "section-count";
+    var doneSpan = document.createElement("span");
+    doneSpan.className = "done-count";
+    doneSpan.textContent = sectionDone;
+    countSpan.appendChild(doneSpan);
+    countSpan.appendChild(document.createTextNode(" / " + section.problems.length));
+
+    var barDiv = document.createElement("div");
+    barDiv.className = "section-bar";
+    var barFill = document.createElement("div");
+    barFill.className = "section-bar-fill";
+    barFill.style.width = pct + "%";
+    barDiv.appendChild(barFill);
+
+    metaDiv.appendChild(countSpan);
+    metaDiv.appendChild(barDiv);
+
+    header.appendChild(titleDiv);
+    header.appendChild(metaDiv);
+
+    var listDiv = document.createElement("div");
+    listDiv.className = "problem-list";
+
+    filteredProblems.forEach(function(item) {
+      listDiv.appendChild(buildProblemItem(item.p, si, item.pi));
+    });
+
+    div.appendChild(header);
+    div.appendChild(listDiv);
+    container.appendChild(div);
+  });
+
+  var remaining = totalAll - totalDone;
+
+  document.getElementById("stat-total").textContent = totalAll;
+  document.getElementById("stat-done").textContent = totalDone;
+  document.getElementById("stat-remaining").textContent = remaining;
+
+  var pctAll = totalAll > 0 ? (totalDone / totalAll * 100) : 0;
+  document.getElementById("overall-pct").textContent = Math.round(pctAll) + "%";
+  document.getElementById("overall-fill").style.width = pctAll + "%";
+}
+
+var NOTE_TEMPLATE =
+  "#Brute Force:\n" +
+  "1. \n" +
+  "TC -> O(), SC -> O()\n" +
+  "\n" +
+  "#Better Approach:\n" +
+  "1. \n" +
+  "TC -> O(), SC -> O()\n" +
+  "\n" +
+  "#Optimal Approach:\n" +
+  "1. \n" +
+  "TC -> O(), SC -> O()\n" +
+  "\n" +
+  "#KEY INSIGHT:\n" +
+  "- ";
+
+function toggleProblem(si, pi, checked) {
+  var key = getKey(si, pi);
+  var noteKey = getNoteKey(si, pi);
+  if (checked) {
+    state[key] = true;
+    if (!state[noteKey]) state[noteKey] = NOTE_TEMPLATE;
+  } else {
+    delete state[key];
+  }
+  saveState(state);
+  render();
+}
+
+function saveNote(si, pi, value) {
+  var key = getNoteKey(si, pi);
+  if (value.trim()) state[key] = value.trim();
+  else delete state[key];
+  saveState(state);
+}
+
+document.getElementById("reset-btn").addEventListener("click", function() {
+  if (confirm("Reset all progress? Notes will be preserved.")) {
+    var preserved = {};
+    Object.keys(state).forEach(function(k) {
+      if (k.indexOf("n-") === 0 || k.indexOf("q-") === 0) preserved[k] = state[k];
+    });
+    state = preserved;
+    saveState(state);
+    openSections = {};
+    render();
+  }
+});
+
+document.querySelectorAll(".filter-btn").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".filter-btn").forEach(function(b) {
+      b.classList.remove("active");
+    });
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

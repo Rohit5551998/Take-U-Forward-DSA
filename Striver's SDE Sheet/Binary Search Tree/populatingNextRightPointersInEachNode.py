@@ -1,0 +1,33 @@
+# QUESTION: Populating Next Right Pointers in Each Node
+# TODO: fill in the problem description, examples, and constraints
+# (use /solve "Populating Next Right Pointers in Each Node" "Binary Search Tree" to fetch from the web)
+
+
+"""
+#Brute Force:
+1.
+TC -> O(), SC -> O()
+
+#Better Approach:
+1.
+TC -> O(), SC -> O()
+
+#Optimal Approach:
+1.
+TC -> O(), SC -> O()
+
+#KEY INSIGHT:
+-
+"""
+
+
+def populating_next_right_pointers_in_each_node_brute() -> None:
+    pass
+
+
+def populating_next_right_pointers_in_each_node_better() -> None:
+    pass
+
+
+def populating_next_right_pointers_in_each_node_optimal() -> None:
+    pass

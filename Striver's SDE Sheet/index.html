@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Striver SDE Sheet Tracker</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #1a1a24;
+    --surface-hover: #22222f;
+    --border: #2a2a3a;
+    --text: #e4e4ed;
+    --text-dim: #8888a0;
+    --accent: #7c5cfc;
+    --accent-glow: rgba(124, 92, 252, 0.15);
+    --green: #34d399;
+    --green-dim: rgba(52, 211, 153, 0.15);
+    --orange: #fb923c;
+    --orange-dim: rgba(251, 146, 60, 0.15);
+    --red: #f87171;
+    --red-dim: rgba(248, 113, 113, 0.15);
+    --yellow: #fbbf24;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+
+  .header h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  .stat-card.total .value { color: var(--accent); }
+  .stat-card.done .value { color: var(--green); }
+  .stat-card.remaining .value { color: var(--orange); }
+
+  .overall-progress {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+
+  .overall-progress .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .overall-progress .top-row h2 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .overall-progress .percentage {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 10px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #a78bfa);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .section-header:hover { background: var(--surface-hover); }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .chevron {
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .section.open .chevron { transform: rotate(90deg); }
+
+  .section-title h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .section-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-count {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .section-count .done-count { color: var(--green); font-weight: 600; }
+
+  .section-bar {
+    width: 80px;
+    height: 6px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .section-bar-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 999px;
+    transition: width 0.3s;
+  }
+
+  .problem-list {
+    display: none;
+    padding: 0 20px 16px;
+  }
+
+  .section.open .problem-list { display: block; }
+
+  .problem-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    transition: opacity 0.2s;
+  }
+
+  .problem-item.completed { opacity: 0.5; }
+  .problem-item.completed .problem-name { text-decoration: line-through; }
+
+  .problem-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .problem-checkbox:checked {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .problem-checkbox:checked::after {
+    content: '\2713';
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .problem-name { flex: 1; cursor: pointer; }
+
+  .problem-difficulty {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  .diff-easy { background: var(--green-dim); color: var(--green); }
+  .diff-medium { background: var(--orange-dim); color: var(--orange); }
+  .diff-hard { background: var(--red-dim); color: var(--red); }
+
+  .notes-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .notes-btn:hover, .question-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .question-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .question-btn.has-content {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .notes-area, .question-area {
+    display: none;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    padding: 8px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    resize: vertical;
+    overflow: hidden;
+  }
+
+  .notes-area { min-height: 80px; }
+  .question-area { min-height: 80px; }
+
+  .notes-area.visible, .question-area.visible { display: block; }
+
+  .reset-bar {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .reset-btn {
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--red);
+    color: var(--red);
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover { background: var(--red-dim); }
+
+  @media (max-width: 600px) {
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .section-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Striver <span>SDE</span> Sheet</h1>
+    <div class="subtitle">Top coding interview problems &mdash; takeuforward.org</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card total"><div class="value" id="stat-total">0</div><div class="label">Total</div></div>
+    <div class="stat-card done"><div class="value" id="stat-done">0</div><div class="label">Done</div></div>
+    <div class="stat-card remaining"><div class="value" id="stat-remaining">0</div><div class="label">Remaining</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <div class="top-row">
+      <h2>Overall Progress</h2>
+      <div class="percentage" id="overall-pct">0%</div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="overall-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="pending">Pending</button>
+    <button class="filter-btn" data-filter="completed">Completed</button>
+    <button class="filter-btn" data-filter="easy">Easy</button>
+    <button class="filter-btn" data-filter="medium">Medium</button>
+    <button class="filter-btn" data-filter="hard">Hard</button>
+  </div>
+
+  <div id="sections-container"></div>
+
+  <div class="reset-bar">
+    <button class="reset-btn" id="reset-btn">Reset All Progress</button>
+  </div>
+</div>
+
+<script>
+const DATA = [
+  {
+    name: "Arrays", problems: [
+      { name: "Set Matrix Zeroes", d: "medium" , q: "Set Matrix Zeroes\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Set Matrix Zeroes\" \"Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Pascal's Triangle I", d: "easy" , q: "Pascal's Triangle I\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Pascal's Triangle I\" \"Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Next Permutation", d: "medium" , q: "Next Permutation\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Next Permutation\" \"Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Kadane's Algorithm", d: "medium" , q: "Kadane's Algorithm\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Kadane's Algorithm\" \"Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Sort an array of 0's 1's and 2's", d: "medium" , q: "Sort an array of 0's 1's and 2's\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Sort an array of 0's 1's and 2's\" \"Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Stock Buy and Sell", d: "medium" , q: "Stock Buy and Sell\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Stock Buy and Sell\" \"Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Arrays Part-II", problems: [
+      { name: "Rotate matrix by 90 degrees", d: "medium" , q: "Rotate matrix by 90 degrees\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Rotate matrix by 90 degrees\" \"Arrays Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Merge Overlapping Subintervals", d: "medium" , q: "Merge Overlapping Subintervals\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Merge Overlapping Subintervals\" \"Arrays Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Merge two sorted arrays without extra space", d: "medium" , q: "Merge two sorted arrays without extra space\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Merge two sorted arrays without extra space\" \"Arrays Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find the Duplicate Number", d: "medium" , q: "Find the Duplicate Number\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find the Duplicate Number\" \"Arrays Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find the repeating and missing number", d: "hard" , q: "Find the repeating and missing number\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find the repeating and missing number\" \"Arrays Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Inversion of Array (Pre-req: Merge Sort)", d: "hard" , q: "Inversion of Array (Pre-req: Merge Sort)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Inversion of Array (Pre-req: Merge Sort)\" \"Arrays Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Arrays Part-III", problems: [
+      { name: "Search in a 2D matrix", d: "hard" , q: "Search in a 2D matrix\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Search in a 2D matrix\" \"Arrays Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Pow(x, n)", d: "easy" , q: "Pow(x, n)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Pow(x, n)\" \"Arrays Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Majority Element-I", d: "easy" , q: "Majority Element-I\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Majority Element-I\" \"Arrays Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Majority Element-II", d: "hard" , q: "Majority Element-II\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Majority Element-II\" \"Arrays Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Grid unique paths", d: "medium" , q: "Grid unique paths\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Grid unique paths\" \"Arrays Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Reverse Pairs", d: "hard" , q: "Reverse Pairs\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Reverse Pairs\" \"Arrays Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Arrays Part-IV", problems: [
+      { name: "Two Sum", d: "easy" , q: "Two Sum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Two Sum\" \"Arrays Part-IV\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "4 Sum", d: "medium" , q: "4 Sum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"4 Sum\" \"Arrays Part-IV\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest Consecutive Sequence in an Array", d: "medium" , q: "Longest Consecutive Sequence in an Array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest Consecutive Sequence in an Array\" \"Arrays Part-IV\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Largest Subarray with K sum", d: "medium" , q: "Largest Subarray with K sum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Largest Subarray with K sum\" \"Arrays Part-IV\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Count subarrays with given xor K", d: "hard" , q: "Count subarrays with given xor K\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Count subarrays with given xor K\" \"Arrays Part-IV\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest Substring Without Repeating Characters", d: "medium" , q: "Longest Substring Without Repeating Characters\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest Substring Without Repeating Characters\" \"Arrays Part-IV\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Linked List", problems: [
+      { name: "Reverse a LL", d: "medium" , q: "Reverse a LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Reverse a LL\" \"Linked List\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find Middle of Linked List", d: "easy" , q: "Find Middle of Linked List\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find Middle of Linked List\" \"Linked List\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Merge two Sorted Lists", d: "hard" , q: "Merge two Sorted Lists\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Merge two Sorted Lists\" \"Linked List\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Remove Nth node from the back of the LL", d: "medium" , q: "Remove Nth node from the back of the LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Remove Nth node from the back of the LL\" \"Linked List\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Add two numbers as LinkedList", d: "medium" , q: "Add two numbers as LinkedList\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Add two numbers as LinkedList\" \"Linked List\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Delete Node in a Linked List O(1)", d: "medium" , q: "Delete Node in a Linked List O(1)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Delete Node in a Linked List O(1)\" \"Linked List\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Linked List Part-II", problems: [
+      { name: "Find the intersection point of Y LL", d: "medium" , q: "Find the intersection point of Y LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find the intersection point of Y LL\" \"Linked List Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Detect a loop in LL", d: "medium" , q: "Detect a loop in LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Detect a loop in LL\" \"Linked List Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Reverse LL in group of given size K", d: "hard" , q: "Reverse LL in group of given size K\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Reverse LL in group of given size K\" \"Linked List Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Check if LL is palindrome or not", d: "medium" , q: "Check if LL is palindrome or not\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Check if LL is palindrome or not\" \"Linked List Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find the starting point in LL", d: "medium" , q: "Find the starting point in LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find the starting point in LL\" \"Linked List Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Flattening of LL", d: "hard" , q: "Flattening of LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Flattening of LL\" \"Linked List Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Linked List and Arrays", problems: [
+      { name: "Rotate a LL", d: "hard" , q: "Rotate a LL\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Rotate a LL\" \"Linked List and Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Clone a LL with random and next pointer", d: "hard" , q: "Clone a LL with random and next pointer\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Clone a LL with random and next pointer\" \"Linked List and Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "3 Sum", d: "medium" , q: "3 Sum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"3 Sum\" \"Linked List and Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Trapping Rainwater", d: "hard" , q: "Trapping Rainwater\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Trapping Rainwater\" \"Linked List and Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Remove duplicates from sorted array", d: "easy" , q: "Remove duplicates from sorted array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Remove duplicates from sorted array\" \"Linked List and Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Consecutive Ones", d: "easy" , q: "Maximum Consecutive Ones\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Consecutive Ones\" \"Linked List and Arrays\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Greedy Algorithm", problems: [
+      { name: "N meetings in one room", d: "medium" , q: "N meetings in one room\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"N meetings in one room\" \"Greedy Algorithm\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Minimum number of platforms required for a railway", d: "medium" , q: "Minimum number of platforms required for a railway\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Minimum number of platforms required for a railway\" \"Greedy Algorithm\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Job sequencing Problem", d: "medium" , q: "Job sequencing Problem\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Job sequencing Problem\" \"Greedy Algorithm\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Fractional Knapsack", d: "medium" , q: "Fractional Knapsack\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Fractional Knapsack\" \"Greedy Algorithm\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Minimum coins", d: "hard" , q: "Minimum coins\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Minimum coins\" \"Greedy Algorithm\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Assign Cookies", d: "easy" , q: "Assign Cookies\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Assign Cookies\" \"Greedy Algorithm\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Recursion", problems: [
+      { name: "Subset Sums", d: "hard" , q: "Subset Sums\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Subset Sums\" \"Recursion\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Subsets II", d: "medium" , q: "Subsets II\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Subsets II\" \"Recursion\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Combination Sum", d: "medium" , q: "Combination Sum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Combination Sum\" \"Recursion\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Combination Sum II", d: "medium" , q: "Combination Sum II\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Combination Sum II\" \"Recursion\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Palindrome partitioning", d: "hard" , q: "Palindrome partitioning\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Palindrome partitioning\" \"Recursion\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Permutation Sequence", d: "medium" , q: "Permutation Sequence\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Permutation Sequence\" \"Recursion\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Recursion and Backtracking", problems: [
+      { name: "Permutations of a String", d: "medium" , q: "Permutations of a String\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Permutations of a String\" \"Recursion and Backtracking\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "N Queen", d: "hard" , q: "N Queen\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"N Queen\" \"Recursion and Backtracking\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Sudoku Solver", d: "hard" , q: "Sudoku Solver\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Sudoku Solver\" \"Recursion and Backtracking\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "M Coloring Problem", d: "hard" , q: "M Coloring Problem\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"M Coloring Problem\" \"Recursion and Backtracking\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Rat in a Maze", d: "hard" , q: "Rat in a Maze\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Rat in a Maze\" \"Recursion and Backtracking\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Word Break (print all ways)", d: "medium" , q: "Word Break (print all ways)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Word Break (print all ways)\" \"Recursion and Backtracking\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Search", problems: [
+      { name: "The N-th root of an integer", d: "medium" , q: "The N-th root of an integer\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"The N-th root of an integer\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Matrix Median", d: "hard" , q: "Matrix Median\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Matrix Median\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Single element in sorted array", d: "medium" , q: "Single element in sorted array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Single element in sorted array\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Search element in a sorted and rotated array/ find pivot where it is rotated", d: "medium" , q: "Search element in a sorted and rotated array/ find pivot where it is rotated\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Search element in a sorted and rotated array/ find pivot where it is rotated\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Median of 2 sorted arrays", d: "hard" , q: "Median of 2 sorted arrays\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Median of 2 sorted arrays\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Kth element of 2 sorted arrays", d: "medium" , q: "Kth element of 2 sorted arrays\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Kth element of 2 sorted arrays\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Allocate Minimum Number of Pages", d: "hard" , q: "Allocate Minimum Number of Pages\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Allocate Minimum Number of Pages\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Aggressive Cows", d: "hard" , q: "Aggressive Cows\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Aggressive Cows\" \"Binary Search\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Heaps", problems: [
+      { name: "Implement Max Heap", d: "medium" , q: "Implement Max Heap\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement Max Heap\" \"Heaps\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "K-th Largest element in an array", d: "medium" , q: "K-th Largest element in an array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"K-th Largest element in an array\" \"Heaps\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Sum Combination", d: "hard" , q: "Maximum Sum Combination\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Sum Combination\" \"Heaps\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find Median from Data Stream", d: "hard" , q: "Find Median from Data Stream\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find Median from Data Stream\" \"Heaps\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Merge K Sorted Arrays", d: "medium" , q: "Merge K Sorted Arrays\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Merge K Sorted Arrays\" \"Heaps\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Top K Frequent Elements", d: "medium" , q: "Top K Frequent Elements\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Top K Frequent Elements\" \"Heaps\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Stack and Queue", problems: [
+      { name: "Implement Stack using Arrays", d: "easy" , q: "Implement Stack using Arrays\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement Stack using Arrays\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Implement Queue using Arrays", d: "easy" , q: "Implement Queue using Arrays\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement Queue using Arrays\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Implement Stack using Queue (using single queue)", d: "easy" , q: "Implement Stack using Queue (using single queue)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement Stack using Queue (using single queue)\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Implement Queue using Stack", d: "easy" , q: "Implement Queue using Stack\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement Queue using Stack\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Balanced Paranthesis", d: "easy" , q: "Balanced Paranthesis\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Balanced Paranthesis\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Next Greater Element", d: "medium" , q: "Next Greater Element\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Next Greater Element\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Sort a Stack", d: "medium" , q: "Sort a Stack\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Sort a Stack\" \"Stack and Queue\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Stack and Queue Part-II", problems: [
+      { name: "Next Smaller Element", d: "medium" , q: "Next Smaller Element\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Next Smaller Element\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "LRU Cache", d: "medium" , q: "LRU Cache\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"LRU Cache\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "LFU Cache", d: "hard" , q: "LFU Cache\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"LFU Cache\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Largest rectangle in a histogram", d: "hard" , q: "Largest rectangle in a histogram\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Largest rectangle in a histogram\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Sliding Window Maximum", d: "hard" , q: "Sliding Window Maximum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Sliding Window Maximum\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Implement Min Stack", d: "hard" , q: "Implement Min Stack\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement Min Stack\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Rotten Oranges", d: "medium" , q: "Rotten Oranges\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Rotten Oranges\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Stock span problem", d: "hard" , q: "Stock span problem\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Stock span problem\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum of Minimums for Every Window Size", d: "medium" , q: "Maximum of Minimums for Every Window Size\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum of Minimums for Every Window Size\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Celebrity Problem", d: "hard" , q: "Celebrity Problem\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Celebrity Problem\" \"Stack and Queue Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "String", problems: [
+      { name: "Reverse every word in a string", d: "medium" , q: "Reverse every word in a string\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Reverse every word in a string\" \"String\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest Palindrome in a string", d: "medium" , q: "Longest Palindrome in a string\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest Palindrome in a string\" \"String\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Roman to Integer", d: "medium" , q: "Roman to Integer\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Roman to Integer\" \"String\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Implement ATOI/STRSTR", d: "medium" , q: "Implement ATOI/STRSTR\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Implement ATOI/STRSTR\" \"String\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest Common Prefix", d: "easy" , q: "Longest Common Prefix\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest Common Prefix\" \"String\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Rabin Karp Algorithm", d: "hard" , q: "Rabin Karp Algorithm\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Rabin Karp Algorithm\" \"String\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "String Part-II", problems: [
+      { name: "Z function", d: "hard" , q: "Z function\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Z function\" \"String Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "KMP Algorithm or LPS array", d: "hard" , q: "KMP Algorithm or LPS array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"KMP Algorithm or LPS array\" \"String Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Minimum insertions to make string palindrome", d: "hard" , q: "Minimum insertions to make string palindrome\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Minimum insertions to make string palindrome\" \"String Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Valid Anagram", d: "easy" , q: "Valid Anagram\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Valid Anagram\" \"String Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Count and say", d: "hard" , q: "Count and say\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Count and say\" \"String Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Compare version numbers", d: "medium" , q: "Compare version numbers\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Compare version numbers\" \"String Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Tree", problems: [
+      { name: "Inorder Traversal", d: "easy" , q: "Inorder Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Inorder Traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Preorder Traversal", d: "easy" , q: "Preorder Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Preorder Traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Postorder Traversal", d: "easy" , q: "Postorder Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Postorder Traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Morris Inorder Traversal", d: "hard" , q: "Morris Inorder Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Morris Inorder Traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Morris Preorder Traversal", d: "hard" , q: "Morris Preorder Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Morris Preorder Traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Right/Left View of BT", d: "medium" , q: "Right/Left View of BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Right/Left View of BT\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Bottom view of BT", d: "medium" , q: "Bottom view of BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Bottom view of BT\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Top View of BT", d: "medium" , q: "Top View of BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Top View of BT\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Pre, Post, Inorder in one traversal", d: "easy" , q: "Pre, Post, Inorder in one traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Pre, Post, Inorder in one traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Vertical Order Traversal", d: "medium" , q: "Vertical Order Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Vertical Order Traversal\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Print root to leaf path in BT", d: "medium" , q: "Print root to leaf path in BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Print root to leaf path in BT\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Width of BT", d: "medium" , q: "Maximum Width of BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Width of BT\" \"Binary Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Tree Part-II", problems: [
+      { name: "Level Order Traversal", d: "easy" , q: "Level Order Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Level Order Traversal\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Depth in BT", d: "medium" , q: "Maximum Depth in BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Depth in BT\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Diameter of Binary Tree", d: "easy" , q: "Diameter of Binary Tree\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Diameter of Binary Tree\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Check for balanced binary tree", d: "medium" , q: "Check for balanced binary tree\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Check for balanced binary tree\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "LCA in BT", d: "hard" , q: "LCA in BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"LCA in BT\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Check if two trees are identical or not", d: "medium" , q: "Check if two trees are identical or not\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Check if two trees are identical or not\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Zig Zag or Spiral Traversal", d: "medium" , q: "Zig Zag or Spiral Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Zig Zag or Spiral Traversal\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Boundary Traversal", d: "medium" , q: "Boundary Traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Boundary Traversal\" \"Binary Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Tree Part-III", problems: [
+      { name: "Maximum path sum", d: "medium" , q: "Maximum path sum\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum path sum\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Construct a BT from Preorder and Inorder", d: "hard" , q: "Construct a BT from Preorder and Inorder\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Construct a BT from Preorder and Inorder\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Construct a BT from Postorder and Inorder", d: "hard" , q: "Construct a BT from Postorder and Inorder\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Construct a BT from Postorder and Inorder\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Symmetric Binary Tree", d: "medium" , q: "Symmetric Binary Tree\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Symmetric Binary Tree\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Flatten Binary Tree to Linked List", d: "medium" , q: "Flatten Binary Tree to Linked List\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Flatten Binary Tree to Linked List\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Check for symmetrical BTs", d: "medium" , q: "Check for symmetrical BTs\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Check for symmetrical BTs\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Children Sum Property in Binary Tree", d: "medium" , q: "Children Sum Property in Binary Tree\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Children Sum Property in Binary Tree\" \"Binary Tree Part-III\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Search Tree", problems: [
+      { name: "Populating Next Right Pointers in Each Node", d: "medium" , q: "Populating Next Right Pointers in Each Node\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Populating Next Right Pointers in Each Node\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Search in BST", d: "easy" , q: "Search in BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Search in BST\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Construct BST from given keys", d: "easy" , q: "Construct BST from given keys\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Construct BST from given keys\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Construct a BST from a preorder traversal", d: "medium" , q: "Construct a BST from a preorder traversal\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Construct a BST from a preorder traversal\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Check if a tree is a BST or not", d: "medium" , q: "Check if a tree is a BST or not\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Check if a tree is a BST or not\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "LCA in BST", d: "medium" , q: "LCA in BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"LCA in BST\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Inorder successor and predecessor in BST", d: "medium" , q: "Inorder successor and predecessor in BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Inorder successor and predecessor in BST\" \"Binary Search Tree\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Search Tree Part-II", problems: [
+      { name: "Floor in a BST", d: "easy" , q: "Floor in a BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Floor in a BST\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Ceil in a BST", d: "easy" , q: "Ceil in a BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Ceil in a BST\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find K-th smallest element in BST", d: "medium" , q: "Find K-th smallest element in BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find K-th smallest element in BST\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Kth Smallest and Largest element in BST", d: "medium" , q: "Kth Smallest and Largest element in BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Kth Smallest and Largest element in BST\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Two sum in BST", d: "hard" , q: "Two sum in BST\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Two sum in BST\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "BST iterator", d: "hard" , q: "BST iterator\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"BST iterator\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Size of the largest BST in a Binary Tree", d: "hard" , q: "Size of the largest BST in a Binary Tree\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Size of the largest BST in a Binary Tree\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Serialize and De-serialize BT", d: "hard" , q: "Serialize and De-serialize BT\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Serialize and De-serialize BT\" \"Binary Search Tree Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Binary Trees Misc", problems: [
+      { name: "Binary Tree to Doubly Linked List", d: "medium" , q: "Binary Tree to Doubly Linked List\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Binary Tree to Doubly Linked List\" \"Binary Trees Misc\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Find Median in a Stream", d: "medium" , q: "Find Median in a Stream\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Find Median in a Stream\" \"Binary Trees Misc\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Kth largest element in a stream of running integers", d: "hard" , q: "Kth largest element in a stream of running integers\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Kth largest element in a stream of running integers\" \"Binary Trees Misc\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Distinct Numbers in Each Subarray", d: "medium" , q: "Distinct Numbers in Each Subarray\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Distinct Numbers in Each Subarray\" \"Binary Trees Misc\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "K-th largest element in an unsorted array.", d: "medium" , q: "K-th largest element in an unsorted array.\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"K-th largest element in an unsorted array.\" \"Binary Trees Misc\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Flood-fill Algorithm", d: "medium" , q: "Flood-fill Algorithm\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Flood-fill Algorithm\" \"Binary Trees Misc\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Graph", problems: [
+      { name: "Clone Graph", d: "medium" , q: "Clone Graph\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Clone Graph\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "DFS", d: "medium" , q: "DFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"DFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Traversal Techniques", d: "medium" , q: "Traversal Techniques\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Traversal Techniques\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Detect A cycle in Undirected Graph using BFS", d: "hard" , q: "Detect A cycle in Undirected Graph using BFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Detect A cycle in Undirected Graph using BFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Detect A cycle in Undirected Graph using DFS", d: "hard" , q: "Detect A cycle in Undirected Graph using DFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Detect A cycle in Undirected Graph using DFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Detect A cycle in a Directed Graph using DFS", d: "hard" , q: "Detect A cycle in a Directed Graph using DFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Detect A cycle in a Directed Graph using DFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Detect A cycle in a Directed Graph using BFS", d: "hard" , q: "Detect A cycle in a Directed Graph using BFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Detect A cycle in a Directed Graph using BFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Topological Sort BFS", d: "hard" , q: "Topological Sort BFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Topological Sort BFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Topological Sort DFS", d: "hard" , q: "Topological Sort DFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Topological Sort DFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Number of islands(Do in Grid and Graph Both)", d: "medium" , q: "Number of islands(Do in Grid and Graph Both)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Number of islands(Do in Grid and Graph Both)\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Bipartite graph", d: "hard" , q: "Bipartite graph\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Bipartite graph\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Bipartite Check using DFS", d: "hard" , q: "Bipartite Check using DFS\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Bipartite Check using DFS\" \"Graph\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Graph Part-II", problems: [
+      { name: "Strongly Connected Component(using Kosaraju's algo)", d: "hard" , q: "Strongly Connected Component(using Kosaraju's algo)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Strongly Connected Component(using Kosaraju's algo)\" \"Graph Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Dijkstra's algorithm", d: "hard" , q: "Dijkstra's algorithm\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Dijkstra's algorithm\" \"Graph Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Bellman ford algorithm", d: "hard" , q: "Bellman ford algorithm\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Bellman ford algorithm\" \"Graph Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Floyd Warshall Algorithm", d: "hard" , q: "Floyd Warshall Algorithm\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Floyd Warshall Algorithm\" \"Graph Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "MST using Prim's Algo", d: "hard" , q: "MST using Prim's Algo\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"MST using Prim's Algo\" \"Graph Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "MST using Kruskal's Algo", d: "hard" , q: "MST using Kruskal's Algo\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"MST using Kruskal's Algo\" \"Graph Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Dynamic Programming", problems: [
+      { name: "Max Product Subarray", d: "hard" , q: "Max Product Subarray\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Max Product Subarray\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest Increasing Subsequence", d: "medium" , q: "Longest Increasing Subsequence\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest Increasing Subsequence\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest common subsequence", d: "hard" , q: "Longest common subsequence\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest common subsequence\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "0 and 1 Knapsack", d: "hard" , q: "0 and 1 Knapsack\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"0 and 1 Knapsack\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Edit distance", d: "hard" , q: "Edit distance\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Edit distance\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Sum Increasing Subsequence", d: "medium" , q: "Maximum Sum Increasing Subsequence\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Sum Increasing Subsequence\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Matrix chain multiplication", d: "hard" , q: "Matrix chain multiplication\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Matrix chain multiplication\" \"Dynamic Programming\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Dynamic Programming Part-II", problems: [
+      { name: "Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)", d: "medium" , q: "Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Coin change II", d: "hard" , q: "Coin change II\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Coin change II\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Subset sum equals to target", d: "hard" , q: "Subset sum equals to target\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Subset sum equals to target\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Rod cutting problem", d: "hard" , q: "Rod cutting problem\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Rod cutting problem\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Super Egg Drop", d: "medium" , q: "Super Egg Drop\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Super Egg Drop\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Word Break", d: "medium" , q: "Word Break\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Word Break\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Palindrome Partitioning (MCM Variation)", d: "hard" , q: "Palindrome Partitioning (MCM Variation)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Palindrome Partitioning (MCM Variation)\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Profit in Job Scheduling", d: "medium" , q: "Maximum Profit in Job Scheduling\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Profit in Job Scheduling\" \"Dynamic Programming Part-II\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  },
+  {
+    name: "Trie", problems: [
+      { name: "Trie Implementation and Operations", d: "hard" , q: "Trie Implementation and Operations\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Trie Implementation and Operations\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Trie Implementation and Advanced Operations", d: "hard" , q: "Trie Implementation and Advanced Operations\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Trie Implementation and Advanced Operations\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Longest Word with All Prefixes", d: "medium" , q: "Longest Word with All Prefixes\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Longest Word with All Prefixes\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Number of distinct substrings in a string", d: "medium" , q: "Number of distinct substrings in a string\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Number of distinct substrings in a string\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Power Set (this is very important)", d: "medium" , q: "Power Set (this is very important)\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Power Set (this is very important)\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum XOR of two numbers in an array", d: "hard" , q: "Maximum XOR of two numbers in an array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum XOR of two numbers in an array\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"},
+      { name: "Maximum Xor with an element from an array", d: "hard" , q: "Maximum Xor with an element from an array\nTODO: fill in the problem description, examples, and constraints\n(use /solve \"Maximum Xor with an element from an array\" \"Trie\" to fetch from the web)", n: "#Brute Force:\n1.\nTC -> O(), SC -> O()\n\n#Better Approach:\n1.\nTC -> O(), SC -> O()\n\n#Optimal Approach:\n1.\nTC -> O(), SC -> O()\n\n#KEY INSIGHT:\n-"}
+    ]
+  }
+];
+
+const STORAGE_KEY = "striver-sde-tracker-v1";
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+
+function saveState(st) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
+}
+
+function getKey(si, pi) { return si + "-" + pi; }
+function getNoteKey(si, pi) { return "n-" + si + "-" + pi; }
+function getQuestionKey(si, pi) { return "q-" + si + "-" + pi; }
+
+var state = loadState();
+var currentFilter = "all";
+var openSections = {};
+var openNotes = {};
+var openQuestions = {};
+
+function autoResize(el) {
+  el.style.height = "auto";
+  el.style.height = el.scrollHeight + "px";
+}
+
+function buildProblemItem(p, si, pi) {
+  var key = getKey(si, pi);
+  var noteKey = getNoteKey(si, pi);
+  var questionKey = getQuestionKey(si, pi);
+  var isChecked = key in state ? !!state[key] : !!p.s;
+  var note = state[noteKey] || p.n || "";
+  var question = state[questionKey] || p.q || "";
+
+  var wrapper = document.createDocumentFragment();
+
+  var item = document.createElement("div");
+  item.className = "problem-item" + (isChecked ? " completed" : "");
+
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.className = "problem-checkbox";
+  checkbox.checked = isChecked;
+  checkbox.addEventListener("change", function() {
+    toggleProblem(si, pi, this.checked);
+  });
+
+  var nameSpan = document.createElement("span");
+  nameSpan.className = "problem-name";
+  nameSpan.textContent = p.name;
+  nameSpan.addEventListener("click", function() { checkbox.click(); });
+
+  var diffSpan = document.createElement("span");
+  diffSpan.className = "problem-difficulty diff-" + p.d;
+  diffSpan.textContent = p.d;
+
+  var questionBtn = document.createElement("button");
+  questionBtn.className = "question-btn" + (question ? " has-content" : "");
+  questionBtn.textContent = "question";
+
+  var notesBtn = document.createElement("button");
+  notesBtn.className = "notes-btn";
+  notesBtn.textContent = "notes";
+
+  item.appendChild(checkbox);
+  item.appendChild(nameSpan);
+  item.appendChild(diffSpan);
+  item.appendChild(questionBtn);
+  item.appendChild(notesBtn);
+
+  var noteId = si + "-" + pi;
+
+  var questionArea = document.createElement("textarea");
+  questionArea.className = "question-area" + (openQuestions[noteId] ? " visible" : "");
+  questionArea.placeholder = "Paste the problem statement here...";
+  questionArea.value = question;
+  questionArea.addEventListener("input", function() { autoResize(this); });
+  questionArea.addEventListener("blur", function() {
+    var qKey = getQuestionKey(si, pi);
+    if (this.value.trim()) {
+      state[qKey] = this.value.trim();
+    } else {
+      delete state[qKey];
+    }
+    saveState(state);
+  });
+
+  questionBtn.addEventListener("click", function() {
+    var wasVisible = openQuestions[noteId];
+    document.querySelectorAll(".question-area.visible, .notes-area.visible").forEach(function(el) {
+      el.classList.remove("visible");
+    });
+    openNotes = {};
+    openQuestions = {};
+    if (!wasVisible) {
+      questionArea.classList.add("visible");
+      openQuestions[noteId] = true;
+      autoResize(questionArea);
+      questionArea.focus();
+    }
+  });
+
+  var textarea = document.createElement("textarea");
+  textarea.className = "notes-area" + (openNotes[noteId] ? " visible" : "");
+  textarea.placeholder = "Add notes...";
+  textarea.value = note;
+  textarea.addEventListener("input", function() { autoResize(this); });
+  textarea.addEventListener("blur", function() {
+    saveNote(si, pi, this.value);
+  });
+
+  notesBtn.addEventListener("click", function() {
+    var wasVisible = openNotes[noteId];
+    document.querySelectorAll(".notes-area.visible, .question-area.visible").forEach(function(el) {
+      el.classList.remove("visible");
+    });
+    openNotes = {};
+    openQuestions = {};
+    if (!wasVisible) {
+      textarea.classList.add("visible");
+      openNotes[noteId] = true;
+      autoResize(textarea);
+      textarea.focus();
+    }
+  });
+
+  wrapper.appendChild(item);
+  wrapper.appendChild(questionArea);
+  wrapper.appendChild(textarea);
+  return wrapper;
+}
+
+function render() {
+  var container = document.getElementById("sections-container");
+  container.textContent = "";
+
+  var totalDone = 0;
+  var totalAll = 0;
+
+  DATA.forEach(function(section, si) {
+    var sectionDone = 0;
+    section.problems.forEach(function(_, pi) {
+      var k = getKey(si, pi); if (k in state ? state[k] : section.problems[pi].s) sectionDone++;
+    });
+    totalDone += sectionDone;
+    totalAll += section.problems.length;
+
+    var filteredProblems = [];
+    section.problems.forEach(function(p, pi) {
+      var dominated = false;
+      var fk = getKey(si, pi); var fChecked = fk in state ? !!state[fk] : !!p.s; if (currentFilter === "pending" && fChecked) dominated = true;
+      if (currentFilter === "completed" && !fChecked) dominated = true;
+      if (currentFilter === "easy" && p.d !== "easy") dominated = true;
+      if (currentFilter === "medium" && p.d !== "medium") dominated = true;
+      if (currentFilter === "hard" && p.d !== "hard") dominated = true;
+      if (!dominated) filteredProblems.push({ p: p, pi: pi });
+    });
+
+    if (filteredProblems.length === 0 && currentFilter !== "all") return;
+
+    var pct = section.problems.length > 0 ? (sectionDone / section.problems.length * 100) : 0;
+    var isComplete = sectionDone === section.problems.length && section.problems.length > 0;
+
+    var div = document.createElement("div");
+    div.className = "section" + (openSections[si] ? " open" : "");
+
+    var header = document.createElement("div");
+    header.className = "section-header";
+    (function(idx) {
+      header.addEventListener("click", function() {
+        openSections[idx] = !openSections[idx];
+        div.classList.toggle("open");
+      });
+    })(si);
+
+    var titleDiv = document.createElement("div");
+    titleDiv.className = "section-title";
+
+    var chevron = document.createElement("span");
+    chevron.className = "chevron";
+    chevron.textContent = "▶";
+
+    var h3 = document.createElement("h3");
+    h3.textContent = (isComplete ? "✓ " : "") + section.name;
+
+    titleDiv.appendChild(chevron);
+    titleDiv.appendChild(h3);
+
+    var metaDiv = document.createElement("div");
+    metaDiv.className = "section-meta";
+
+    var countSpan = document.createElement("span");
+    countSpan.className = "section-count";
+    var doneSpan = document.createElement("span");
+    doneSpan.className = "done-count";
+    doneSpan.textContent = sectionDone;
+    countSpan.appendChild(doneSpan);
+    countSpan.appendChild(document.createTextNode(" / " + section.problems.length));
+
+    var barDiv = document.createElement("div");
+    barDiv.className = "section-bar";
+    var barFill = document.createElement("div");
+    barFill.className = "section-bar-fill";
+    barFill.style.width = pct + "%";
+    barDiv.appendChild(barFill);
+
+    metaDiv.appendChild(countSpan);
+    metaDiv.appendChild(barDiv);
+
+    header.appendChild(titleDiv);
+    header.appendChild(metaDiv);
+
+    var listDiv = document.createElement("div");
+    listDiv.className = "problem-list";
+
+    filteredProblems.forEach(function(item) {
+      listDiv.appendChild(buildProblemItem(item.p, si, item.pi));
+    });
+
+    div.appendChild(header);
+    div.appendChild(listDiv);
+    container.appendChild(div);
+  });
+
+  var remaining = totalAll - totalDone;
+
+  document.getElementById("stat-total").textContent = totalAll;
+  document.getElementById("stat-done").textContent = totalDone;
+  document.getElementById("stat-remaining").textContent = remaining;
+
+  var pctAll = totalAll > 0 ? (totalDone / totalAll * 100) : 0;
+  document.getElementById("overall-pct").textContent = Math.round(pctAll) + "%";
+  document.getElementById("overall-fill").style.width = pctAll + "%";
+}
+
+var NOTE_TEMPLATE =
+  "#Brute Force:\n" +
+  "1. \n" +
+  "TC -> O(), SC -> O()\n" +
+  "\n" +
+  "#Better Approach:\n" +
+  "1. \n" +
+  "TC -> O(), SC -> O()\n" +
+  "\n" +
+  "#Optimal Approach:\n" +
+  "1. \n" +
+  "TC -> O(), SC -> O()\n" +
+  "\n" +
+  "#KEY INSIGHT:\n" +
+  "- ";
+
+function toggleProblem(si, pi, checked) {
+  var key = getKey(si, pi);
+  var noteKey = getNoteKey(si, pi);
+  if (checked) {
+    state[key] = true;
+    if (!state[noteKey]) {
+      state[noteKey] = NOTE_TEMPLATE;
+    }
+  } else {
+    delete state[key];
+  }
+  saveState(state);
+  render();
+}
+
+function saveNote(si, pi, value) {
+  var key = getNoteKey(si, pi);
+  if (value.trim()) {
+    state[key] = value.trim();
+  } else {
+    delete state[key];
+  }
+  saveState(state);
+}
+
+document.getElementById("reset-btn").addEventListener("click", function() {
+  if (confirm("Reset all progress? Notes will be preserved.")) {
+    var preserved = {};
+    Object.keys(state).forEach(function(k) {
+      if (k.indexOf("n-") === 0 || k.indexOf("q-") === 0) preserved[k] = state[k];
+    });
+    state = preserved;
+    saveState(state);
+    openSections = {};
+    render();
+  }
+});
+
+document.querySelectorAll(".filter-btn").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".filter-btn").forEach(function(b) {
+      b.classList.remove("active");
+    });
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

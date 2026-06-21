@@ -1,0 +1,213 @@
+#!/usr/bin/env python3
+"""Sync docstrings and questions from .py solution files into index.html DATA entries."""
+
+from __future__ import annotations
+
+import ast
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+
+
+def extract_docstring(py_file: Path) -> str | None:
+    """Extract the module-level docstring from a .py file."""
+    source = py_file.read_text()
+    try:
+        tree = ast.parse(source)
+    except SyntaxError:
+        return None
+    docstring = ast.get_docstring(tree)
+    return docstring if docstring else None
+
+
+def filename_to_key(filename: str) -> str:
+    """Convert filename to a normalized key for matching.
+
+    e.g. 'setMatrixZeroes.py' -> 'setmatrixzeroes'
+         'set-matrix-zeroes.py' -> 'setmatrixzeroes'
+    """
+    return re.sub(r"[^a-z0-9]", "", filename.removesuffix(".py").lower())
+
+
+def problem_name_to_key(name: str) -> str:
+    """Convert problem name to a normalized key for matching.
+
+    e.g. 'Set Matrix Zeroes' -> 'setmatrixzeroes'
+         'Pow(X,n)' -> 'powxn'
+    """
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
+def escape_for_js(text: str) -> str:
+    """Escape a string for embedding in a JS string literal."""
+    text = text.replace("\\", "\\\\")
+    text = text.replace('"', '\\"')
+    text = text.replace("\n", "\\n")
+    text = text.replace("\r", "")
+    return text
+
+
+def _has_skip_comment(py_file: Path, func_name: str) -> bool:
+    """Check if a function has a # SKIP comment in its source."""
+    in_func = False
+    for line in py_file.read_text().splitlines():
+        stripped = line.strip()
+        if stripped.startswith(f"def {func_name}("):
+            in_func = True
+            continue
+        if in_func:
+            if stripped.startswith("def ") or (
+                stripped
+                and not stripped.startswith("#")
+                and not stripped.startswith("pass")
+                and not stripped == ""
+            ):
+                break
+            if stripped.upper().startswith("# SKIP"):
+                return True
+    return False
+
+
+def is_fully_solved(py_file: Path) -> bool:
+    """Check if all 3 approaches (_brute, _better, _optimal) are implemented.
+
+    A function counts as done if it has real code, or has a '# SKIP: <reason>'
+    comment. The _optimal function is always required to have real code.
+    """
+    source = py_file.read_text()
+    try:
+        tree = ast.parse(source)
+    except SyntaxError:
+        return False
+    suffixes = ("_brute", "_better", "_optimal")
+    found: dict[str, ast.FunctionDef] = {}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            for s in suffixes:
+                if node.name.endswith(s):
+                    found[s] = node
+    if len(found) != 3:
+        return False
+    for suffix, node in found.items():
+        body = node.body
+        # Skip docstring if present
+        stmts = (
+            body[1:]
+            if (
+                body
+                and isinstance(body[0], ast.Expr)
+                and isinstance(body[0].value, ast.Constant)
+                and isinstance(body[0].value.value, str)
+            )
+            else body
+        )
+        if len(stmts) == 1 and isinstance(stmts[0], ast.Pass):
+            # _optimal is always required
+            if suffix == "_optimal":
+                return False
+            # Allow skip if # SKIP comment is present
+            if not _has_skip_comment(py_file, node.name):
+                return False
+    return True
+
+
+def extract_question(py_file: Path) -> str | None:
+    """Extract the # QUESTION: comment block from the top of a .py file."""
+    lines = py_file.read_text().splitlines()
+    question_lines: list[str] = []
+    started = False
+    for line in lines:
+        if line.startswith("# QUESTION:"):
+            started = True
+            question_lines.append(line.removeprefix("# QUESTION:").strip())
+        elif started and line.startswith("#"):
+            question_lines.append(line.removeprefix("#").removeprefix(" "))
+        elif started:
+            break
+    if not question_lines:
+        return None
+    return "\n".join(question_lines).strip()
+
+
+def extract_question_title(py_file: Path) -> str | None:
+    """Return just the first line of the `# QUESTION:` block (the canonical title)."""
+    for line in py_file.read_text().splitlines():
+        if line.startswith("# QUESTION:"):
+            return line.removeprefix("# QUESTION:").strip() or None
+    return None
+
+
+def collect_solutions() -> tuple[dict[str, str], set[str], dict[str, str]]:
+    """Collect docstrings, solved status, and questions from .py files.
+
+    Walks one level deep — `<Day Directory>/<problem>.py`.
+    """
+    notes: dict[str, str] = {}
+    solved: set[str] = set()
+    questions: dict[str, str] = {}
+    for py_file in ROOT.glob("*/*.py"):
+        # Skip dotfiles / cache directories
+        if py_file.parent.name.startswith("."):
+            continue
+        # Prefer matching by the `# QUESTION:` block title (verbatim from DATA),
+        # fall back to filename — handles cases like "3 Sum" -> threeSum.py
+        title = extract_question_title(py_file)
+        key = problem_name_to_key(title) if title else filename_to_key(py_file.name)
+        docstring = extract_docstring(py_file)
+        if docstring:
+            notes[key] = docstring
+        if is_fully_solved(py_file):
+            solved.add(key)
+        question = extract_question(py_file)
+        if question:
+            questions[key] = question
+    return notes, solved, questions
+
+
+def sync() -> int:
+    """Sync docstrings and solved status into index.html. Returns count of updated entries."""
+    notes, solved, questions = collect_solutions()
+    if not notes and not solved and not questions:
+        return 0
+
+    index_path = ROOT / "index.html"
+    html = index_path.read_text()
+
+    updated = 0
+    problem_pattern = re.compile(r'\{ name: "([^"]+)"(.*?)\}(\s*[,\]])', re.DOTALL)
+
+    def replace_entry(match: re.Match[str]) -> str:
+        nonlocal updated
+        name = match.group(1)
+        rest = match.group(2)
+        suffix = match.group(3)
+        key = problem_name_to_key(name)
+
+        if key not in notes and key not in solved and key not in questions:
+            return match.group(0)
+
+        # Remove existing q, n and s fields if present
+        rest_clean = re.sub(r',\s*q:\s*"(?:[^"\\]|\\.)*"', "", rest)
+        rest_clean = re.sub(r',\s*n:\s*"(?:[^"\\]|\\.)*"', "", rest_clean)
+        rest_clean = re.sub(r",\s*s:\s*true", "", rest_clean)
+
+        extras = ""
+        if key in questions:
+            extras += ', q: "' + escape_for_js(questions[key]) + '"'
+        if key in notes:
+            extras += ', n: "' + escape_for_js(notes[key]) + '"'
+        if key in solved:
+            extras += ", s: true"
+
+        updated += 1
+        return '{ name: "' + name + '"' + rest_clean + extras + "}" + suffix
+
+    html = problem_pattern.sub(replace_entry, html)
+    index_path.write_text(html)
+    return updated
+
+
+if __name__ == "__main__":
+    count = sync()
+    print(f"Synced {count} problem note(s) to index.html")
