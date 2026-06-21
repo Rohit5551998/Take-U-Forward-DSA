@@ -1,5 +1,9 @@
 # QUESTION: Coin change II
-# 22) - Problem Statement: We are given an array Arr with N distinct coins and a target. We have an infinite supply of each coin denomination. We need to find the number of ways we sum up the coin values t.
+# We are given an array Arr with N distinct coins and a target. We have
+# an infinite supply of each coin denomination. We need to find the
+# number of distinct ways we can sum up coin values to make the target.
+# Order of coins does NOT matter (i.e., [1, 2, 1] and [1, 1, 2] count as
+# the same combination).
 #
 # Examples:
 # Example 1:

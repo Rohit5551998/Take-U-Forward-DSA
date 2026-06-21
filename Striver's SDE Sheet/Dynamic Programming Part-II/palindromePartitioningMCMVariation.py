@@ -1,5 +1,30 @@
 # QUESTION: Palindrome Partitioning (MCM Variation)
-# Given a string s partition string s such that every substring of partition is palindrome. Return all possible palindrome partition of string s .
+# Given a string s, return the minimum number of cuts needed for a
+# palindrome partitioning of s. A partitioning of s is a palindrome
+# partitioning if every substring of the partition is a palindrome. The
+# number of cuts is one less than the number of partitions.
+# (This is the DP / MCM-style minimization variant — different from the
+# Recursion variant which returns all partitions.)
+#
+# Examples:
+# Example 1:
+# Input: s = "aab"
+# Output: 1
+# Explanation: One cut gives ["aa", "b"], both palindromes.
+#
+# Example 2:
+# Input: s = "a"
+# Output: 0
+# Explanation: A single character is already a palindrome — 0 cuts needed.
+#
+# Example 3:
+# Input: s = "ab"
+# Output: 1
+# Explanation: ["a", "b"] needs 1 cut.
+#
+# Constraints:
+# 1 <= s.length <= 2000
+# s consists of lowercase English letters only.
 
 
 """

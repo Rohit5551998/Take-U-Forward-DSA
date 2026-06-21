@@ -1,5 +1,28 @@
 # QUESTION: Remove Nth node from the back of the LL
-# Detailed solution for Remove N-th node from the end of a Linked List - Problem Statement: Given a linked list and an integer N, the task is to delete the Nth node from the end of the linked list and print the updated linked list.
+# Given a linked list and an integer N, delete the N-th node from the END
+# of the linked list and return the head of the modified list.
+#
+# Examples:
+# Example 1:
+# Input: head = [1, 2, 3, 4, 5], N = 2
+# Output: [1, 2, 3, 5]
+# Explanation: The 2nd node from the end is 4; remove it.
+#
+# Example 2:
+# Input: head = [1], N = 1
+# Output: []
+#
+# Example 3:
+# Input: head = [1, 2], N = 1
+# Output: [1]
+#
+# Constraints:
+# The number of nodes in the list is sz.
+# 1 <= sz <= 30
+# 0 <= Node.val <= 100
+# 1 <= N <= sz
+#
+# Follow up: Could you do this in one pass?
 #
 # Examples:
 # Input: 5->1->2, N=2

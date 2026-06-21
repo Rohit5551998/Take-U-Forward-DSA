@@ -1,5 +1,10 @@
 # QUESTION: Search element in a sorted and rotated array/ find pivot where it is rotated
-# Given an integer array nums, sorted in ascending order (with distinct values) and a target value k. The array is rotated at some pivot point that is unknown. Find the index at wh.
+# Given an integer array nums, sorted in ascending order with distinct
+# values, and a target value k. The array is rotated at some pivot point
+# that is unknown (e.g., [0,1,2,3,4,5] may become [3,4,5,0,1,2]). Find
+# the index at which k is present in the array. If k is not present,
+# return -1.
+# You must solve the problem in O(log n) time.
 #
 # Examples:
 # Input:nums = [4, 5, 6, 7, 0, 1, 2], k = 0

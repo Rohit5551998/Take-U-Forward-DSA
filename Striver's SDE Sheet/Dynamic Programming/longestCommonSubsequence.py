@@ -1,5 +1,19 @@
 # QUESTION: Longest common subsequence
-# 26) - Problem Description: Given two strings str1 and str2, print the longest common subsequence of the two strings. A subsequence of a string is a list of characters of the string where zero or more cha.
+# Given two strings str1 and str2, print the longest common subsequence
+# of the two strings. A subsequence of a string is a list of characters of
+# the string where zero or more characters in the original string are
+# deleted without disturbing the relative ordering of the remaining
+# characters. If multiple LCS exist, return any one. If no common
+# subsequence exists, return "".
+#
+# Examples:
+# Example 1:
+# Input: str1 = "abcd", str2 = "bdef"
+# Output: "bd"
+#
+# Example 2:
+# Input: str1 = "apple", str2 = "waffle"
+# Output: "ale"
 #
 # Examples:
 # Input: str1 = "abcd", str2="bdef"

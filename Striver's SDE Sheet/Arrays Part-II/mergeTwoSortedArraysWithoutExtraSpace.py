@@ -1,5 +1,8 @@
 # QUESTION: Merge two sorted arrays without extra space
-# Given two sorted integer arrays nums1 and nums2, merge both the arrays into a single array sorted in non-decreasing order. The final sorted array should be stored inside the arra.
+# Given two sorted integer arrays nums1 (of size m + n, with the last n
+# slots set to 0) and nums2 (of size n), merge both arrays into a single
+# array sorted in non-decreasing order. The final sorted array should be
+# stored inside the array nums1 and you should not use any extra space.
 #
 # Examples:
 # Input : nums1 = [-5, -2, 4, 5, 0, 0, 0], nums2 = [-3, 1, 8]

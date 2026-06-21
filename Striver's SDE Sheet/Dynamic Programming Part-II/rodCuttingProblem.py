@@ -1,5 +1,11 @@
 # QUESTION: Rod cutting problem
-# 24) - Problem Statement: Given a rod of length N inches and an array price[] where price[i] denotes the value of a piece of rod of length i inches (1-based indexing). Determine the maximum value obtainab.
+# Given a rod of length N inches and an array price[] where price[i]
+# denotes the value of a piece of rod of length (i+1) inches (so
+# price[0] is the price of a 1-inch piece, price[N-1] is the price of an
+# N-inch piece). Determine the maximum value obtainable by cutting the
+# rod into smaller pieces and selling them. You may cut the rod into any
+# number of pieces (including 0 cuts / keeping it whole), and each piece
+# size has its corresponding price from the array.
 #
 # Examples:
 # Input : price = [1, 6, 8, 9, 10, 19, 7, 20], N = 8

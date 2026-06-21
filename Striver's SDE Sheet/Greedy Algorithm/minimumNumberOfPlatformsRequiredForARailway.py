@@ -1,5 +1,16 @@
 # QUESTION: Minimum number of platforms required for a railway
-# We are given two arrays that represent the arrival and departure times of trains that stop at the platform. We need to find the minimum number of platforms needed at the railway.
+# We are given two arrays `arr` and `dep` of size N, representing the
+# arrival and departure times of N trains that stop at a railway
+# station. Find the minimum number of platforms needed so that no train
+# has to wait.
+# Note: If a train arrives at exactly the same time another train
+# departs, they cannot share a platform (they need separate platforms).
+# Greedy approach:
+#   1. Sort both arrival and departure arrays independently.
+#   2. Use two pointers; iterate through merged events. When you see an
+#      arrival before the next departure, you need an extra platform; on
+#      a departure before the next arrival, you free one.
+#   3. Track the running max of simultaneous trains — that's the answer.
 #
 # Examples:
 # Input: N=6,

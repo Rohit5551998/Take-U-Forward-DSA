@@ -1,5 +1,8 @@
 # QUESTION: Longest Increasing Subsequence
-# Detailed solution for Longest Increasing Subsequence | Binary Search | (DP-43) - Problem Statement: Given an integer array nums, return the length of the longest strictly increasing subsequence. A subsequence is a sequence derived from an array by deleting some or no elements w.
+# Given an integer array nums, return the length of the longest STRICTLY
+# increasing subsequence. A subsequence is a sequence derived from the
+# array by deleting some or no elements without changing the order of the
+# remaining elements.
 #
 # Examples:
 # Example 1:

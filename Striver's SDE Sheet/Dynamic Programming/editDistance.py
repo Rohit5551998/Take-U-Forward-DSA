@@ -1,5 +1,10 @@
 # QUESTION: Edit distance
-# Detailed solution for Edit Distance | (DP-33) - Problem Statement: We are given two strings ‘S1’ and ‘S2’. We need to convert S1 to S2. The following three operations are allowed: Deletion of a character. Replacement of a character with.
+# Given two strings S1 and S2, we need to convert S1 to S2. The following
+# three operations are allowed:
+#   1. Deletion of a character.
+#   2. Replacement of a character with another character.
+#   3. Insertion of a character.
+# Find the minimum number of operations required to convert S1 to S2.
 #
 # Examples:
 # Example 1:

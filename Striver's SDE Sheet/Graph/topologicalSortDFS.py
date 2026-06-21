@@ -1,5 +1,12 @@
 # QUESTION: Topological Sort DFS
-# Given a DAG( Directed Acyclic Graph ), print all the vertex of the graph in a topologically sorted order. If there are multiple solutions, print any. Pre-req : DFS traversal, Gr.
+# Given a DAG (Directed Acyclic Graph) with V vertices and E edges
+# (represented as an adjacency list), return any valid topological
+# ordering of vertices using DFS. If there are multiple valid solutions,
+# return any one.
+# Use DFS with a stack: run DFS from every unvisited node; after a node's
+# DFS completes (all descendants visited), push the node onto a stack.
+# The reverse of the stack is a valid topological order.
+# Pre-requisites: DFS traversal, Graph representation.
 
 
 """

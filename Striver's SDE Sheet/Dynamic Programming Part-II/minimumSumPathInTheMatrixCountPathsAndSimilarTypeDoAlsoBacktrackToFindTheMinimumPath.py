@@ -1,5 +1,27 @@
-# QUESTION: Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)
-# Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. Note: You can only move eit.
+# QUESTION: Minimum sum path in the matrix
+# Given an m x n grid filled with non-negative numbers, find a path from
+# top-left to bottom-right which minimizes the sum of all numbers along
+# its path. You can only move either DOWN or RIGHT at any point in time.
+# Return that minimum sum.
+#
+# (The Striver sheet groups several related variants here: count of
+# unique paths, also backtrack to recover the actual minimum path, etc.)
+#
+# Examples:
+# Example 1:
+# Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+# Output: 7
+# Explanation: 1 → 3 → 1 → 1 → 1 minimizes the sum.
+#
+# Example 2:
+# Input: grid = [[1,2,3],[4,5,6]]
+# Output: 12
+# Explanation: 1 → 2 → 3 → 6 (path sum 12).
+#
+# Constraints:
+# m == grid.length, n == grid[i].length
+# 1 <= m, n <= 200
+# 0 <= grid[i][j] <= 200
 
 
 """

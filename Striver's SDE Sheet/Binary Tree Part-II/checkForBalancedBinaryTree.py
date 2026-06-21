@@ -1,18 +1,24 @@
 # QUESTION: Check for balanced binary tree
-# Given a Binary Tree, return true if it is a Balanced Binary Tree else return false. A Binary Tree is balanced if, for all nodes in the tree, the difference between left and right.
+# Given a Binary Tree, return true if it is a Balanced Binary Tree else
+# return false. A Binary Tree is balanced if, for every node in the tree,
+# the difference between the heights of the left and right subtrees is
+# at most 1.
 #
 # Examples:
 # Example 1:
-# Input : [3, 9, 20, null, null, 15, 7]
-#
-# Output : Yes
-# Explanation:
+# Input: root = [3, 9, 20, null, null, 15, 7]
+# Output: true
+# Explanation: For every node, left & right subtree heights differ by ≤ 1.
 #
 # Example 2:
-# Input : [1, 2, null, null, 3]
+# Input: root = [1, 2, null, null, 3]
+# Output: false
+# Explanation: At the root, left subtree has height 2 while right subtree
+# has height 0, so the difference exceeds 1.
 #
-# Output : No
-# Explanation:
+# Constraints:
+# The number of nodes in the tree is in the range [0, 5000].
+# -10^4 <= Node.val <= 10^4
 
 
 """

@@ -1,5 +1,10 @@
 # QUESTION: Detect A cycle in a Directed Graph using BFS
-# Given a directed graph with V vertices labeled from 0 to V-1. The graph is represented using an adjacency list where adj[i] lists all nodes connected to node. Determine if the graph contains any cycles .
+# Given a directed graph with V vertices labeled from 0 to V-1 and
+# represented using an adjacency list `adj` (where adj[i] lists all nodes
+# reachable from node i via a directed edge), determine if the graph
+# contains any cycle. Return true if a cycle exists; otherwise false.
+# Use BFS — Kahn's algorithm: if a topological order containing all V
+# vertices does not exist, the graph has a cycle.
 
 
 """

@@ -1,5 +1,25 @@
 # QUESTION: Maximum Sum Increasing Subsequence
-# Given an array arr[] of positive integers, find the maximum possible sum of a subsequence such that the elements of the subsequence are in strictly increasing order. The subsequence does not need to be contiguous. You must choose elements s….
+# Given an array arr[] of positive integers, find the maximum possible
+# sum of a subsequence such that the elements of the subsequence are in
+# strictly increasing order. The subsequence does not need to be
+# contiguous. You must choose elements such that the resulting sequence
+# is strictly increasing AND the sum of the chosen elements is maximum.
+#
+# Examples:
+# Example 1:
+# Input: arr = [1, 101, 2, 3, 100, 4, 5]
+# Output: 106
+# Explanation: The increasing subsequence with max sum is [1, 2, 3, 100],
+# sum = 106.
+#
+# Example 2:
+# Input: arr = [3, 4, 5, 10]
+# Output: 22
+# Explanation: The whole array is increasing; sum = 3 + 4 + 5 + 10 = 22.
+#
+# Constraints:
+# 1 <= arr.length <= 1000
+# 1 <= arr[i] <= 10^5
 
 
 """

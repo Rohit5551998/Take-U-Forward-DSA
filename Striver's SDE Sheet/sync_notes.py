@@ -165,6 +165,49 @@ def collect_solutions() -> tuple[dict[str, str], set[str], dict[str, str]]:
     return notes, solved, questions
 
 
+def _find_entry_end(html: str, start: int) -> int:
+    """Given `start` at the `{` of an entry, return the index just past the
+    matching `}`. Tracks string state so braces inside "..." don't count."""
+    depth = 0
+    i = start
+    in_string = False
+    escape = False
+    while i < len(html):
+        c = html[i]
+        if in_string:
+            if escape:
+                escape = False
+            elif c == "\\":
+                escape = True
+            elif c == '"':
+                in_string = False
+        else:
+            if c == '"':
+                in_string = True
+            elif c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    return i + 1
+        i += 1
+    raise ValueError("Unbalanced braces starting at " + str(start))
+
+
+def _strip_existing_fields(rest: str) -> str:
+    """Strip `, q: "..."`, `, n: "..."`, `, s: true` from an entry's inner
+    text, quote-state-aware (so embedded { } don't confuse anything; we
+    rely on the alternation [^"\\]|\\. for escape handling)."""
+    for field in ("q", "n"):
+        rest = re.sub(
+            rf',\s*{field}:\s*"(?:[^"\\]|\\.)*"',
+            "",
+            rest,
+        )
+    rest = re.sub(r",\s*s:\s*true", "", rest)
+    return rest
+
+
 def sync() -> int:
     """Sync docstrings and solved status into index.html. Returns count of updated entries."""
     notes, solved, questions = collect_solutions()
@@ -174,23 +217,35 @@ def sync() -> int:
     index_path = ROOT / "index.html"
     html = index_path.read_text()
 
+    # Walk all entries with a quote-aware parser. Patterns like `{ name: "X", d: "Y", q: "{a,b}" }`
+    # with embedded braces in q used to break the previous regex-only approach.
+    entry_head = re.compile(r'\{\s*name:\s*"((?:[^"\\]|\\.)*)"')
+    pieces: list[str] = []
+    cursor = 0
     updated = 0
-    problem_pattern = re.compile(r'\{ name: "([^"]+)"(.*?)\}(\s*[,\]])', re.DOTALL)
-
-    def replace_entry(match: re.Match[str]) -> str:
-        nonlocal updated
-        name = match.group(1)
-        rest = match.group(2)
-        suffix = match.group(3)
+    for m in entry_head.finditer(html):
+        start = m.start()
+        try:
+            end = _find_entry_end(html, start)
+        except ValueError:
+            continue
+        # Suffix is whitespace + `,` or `]` if present (kept verbatim)
+        suffix_m = re.match(r"\s*[,\]]", html[end:])
+        suffix = suffix_m.group() if suffix_m else ""
+        whole = html[start:end]
+        name = m.group(1)
         key = problem_name_to_key(name)
 
         if key not in notes and key not in solved and key not in questions:
-            return match.group(0)
+            # Leave as-is
+            continue
 
-        # Remove existing q, n and s fields if present
-        rest_clean = re.sub(r',\s*q:\s*"(?:[^"\\]|\\.)*"', "", rest)
-        rest_clean = re.sub(r',\s*n:\s*"(?:[^"\\]|\\.)*"', "", rest_clean)
-        rest_clean = re.sub(r",\s*s:\s*true", "", rest_clean)
+        # Inner: text between the opening `{` and the closing `}` (exclusive).
+        # The opening `{` is at index 0 of `whole`; closing `}` at -1.
+        inner = whole[1:-1]
+        # Split off the name field at the start (we already have name)
+        inner_after_name = inner[m.end() - m.start() - 1 :]  # everything after `name: "X"`
+        rest_clean = _strip_existing_fields(inner_after_name)
 
         extras = ""
         if key in questions:
@@ -200,11 +255,16 @@ def sync() -> int:
         if key in solved:
             extras += ", s: true"
 
+        new_whole = "{ name: \"" + name + "\"" + rest_clean + extras + " }"
+        # Emit everything before this entry, then the rewritten entry + suffix
+        pieces.append(html[cursor:start])
+        pieces.append(new_whole)
+        pieces.append(suffix)
+        cursor = end + len(suffix)
         updated += 1
-        return '{ name: "' + name + '"' + rest_clean + extras + "}" + suffix
 
-    html = problem_pattern.sub(replace_entry, html)
-    index_path.write_text(html)
+    pieces.append(html[cursor:])
+    index_path.write_text("".join(pieces))
     return updated
 
 

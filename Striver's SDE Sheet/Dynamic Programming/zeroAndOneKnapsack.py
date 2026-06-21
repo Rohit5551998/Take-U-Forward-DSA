@@ -1,5 +1,9 @@
 # QUESTION: 0 and 1 Knapsack
-# 19) - Problem Statement: A thief wants to rob a store. He is carrying a bag of capacity W. The store has ‘n’ items. Its weight is given by the ‘wt’ array and its value by the ‘val’ array. He.
+# A thief wants to rob a store. He is carrying a bag of capacity W. The
+# store has 'n' items. Item i has weight wt[i] and value val[i]. He can
+# either pick an item entirely or leave it out (0/1 knapsack — items
+# cannot be split). What is the maximum value he can carry such that the
+# total weight is <= W?
 #
 # Examples:
 # Example 1:

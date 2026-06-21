@@ -1,5 +1,7 @@
 # QUESTION: Kth element of 2 sorted arrays
-# Detailed solution for K-th Element of two sorted arrays - Problem Statement: Given two sorted arrays a and b of size m and n respectively. Find the kth element of the final sorted array.
+# Given two sorted arrays `a` and `b` of size m and n respectively, find
+# the k-th element (1-indexed) of the final sorted array obtained by
+# merging them.
 #
 # Examples:
 # Example 1:

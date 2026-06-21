@@ -1,5 +1,16 @@
 # QUESTION: Topological Sort BFS
-# Problem statement: Given a graph, find the topological order for the given graph. Topological sort: The linear ordering of nodes/vertices such that if there exists an edge between 2 nodes u,v then.
+# Given a Directed Acyclic Graph (DAG) with V vertices and E edges
+# (represented as an adjacency list), return any valid topological
+# ordering of the nodes. Topological sort: a linear ordering of vertices
+# such that for every directed edge (u, v), u appears before v in the
+# ordering.
+# Use BFS — Kahn's algorithm:
+#   1. Compute in-degree of every node.
+#   2. Enqueue all nodes with in-degree 0.
+#   3. Repeatedly dequeue, append to result, and decrement in-degrees of
+#      successors (enqueue any that drop to 0).
+#   4. If the result contains all V nodes, return it; otherwise the
+#      graph has a cycle.
 
 
 """

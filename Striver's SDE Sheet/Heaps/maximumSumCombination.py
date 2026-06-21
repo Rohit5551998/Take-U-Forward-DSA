@@ -1,5 +1,15 @@
 # QUESTION: Maximum Sum Combination
-# Given two integer arrays nums1 and nums2 and an integer k, return the maximum k valid sum combinations from all possible sum combinations using the elements of nums1 and nums2. A.
+# Given two integer arrays nums1 and nums2 (of equal length n) and an
+# integer k, return the maximum k valid sum combinations from all
+# possible sum combinations, where each sum is formed by picking one
+# element from nums1 and one element from nums2 (one of each per pair).
+# A sum combination is the sum nums1[i] + nums2[j] for any valid pair of
+# indices (i, j). Return the top k such sums in non-increasing order.
+#
+# Optimal approach: use a max-heap (priority queue). Sort both arrays in
+# descending order, then push the top combination (nums1[0]+nums2[0])
+# and explore neighbors greedily, using a visited set to avoid
+# duplicates.
 #
 # Examples:
 # Input : nums1 = [7, 3], nums2 = [1, 6], k = 2

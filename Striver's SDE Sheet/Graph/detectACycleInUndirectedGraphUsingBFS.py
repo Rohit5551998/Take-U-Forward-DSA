@@ -1,5 +1,10 @@
 # QUESTION: Detect A cycle in Undirected Graph using BFS
-# Given an undirected graph with V vertices and E edges, check whether it contains any cycle or not.&nbsp;.
+# Given an undirected graph with V vertices and E edges (represented as
+# an adjacency list), check whether it contains any cycle. Return true if
+# a cycle exists; otherwise false.
+# Use BFS — during traversal, track each node's parent. If during BFS you
+# encounter a visited node that ISN'T the parent of the current node,
+# you've found a cycle.
 
 
 """

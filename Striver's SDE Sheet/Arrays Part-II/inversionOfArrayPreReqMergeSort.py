@@ -1,16 +1,30 @@
 # QUESTION: Inversion of Array (Pre-req: Merge Sort)
-# Given an array of N integers, count the inversion of the array (using merge-sort). Inversion of an array: for all i & j.
+# Given an array of N integers, count the number of inversions in the array
+# (typically solved using merge sort). An inversion is defined as a pair
+# (i, j) such that i < j and arr[i] > arr[j].
 #
 # Examples:
 # Example 1:
-# Input Format: N = 5, array[] = {1,2,3,4,5}
-# Result: 0
-# Explanation: we have a sorted array and the sorted array has 0 inversions as for i 3 which will satisfy out conditions and for reverse sorted array we will get maximum inversions and that is (n)*(n-1) / 2.For above given array there is 4 + 3 + 2 + 1 = 10 inversions.
+# Input: N = 5, array[] = {1, 2, 3, 4, 5}
+# Output: 0
+# Explanation: A sorted array has 0 inversions.
+#
+# Example 2:
+# Input: N = 5, array[] = {5, 4, 3, 2, 1}
+# Output: 10
+# Explanation: A reverse-sorted array has the maximum possible inversions:
+# n*(n-1)/2. For n=5, that's 4 + 3 + 2 + 1 = 10.
 #
 # Example 3:
-# Input Format: N = 5, array[] = {5,3,2,1,4}
-# Result: 7
-# Explanation: There are 7 pairs (5,1), (5,3), (5,2), (5,4),(3,2), (3,1), (2,1) and we have left 2 pairs (2,4) and (1,4) as both are not satisfy our condition.
+# Input: N = 5, array[] = {5, 3, 2, 1, 4}
+# Output: 7
+# Explanation: The 7 inversion pairs are: (5,3), (5,2), (5,1), (5,4),
+# (3,2), (3,1), (2,1). The pairs (2,4) and (1,4) do not qualify because
+# they are in correct order.
+#
+# Constraints:
+# 1 <= N <= 10^5
+# 1 <= arr[i] <= 10^9
 
 
 """

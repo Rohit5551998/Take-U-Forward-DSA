@@ -1,16 +1,25 @@
 # QUESTION: Check if two trees are identical or not
-# Given two Binary Trees, return if true if the two trees are identical, otherwise return false.. Two trees are said to be identical if these three conditions are met for every pai.
+# Given two Binary Trees, return true if the two trees are identical,
+# otherwise return false. Two trees are said to be identical if for every
+# pair of corresponding nodes:
+#   1. Both nodes have the same value.
+#   2. The left subtrees of both nodes are identical.
+#   3. The right subtrees of both nodes are identical.
 #
 # Examples:
 # Example 1:
-# Input:Binary Tree 1: 1 2 3 -1 -1 4 5, Binary Tree 2: 1 2 3 -1 -1 4 5
-#
-# Output: True, these trees are identical.
+# Input: p = [1, 2, 3, -1, -1, 4, 5], q = [1, 2, 3, -1, -1, 4, 5]
+# Output: true
+# Explanation: All nodes match in value and structure.
 #
 # Example 2:
-# Input:Binary Tree 1: 1 2 3 -1 -1 4 5, Binary Tree 2: 1 2 3 -1 -1 4
+# Input: p = [1, 2, 3, -1, -1, 4, 5], q = [1, 2, 3, -1, -1, 4]
+# Output: false
+# Explanation: Right subtree of node 3 differs — node 5 is missing in q.
 #
-# Output : False, these trees are not identical.
+# Constraints:
+# The number of nodes in both trees is in the range [0, 100].
+# -10^4 <= Node.val <= 10^4
 
 
 """

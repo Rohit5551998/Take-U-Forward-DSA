@@ -1,5 +1,11 @@
 # QUESTION: Children Sum Property in Binary Tree
-# Given a Binary Tree, convert the value of its nodes to follow the Children Sum Property. The Children Sum Property in a binary tree states that for every node, the sum of its chi.
+# Given a Binary Tree, convert the value of its nodes to follow the
+# Children Sum Property. The Children Sum Property in a binary tree states
+# that for every node, the sum of its children's values must equal the
+# node's own value (where the value of a null child is taken as 0).
+# Rule: You can only INCREMENT node values; you cannot decrement them.
+# You may change values any number of times, but cannot alter the tree's
+# structure.
 #
 # Examples:
 # Example 1:

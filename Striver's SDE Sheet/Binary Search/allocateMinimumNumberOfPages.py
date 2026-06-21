@@ -1,5 +1,14 @@
 # QUESTION: Allocate Minimum Number of Pages
-# Given an array ‘arr of integer numbers, ‘ar[i]’ represents the number of pages in the ‘i-th’ book. There are a ‘m’ number of students, and the task is to allocate a.
+# Given an array 'arr' of integer numbers, arr[i] represents the number of
+# pages in the i-th book. There are 'm' number of students. The task is to
+# allocate books to students such that:
+#   1. Each student gets at least one book.
+#   2. Each book is allocated to only one student.
+#   3. Book allocation is contiguous (a student gets a consecutive set of
+#      books).
+# Allocate books in such a way that the maximum number of pages assigned
+# to a student is minimum. Return that minimum value. If allocation is not
+# possible (e.g., books < students), return -1.
 #
 # Examples:
 # Example 1:

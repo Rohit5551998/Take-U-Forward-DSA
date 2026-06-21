@@ -1,5 +1,28 @@
 # QUESTION: Permutation Sequence
-# Detailed solution for Find K-th Permutation Sequence - Problem Statement: Given N and K , where N is the sequence of numbers from 1 to N([1,2,3..... N]) find the Kth permutation sequence . For N = 3&nbsp; the 3!&nbsp; Permutation sequences in order wou.
+# Given N and K, where N is the sequence of numbers from 1 to N (i.e.,
+# [1, 2, 3, ..., N]), find the K-th permutation sequence (1-indexed) in
+# the lexicographically sorted list of all N! permutations of [1..N].
+# Return the permutation as a string.
+#
+# Examples:
+# Example 1:
+# Input: N = 3, K = 3
+# Output: "213"
+# Explanation: The 3! = 6 permutations of [1, 2, 3] in order are:
+# "123", "132", "213", "231", "312", "321". The 3rd is "213".
+#
+# Example 2:
+# Input: N = 4, K = 9
+# Output: "2314"
+#
+# Constraints:
+# 1 <= N <= 9
+# 1 <= K <= N!
+#
+# Approach: Use factorial-base math to directly compute the K-th
+# permutation without generating all of them — for each position, the
+# leading digit is determined by K / (N-1)! after appropriate
+# 0-indexing of K.
 #
 # Examples:
 # Example 1:

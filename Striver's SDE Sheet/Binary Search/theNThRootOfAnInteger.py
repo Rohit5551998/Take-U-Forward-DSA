@@ -1,5 +1,7 @@
 # QUESTION: The N-th root of an integer
-# Given two numbers N and M, find the Nth root of M. The nth root of a number M is defined as a number X when raised to the power N equals M. If the 'nth root is not an integer, re.
+# Given two numbers N and M, find the Nth root of M. The N-th root of a
+# number M is defined as a number X when raised to the power N equals M
+# (i.e., X^N = M). If the N-th root is not an integer, return -1.
 #
 # Examples:
 # Input: N = 3, M = 27

@@ -1,5 +1,14 @@
 # QUESTION: MST using Kruskal's Algo
-# Minimum Spanning Tree : G-47 - Problem Statement: Given a weighted, undirected, and connected graph of V vertices and E edges. The task is to find the sum of weights of the edges of the Minimum Spanning Tree.
+# Given a weighted, undirected, and connected graph of V vertices and E
+# edges, find the sum of weights of the edges of the Minimum Spanning
+# Tree (MST). An MST is a subset of E edges that connects all V vertices
+# with the minimum total edge weight and contains no cycles.
+# Use Kruskal's algorithm:
+#   1. Sort all edges in non-decreasing order of weight.
+#   2. Initialize Union-Find (Disjoint Set Union) with V components.
+#   3. Iterate sorted edges; if the endpoints are in different components,
+#      union them and add the edge weight to the MST total.
+#   4. Stop when V-1 edges have been added.
 #
 # Examples:
 # Example 1:

@@ -1,5 +1,23 @@
 # QUESTION: Ceil in a BST
-# Given a root of binary search tree and a key (node) value, find the floor and ceil value for that particular key value. Floor Value Node: Node with the greatest data lesser than or equal to the key value.&nbsp; Ceil Value Node: Node with th….
+# Given the root of a binary search tree and a key value, find the ceil
+# value for that key.
+# Ceil Value Node: The node with the smallest value greater than or equal
+# to the key value. If no such node exists, return -1.
+#
+# Examples:
+# Example 1:
+# Input: root = [8, 4, 12, 2, 6, 10, 14], key = 11
+# Output: 12
+# Explanation: 12 is the smallest value in the BST ≥ 11.
+#
+# Example 2:
+# Input: root = [8, 4, 12, 2, 6, 10, 14], key = 15
+# Output: -1
+# Explanation: No node has value ≥ 15.
+#
+# Constraints:
+# 1 <= number of nodes in BST <= 10^5
+# 1 <= node value <= 10^5
 
 
 """

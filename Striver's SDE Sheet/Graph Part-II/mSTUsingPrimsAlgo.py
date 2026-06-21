@@ -1,5 +1,18 @@
 # QUESTION: MST using Prim's Algo
-# Minimum Spanning Tree - C++ and Java: G-45 - Problem Statement: Given a weighted, undirected, and connected graph of V vertices and E edges. The task is to find the sum of weights of the edges of the Minimum Spanning Tree. ( Sometimes it may.
+# Given a weighted, undirected, and connected graph of V vertices and E
+# edges (represented as an adjacency list of [neighbor, weight] pairs),
+# find the sum of weights of the edges of the Minimum Spanning Tree (MST).
+# An MST is a subset of E edges that connects all V vertices with the
+# minimum total edge weight and contains no cycles.
+# Use Prim's algorithm (priority-queue based):
+#   1. Start from any vertex (say 0). Mark it in the MST. Push all its
+#      edges into a min-heap keyed on edge weight.
+#   2. While the heap isn't empty: pop the minimum-weight edge. If the
+#      other endpoint isn't yet in the MST, add it, accumulate the weight,
+#      and push its outgoing edges into the heap.
+#   3. Repeat until V vertices are included.
+# (Note: sometimes "the MST" is unique; sometimes multiple MSTs exist
+# with the same total weight — any one is acceptable.)
 
 
 """

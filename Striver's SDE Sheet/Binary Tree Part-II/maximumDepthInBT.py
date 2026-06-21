@@ -1,17 +1,22 @@
 # QUESTION: Maximum Depth in BT
-# Given the root of a Binary Tree, return the height of the tree. The height of the tree is equal to the number of nodes on the longest path from root to a leaf.
+# Given the root of a Binary Tree, return the maximum depth (also called
+# height) of the tree. The maximum depth is the number of nodes along the
+# longest path from the root node down to the farthest leaf node.
 #
 # Examples:
-# Input: Binary Tree: 1 2 5 -1 -1 4 6 5
-#
+# Example 1:
+# Input: root = [1, 2, 5, -1, -1, 4, 6, 5]
 # Output: 4
-# Explanation:
-# In the above example, the height of the binary tree is along the longest path from the root node 1 -> 5 -> 4 -> 5.
+# Explanation: The longest path is 1 → 5 → 4 → 5 (4 nodes).
 #
-# Input: Binary Tree: 3 1 2
+# Example 2:
+# Input: root = [3, 1, 2]
 # Output: 2
-# Explanation:
-# We traverse the binary tree in the order of Left, RIght then Root recursively resulting in the following traversal:
+# Explanation: The longest path from root to a leaf has 2 nodes.
+#
+# Constraints:
+# The number of nodes in the tree is in the range [0, 10^4].
+# -100 <= Node.val <= 100
 
 
 """

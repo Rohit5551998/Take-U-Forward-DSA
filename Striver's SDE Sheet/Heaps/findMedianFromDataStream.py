@@ -1,5 +1,22 @@
 # QUESTION: Find Median from Data Stream
-# Implement a class that finds the median from a data stream. The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value.
+# Implement the MedianFinder class:
+#   MedianFinder()         — Initializes the object.
+#   void addNum(int num)   — Adds the integer num from the data stream.
+#   double findMedian()    — Returns the median of all elements seen so
+#                            far. If the size of the list is even, the
+#                            median is the average of the two middle
+#                            values (use float division).
+#
+# Follow up:
+#   1. If all integer numbers from the stream are in the range [0, 100],
+#      can you optimize your solution?
+#   2. If 99% of all integer numbers from the stream are in the range
+#      [0, 100], can you optimize your solution?
+#
+# Optimal approach: maintain two heaps — a max-heap for the lower half
+# and a min-heap for the upper half — kept balanced (size difference ≤ 1).
+# - addNum is O(log n)
+# - findMedian is O(1)
 #
 # Examples:
 # Input : [MedianFinder(), addNum(1), addNum(2), addNum(3), findMedian()]

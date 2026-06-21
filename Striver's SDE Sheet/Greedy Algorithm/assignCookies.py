@@ -1,5 +1,14 @@
 # QUESTION: Assign Cookies
-# Consider a scenario where a teacher wants to distribute cookies to students, with each student receiving at most one cookie. Given two arrays, student and cookie, the ith value i.
+# A teacher wants to distribute cookies to students such that each
+# student receives at most one cookie. Given two arrays `student` and
+# `cookie`:
+#   - student[i] is the greed factor of the i-th student (the minimum
+#     cookie size they require to be content).
+#   - cookie[j] is the size of the j-th cookie.
+# A cookie j can be assigned to a student i if and only if cookie[j] >=
+# student[i]. Each student gets at most one cookie; each cookie can be
+# assigned to at most one student. Maximize the number of content
+# students and return that count.
 #
 # Examples:
 # Input : Student = [1, 2, 3] , Cookie = [1, 1]

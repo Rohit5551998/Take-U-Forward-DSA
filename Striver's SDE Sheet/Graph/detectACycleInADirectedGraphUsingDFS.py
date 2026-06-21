@@ -1,5 +1,10 @@
 # QUESTION: Detect A cycle in a Directed Graph using DFS
-# Detailed solution for Detect a Cycle in Directed Graph | Topological Sort | Kahn's Algorithm | G-23 - Problem Statement: Given a Directed Graph with V vertices and E edges, check whether it contains any cycle or not using BFS.
+# Given a Directed Graph with V vertices and E edges (represented as an
+# adjacency list), check whether it contains any cycle using DFS. Return
+# true if a cycle exists; otherwise false.
+# Use DFS with two tracking sets: `visited` (node already processed in
+# any DFS subtree) and `path-visited` (node currently in the recursion
+# stack). A back-edge to a path-visited node means a cycle.
 
 
 """

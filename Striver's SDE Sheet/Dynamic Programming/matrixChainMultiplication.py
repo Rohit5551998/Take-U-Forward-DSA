@@ -1,5 +1,11 @@
 # QUESTION: Matrix chain multiplication
-# Detailed solution for Matrix Chain Multiplication | (DP-48) - Problem Statement: Given a chain of matrices A1,..., An denoted by an array of size n+1, find out the minimum number of operations to multiply these n matrices .
+# Given a chain of n matrices A1, A2, ..., An, denoted by an array of
+# size n+1 where arr[i-1] x arr[i] gives the dimensions of matrix A_i,
+# find the minimum number of scalar multiplications needed to multiply
+# the chain. You only need to compute the cost, not the actual
+# parenthesization.
+# Two matrices A (p x q) and B (q x r) can be multiplied in p*q*r
+# operations to produce a (p x r) matrix.
 #
 # Examples:
 # Input : [40, 20, 30, 10, 30]

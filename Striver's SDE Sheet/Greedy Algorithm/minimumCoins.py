@@ -1,5 +1,13 @@
 # QUESTION: Minimum coins
-# 20) - Problem Statement: Given an integer array of coins representing coins of different denominations and an integer amount representing a total amount of money. Return the fewest number of coins that a.
+# Given an integer array `coins` representing coins of different
+# denominations and an integer `amount` representing a total amount of
+# money, return the fewest number of coins that you need to make up that
+# amount. If that amount of money cannot be made up by any combination of
+# the coins, return -1.
+# You have an infinite number of each kind of coin.
+# Note: The Striver sheet groups this under Greedy (because the standard
+# Indian/US coin systems allow a greedy solution), but for arbitrary
+# denominations a DP solution is required for correctness.
 #
 # Examples:
 # Input: coins = [1, 2, 5], amount = 11

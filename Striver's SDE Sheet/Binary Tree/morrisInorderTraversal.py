@@ -1,5 +1,10 @@
 # QUESTION: Morris Inorder Traversal
-# Given a Binary Tree, implement Morris Inorder Traversal and return the array containing its inorder sequence. Morris Inorder Traversal is a tree traversal algorithm aiming to ach.
+# Given a Binary Tree, implement Morris Inorder Traversal and return the
+# array containing its inorder sequence. Morris Traversal is a tree
+# traversal algorithm aiming to achieve a space complexity of O(1) without
+# using recursion or an auxiliary stack. The algorithm uses the concept of
+# "threaded" binary trees, where temporary links (threads) are created and
+# later removed during the traversal.
 
 
 """

@@ -1,5 +1,10 @@
 # QUESTION: Morris Preorder Traversal
-# Given a Binary Tree, implement Morris Preorder Traversal and return the array containing its preorder sequence. Morris Preorder Traversal is a tree traversal algorithm aiming to.
+# Given a Binary Tree, implement Morris Preorder Traversal and return the
+# array containing its preorder sequence. Morris Traversal is a tree
+# traversal algorithm aiming to achieve a space complexity of O(1) without
+# using recursion or an auxiliary stack. Unlike the inorder variant, here
+# we record the node's value BEFORE following the thread (so the order is
+# root → left subtree → right subtree).
 
 
 """

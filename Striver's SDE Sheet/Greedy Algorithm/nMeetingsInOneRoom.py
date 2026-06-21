@@ -1,5 +1,15 @@
 # QUESTION: N meetings in one room
-# There is one meeting room in a firm. You are given two arrays, start and end each of size N. For an index ‘i’, start[i] denotes the starting time of the ith meeting while end.
+# There is one meeting room in a firm. You are given two arrays `start`
+# and `end`, each of size N. For index i, start[i] denotes the starting
+# time of the i-th meeting while end[i] denotes its ending time.
+# A meeting can be scheduled if the room is free at its starting time
+# (i.e., no other meeting is currently being held). Two meetings cannot
+# overlap — but a meeting starting at the exact end time of another is
+# allowed.
+# Find the maximum number of meetings that can be held in the room (and
+# optionally, the indices of those meetings).
+# Greedy approach: sort meetings by END time ascending; pick a meeting
+# whenever its start time >= the last selected meeting's end time.
 #
 # Examples:
 # Input: N = 6, start[] = {1,3,0,5,8,5}, end[] = {2,4,5,7,9,9}

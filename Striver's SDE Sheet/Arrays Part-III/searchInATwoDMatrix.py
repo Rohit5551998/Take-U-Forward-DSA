@@ -1,5 +1,10 @@
 # QUESTION: Search in a 2D matrix
-# You have been given a 2-D array 'mat' of size 'N x M' where 'N' and 'M' denote the number of rows and columns, respectively. The elements of each row are sorted in non-decreasing.
+# You have been given a 2D array 'mat' of size 'N x M' where 'N' and 'M'
+# denote the number of rows and columns, respectively. The elements of each
+# row are sorted in non-decreasing order. Moreover, the first element of a
+# row is greater than the last element of the previous row. Given an
+# integer 'target', determine if it exists in the matrix or not. Return
+# true if it exists; otherwise return false.
 #
 # Examples:
 # Input :mat = [ [1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12] ], target = 8
