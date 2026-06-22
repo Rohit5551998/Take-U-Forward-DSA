@@ -59,7 +59,9 @@ The sheet is inferred from the file path's first segment.
    - Write notes ONLY for the approach the user implemented — leave other approaches blank
    - Describe what the user's actual code does, not a textbook description
    - Use numbered steps in pseudo-code + english
+   - **Steps must be DESCRIPTIVE, not terse.** Each step should explain the *why* behind the action (the intuition / what problem it solves), not just restate the line of code. Walk through what the code actually does and why it works. A concrete tiny example or the cost reasoning is welcome. Aim for clarity a reader could learn the approach from.
    - End with `TC -> O(), SC -> O()`
+   - If the file's functions are actually **separate problem variants** (not brute/better/optimal of one problem — e.g. "value at (r,c)" vs "n-th row" vs "full triangle"), restructure the docstring into per-variant sections (`#Variant I — <name>: <func_name>`) each with its own steps + `TC -> O(), SC -> O()`, instead of forcing them into the Brute/Better/Optimal template.
    - Update the docstring in the file using Edit
 
 8. **Sync notes to that sheet's tracker:**

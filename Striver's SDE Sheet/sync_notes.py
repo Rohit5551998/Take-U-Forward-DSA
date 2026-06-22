@@ -69,40 +69,62 @@ def _has_skip_comment(py_file: Path, func_name: str) -> bool:
     return False
 
 
-def is_fully_solved(py_file: Path) -> bool:
-    """Check if all 3 approaches (_brute, _better, _optimal) are implemented.
+def _has_real_body(node: ast.FunctionDef) -> bool:
+    """True if a function has real code (not just a docstring + `pass`)."""
+    body = node.body
+    # Skip docstring if present
+    stmts = (
+        body[1:]
+        if (
+            body
+            and isinstance(body[0], ast.Expr)
+            and isinstance(body[0].value, ast.Constant)
+            and isinstance(body[0].value.value, str)
+        )
+        else body
+    )
+    return not (len(stmts) == 1 and isinstance(stmts[0], ast.Pass))
 
-    A function counts as done if it has real code, or has a '# SKIP: <reason>'
-    comment. The _optimal function is always required to have real code.
+
+def is_fully_solved(py_file: Path) -> bool:
+    """Check if a solution file is fully solved.
+
+    Two file shapes are supported:
+    - Approach-based: the 3 approaches (_brute, _better, _optimal) are all
+      implemented. A function counts as done if it has real code, or has a
+      '# SKIP: <reason>' comment. The _optimal function always needs real code.
+    - Variant-based: the file solves separate sub-problems via functions whose
+      names contain '_variant_' (e.g. Pascal's Triangle: value-at-(r,c) vs
+      n-th row vs full triangle). Solved when every such function has real code
+      (or a '# SKIP' comment).
     """
     source = py_file.read_text()
     try:
         tree = ast.parse(source)
     except SyntaxError:
         return False
+
+    funcs = [n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)]
+
+    # Variant-based files: solved when every *_variant_* function has real code.
+    variant_funcs = [n for n in funcs if "_variant_" in n.name]
+    if variant_funcs:
+        return all(
+            _has_real_body(n) or _has_skip_comment(py_file, n.name)
+            for n in variant_funcs
+        )
+
+    # Approach-based files: require _brute, _better, _optimal.
     suffixes = ("_brute", "_better", "_optimal")
     found: dict[str, ast.FunctionDef] = {}
-    for node in ast.walk(tree):
-        if isinstance(node, ast.FunctionDef):
-            for s in suffixes:
-                if node.name.endswith(s):
-                    found[s] = node
+    for node in funcs:
+        for s in suffixes:
+            if node.name.endswith(s):
+                found[s] = node
     if len(found) != 3:
         return False
     for suffix, node in found.items():
-        body = node.body
-        # Skip docstring if present
-        stmts = (
-            body[1:]
-            if (
-                body
-                and isinstance(body[0], ast.Expr)
-                and isinstance(body[0].value, ast.Constant)
-                and isinstance(body[0].value.value, str)
-            )
-            else body
-        )
-        if len(stmts) == 1 and isinstance(stmts[0], ast.Pass):
+        if not _has_real_body(node):
             # _optimal is always required
             if suffix == "_optimal":
                 return False

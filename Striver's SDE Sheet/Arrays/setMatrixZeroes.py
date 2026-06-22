@@ -27,29 +27,139 @@
 
 """
 #Brute Force:
-1.
-TC -> O(), SC -> O()
+1. The naive idea is "whenever I see a 0, blank out its whole row and column",
+   but doing that with literal 0s would create new 0s that trigger more
+   blanking. So instead use a sentinel value that cannot occur in the input.
+2. Scan every cell; when matrix[i][j] == 0, call markRow(i) and markCol(j).
+   markRow/markCol overwrite every NON-zero cell in that row/column with -inf
+   (real 0s are left as 0, so only the original zeros ever act as triggers —
+   the -inf cells won't, because they aren't equal to 0).
+3. After the full scan, sweep the matrix once more and turn every -inf back
+   into a real 0.
+4. Cost: each original zero may repaint a whole row + column, so worst case is
+   (number of cells) * (m + n) work.
+TC -> O((m*n)*(m+n)), SC -> O(1)
 
 #Better Approach:
-1.
-TC -> O(), SC -> O()
+1. Decouple "detecting" zeros from "applying" them so a freshly written 0
+   never gets mistaken for an original one. Use two helper arrays: row[] of
+   size m and col[] of size n, both initialised to 1 (meaning "keep").
+2. Pass 1 (detect): for every cell that is 0, record row[i] = 0 and col[j] = 0
+   to flag that entire row i and column j must eventually be zeroed.
+3. Pass 2 (apply): for every cell, if its row was flagged (row[i] == 0) OR its
+   column was flagged (col[j] == 0), set matrix[i][j] = 0.
+TC -> O(m*n), SC -> O(m+n)
 
 #Optimal Approach:
-1.
-TC -> O(), SC -> O()
+1. The O(m+n) arrays above are redundant — the matrix already has a spare row
+   and column we can borrow. Reuse matrix's own first row as col[] and first
+   column as row[], so the only extra memory is two scalar flags (row0/col0)
+   that remember whether the first column / first row THEMSELVES originally
+   held a zero (the marking step will clobber them, so capture this first).
+2. Pre-scan: walk the first column and set its flag if any cell is 0; walk the
+   first row and set its flag if any cell is 0.
+3. Detect (i,j from 1): if matrix[i][j] == 0, write the marker into the
+   borrowed storage — matrix[i][0] = 0 (this row needs zeroing) and
+   matrix[0][j] = 0 (this column needs zeroing).
+4. Apply (i,j from 1): if matrix[i][0] == 0 OR matrix[0][j] == 0, set
+   matrix[i][j] = 0. Done from the inside out so the markers stay intact.
+5. Finally use the two saved flags to zero the entire first column and/or
+   first row if they originally contained a zero.
+TC -> O(m*n), SC -> O(1)
 
 #KEY INSIGHT:
--
+- The first row and first column can double as the bookkeeping arrays, so no
+  extra space is needed. The only state they cannot store about themselves is
+  whether row 0 / col 0 originally had a zero (the marking clobbers them) —
+  two scalar flags captured up front recover exactly that.
 """
 
 
-def set_matrix_zeroes_brute() -> None:
-    pass
+from typing import List
+import math
+
+def markRow(row, matrix: List[List[int]]) -> None:
+    for j in range(0, len(matrix[0])):
+        if (matrix[row][j] != 0):
+            matrix[row][j] = -math.inf
+
+def markCol(col, matrix: List[List[int]]) -> None:
+    for i in range(0, len(matrix)):
+        if (matrix[i][col] != 0):
+            matrix[i][col] = -math.inf
 
 
-def set_matrix_zeroes_better() -> None:
-    pass
+def set_matrix_zeroes_brute(matrix: List[List[int]]) -> None:
+    for i in range(0, len(matrix)):
+        for j in range(0, len(matrix[0])):
+            if (matrix[i][j] == 0):
+                markRow(i, matrix)
+                markCol(j, matrix)
+
+    for i in range(0, len(matrix)):
+        for j in range(0, len(matrix[0])):
+            if (matrix[i][j]) == -math.inf:
+                matrix[i][j] = 0
+
+    return matrix
 
 
-def set_matrix_zeroes_optimal() -> None:
-    pass
+def set_matrix_zeroes_better(matrix: List[List[int]]) -> None:
+    row = [1 for _ in range(len(matrix))]
+    col = [1 for _ in range(len(matrix[0]))]
+
+    for i in range(0, len(matrix)):
+        for j in range(0, len(matrix[0])):
+            if (matrix[i][j] == 0):
+                row[i] = 0
+                col[j] = 0
+
+    for i in range(0, len(matrix)):
+        for j in range(0, len(matrix[0])):
+            if (row[i] == 0 or col[j] == 0):
+                matrix[i][j] = 0
+
+    return matrix
+
+def set_matrix_zeroes_optimal(matrix: List[List[int]]) -> None:
+    row0 = 1
+    col0 = 1
+
+    for i in range(0, len(matrix)):
+        if (matrix[i][0] == 0):
+            row0 = 0
+            break
+
+    for i in range(0, len(matrix[0])):
+        if (matrix[0][i] == 0):
+            col0 = 0
+            break
+
+    for i in range(1, len(matrix)):
+        for j in range(1, len(matrix[0])):
+            if (matrix[i][j] == 0):
+                matrix[i][0] = 0
+                matrix[0][j] = 0
+
+    for i in range(1, len(matrix)):
+        for j in range(1, len(matrix[0])):
+            if (matrix[i][0] == 0 or matrix[0][j] == 0):
+                matrix[i][j] = 0
+
+    if (row0 == 0):
+        for i in range(0, len(matrix)):
+            matrix[i][0] = 0
+
+
+    if (col0 == 0):
+        for i in range(0, len(matrix[0])):
+            matrix[0][i] = 0
+
+    return matrix
+
+matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+print(set_matrix_zeroes_brute(matrix))
+matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+print(set_matrix_zeroes_better(matrix))
+matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+print(set_matrix_zeroes_optimal(matrix))

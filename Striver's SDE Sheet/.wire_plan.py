@@ -235,6 +235,57 @@ CSS = f"""{CSS_START}
     font-size: 10px;
     color: var(--text-dim);
   }}
+
+  /* Full Plan tab — collapsible week groups */
+  .plan-week {{
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }}
+  .plan-week.current {{ border-color: var(--accent); }}
+  .plan-week-header {{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    user-select: none;
+    background: var(--bg);
+    transition: background 0.15s;
+  }}
+  .plan-week-header:hover {{ background: var(--surface-hover); }}
+  .plan-week.current .plan-week-header {{ background: var(--accent-glow); }}
+  .plan-week-chevron {{
+    font-size: 10px;
+    color: var(--text-dim);
+    transition: transform 0.15s;
+  }}
+  .plan-week-header.open .plan-week-chevron {{ transform: rotate(90deg); }}
+  .plan-week-label {{
+    font-size: 13px;
+    font-weight: 600;
+    flex: 1;
+  }}
+  .plan-week-tag {{
+    font-size: 10px;
+    background: var(--accent);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }}
+  .plan-week-stats {{
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }}
+  .plan-week-body {{
+    padding: 8px 14px 14px;
+    background: var(--surface);
+  }}
 {CSS_END}"""
 
 
@@ -436,6 +487,96 @@ function renderGroupedByDay(entries) {{
   }});
 }}
 
+const fullPlanOpenWeeks = new Set();
+
+function renderFullPlan(cat) {{
+  const list = document.getElementById("plan-list");
+  list.textContent = "";
+  // Group PLAN_ROWS by week number
+  const byWeek = new Map();
+  PLAN_ROWS.forEach(r => {{
+    if (!byWeek.has(r.wk)) byWeek.set(r.wk, []);
+    byWeek.get(r.wk).push(r);
+  }});
+  // Determine current week
+  const todayISO = cat.todayISO;
+  let curWk = null;
+  for (const r of PLAN_ROWS) {{
+    if (r.iso >= todayISO) {{ curWk = r.wk; break; }}
+  }}
+  // Auto-open current week on first render
+  if (curWk && fullPlanOpenWeeks.size === 0) fullPlanOpenWeeks.add(curWk);
+
+  const totalAll = PLAN_ROWS.reduce((n, r) => n + r.items.length, 0);
+  const done = PLAN_ROWS.reduce(
+    (n, r) => n + r.items.filter(it => isSolved(it.loc)).length, 0
+  );
+  const summary = document.createElement("div");
+  summary.className = "plan-empty";
+  summary.style.color = "var(--text-dim)";
+  summary.style.marginBottom = "10px";
+  summary.textContent = `12-week plan · ${{done}} / ${{totalAll}} done`;
+  list.appendChild(summary);
+
+  Array.from(byWeek.keys()).sort((a, b) => a - b).forEach(wk => {{
+    const rows = byWeek.get(wk);
+    const wkTotal = rows.reduce((n, r) => n + r.items.length, 0);
+    const wkDone = rows.reduce(
+      (n, r) => n + r.items.filter(it => isSolved(it.loc)).length, 0
+    );
+    const isCurrent = wk === curWk;
+    const isOpen = fullPlanOpenWeeks.has(wk);
+
+    const weekWrap = document.createElement("div");
+    weekWrap.className = "plan-week" + (isCurrent ? " current" : "");
+
+    const header = document.createElement("div");
+    header.className = "plan-week-header" + (isOpen ? " open" : "");
+    const chevron = document.createElement("span");
+    chevron.className = "plan-week-chevron";
+    chevron.textContent = "▶";
+    const wkLabel = document.createElement("span");
+    wkLabel.className = "plan-week-label";
+    wkLabel.textContent = `Week ${{wk}}`;
+    if (isCurrent) {{
+      const tag = document.createElement("span");
+      tag.className = "plan-week-tag";
+      tag.textContent = "current";
+      wkLabel.appendChild(document.createTextNode(" "));
+      wkLabel.appendChild(tag);
+    }}
+    const wkStats = document.createElement("span");
+    wkStats.className = "plan-week-stats";
+    wkStats.textContent = `${{wkDone}} / ${{wkTotal}}`;
+    header.appendChild(chevron);
+    header.appendChild(wkLabel);
+    header.appendChild(wkStats);
+    header.addEventListener("click", () => {{
+      if (fullPlanOpenWeeks.has(wk)) fullPlanOpenWeeks.delete(wk);
+      else fullPlanOpenWeeks.add(wk);
+      renderPlanPanel();
+    }});
+    weekWrap.appendChild(header);
+
+    if (isOpen) {{
+      const body = document.createElement("div");
+      body.className = "plan-week-body";
+      rows.forEach(r => {{
+        const dayGroup = document.createElement("div");
+        dayGroup.className = "plan-day-group";
+        const dayLabel = document.createElement("div");
+        dayLabel.className = "plan-day-label";
+        dayLabel.textContent = `${{r.dy}} · ${{fmtDate(r.dt)}}`;
+        dayGroup.appendChild(dayLabel);
+        r.items.forEach(it => dayGroup.appendChild(renderPlanItem(it, r)));
+        body.appendChild(dayGroup);
+      }});
+      weekWrap.appendChild(body);
+    }}
+    list.appendChild(weekWrap);
+  }});
+}}
+
 function renderPlanPanel() {{
   const cat = categorizePlan();
   const title = document.getElementById("plan-title");
@@ -466,6 +607,7 @@ function renderPlanPanel() {{
     {{ id: "backlog",  label: "Backlog",  count: cat.backlog.length,    danger: cat.backlog.length > 0, bonus: false }},
     {{ id: "upcoming", label: "Upcoming", count: cat.upcoming ? cat.upcoming.items.length : 0, danger: false, bonus: false }},
     {{ id: "extras",   label: "Extras",   count: cat.extras.length,     danger: false, bonus: cat.extras.length > 0 }},
+    {{ id: "full",     label: "Full Plan", count: PLAN_ROWS.reduce((n, r) => n + r.items.length, 0), danger: false, bonus: false }},
   ];
   tabsEl.textContent = "";
   tabs.forEach(t => {{
@@ -515,6 +657,8 @@ function renderPlanPanel() {{
       const items = cat.upcoming.items.map(it => ({{ row: cat.upcoming, item: it }}));
       renderGroupedByDay(items);
     }}
+  }} else if (planTab === "full") {{
+    renderFullPlan(cat);
   }} else if (planTab === "extras") {{
     renderGroupedByDay(cat.extras);
   }}
