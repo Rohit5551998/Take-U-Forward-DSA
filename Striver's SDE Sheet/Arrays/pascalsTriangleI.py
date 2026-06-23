@@ -63,16 +63,15 @@ TC -> O(n^2), SC -> O(n^2) for the output  (n rows, the i-th of length i, so
 
 
 from typing import List
-import math
 
-def pascals_triangle_i_variant_i(row, col) -> None:
+def pascals_triangle_i_variant_i(row: int, col: int) -> int:
     ans = 1
     for j in range(1, col):
         ans *= (row - j) / (j)
     return int(ans)
 
 
-def pascals_triangle_i_variant_ii(row) -> List[int]:
+def pascals_triangle_i_variant_ii(row: int) -> List[int]:
     res = [1]
     ans = 1
     for i in range(1, row):
@@ -81,7 +80,7 @@ def pascals_triangle_i_variant_ii(row) -> List[int]:
     return res
 
 
-def pascals_triangle_i_variant_iii(rows) -> List[List[int]]:
+def pascals_triangle_i_variant_iii(rows: int) -> List[List[int]]:
     res = []
     for i in range(1, rows+1):
         res.append(pascals_triangle_i_variant_ii(i))

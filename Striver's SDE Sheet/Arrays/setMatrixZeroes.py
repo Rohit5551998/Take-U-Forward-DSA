@@ -76,20 +76,25 @@ TC -> O(m*n), SC -> O(1)
 
 
 from typing import List
-import math
 
-def markRow(row, matrix: List[List[int]]) -> None:
+# Sentinel placed in cells that must become 0 but were NOT originally 0, so the
+# second pass can tell them apart from real zeros without re-triggering marking.
+# Chosen just outside the input range (-2^31 .. 2^31-1) so it never collides
+# with a real value, which keeps the matrix typed as List[List[int]].
+MARKED = -(2**31) - 1
+
+def markRow(row: int, matrix: List[List[int]]) -> None:
     for j in range(0, len(matrix[0])):
         if (matrix[row][j] != 0):
-            matrix[row][j] = -math.inf
+            matrix[row][j] = MARKED
 
-def markCol(col, matrix: List[List[int]]) -> None:
+def markCol(col: int, matrix: List[List[int]]) -> None:
     for i in range(0, len(matrix)):
         if (matrix[i][col] != 0):
-            matrix[i][col] = -math.inf
+            matrix[i][col] = MARKED
 
 
-def set_matrix_zeroes_brute(matrix: List[List[int]]) -> None:
+def set_matrix_zeroes_brute(matrix: List[List[int]]) -> List[List[int]]:
     for i in range(0, len(matrix)):
         for j in range(0, len(matrix[0])):
             if (matrix[i][j] == 0):
@@ -98,13 +103,13 @@ def set_matrix_zeroes_brute(matrix: List[List[int]]) -> None:
 
     for i in range(0, len(matrix)):
         for j in range(0, len(matrix[0])):
-            if (matrix[i][j]) == -math.inf:
+            if (matrix[i][j]) == MARKED:
                 matrix[i][j] = 0
 
     return matrix
 
 
-def set_matrix_zeroes_better(matrix: List[List[int]]) -> None:
+def set_matrix_zeroes_better(matrix: List[List[int]]) -> List[List[int]]:
     row = [1 for _ in range(len(matrix))]
     col = [1 for _ in range(len(matrix[0]))]
 
@@ -121,7 +126,7 @@ def set_matrix_zeroes_better(matrix: List[List[int]]) -> None:
 
     return matrix
 
-def set_matrix_zeroes_optimal(matrix: List[List[int]]) -> None:
+def set_matrix_zeroes_optimal(matrix: List[List[int]]) -> List[List[int]]:
     row0 = 1
     col0 = 1
 

@@ -26,7 +26,6 @@
 # 1 <= Arr.length <= 100
 # 0 <= Arr[i] <= 100
 
-
 """
 #Brute Force:
 1.
