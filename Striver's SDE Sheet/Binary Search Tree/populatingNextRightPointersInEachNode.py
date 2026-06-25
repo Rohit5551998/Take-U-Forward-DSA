@@ -45,13 +45,16 @@ TC -> O(), SC -> O()
 """
 
 
-def populating_next_right_pointers_in_each_node_brute() -> None:
-    pass
+class Solution:
+    def populating_next_right_pointers_in_each_node_brute(self) -> None:
+        pass
+
+    def populating_next_right_pointers_in_each_node_better(self) -> None:
+        pass
+
+    def populating_next_right_pointers_in_each_node_optimal(self) -> None:
+        pass
 
 
-def populating_next_right_pointers_in_each_node_better() -> None:
-    pass
-
-
-def populating_next_right_pointers_in_each_node_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

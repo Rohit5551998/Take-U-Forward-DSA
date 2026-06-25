@@ -52,13 +52,16 @@ TC -> O(), SC -> O()
 """
 
 
-def remove_nth_node_from_the_back_of_the_ll_brute() -> None:
-    pass
+class Solution:
+    def remove_nth_node_from_the_back_of_the_ll_brute(self) -> None:
+        pass
+
+    def remove_nth_node_from_the_back_of_the_ll_better(self) -> None:
+        pass
+
+    def remove_nth_node_from_the_back_of_the_ll_optimal(self) -> None:
+        pass
 
 
-def remove_nth_node_from_the_back_of_the_ll_better() -> None:
-    pass
-
-
-def remove_nth_node_from_the_back_of_the_ll_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

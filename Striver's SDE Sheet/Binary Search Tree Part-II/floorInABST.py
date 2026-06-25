@@ -38,13 +38,16 @@ TC -> O(), SC -> O()
 """
 
 
-def floor_in_a_bst_brute() -> None:
-    pass
+class Solution:
+    def floor_in_a_bst_brute(self) -> None:
+        pass
+
+    def floor_in_a_bst_better(self) -> None:
+        pass
+
+    def floor_in_a_bst_optimal(self) -> None:
+        pass
 
 
-def floor_in_a_bst_better() -> None:
-    pass
-
-
-def floor_in_a_bst_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

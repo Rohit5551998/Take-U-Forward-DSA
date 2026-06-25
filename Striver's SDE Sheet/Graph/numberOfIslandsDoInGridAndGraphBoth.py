@@ -44,13 +44,16 @@ TC -> O(), SC -> O()
 """
 
 
-def number_of_islands_do_in_grid_and_graph_both_brute() -> None:
-    pass
+class Solution:
+    def number_of_islands_do_in_grid_and_graph_both_brute(self) -> None:
+        pass
+
+    def number_of_islands_do_in_grid_and_graph_both_better(self) -> None:
+        pass
+
+    def number_of_islands_do_in_grid_and_graph_both_optimal(self) -> None:
+        pass
 
 
-def number_of_islands_do_in_grid_and_graph_both_better() -> None:
-    pass
-
-
-def number_of_islands_do_in_grid_and_graph_both_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

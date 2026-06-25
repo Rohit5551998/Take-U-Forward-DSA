@@ -41,13 +41,16 @@ TC -> O(), SC -> O()
 """
 
 
-def children_sum_property_in_binary_tree_brute() -> None:
-    pass
+class Solution:
+    def children_sum_property_in_binary_tree_brute(self) -> None:
+        pass
+
+    def children_sum_property_in_binary_tree_better(self) -> None:
+        pass
+
+    def children_sum_property_in_binary_tree_optimal(self) -> None:
+        pass
 
 
-def children_sum_property_in_binary_tree_better() -> None:
-    pass
-
-
-def children_sum_property_in_binary_tree_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -54,13 +54,16 @@ TC -> O(), SC -> O()
 """
 
 
-def compare_version_numbers_brute() -> None:
-    pass
+class Solution:
+    def compare_version_numbers_brute(self) -> None:
+        pass
+
+    def compare_version_numbers_better(self) -> None:
+        pass
+
+    def compare_version_numbers_optimal(self) -> None:
+        pass
 
 
-def compare_version_numbers_better() -> None:
-    pass
-
-
-def compare_version_numbers_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

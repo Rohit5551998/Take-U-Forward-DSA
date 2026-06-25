@@ -48,13 +48,16 @@ TC -> O(), SC -> O()
 """
 
 
-def fractional_knapsack_brute() -> None:
-    pass
+class Solution:
+    def fractional_knapsack_brute(self) -> None:
+        pass
+
+    def fractional_knapsack_better(self) -> None:
+        pass
+
+    def fractional_knapsack_optimal(self) -> None:
+        pass
 
 
-def fractional_knapsack_better() -> None:
-    pass
-
-
-def fractional_knapsack_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def single_element_in_sorted_array_brute() -> None:
-    pass
+class Solution:
+    def single_element_in_sorted_array_brute(self) -> None:
+        pass
+
+    def single_element_in_sorted_array_better(self) -> None:
+        pass
+
+    def single_element_in_sorted_array_optimal(self) -> None:
+        pass
 
 
-def single_element_in_sorted_array_better() -> None:
-    pass
-
-
-def single_element_in_sorted_array_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

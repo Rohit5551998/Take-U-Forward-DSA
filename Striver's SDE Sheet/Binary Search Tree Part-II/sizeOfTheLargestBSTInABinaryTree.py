@@ -47,13 +47,16 @@ TC -> O(), SC -> O()
 """
 
 
-def size_of_the_largest_bst_in_a_binary_tree_brute() -> None:
-    pass
+class Solution:
+    def size_of_the_largest_bst_in_a_binary_tree_brute(self) -> None:
+        pass
+
+    def size_of_the_largest_bst_in_a_binary_tree_better(self) -> None:
+        pass
+
+    def size_of_the_largest_bst_in_a_binary_tree_optimal(self) -> None:
+        pass
 
 
-def size_of_the_largest_bst_in_a_binary_tree_better() -> None:
-    pass
-
-
-def size_of_the_largest_bst_in_a_binary_tree_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -46,13 +46,16 @@ TC -> O(), SC -> O()
 """
 
 
-def word_break_brute() -> None:
-    pass
+class Solution:
+    def word_break_brute(self) -> None:
+        pass
+
+    def word_break_better(self) -> None:
+        pass
+
+    def word_break_optimal(self) -> None:
+        pass
 
 
-def word_break_better() -> None:
-    pass
-
-
-def word_break_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

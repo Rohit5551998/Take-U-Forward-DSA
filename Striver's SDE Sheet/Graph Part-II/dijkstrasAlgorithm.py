@@ -30,13 +30,16 @@ TC -> O(), SC -> O()
 """
 
 
-def dijkstras_algorithm_brute() -> None:
-    pass
+class Solution:
+    def dijkstras_algorithm_brute(self) -> None:
+        pass
+
+    def dijkstras_algorithm_better(self) -> None:
+        pass
+
+    def dijkstras_algorithm_optimal(self) -> None:
+        pass
 
 
-def dijkstras_algorithm_better() -> None:
-    pass
-
-
-def dijkstras_algorithm_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

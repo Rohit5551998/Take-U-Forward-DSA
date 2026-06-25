@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def implement_max_heap_brute() -> None:
-    pass
+class Solution:
+    def implement_max_heap_brute(self) -> None:
+        pass
+
+    def implement_max_heap_better(self) -> None:
+        pass
+
+    def implement_max_heap_optimal(self) -> None:
+        pass
 
 
-def implement_max_heap_better() -> None:
-    pass
-
-
-def implement_max_heap_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

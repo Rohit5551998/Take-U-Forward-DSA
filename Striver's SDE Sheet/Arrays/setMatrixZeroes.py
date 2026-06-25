@@ -74,7 +74,6 @@ TC -> O(m*n), SC -> O(1)
   two scalar flags captured up front recover exactly that.
 """
 
-
 from typing import List
 
 # Sentinel placed in cells that must become 0 but were NOT originally 0, so the
@@ -83,88 +82,90 @@ from typing import List
 # with a real value, which keeps the matrix typed as List[List[int]].
 MARKED = -(2**31) - 1
 
-def markRow(row: int, matrix: List[List[int]]) -> None:
-    for j in range(0, len(matrix[0])):
-        if (matrix[row][j] != 0):
-            matrix[row][j] = MARKED
 
-def markCol(col: int, matrix: List[List[int]]) -> None:
-    for i in range(0, len(matrix)):
-        if (matrix[i][col] != 0):
-            matrix[i][col] = MARKED
-
-
-def set_matrix_zeroes_brute(matrix: List[List[int]]) -> List[List[int]]:
-    for i in range(0, len(matrix)):
+class Solution:
+    def markRow(self, row: int, matrix: List[List[int]]) -> None:
         for j in range(0, len(matrix[0])):
-            if (matrix[i][j] == 0):
-                markRow(i, matrix)
-                markCol(j, matrix)
+            if matrix[row][j] != 0:
+                matrix[row][j] = MARKED
 
-    for i in range(0, len(matrix)):
-        for j in range(0, len(matrix[0])):
-            if (matrix[i][j]) == MARKED:
-                matrix[i][j] = 0
-
-    return matrix
-
-
-def set_matrix_zeroes_better(matrix: List[List[int]]) -> List[List[int]]:
-    row = [1 for _ in range(len(matrix))]
-    col = [1 for _ in range(len(matrix[0]))]
-
-    for i in range(0, len(matrix)):
-        for j in range(0, len(matrix[0])):
-            if (matrix[i][j] == 0):
-                row[i] = 0
-                col[j] = 0
-
-    for i in range(0, len(matrix)):
-        for j in range(0, len(matrix[0])):
-            if (row[i] == 0 or col[j] == 0):
-                matrix[i][j] = 0
-
-    return matrix
-
-def set_matrix_zeroes_optimal(matrix: List[List[int]]) -> List[List[int]]:
-    row0 = 1
-    col0 = 1
-
-    for i in range(0, len(matrix)):
-        if (matrix[i][0] == 0):
-            row0 = 0
-            break
-
-    for i in range(0, len(matrix[0])):
-        if (matrix[0][i] == 0):
-            col0 = 0
-            break
-
-    for i in range(1, len(matrix)):
-        for j in range(1, len(matrix[0])):
-            if (matrix[i][j] == 0):
-                matrix[i][0] = 0
-                matrix[0][j] = 0
-
-    for i in range(1, len(matrix)):
-        for j in range(1, len(matrix[0])):
-            if (matrix[i][0] == 0 or matrix[0][j] == 0):
-                matrix[i][j] = 0
-
-    if (row0 == 0):
+    def markCol(self, col: int, matrix: List[List[int]]) -> None:
         for i in range(0, len(matrix)):
-            matrix[i][0] = 0
+            if matrix[i][col] != 0:
+                matrix[i][col] = MARKED
 
+    def set_matrix_zeroes_brute(self, matrix: List[List[int]]) -> List[List[int]]:
+        for i in range(0, len(matrix)):
+            for j in range(0, len(matrix[0])):
+                if matrix[i][j] == 0:
+                    self.markRow(i, matrix)
+                    self.markCol(j, matrix)
 
-    if (col0 == 0):
+        for i in range(0, len(matrix)):
+            for j in range(0, len(matrix[0])):
+                if (matrix[i][j]) == MARKED:
+                    matrix[i][j] = 0
+
+        return matrix
+
+    def set_matrix_zeroes_better(self, matrix: List[List[int]]) -> List[List[int]]:
+        row = [1 for _ in range(len(matrix))]
+        col = [1 for _ in range(len(matrix[0]))]
+
+        for i in range(0, len(matrix)):
+            for j in range(0, len(matrix[0])):
+                if matrix[i][j] == 0:
+                    row[i] = 0
+                    col[j] = 0
+
+        for i in range(0, len(matrix)):
+            for j in range(0, len(matrix[0])):
+                if row[i] == 0 or col[j] == 0:
+                    matrix[i][j] = 0
+
+        return matrix
+
+    def set_matrix_zeroes_optimal(self, matrix: List[List[int]]) -> List[List[int]]:
+        row0 = 1
+        col0 = 1
+
+        for i in range(0, len(matrix)):
+            if matrix[i][0] == 0:
+                row0 = 0
+                break
+
         for i in range(0, len(matrix[0])):
-            matrix[0][i] = 0
+            if matrix[0][i] == 0:
+                col0 = 0
+                break
 
-    return matrix
+        for i in range(1, len(matrix)):
+            for j in range(1, len(matrix[0])):
+                if matrix[i][j] == 0:
+                    matrix[i][0] = 0
+                    matrix[0][j] = 0
 
-matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
-print(set_matrix_zeroes_brute(matrix))
-matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
-print(set_matrix_zeroes_better(matrix))
-matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
-print(set_matrix_zeroes_optimal(matrix))
+        for i in range(1, len(matrix)):
+            for j in range(1, len(matrix[0])):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+
+        if row0 == 0:
+            for i in range(0, len(matrix)):
+                matrix[i][0] = 0
+
+        if col0 == 0:
+            for i in range(0, len(matrix[0])):
+                matrix[0][i] = 0
+
+        return matrix
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    matrix = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
+    print(sol.set_matrix_zeroes_brute(matrix))
+    matrix = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
+    print(sol.set_matrix_zeroes_better(matrix))
+    matrix = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
+    print(sol.set_matrix_zeroes_optimal(matrix))

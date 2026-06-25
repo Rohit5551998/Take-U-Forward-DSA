@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def rod_cutting_problem_brute() -> None:
-    pass
+class Solution:
+    def rod_cutting_problem_brute(self) -> None:
+        pass
+
+    def rod_cutting_problem_better(self) -> None:
+        pass
+
+    def rod_cutting_problem_optimal(self) -> None:
+        pass
 
 
-def rod_cutting_problem_better() -> None:
-    pass
-
-
-def rod_cutting_problem_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

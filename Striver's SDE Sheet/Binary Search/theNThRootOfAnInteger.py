@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def the_n_th_root_of_an_integer_brute() -> None:
-    pass
+class Solution:
+    def the_n_th_root_of_an_integer_brute(self) -> None:
+        pass
+
+    def the_n_th_root_of_an_integer_better(self) -> None:
+        pass
+
+    def the_n_th_root_of_an_integer_optimal(self) -> None:
+        pass
 
 
-def the_n_th_root_of_an_integer_better() -> None:
-    pass
-
-
-def the_n_th_root_of_an_integer_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

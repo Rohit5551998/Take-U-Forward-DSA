@@ -43,13 +43,16 @@ TC -> O(), SC -> O()
 """
 
 
-def merge_k_sorted_arrays_brute() -> None:
-    pass
+class Solution:
+    def merge_k_sorted_arrays_brute(self) -> None:
+        pass
+
+    def merge_k_sorted_arrays_better(self) -> None:
+        pass
+
+    def merge_k_sorted_arrays_optimal(self) -> None:
+        pass
 
 
-def merge_k_sorted_arrays_better() -> None:
-    pass
-
-
-def merge_k_sorted_arrays_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def find_the_starting_point_in_ll_brute() -> None:
-    pass
+class Solution:
+    def find_the_starting_point_in_ll_brute(self) -> None:
+        pass
+
+    def find_the_starting_point_in_ll_better(self) -> None:
+        pass
+
+    def find_the_starting_point_in_ll_optimal(self) -> None:
+        pass
 
 
-def find_the_starting_point_in_ll_better() -> None:
-    pass
-
-
-def find_the_starting_point_in_ll_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

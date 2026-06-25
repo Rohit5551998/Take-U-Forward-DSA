@@ -52,17 +52,23 @@ TC -> O(), SC -> O()
 """
 
 
-def <name>_brute() -> None:
-    pass
+class Solution:
+    def <name>_brute(self) -> None:
+        pass
+
+    def <name>_better(self) -> None:
+        pass
+
+    def <name>_optimal(self) -> None:
+        pass
 
 
-def <name>_better() -> None:
-    pass
-
-
-def <name>_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()
+    # sol.<name>_optimal(...)
 ```
+
+   Approaches are methods of `class Solution`; shared helpers are also methods, called via `self.<helper>(...)`. (This is the `Striver's SDE Sheet/` convention. The `Striver's A2Z Sheet/` is also class-based but names its methods `findSolution`/`findSolution1`/… — match whichever sheet the file lives in.)
 
    The `# QUESTION:` block is the single source of truth for problem text — it syncs to the sheet's tracker UI via that sheet's `sync_notes.py` (when present).
 

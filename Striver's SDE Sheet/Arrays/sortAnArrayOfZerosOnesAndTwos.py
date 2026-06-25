@@ -47,61 +47,63 @@ TC -> O(n), SC -> O(1)
 
 from typing import List
 
-def sort_an_array_of_zeros_ones_and_twos_brute(arr: List[int]) -> List[int]:
-    arr.sort()
-    return arr
+
+class Solution:
+    def sort_an_array_of_zeros_ones_and_twos_brute(self, arr: List[int]) -> List[int]:
+        arr.sort()
+        return arr
+
+    def sort_an_array_of_zeros_ones_and_twos_better(self, arr: List[int]) -> List[int]:
+        hashMap = dict()
+        hashMap[0] = 0
+        hashMap[1] = 0
+        hashMap[2] = 0
+
+        for i in range(0, len(arr)):
+            hashMap[arr[i]] += 1
+
+        i = -1
+        while hashMap[0] != 0:
+            i += 1
+            arr[i] = 0
+            hashMap[0] -= 1
+
+        while hashMap[1] != 0:
+            i += 1
+            arr[i] = 1
+            hashMap[1] -= 1
+
+        while hashMap[2] != 0:
+            i += 1
+            arr[i] = 2
+            hashMap[2] -= 1
+
+        return arr
+
+    def sort_an_array_of_zeros_ones_and_twos_optimal(self, arr: List[int]) -> List[int]:
+        low, mid, high = 0, 0, len(arr) - 1
+
+        while mid <= high:
+            if arr[mid] == 0:
+                arr[low], arr[mid] = arr[mid], arr[low]
+                low += 1
+                mid += 1
+
+            elif arr[mid] == 1:
+                mid += 1
+
+            elif arr[mid] == 2:
+                arr[mid], arr[high] = arr[high], arr[mid]
+                high -= 1
+
+        return arr
 
 
-def sort_an_array_of_zeros_ones_and_twos_better(arr: List[int]) -> List[int]:
-    hashMap = dict()
-
-    for i in range(0, len(arr)):
-        if arr[i] not in hashMap:
-            hashMap[arr[i]] = 0
-        hashMap[arr[i]] += 1
-
-    i = -1
-    while(hashMap[0] != 0):
-        i += 1
-        arr[i] = 0
-        hashMap[0] -= 1 
-
-    while(hashMap[1] != 0):
-        i += 1
-        arr[i] = 1
-        hashMap[1] -= 1 
-
-
-    while(hashMap[2] != 0):
-        i += 1
-        arr[i] = 2
-        hashMap[2] -= 1 
-
-    return arr
-
-
-def sort_an_array_of_zeros_ones_and_twos_optimal(arr: List[int]) -> List[int]:
-    low, mid, high = 0, 0, len(arr)-1
-
-    while(mid <= high):
-        if arr[mid] == 0:
-            arr[low], arr[mid] = arr[mid], arr[low]
-            low += 1
-            mid += 1
-
-        elif arr[mid] == 1:
-            mid += 1
-
-        elif arr[mid] == 2:
-            arr[mid], arr[high] = arr[high], arr[mid]
-            high -= 1
-
-    return arr  
-
-
-arr = [0,1,2,0, 0,1,2,0, 0,1,2,0]
-print(sort_an_array_of_zeros_ones_and_twos_brute(arr))
-arr = [0,1,2,0, 0,1,2,0, 0,1,2,0]
-print(sort_an_array_of_zeros_ones_and_twos_better(arr))
-arr = [0,1,2,0, 0,1,2,0, 0,1,2,0]
-print(sort_an_array_of_zeros_ones_and_twos_optimal(arr))
+if __name__ == "__main__":
+    sol = Solution()
+    arr = [0, 1, 2, 0, 0, 1, 2, 0, 0, 1, 2, 0]
+    print(sol.sort_an_array_of_zeros_ones_and_twos_brute(arr))
+    arr = [0, 1, 2, 0, 0, 1, 2, 0, 0, 1, 2, 0]
+    print(sol.sort_an_array_of_zeros_ones_and_twos_better(arr))
+    arr = [0, 1, 2, 0, 0, 1, 2, 0, 0, 1, 2, 0]
+    print(sol.sort_an_array_of_zeros_ones_and_twos_optimal(arr))

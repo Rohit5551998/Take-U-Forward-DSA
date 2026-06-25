@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def valid_anagram_brute() -> None:
-    pass
+class Solution:
+    def valid_anagram_brute(self) -> None:
+        pass
+
+    def valid_anagram_better(self) -> None:
+        pass
+
+    def valid_anagram_optimal(self) -> None:
+        pass
 
 
-def valid_anagram_better() -> None:
-    pass
-
-
-def valid_anagram_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

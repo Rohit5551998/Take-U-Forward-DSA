@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def k_th_largest_element_in_an_unsorted_array_brute() -> None:
-    pass
+class Solution:
+    def k_th_largest_element_in_an_unsorted_array_brute(self) -> None:
+        pass
+
+    def k_th_largest_element_in_an_unsorted_array_better(self) -> None:
+        pass
+
+    def k_th_largest_element_in_an_unsorted_array_optimal(self) -> None:
+        pass
 
 
-def k_th_largest_element_in_an_unsorted_array_better() -> None:
-    pass
-
-
-def k_th_largest_element_in_an_unsorted_array_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -37,13 +37,16 @@ TC -> O(), SC -> O()
 """
 
 
-def minimum_coins_brute() -> None:
-    pass
+class Solution:
+    def minimum_coins_brute(self) -> None:
+        pass
+
+    def minimum_coins_better(self) -> None:
+        pass
+
+    def minimum_coins_optimal(self) -> None:
+        pass
 
 
-def minimum_coins_better() -> None:
-    pass
-
-
-def minimum_coins_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

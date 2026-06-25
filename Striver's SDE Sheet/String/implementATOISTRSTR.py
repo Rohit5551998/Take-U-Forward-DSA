@@ -51,13 +51,16 @@ TC -> O(), SC -> O()
 """
 
 
-def implement_atoi_strstr_brute() -> None:
-    pass
+class Solution:
+    def implement_atoi_strstr_brute(self) -> None:
+        pass
+
+    def implement_atoi_strstr_better(self) -> None:
+        pass
+
+    def implement_atoi_strstr_optimal(self) -> None:
+        pass
 
 
-def implement_atoi_strstr_better() -> None:
-    pass
-
-
-def implement_atoi_strstr_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

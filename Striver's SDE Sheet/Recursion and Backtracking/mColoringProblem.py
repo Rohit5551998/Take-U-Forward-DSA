@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def m_coloring_problem_brute() -> None:
-    pass
+class Solution:
+    def m_coloring_problem_brute(self) -> None:
+        pass
+
+    def m_coloring_problem_better(self) -> None:
+        pass
+
+    def m_coloring_problem_optimal(self) -> None:
+        pass
 
 
-def m_coloring_problem_better() -> None:
-    pass
-
-
-def m_coloring_problem_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

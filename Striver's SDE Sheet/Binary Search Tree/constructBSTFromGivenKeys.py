@@ -38,13 +38,16 @@ TC -> O(), SC -> O()
 """
 
 
-def construct_bst_from_given_keys_brute() -> None:
-    pass
+class Solution:
+    def construct_bst_from_given_keys_brute(self) -> None:
+        pass
+
+    def construct_bst_from_given_keys_better(self) -> None:
+        pass
+
+    def construct_bst_from_given_keys_optimal(self) -> None:
+        pass
 
 
-def construct_bst_from_given_keys_better() -> None:
-    pass
-
-
-def construct_bst_from_given_keys_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

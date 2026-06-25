@@ -27,13 +27,16 @@ TC -> O(), SC -> O()
 """
 
 
-def bipartite_graph_brute() -> None:
-    pass
+class Solution:
+    def bipartite_graph_brute(self) -> None:
+        pass
+
+    def bipartite_graph_better(self) -> None:
+        pass
+
+    def bipartite_graph_optimal(self) -> None:
+        pass
 
 
-def bipartite_graph_better() -> None:
-    pass
-
-
-def bipartite_graph_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

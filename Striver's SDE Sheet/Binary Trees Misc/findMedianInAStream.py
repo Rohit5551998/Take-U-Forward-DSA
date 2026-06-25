@@ -48,13 +48,16 @@ TC -> O(), SC -> O()
 """
 
 
-def find_median_in_a_stream_brute() -> None:
-    pass
+class Solution:
+    def find_median_in_a_stream_brute(self) -> None:
+        pass
+
+    def find_median_in_a_stream_better(self) -> None:
+        pass
+
+    def find_median_in_a_stream_optimal(self) -> None:
+        pass
 
 
-def find_median_in_a_stream_better() -> None:
-    pass
-
-
-def find_median_in_a_stream_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

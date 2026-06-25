@@ -39,13 +39,16 @@ TC -> O(), SC -> O()
 """
 
 
-def coin_change_ii_brute() -> None:
-    pass
+class Solution:
+    def coin_change_ii_brute(self) -> None:
+        pass
+
+    def coin_change_ii_better(self) -> None:
+        pass
+
+    def coin_change_ii_optimal(self) -> None:
+        pass
 
 
-def coin_change_ii_better() -> None:
-    pass
-
-
-def coin_change_ii_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def dfs_brute() -> None:
-    pass
+class Solution:
+    def dfs_brute(self) -> None:
+        pass
+
+    def dfs_better(self) -> None:
+        pass
+
+    def dfs_optimal(self) -> None:
+        pass
 
 
-def dfs_better() -> None:
-    pass
-
-
-def dfs_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

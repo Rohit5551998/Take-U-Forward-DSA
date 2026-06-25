@@ -36,13 +36,16 @@ TC -> O(), SC -> O()
 """
 
 
-def zig_zag_or_spiral_traversal_brute() -> None:
-    pass
+class Solution:
+    def zig_zag_or_spiral_traversal_brute(self) -> None:
+        pass
+
+    def zig_zag_or_spiral_traversal_better(self) -> None:
+        pass
+
+    def zig_zag_or_spiral_traversal_optimal(self) -> None:
+        pass
 
 
-def zig_zag_or_spiral_traversal_better() -> None:
-    pass
-
-
-def zig_zag_or_spiral_traversal_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

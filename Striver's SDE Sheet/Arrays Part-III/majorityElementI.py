@@ -34,13 +34,16 @@ TC -> O(), SC -> O()
 """
 
 
-def majority_element_i_brute() -> None:
-    pass
+class Solution:
+    def majority_element_i_brute(self) -> None:
+        pass
+
+    def majority_element_i_better(self) -> None:
+        pass
+
+    def majority_element_i_optimal(self) -> None:
+        pass
 
 
-def majority_element_i_better() -> None:
-    pass
-
-
-def majority_element_i_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

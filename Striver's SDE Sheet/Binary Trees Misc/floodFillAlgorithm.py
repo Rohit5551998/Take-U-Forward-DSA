@@ -49,13 +49,16 @@ TC -> O(), SC -> O()
 """
 
 
-def flood_fill_algorithm_brute() -> None:
-    pass
+class Solution:
+    def flood_fill_algorithm_brute(self) -> None:
+        pass
+
+    def flood_fill_algorithm_better(self) -> None:
+        pass
+
+    def flood_fill_algorithm_optimal(self) -> None:
+        pass
 
 
-def flood_fill_algorithm_better() -> None:
-    pass
-
-
-def flood_fill_algorithm_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

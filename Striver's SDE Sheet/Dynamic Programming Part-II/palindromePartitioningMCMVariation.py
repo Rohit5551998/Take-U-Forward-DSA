@@ -45,13 +45,16 @@ TC -> O(), SC -> O()
 """
 
 
-def palindrome_partitioning_mcm_variation_brute() -> None:
-    pass
+class Solution:
+    def palindrome_partitioning_mcm_variation_brute(self) -> None:
+        pass
+
+    def palindrome_partitioning_mcm_variation_better(self) -> None:
+        pass
+
+    def palindrome_partitioning_mcm_variation_optimal(self) -> None:
+        pass
 
 
-def palindrome_partitioning_mcm_variation_better() -> None:
-    pass
-
-
-def palindrome_partitioning_mcm_variation_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

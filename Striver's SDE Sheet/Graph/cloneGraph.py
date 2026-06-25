@@ -53,13 +53,16 @@ TC -> O(), SC -> O()
 """
 
 
-def clone_graph_brute() -> None:
-    pass
+class Solution:
+    def clone_graph_brute(self) -> None:
+        pass
+
+    def clone_graph_better(self) -> None:
+        pass
+
+    def clone_graph_optimal(self) -> None:
+        pass
 
 
-def clone_graph_better() -> None:
-    pass
-
-
-def clone_graph_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -45,13 +45,16 @@ TC -> O(), SC -> O()
 """
 
 
-def serialize_and_de_serialize_bt_brute() -> None:
-    pass
+class Solution:
+    def serialize_and_de_serialize_bt_brute(self) -> None:
+        pass
+
+    def serialize_and_de_serialize_bt_better(self) -> None:
+        pass
+
+    def serialize_and_de_serialize_bt_optimal(self) -> None:
+        pass
 
 
-def serialize_and_de_serialize_bt_better() -> None:
-    pass
-
-
-def serialize_and_de_serialize_bt_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

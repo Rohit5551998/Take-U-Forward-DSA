@@ -61,32 +61,33 @@ TC -> O(n^2), SC -> O(n^2) for the output  (n rows, the i-th of length i, so
   factorial computation into O(n) per row / O(n^2) overall.
 """
 
-
 from typing import List
 
-def pascals_triangle_i_variant_i(row: int, col: int) -> int:
-    ans = 1
-    for j in range(1, col):
-        ans *= (row - j) / (j)
-    return int(ans)
+
+class Solution:
+    def pascals_triangle_i_variant_i(self, row: int, col: int) -> int:
+        ans = 1
+        for j in range(1, col):
+            ans *= (row - j) / (j)
+        return int(ans)
+
+    def pascals_triangle_i_variant_ii(self, row: int) -> List[int]:
+        res = [1]
+        ans = 1
+        for i in range(1, row):
+            ans *= (row - i) / i
+            res.append(round(ans))
+        return res
+
+    def pascals_triangle_i_variant_iii(self, rows: int) -> List[List[int]]:
+        res = []
+        for i in range(1, rows + 1):
+            res.append(self.pascals_triangle_i_variant_ii(i))
+        return res
 
 
-def pascals_triangle_i_variant_ii(row: int) -> List[int]:
-    res = [1]
-    ans = 1
-    for i in range(1, row):
-        ans *= (row - i)/i
-        res.append(round(ans))
-    return res
-
-
-def pascals_triangle_i_variant_iii(rows: int) -> List[List[int]]:
-    res = []
-    for i in range(1, rows+1):
-        res.append(pascals_triangle_i_variant_ii(i))
-    return res
-
-
-print(pascals_triangle_i_variant_i(5,3))
-print(pascals_triangle_i_variant_ii(5))
-print(pascals_triangle_i_variant_iii(12))
+if __name__ == "__main__":
+    sol = Solution()
+    print(sol.pascals_triangle_i_variant_i(5, 3))
+    print(sol.pascals_triangle_i_variant_ii(5))
+    print(sol.pascals_triangle_i_variant_iii(12))

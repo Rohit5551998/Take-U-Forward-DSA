@@ -47,13 +47,16 @@ TC -> O(), SC -> O()
 """
 
 
-def find_the_duplicate_number_brute() -> None:
-    pass
+class Solution:
+    def find_the_duplicate_number_brute(self) -> None:
+        pass
+
+    def find_the_duplicate_number_better(self) -> None:
+        pass
+
+    def find_the_duplicate_number_optimal(self) -> None:
+        pass
 
 
-def find_the_duplicate_number_better() -> None:
-    pass
-
-
-def find_the_duplicate_number_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

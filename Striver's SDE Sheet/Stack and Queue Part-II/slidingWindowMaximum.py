@@ -40,13 +40,16 @@ TC -> O(), SC -> O()
 """
 
 
-def sliding_window_maximum_brute() -> None:
-    pass
+class Solution:
+    def sliding_window_maximum_brute(self) -> None:
+        pass
+
+    def sliding_window_maximum_better(self) -> None:
+        pass
+
+    def sliding_window_maximum_optimal(self) -> None:
+        pass
 
 
-def sliding_window_maximum_better() -> None:
-    pass
-
-
-def sliding_window_maximum_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -46,13 +46,16 @@ TC -> O(), SC -> O()
 """
 
 
-def super_egg_drop_brute() -> None:
-    pass
+class Solution:
+    def super_egg_drop_brute(self) -> None:
+        pass
+
+    def super_egg_drop_better(self) -> None:
+        pass
+
+    def super_egg_drop_optimal(self) -> None:
+        pass
 
 
-def super_egg_drop_better() -> None:
-    pass
-
-
-def super_egg_drop_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

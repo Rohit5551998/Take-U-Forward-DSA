@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def find_middle_of_linked_list_brute() -> None:
-    pass
+class Solution:
+    def find_middle_of_linked_list_brute(self) -> None:
+        pass
+
+    def find_middle_of_linked_list_better(self) -> None:
+        pass
+
+    def find_middle_of_linked_list_optimal(self) -> None:
+        pass
 
 
-def find_middle_of_linked_list_better() -> None:
-    pass
-
-
-def find_middle_of_linked_list_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

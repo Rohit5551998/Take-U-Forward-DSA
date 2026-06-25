@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def sudoku_solver_brute() -> None:
-    pass
+class Solution:
+    def sudoku_solver_brute(self) -> None:
+        pass
+
+    def sudoku_solver_better(self) -> None:
+        pass
+
+    def sudoku_solver_optimal(self) -> None:
+        pass
 
 
-def sudoku_solver_better() -> None:
-    pass
-
-
-def sudoku_solver_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

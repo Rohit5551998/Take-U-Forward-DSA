@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def rotten_oranges_brute() -> None:
-    pass
+class Solution:
+    def rotten_oranges_brute(self) -> None:
+        pass
+
+    def rotten_oranges_better(self) -> None:
+        pass
+
+    def rotten_oranges_optimal(self) -> None:
+        pass
 
 
-def rotten_oranges_better() -> None:
-    pass
-
-
-def rotten_oranges_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def rotate_matrix_by_ninezero_degrees_brute() -> None:
-    pass
+class Solution:
+    def rotate_matrix_by_ninezero_degrees_brute(self) -> None:
+        pass
+
+    def rotate_matrix_by_ninezero_degrees_better(self) -> None:
+        pass
+
+    def rotate_matrix_by_ninezero_degrees_optimal(self) -> None:
+        pass
 
 
-def rotate_matrix_by_ninezero_degrees_better() -> None:
-    pass
-
-
-def rotate_matrix_by_ninezero_degrees_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

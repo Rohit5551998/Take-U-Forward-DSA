@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def zero_and_one_knapsack_brute() -> None:
-    pass
+class Solution:
+    def zero_and_one_knapsack_brute(self) -> None:
+        pass
+
+    def zero_and_one_knapsack_better(self) -> None:
+        pass
+
+    def zero_and_one_knapsack_optimal(self) -> None:
+        pass
 
 
-def zero_and_one_knapsack_better() -> None:
-    pass
-
-
-def zero_and_one_knapsack_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

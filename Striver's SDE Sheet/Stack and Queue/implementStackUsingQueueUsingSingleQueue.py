@@ -41,13 +41,16 @@ TC -> O(), SC -> O()
 """
 
 
-def implement_stack_using_queue_using_single_queue_brute() -> None:
-    pass
+class Solution:
+    def implement_stack_using_queue_using_single_queue_brute(self) -> None:
+        pass
+
+    def implement_stack_using_queue_using_single_queue_better(self) -> None:
+        pass
+
+    def implement_stack_using_queue_using_single_queue_optimal(self) -> None:
+        pass
 
 
-def implement_stack_using_queue_using_single_queue_better() -> None:
-    pass
-
-
-def implement_stack_using_queue_using_single_queue_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def rat_in_a_maze_brute() -> None:
-    pass
+class Solution:
+    def rat_in_a_maze_brute(self) -> None:
+        pass
+
+    def rat_in_a_maze_better(self) -> None:
+        pass
+
+    def rat_in_a_maze_optimal(self) -> None:
+        pass
 
 
-def rat_in_a_maze_better() -> None:
-    pass
-
-
-def rat_in_a_maze_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

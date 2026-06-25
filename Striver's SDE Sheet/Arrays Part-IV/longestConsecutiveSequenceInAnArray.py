@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def longest_consecutive_sequence_in_an_array_brute() -> None:
-    pass
+class Solution:
+    def longest_consecutive_sequence_in_an_array_brute(self) -> None:
+        pass
+
+    def longest_consecutive_sequence_in_an_array_better(self) -> None:
+        pass
+
+    def longest_consecutive_sequence_in_an_array_optimal(self) -> None:
+        pass
 
 
-def longest_consecutive_sequence_in_an_array_better() -> None:
-    pass
-
-
-def longest_consecutive_sequence_in_an_array_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

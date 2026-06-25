@@ -46,13 +46,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_of_minimums_for_every_window_size_brute() -> None:
-    pass
+class Solution:
+    def maximum_of_minimums_for_every_window_size_brute(self) -> None:
+        pass
+
+    def maximum_of_minimums_for_every_window_size_better(self) -> None:
+        pass
+
+    def maximum_of_minimums_for_every_window_size_optimal(self) -> None:
+        pass
 
 
-def maximum_of_minimums_for_every_window_size_better() -> None:
-    pass
-
-
-def maximum_of_minimums_for_every_window_size_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

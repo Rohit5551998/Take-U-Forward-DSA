@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def check_if_ll_is_palindrome_or_not_brute() -> None:
-    pass
+class Solution:
+    def check_if_ll_is_palindrome_or_not_brute(self) -> None:
+        pass
+
+    def check_if_ll_is_palindrome_or_not_better(self) -> None:
+        pass
+
+    def check_if_ll_is_palindrome_or_not_optimal(self) -> None:
+        pass
 
 
-def check_if_ll_is_palindrome_or_not_better() -> None:
-    pass
-
-
-def check_if_ll_is_palindrome_or_not_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

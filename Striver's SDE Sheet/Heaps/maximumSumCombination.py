@@ -39,13 +39,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_sum_combination_brute() -> None:
-    pass
+class Solution:
+    def maximum_sum_combination_brute(self) -> None:
+        pass
+
+    def maximum_sum_combination_better(self) -> None:
+        pass
+
+    def maximum_sum_combination_optimal(self) -> None:
+        pass
 
 
-def maximum_sum_combination_better() -> None:
-    pass
-
-
-def maximum_sum_combination_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

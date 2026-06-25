@@ -40,13 +40,16 @@ TC -> O(), SC -> O()
 """
 
 
-def flatten_binary_tree_to_linked_list_brute() -> None:
-    pass
+class Solution:
+    def flatten_binary_tree_to_linked_list_brute(self) -> None:
+        pass
+
+    def flatten_binary_tree_to_linked_list_better(self) -> None:
+        pass
+
+    def flatten_binary_tree_to_linked_list_optimal(self) -> None:
+        pass
 
 
-def flatten_binary_tree_to_linked_list_better() -> None:
-    pass
-
-
-def flatten_binary_tree_to_linked_list_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

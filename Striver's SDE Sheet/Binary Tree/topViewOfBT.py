@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def top_view_of_bt_brute() -> None:
-    pass
+class Solution:
+    def top_view_of_bt_brute(self) -> None:
+        pass
+
+    def top_view_of_bt_better(self) -> None:
+        pass
+
+    def top_view_of_bt_optimal(self) -> None:
+        pass
 
 
-def top_view_of_bt_better() -> None:
-    pass
-
-
-def top_view_of_bt_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

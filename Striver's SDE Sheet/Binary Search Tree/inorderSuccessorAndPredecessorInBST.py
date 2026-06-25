@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def inorder_successor_and_predecessor_in_bst_brute() -> None:
-    pass
+class Solution:
+    def inorder_successor_and_predecessor_in_bst_brute(self) -> None:
+        pass
+
+    def inorder_successor_and_predecessor_in_bst_better(self) -> None:
+        pass
+
+    def inorder_successor_and_predecessor_in_bst_optimal(self) -> None:
+        pass
 
 
-def inorder_successor_and_predecessor_in_bst_better() -> None:
-    pass
-
-
-def inorder_successor_and_predecessor_in_bst_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

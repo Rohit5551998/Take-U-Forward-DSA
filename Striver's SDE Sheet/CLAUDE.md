@@ -57,5 +57,6 @@ All 27 topic directories and 191 scaffold .py files are pre-generated.
 ## Notes Sync
 
 - `sync_notes.py` walks `Day */*.py`, extracts each file's `# QUESTION:` block and docstring, and writes them as `q` and `n` fields on matching DATA entries in `index.html`
-- A file is considered "fully solved" when `_brute`, `_better`, `_optimal` all have real implementations (use `# SKIP: <reason>` to skip `_brute`/`_better`; `_optimal` is always required)
+- Solutions live in a `class Solution` (LeetCode-style); the `_brute`/`_better`/`_optimal` approaches and any helpers are its methods, and each file ends with an `if __name__ == "__main__":` block that instantiates `Solution()`. `sync_notes.py` detects methods via `ast.walk`, so this works transparently.
+- A file is considered "fully solved" when the `_brute`, `_better`, `_optimal` methods all have real implementations (use `# SKIP: <reason>` to skip `_brute`/`_better`; `_optimal` is always required)
 - Run: `python3 sync_notes.py` from this directory

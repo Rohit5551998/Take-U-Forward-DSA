@@ -42,13 +42,16 @@ TC -> O(), SC -> O()
 """
 
 
-def grid_unique_paths_brute() -> None:
-    pass
+class Solution:
+    def grid_unique_paths_brute(self) -> None:
+        pass
+
+    def grid_unique_paths_better(self) -> None:
+        pass
+
+    def grid_unique_paths_optimal(self) -> None:
+        pass
 
 
-def grid_unique_paths_better() -> None:
-    pass
-
-
-def grid_unique_paths_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

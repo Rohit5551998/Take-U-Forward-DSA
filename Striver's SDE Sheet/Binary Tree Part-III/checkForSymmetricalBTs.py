@@ -39,13 +39,16 @@ TC -> O(), SC -> O()
 """
 
 
-def check_for_symmetrical_bts_brute() -> None:
-    pass
+class Solution:
+    def check_for_symmetrical_bts_brute(self) -> None:
+        pass
+
+    def check_for_symmetrical_bts_better(self) -> None:
+        pass
+
+    def check_for_symmetrical_bts_optimal(self) -> None:
+        pass
 
 
-def check_for_symmetrical_bts_better() -> None:
-    pass
-
-
-def check_for_symmetrical_bts_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

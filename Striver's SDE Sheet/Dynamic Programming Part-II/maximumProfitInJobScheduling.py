@@ -44,13 +44,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_profit_in_job_scheduling_brute() -> None:
-    pass
+class Solution:
+    def maximum_profit_in_job_scheduling_brute(self) -> None:
+        pass
+
+    def maximum_profit_in_job_scheduling_better(self) -> None:
+        pass
+
+    def maximum_profit_in_job_scheduling_optimal(self) -> None:
+        pass
 
 
-def maximum_profit_in_job_scheduling_better() -> None:
-    pass
-
-
-def maximum_profit_in_job_scheduling_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

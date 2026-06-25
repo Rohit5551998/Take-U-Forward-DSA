@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def detect_a_loop_in_ll_brute() -> None:
-    pass
+class Solution:
+    def detect_a_loop_in_ll_brute(self) -> None:
+        pass
+
+    def detect_a_loop_in_ll_better(self) -> None:
+        pass
+
+    def detect_a_loop_in_ll_optimal(self) -> None:
+        pass
 
 
-def detect_a_loop_in_ll_better() -> None:
-    pass
-
-
-def detect_a_loop_in_ll_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -44,13 +44,16 @@ TC -> O(), SC -> O()
 """
 
 
-def implement_queue_using_arrays_brute() -> None:
-    pass
+class Solution:
+    def implement_queue_using_arrays_brute(self) -> None:
+        pass
+
+    def implement_queue_using_arrays_better(self) -> None:
+        pass
+
+    def implement_queue_using_arrays_optimal(self) -> None:
+        pass
 
 
-def implement_queue_using_arrays_better() -> None:
-    pass
-
-
-def implement_queue_using_arrays_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

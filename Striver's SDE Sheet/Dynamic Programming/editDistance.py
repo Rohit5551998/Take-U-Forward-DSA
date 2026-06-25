@@ -46,13 +46,16 @@ TC -> O(), SC -> O()
 """
 
 
-def edit_distance_brute() -> None:
-    pass
+class Solution:
+    def edit_distance_brute(self) -> None:
+        pass
+
+    def edit_distance_better(self) -> None:
+        pass
+
+    def edit_distance_optimal(self) -> None:
+        pass
 
 
-def edit_distance_better() -> None:
-    pass
-
-
-def edit_distance_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

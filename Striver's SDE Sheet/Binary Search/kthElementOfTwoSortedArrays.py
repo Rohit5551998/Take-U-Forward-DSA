@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def kth_element_of_two_sorted_arrays_brute() -> None:
-    pass
+class Solution:
+    def kth_element_of_two_sorted_arrays_brute(self) -> None:
+        pass
+
+    def kth_element_of_two_sorted_arrays_better(self) -> None:
+        pass
+
+    def kth_element_of_two_sorted_arrays_optimal(self) -> None:
+        pass
 
 
-def kth_element_of_two_sorted_arrays_better() -> None:
-    pass
-
-
-def kth_element_of_two_sorted_arrays_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

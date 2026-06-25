@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def aggressive_cows_brute() -> None:
-    pass
+class Solution:
+    def aggressive_cows_brute(self) -> None:
+        pass
+
+    def aggressive_cows_better(self) -> None:
+        pass
+
+    def aggressive_cows_optimal(self) -> None:
+        pass
 
 
-def aggressive_cows_better() -> None:
-    pass
-
-
-def aggressive_cows_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

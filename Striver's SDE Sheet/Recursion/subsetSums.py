@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def subset_sums_brute() -> None:
-    pass
+class Solution:
+    def subset_sums_brute(self) -> None:
+        pass
+
+    def subset_sums_better(self) -> None:
+        pass
+
+    def subset_sums_optimal(self) -> None:
+        pass
 
 
-def subset_sums_better() -> None:
-    pass
-
-
-def subset_sums_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

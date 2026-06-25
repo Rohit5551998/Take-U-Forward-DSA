@@ -40,13 +40,16 @@ TC -> O(), SC -> O()
 """
 
 
-def allocate_minimum_number_of_pages_brute() -> None:
-    pass
+class Solution:
+    def allocate_minimum_number_of_pages_brute(self) -> None:
+        pass
+
+    def allocate_minimum_number_of_pages_better(self) -> None:
+        pass
+
+    def allocate_minimum_number_of_pages_optimal(self) -> None:
+        pass
 
 
-def allocate_minimum_number_of_pages_better() -> None:
-    pass
-
-
-def allocate_minimum_number_of_pages_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

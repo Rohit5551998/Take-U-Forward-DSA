@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def trapping_rainwater_brute() -> None:
-    pass
+class Solution:
+    def trapping_rainwater_brute(self) -> None:
+        pass
+
+    def trapping_rainwater_better(self) -> None:
+        pass
+
+    def trapping_rainwater_optimal(self) -> None:
+        pass
 
 
-def trapping_rainwater_better() -> None:
-    pass
-
-
-def trapping_rainwater_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

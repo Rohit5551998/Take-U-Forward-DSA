@@ -15,9 +15,11 @@ Each sheet directory has its own `index.html` tracker, `sync_notes.py`, and shee
 
 - Language: Python
 - All functions must have type annotations
-- Each solution file has three separate functions: `<name>_brute`, `<name>_better`, `<name>_optimal`
+- Each solution file defines a `class Solution` (LeetCode-style). The approaches are its methods, and shared helpers are methods invoked via `self.<helper>(...)`. A trailing `if __name__ == "__main__":` block instantiates `Solution()` and runs sample input.
+- Method naming differs by sheet (both are class-based): the `Striver's SDE Sheet/` uses `<name>_brute`, `<name>_better`, `<name>_optimal`; the `Striver's A2Z Sheet/` uses `findSolution`, `findSolution1`, `findSolution2`, … (brute → optimal).
+- "Implement-a-class" problems (linked lists, LRU/LFU cache, stacks/queues) keep their domain class — `Node`, `LRUCache`, etc. — alongside or instead of `Solution`.
 - Filenames are camelCase, matching the problem name (e.g., `setMatrixZeroes.py`, `nextPermutation.py`)
-- Every solution file MUST start with a `# QUESTION:` block (the source of truth for problem text — synced to the sheet's tracker) followed by a multi-approach docstring:
+- Every solution file MUST start with a `# QUESTION:` block (the source of truth for problem text — synced to the sheet's tracker) followed by a multi-approach docstring, then the `class Solution`:
 
 ```python
 # QUESTION: <Problem Name>
@@ -42,11 +44,27 @@ TC -> O(), SC -> O()
 #KEY INSIGHT:
 - <core idea that makes the optimal solution work>
 """
+
+
+class Solution:
+    def <name>_brute(self) -> None:
+        pass
+
+    def <name>_better(self) -> None:
+        pass
+
+    def <name>_optimal(self) -> None:
+        pass
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    # sol.<name>_optimal(...)
 ```
 
 - Only fill in notes for approaches the user has actually written — do NOT pre-fill or reveal approaches they haven't implemented yet
 - Notes style: numbered steps in pseudo-code + english, with `TC -> O(), SC -> O()` at end
-- Use `# SKIP: <reason>` inside a `_brute` or `_better` function to mark it intentionally skipped (the `_optimal` function is always required)
+- Use `# SKIP: <reason>` inside a `_brute` or `_better` method to mark it intentionally skipped (the `_optimal` method is always required)
 
 ## Skills (in `.claude/skills/`, shared across sheets)
 

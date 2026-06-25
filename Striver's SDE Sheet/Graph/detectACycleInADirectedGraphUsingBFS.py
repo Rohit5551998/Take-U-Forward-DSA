@@ -25,13 +25,16 @@ TC -> O(), SC -> O()
 """
 
 
-def detect_a_cycle_in_a_directed_graph_using_bfs_brute() -> None:
-    pass
+class Solution:
+    def detect_a_cycle_in_a_directed_graph_using_bfs_brute(self) -> None:
+        pass
+
+    def detect_a_cycle_in_a_directed_graph_using_bfs_better(self) -> None:
+        pass
+
+    def detect_a_cycle_in_a_directed_graph_using_bfs_optimal(self) -> None:
+        pass
 
 
-def detect_a_cycle_in_a_directed_graph_using_bfs_better() -> None:
-    pass
-
-
-def detect_a_cycle_in_a_directed_graph_using_bfs_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

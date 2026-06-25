@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_xor_of_two_numbers_in_an_array_brute() -> None:
-    pass
+class Solution:
+    def maximum_xor_of_two_numbers_in_an_array_brute(self) -> None:
+        pass
+
+    def maximum_xor_of_two_numbers_in_an_array_better(self) -> None:
+        pass
+
+    def maximum_xor_of_two_numbers_in_an_array_optimal(self) -> None:
+        pass
 
 
-def maximum_xor_of_two_numbers_in_an_array_better() -> None:
-    pass
-
-
-def maximum_xor_of_two_numbers_in_an_array_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

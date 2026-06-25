@@ -34,13 +34,16 @@ TC -> O(), SC -> O()
 """
 
 
-def search_in_a_twod_matrix_brute() -> None:
-    pass
+class Solution:
+    def search_in_a_twod_matrix_brute(self) -> None:
+        pass
+
+    def search_in_a_twod_matrix_better(self) -> None:
+        pass
+
+    def search_in_a_twod_matrix_optimal(self) -> None:
+        pass
 
 
-def search_in_a_twod_matrix_better() -> None:
-    pass
-
-
-def search_in_a_twod_matrix_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

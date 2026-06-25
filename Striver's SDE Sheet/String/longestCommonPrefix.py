@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def longest_common_prefix_brute() -> None:
-    pass
+class Solution:
+    def longest_common_prefix_brute(self) -> None:
+        pass
+
+    def longest_common_prefix_better(self) -> None:
+        pass
+
+    def longest_common_prefix_optimal(self) -> None:
+        pass
 
 
-def longest_common_prefix_better() -> None:
-    pass
-
-
-def longest_common_prefix_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

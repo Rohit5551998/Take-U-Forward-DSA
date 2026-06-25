@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def pow_x_n_brute() -> None:
-    pass
+class Solution:
+    def pow_x_n_brute(self) -> None:
+        pass
+
+    def pow_x_n_better(self) -> None:
+        pass
+
+    def pow_x_n_optimal(self) -> None:
+        pass
 
 
-def pow_x_n_better() -> None:
-    pass
-
-
-def pow_x_n_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

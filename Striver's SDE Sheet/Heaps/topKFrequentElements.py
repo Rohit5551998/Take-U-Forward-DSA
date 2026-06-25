@@ -47,13 +47,16 @@ TC -> O(), SC -> O()
 """
 
 
-def top_k_frequent_elements_brute() -> None:
-    pass
+class Solution:
+    def top_k_frequent_elements_brute(self) -> None:
+        pass
+
+    def top_k_frequent_elements_better(self) -> None:
+        pass
+
+    def top_k_frequent_elements_optimal(self) -> None:
+        pass
 
 
-def top_k_frequent_elements_better() -> None:
-    pass
-
-
-def top_k_frequent_elements_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

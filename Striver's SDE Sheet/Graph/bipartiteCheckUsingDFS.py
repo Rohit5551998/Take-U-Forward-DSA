@@ -28,13 +28,16 @@ TC -> O(), SC -> O()
 """
 
 
-def bipartite_check_using_dfs_brute() -> None:
-    pass
+class Solution:
+    def bipartite_check_using_dfs_brute(self) -> None:
+        pass
+
+    def bipartite_check_using_dfs_better(self) -> None:
+        pass
+
+    def bipartite_check_using_dfs_optimal(self) -> None:
+        pass
 
 
-def bipartite_check_using_dfs_better() -> None:
-    pass
-
-
-def bipartite_check_using_dfs_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

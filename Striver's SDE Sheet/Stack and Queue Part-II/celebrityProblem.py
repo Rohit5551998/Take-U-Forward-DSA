@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def celebrity_problem_brute() -> None:
-    pass
+class Solution:
+    def celebrity_problem_brute(self) -> None:
+        pass
+
+    def celebrity_problem_better(self) -> None:
+        pass
+
+    def celebrity_problem_optimal(self) -> None:
+        pass
 
 
-def celebrity_problem_better() -> None:
-    pass
-
-
-def celebrity_problem_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

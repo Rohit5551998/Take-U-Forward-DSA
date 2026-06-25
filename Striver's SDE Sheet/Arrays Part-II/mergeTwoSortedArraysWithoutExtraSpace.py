@@ -32,13 +32,16 @@ TC -> O(), SC -> O()
 """
 
 
-def merge_two_sorted_arrays_without_extra_space_brute() -> None:
-    pass
+class Solution:
+    def merge_two_sorted_arrays_without_extra_space_brute(self) -> None:
+        pass
+
+    def merge_two_sorted_arrays_without_extra_space_better(self) -> None:
+        pass
+
+    def merge_two_sorted_arrays_without_extra_space_optimal(self) -> None:
+        pass
 
 
-def merge_two_sorted_arrays_without_extra_space_better() -> None:
-    pass
-
-
-def merge_two_sorted_arrays_without_extra_space_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

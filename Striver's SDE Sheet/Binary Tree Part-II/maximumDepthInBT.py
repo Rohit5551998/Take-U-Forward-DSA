@@ -37,13 +37,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_depth_in_bt_brute() -> None:
-    pass
+class Solution:
+    def maximum_depth_in_bt_brute(self) -> None:
+        pass
+
+    def maximum_depth_in_bt_better(self) -> None:
+        pass
+
+    def maximum_depth_in_bt_optimal(self) -> None:
+        pass
 
 
-def maximum_depth_in_bt_better() -> None:
-    pass
-
-
-def maximum_depth_in_bt_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -36,13 +36,16 @@ TC -> O(), SC -> O()
 """
 
 
-def clone_a_ll_with_random_and_next_pointer_brute() -> None:
-    pass
+class Solution:
+    def clone_a_ll_with_random_and_next_pointer_brute(self) -> None:
+        pass
+
+    def clone_a_ll_with_random_and_next_pointer_better(self) -> None:
+        pass
+
+    def clone_a_ll_with_random_and_next_pointer_optimal(self) -> None:
+        pass
 
 
-def clone_a_ll_with_random_and_next_pointer_better() -> None:
-    pass
-
-
-def clone_a_ll_with_random_and_next_pointer_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

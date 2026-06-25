@@ -39,13 +39,16 @@ TC -> O(), SC -> O()
 """
 
 
-def four_sum_brute() -> None:
-    pass
+class Solution:
+    def four_sum_brute(self) -> None:
+        pass
+
+    def four_sum_better(self) -> None:
+        pass
+
+    def four_sum_optimal(self) -> None:
+        pass
 
 
-def four_sum_better() -> None:
-    pass
-
-
-def four_sum_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

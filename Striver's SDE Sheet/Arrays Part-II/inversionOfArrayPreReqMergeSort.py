@@ -45,13 +45,16 @@ TC -> O(), SC -> O()
 """
 
 
-def inversion_of_array_pre_req_merge_sort_brute() -> None:
-    pass
+class Solution:
+    def inversion_of_array_pre_req_merge_sort_brute(self) -> None:
+        pass
+
+    def inversion_of_array_pre_req_merge_sort_better(self) -> None:
+        pass
+
+    def inversion_of_array_pre_req_merge_sort_optimal(self) -> None:
+        pass
 
 
-def inversion_of_array_pre_req_merge_sort_better() -> None:
-    pass
-
-
-def inversion_of_array_pre_req_merge_sort_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

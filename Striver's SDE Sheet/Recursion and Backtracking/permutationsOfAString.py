@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def permutations_of_a_string_brute() -> None:
-    pass
+class Solution:
+    def permutations_of_a_string_brute(self) -> None:
+        pass
+
+    def permutations_of_a_string_better(self) -> None:
+        pass
+
+    def permutations_of_a_string_optimal(self) -> None:
+        pass
 
 
-def permutations_of_a_string_better() -> None:
-    pass
-
-
-def permutations_of_a_string_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

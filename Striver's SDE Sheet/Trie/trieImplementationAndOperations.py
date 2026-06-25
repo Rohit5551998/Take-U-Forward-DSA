@@ -49,13 +49,16 @@ TC -> O(), SC -> O()
 """
 
 
-def trie_implementation_and_operations_brute() -> None:
-    pass
+class Solution:
+    def trie_implementation_and_operations_brute(self) -> None:
+        pass
+
+    def trie_implementation_and_operations_better(self) -> None:
+        pass
+
+    def trie_implementation_and_operations_optimal(self) -> None:
+        pass
 
 
-def trie_implementation_and_operations_better() -> None:
-    pass
-
-
-def trie_implementation_and_operations_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

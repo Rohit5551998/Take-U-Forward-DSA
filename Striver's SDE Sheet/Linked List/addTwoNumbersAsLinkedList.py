@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def add_two_numbers_as_linkedlist_brute() -> None:
-    pass
+class Solution:
+    def add_two_numbers_as_linkedlist_brute(self) -> None:
+        pass
+
+    def add_two_numbers_as_linkedlist_better(self) -> None:
+        pass
+
+    def add_two_numbers_as_linkedlist_optimal(self) -> None:
+        pass
 
 
-def add_two_numbers_as_linkedlist_better() -> None:
-    pass
-
-
-def add_two_numbers_as_linkedlist_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def kth_largest_element_in_a_stream_of_running_integers_brute() -> None:
-    pass
+class Solution:
+    def kth_largest_element_in_a_stream_of_running_integers_brute(self) -> None:
+        pass
+
+    def kth_largest_element_in_a_stream_of_running_integers_better(self) -> None:
+        pass
+
+    def kth_largest_element_in_a_stream_of_running_integers_optimal(self) -> None:
+        pass
 
 
-def kth_largest_element_in_a_stream_of_running_integers_better() -> None:
-    pass
-
-
-def kth_largest_element_in_a_stream_of_running_integers_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

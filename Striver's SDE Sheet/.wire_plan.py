@@ -23,79 +23,318 @@ PLAN: list[tuple[int, str, list[str]]] = [
     # Week 1 (15)
     (1, "Mon", ["Set Matrix Zeroes", "Pascal's Triangle I"]),
     (1, "Wed", ["Next Permutation", "Kadane's Algorithm"]),
+    (
+        1,
+        "Thu",
+        [
+            "Rotate matrix by 90 degrees",
+            "Merge Overlapping Subintervals",
+            "Merge two sorted arrays without extra space",
+        ],
+    ),
     (1, "Fri", ["Sort an array of 0's 1's and 2's", "Stock Buy and Sell"]),
-    (1, "Sat", ["Rotate matrix by 90 degrees", "Merge Overlapping Subintervals", "Merge two sorted arrays without extra space"]),
-    (1, "Sun", ["Find the Duplicate Number", "Find the repeating and missing number", "Inversion of Array (Pre-req: Merge Sort)", "Search in a 2D matrix", "Pow(x, n)", "Majority Element-I"]),
+    (
+        1,
+        "Sat",
+        [
+            "Find the Duplicate Number",
+            "Find the repeating and missing number",
+            "Inversion of Array (Pre-req: Merge Sort)",
+        ],
+    ),
+    (1, "Sun", ["Search in a 2D matrix", "Pow(x, n)", "Majority Element-I"]),
     # Week 2 (15)
     (2, "Mon", ["Majority Element-II", "Grid unique paths"]),
+    (2, "Tue", ["Reverse a LL", "Find Middle of Linked List", "Merge two Sorted Lists"]),
     (2, "Wed", ["Reverse Pairs", "Two Sum"]),
     (2, "Fri", ["4 Sum", "Longest Consecutive Sequence in an Array"]),
-    (2, "Sat", ["Largest Subarray with K sum", "Count subarrays with given xor K", "Longest Substring Without Repeating Characters"]),
-    (2, "Sun", ["Reverse a LL", "Find Middle of Linked List", "Merge two Sorted Lists", "Remove Nth node from the back of the LL", "Add two numbers as LinkedList", "Delete Node in a Linked List O(1)"]),
+    (
+        2,
+        "Sat",
+        [
+            "Largest Subarray with K sum",
+            "Count subarrays with given xor K",
+            "Longest Substring Without Repeating Characters",
+        ],
+    ),
+    (
+        2,
+        "Sun",
+        [
+            "Remove Nth node from the back of the LL",
+            "Add two numbers as LinkedList",
+            "Delete Node in a Linked List O(1)",
+        ],
+    ),
     # Week 3 (15)
     (3, "Mon", ["Find the intersection point of Y LL", "Detect a loop in LL"]),
     (3, "Wed", ["Find the starting point in LL", "Reverse LL in group of given size K"]),
     (3, "Fri", ["Check if LL is palindrome or not", "Flattening of LL"]),
     (3, "Sat", ["Rotate a LL", "Clone a LL with random and next pointer", "3 Sum"]),
-    (3, "Sun", ["Trapping Rainwater", "Remove duplicates from sorted array", "Maximum Consecutive Ones", "N meetings in one room", "Minimum number of platforms required for a railway", "Job sequencing Problem"]),
+    (
+        3,
+        "Sun",
+        [
+            "Trapping Rainwater",
+            "Remove duplicates from sorted array",
+            "Maximum Consecutive Ones",
+            "N meetings in one room",
+            "Minimum number of platforms required for a railway",
+            "Job sequencing Problem",
+        ],
+    ),
     # Week 4 (15)
     (4, "Mon", ["Fractional Knapsack", "Minimum coins", "Assign Cookies"]),
     (4, "Wed", ["Subset Sums", "Subsets II"]),
     (4, "Fri", ["Combination Sum", "Combination Sum II"]),
     (4, "Sat", ["Palindrome partitioning", "Permutation Sequence", "Permutations of a String"]),
-    (4, "Sun", ["N Queen", "Sudoku Solver", "M Coloring Problem", "Rat in a Maze", "Word Break (print all ways)"]),
-
+    (
+        4,
+        "Sun",
+        [
+            "N Queen",
+            "Sudoku Solver",
+            "M Coloring Problem",
+            "Rat in a Maze",
+            "Word Break (print all ways)",
+        ],
+    ),
     # ===== Month 2 (63) =====
     # Week 5 (14)
     (5, "Mon", ["The N-th root of an integer", "Matrix Median"]),
-    (5, "Wed", ["Single element in sorted array", "Search element in a sorted and rotated array/ find pivot where it is rotated"]),
+    (
+        5,
+        "Wed",
+        [
+            "Single element in sorted array",
+            "Search element in a sorted and rotated array/ find pivot where it is rotated",
+        ],
+    ),
     (5, "Fri", ["Median of 2 sorted arrays", "Kth element of 2 sorted arrays"]),
-    (5, "Sat", ["Allocate Minimum Number of Pages", "Aggressive Cows", "Implement Max Heap", "K-th Largest element in an array"]),
-    (5, "Sun", ["Maximum Sum Combination", "Find Median from Data Stream", "Merge K Sorted Arrays", "Top K Frequent Elements"]),
+    (
+        5,
+        "Sat",
+        [
+            "Allocate Minimum Number of Pages",
+            "Aggressive Cows",
+            "Implement Max Heap",
+            "K-th Largest element in an array",
+        ],
+    ),
+    (
+        5,
+        "Sun",
+        [
+            "Maximum Sum Combination",
+            "Find Median from Data Stream",
+            "Merge K Sorted Arrays",
+            "Top K Frequent Elements",
+        ],
+    ),
     # Week 6 (17)
-    (6, "Mon", ["Implement Stack using Arrays", "Implement Queue using Arrays", "Implement Stack using Queue (using single queue)"]),
+    (
+        6,
+        "Mon",
+        [
+            "Implement Stack using Arrays",
+            "Implement Queue using Arrays",
+            "Implement Stack using Queue (using single queue)",
+        ],
+    ),
     (6, "Wed", ["Implement Queue using Stack", "Balanced Paranthesis"]),
     (6, "Fri", ["Next Greater Element", "Sort a Stack"]),
-    (6, "Sat", ["Next Smaller Element", "LRU Cache", "LFU Cache", "Largest rectangle in a histogram"]),
-    (6, "Sun", ["Sliding Window Maximum", "Implement Min Stack", "Rotten Oranges", "Stock span problem", "Maximum of Minimums for Every Window Size", "Celebrity Problem"]),
+    (
+        6,
+        "Sat",
+        ["Next Smaller Element", "LRU Cache", "LFU Cache", "Largest rectangle in a histogram"],
+    ),
+    (
+        6,
+        "Sun",
+        [
+            "Sliding Window Maximum",
+            "Implement Min Stack",
+            "Rotten Oranges",
+            "Stock span problem",
+            "Maximum of Minimums for Every Window Size",
+            "Celebrity Problem",
+        ],
+    ),
     # Week 7 (16)
     (7, "Mon", ["Reverse every word in a string", "Longest Palindrome in a string"]),
     (7, "Wed", ["Roman to Integer", "Implement ATOI/STRSTR"]),
     (7, "Fri", ["Longest Common Prefix", "Rabin Karp Algorithm"]),
-    (7, "Sat", ["Z function", "KMP Algorithm or LPS array", "Minimum insertions to make string palindrome", "Valid Anagram"]),
-    (7, "Sun", ["Count and say", "Compare version numbers", "Inorder Traversal", "Preorder Traversal", "Postorder Traversal", "Morris Inorder Traversal"]),
+    (
+        7,
+        "Sat",
+        [
+            "Z function",
+            "KMP Algorithm or LPS array",
+            "Minimum insertions to make string palindrome",
+            "Valid Anagram",
+        ],
+    ),
+    (
+        7,
+        "Sun",
+        [
+            "Count and say",
+            "Compare version numbers",
+            "Inorder Traversal",
+            "Preorder Traversal",
+            "Postorder Traversal",
+            "Morris Inorder Traversal",
+        ],
+    ),
     # Week 8 (16)
     (8, "Mon", ["Morris Preorder Traversal", "Right/Left View of BT"]),
     (8, "Wed", ["Bottom view of BT", "Top View of BT"]),
     (8, "Fri", ["Pre, Post, Inorder in one traversal", "Vertical Order Traversal"]),
-    (8, "Sat", ["Print root to leaf path in BT", "Maximum Width of BT", "Level Order Traversal", "Maximum Depth in BT"]),
-    (8, "Sun", ["Diameter of Binary Tree", "Check for balanced binary tree", "LCA in BT", "Check if two trees are identical or not", "Zig Zag or Spiral Traversal", "Boundary Traversal"]),
-
+    (
+        8,
+        "Sat",
+        [
+            "Print root to leaf path in BT",
+            "Maximum Width of BT",
+            "Level Order Traversal",
+            "Maximum Depth in BT",
+        ],
+    ),
+    (
+        8,
+        "Sun",
+        [
+            "Diameter of Binary Tree",
+            "Check for balanced binary tree",
+            "LCA in BT",
+            "Check if two trees are identical or not",
+            "Zig Zag or Spiral Traversal",
+            "Boundary Traversal",
+        ],
+    ),
     # ===== Month 3 (68) =====
     # Week 9 (14)
     (9, "Mon", ["Maximum path sum", "Construct a BT from Preorder and Inorder"]),
     (9, "Wed", ["Construct a BT from Postorder and Inorder", "Symmetric Binary Tree"]),
     (9, "Fri", ["Flatten Binary Tree to Linked List", "Check for symmetrical BTs"]),
-    (9, "Sat", ["Children Sum Property in Binary Tree", "Populating Next Right Pointers in Each Node", "Search in BST"]),
-    (9, "Sun", ["Construct BST from given keys", "Construct a BST from a preorder traversal", "Check if a tree is a BST or not", "LCA in BST", "Inorder successor and predecessor in BST"]),
+    (
+        9,
+        "Sat",
+        [
+            "Children Sum Property in Binary Tree",
+            "Populating Next Right Pointers in Each Node",
+            "Search in BST",
+        ],
+    ),
+    (
+        9,
+        "Sun",
+        [
+            "Construct BST from given keys",
+            "Construct a BST from a preorder traversal",
+            "Check if a tree is a BST or not",
+            "LCA in BST",
+            "Inorder successor and predecessor in BST",
+        ],
+    ),
     # Week 10 (18)
     (10, "Mon", ["Floor in a BST", "Ceil in a BST"]),
     (10, "Wed", ["Find K-th smallest element in BST", "Kth Smallest and Largest element in BST"]),
     (10, "Fri", ["Two sum in BST", "BST iterator"]),
-    (10, "Sat", ["Size of the largest BST in a Binary Tree", "Serialize and De-serialize BT", "Binary Tree to Doubly Linked List", "Find Median in a Stream", "Kth largest element in a stream of running integers"]),
-    (10, "Sun", ["Distinct Numbers in Each Subarray", "K-th largest element in an unsorted array.", "Flood-fill Algorithm", "Clone Graph", "DFS", "Traversal Techniques", "Detect A cycle in Undirected Graph using BFS"]),
+    (
+        10,
+        "Sat",
+        [
+            "Size of the largest BST in a Binary Tree",
+            "Serialize and De-serialize BT",
+            "Binary Tree to Doubly Linked List",
+            "Find Median in a Stream",
+            "Kth largest element in a stream of running integers",
+        ],
+    ),
+    (
+        10,
+        "Sun",
+        [
+            "Distinct Numbers in Each Subarray",
+            "K-th largest element in an unsorted array.",
+            "Flood-fill Algorithm",
+            "Clone Graph",
+            "DFS",
+            "Traversal Techniques",
+            "Detect A cycle in Undirected Graph using BFS",
+        ],
+    ),
     # Week 11 (18)
-    (11, "Mon", ["Detect A cycle in Undirected Graph using DFS", "Detect A cycle in a Directed Graph using DFS"]),
+    (
+        11,
+        "Mon",
+        [
+            "Detect A cycle in Undirected Graph using DFS",
+            "Detect A cycle in a Directed Graph using DFS",
+        ],
+    ),
     (11, "Wed", ["Detect A cycle in a Directed Graph using BFS", "Topological Sort BFS"]),
     (11, "Fri", ["Topological Sort DFS", "Number of islands(Do in Grid and Graph Both)"]),
-    (11, "Sat", ["Bipartite graph", "Bipartite Check using DFS", "Strongly Connected Component(using Kosaraju's algo)", "Dijkstra's algorithm", "Bellman ford algorithm"]),
-    (11, "Sun", ["Floyd Warshall Algorithm", "MST using Prim's Algo", "MST using Kruskal's Algo", "Max Product Subarray", "Longest Increasing Subsequence", "Longest common subsequence", "0 and 1 Knapsack"]),
+    (
+        11,
+        "Sat",
+        [
+            "Bipartite graph",
+            "Bipartite Check using DFS",
+            "Strongly Connected Component(using Kosaraju's algo)",
+            "Dijkstra's algorithm",
+            "Bellman ford algorithm",
+        ],
+    ),
+    (
+        11,
+        "Sun",
+        [
+            "Floyd Warshall Algorithm",
+            "MST using Prim's Algo",
+            "MST using Kruskal's Algo",
+            "Max Product Subarray",
+            "Longest Increasing Subsequence",
+            "Longest common subsequence",
+            "0 and 1 Knapsack",
+        ],
+    ),
     # Week 12 (18)
     (12, "Mon", ["Edit distance", "Maximum Sum Increasing Subsequence"]),
-    (12, "Wed", ["Matrix chain multiplication", "Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)"]),
+    (
+        12,
+        "Wed",
+        [
+            "Matrix chain multiplication",
+            "Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)",
+        ],
+    ),
     (12, "Fri", ["Coin change II", "Subset sum equals to target"]),
-    (12, "Sat", ["Rod cutting problem", "Super Egg Drop", "Word Break", "Palindrome Partitioning (MCM Variation)", "Maximum Profit in Job Scheduling"]),
-    (12, "Sun", ["Trie Implementation and Operations", "Trie Implementation and Advanced Operations", "Longest Word with All Prefixes", "Number of distinct substrings in a string", "Power Set (this is very important)", "Maximum XOR of two numbers in an array", "Maximum Xor with an element from an array"]),
+    (
+        12,
+        "Sat",
+        [
+            "Rod cutting problem",
+            "Super Egg Drop",
+            "Word Break",
+            "Palindrome Partitioning (MCM Variation)",
+            "Maximum Profit in Job Scheduling",
+        ],
+    ),
+    (
+        12,
+        "Sun",
+        [
+            "Trie Implementation and Operations",
+            "Trie Implementation and Advanced Operations",
+            "Longest Word with All Prefixes",
+            "Number of distinct substrings in a string",
+            "Power Set (this is very important)",
+            "Maximum XOR of two numbers in an array",
+            "Maximum Xor with an element from an array",
+        ],
+    ),
 ]
 
 # Validate counts
@@ -307,7 +546,7 @@ const PLAN = {js_plan};
 const PLAN_START = "{PLAN_START}";  // YYYY-MM-DD (a Monday)
 
 // Day offsets within a week (Mon=0)
-const DAY_OFFSET = {{ Mon: 0, Wed: 2, Fri: 4, Sat: 5, Sun: 6 }};
+const DAY_OFFSET = {{ Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 }};
 const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 function parseDate(s) {{
@@ -710,7 +949,11 @@ def main() -> None:
 
     # --- Hook renderPlanPanel() into render() ---
     # Ensure render() calls renderPlanPanel at the end.
-    if "renderPlanPanel()" not in html.split(JS_END)[1] if JS_END in html else "renderPlanPanel()" not in html:
+    if (
+        "renderPlanPanel()" not in html.split(JS_END)[1]
+        if JS_END in html
+        else "renderPlanPanel()" not in html
+    ):
         pass  # JS block has its own call inside renderPlanPanel logic via tabs; we still need render() to call it
     # Add the call right after the overall-fill width line
     if "renderPlanPanel();" not in html.split(JS_END, 1)[-1]:

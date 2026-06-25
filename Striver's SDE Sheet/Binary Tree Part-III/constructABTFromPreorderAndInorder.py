@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def construct_a_bt_from_preorder_and_inorder_brute() -> None:
-    pass
+class Solution:
+    def construct_a_bt_from_preorder_and_inorder_brute(self) -> None:
+        pass
+
+    def construct_a_bt_from_preorder_and_inorder_better(self) -> None:
+        pass
+
+    def construct_a_bt_from_preorder_and_inorder_optimal(self) -> None:
+        pass
 
 
-def construct_a_bt_from_preorder_and_inorder_better() -> None:
-    pass
-
-
-def construct_a_bt_from_preorder_and_inorder_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

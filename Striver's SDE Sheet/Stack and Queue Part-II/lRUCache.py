@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def lru_cache_brute() -> None:
-    pass
+class Solution:
+    def lru_cache_brute(self) -> None:
+        pass
+
+    def lru_cache_better(self) -> None:
+        pass
+
+    def lru_cache_optimal(self) -> None:
+        pass
 
 
-def lru_cache_better() -> None:
-    pass
-
-
-def lru_cache_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

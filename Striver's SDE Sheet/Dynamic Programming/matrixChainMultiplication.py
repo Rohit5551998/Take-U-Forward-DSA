@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def matrix_chain_multiplication_brute() -> None:
-    pass
+class Solution:
+    def matrix_chain_multiplication_brute(self) -> None:
+        pass
+
+    def matrix_chain_multiplication_better(self) -> None:
+        pass
+
+    def matrix_chain_multiplication_optimal(self) -> None:
+        pass
 
 
-def matrix_chain_multiplication_better() -> None:
-    pass
-
-
-def matrix_chain_multiplication_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

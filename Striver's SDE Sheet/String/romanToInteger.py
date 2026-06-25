@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def roman_to_integer_brute() -> None:
-    pass
+class Solution:
+    def roman_to_integer_brute(self) -> None:
+        pass
+
+    def roman_to_integer_better(self) -> None:
+        pass
+
+    def roman_to_integer_optimal(self) -> None:
+        pass
 
 
-def roman_to_integer_better() -> None:
-    pass
-
-
-def roman_to_integer_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

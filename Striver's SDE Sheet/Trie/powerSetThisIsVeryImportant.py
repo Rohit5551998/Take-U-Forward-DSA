@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def power_set_this_is_very_important_brute() -> None:
-    pass
+class Solution:
+    def power_set_this_is_very_important_brute(self) -> None:
+        pass
+
+    def power_set_this_is_very_important_better(self) -> None:
+        pass
+
+    def power_set_this_is_very_important_optimal(self) -> None:
+        pass
 
 
-def power_set_this_is_very_important_better() -> None:
-    pass
-
-
-def power_set_this_is_very_important_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

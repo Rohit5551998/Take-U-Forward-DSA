@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def kmp_algorithm_or_lps_array_brute() -> None:
-    pass
+class Solution:
+    def kmp_algorithm_or_lps_array_brute(self) -> None:
+        pass
+
+    def kmp_algorithm_or_lps_array_better(self) -> None:
+        pass
+
+    def kmp_algorithm_or_lps_array_optimal(self) -> None:
+        pass
 
 
-def kmp_algorithm_or_lps_array_better() -> None:
-    pass
-
-
-def kmp_algorithm_or_lps_array_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

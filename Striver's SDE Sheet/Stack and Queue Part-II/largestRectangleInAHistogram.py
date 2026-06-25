@@ -26,13 +26,16 @@ TC -> O(), SC -> O()
 """
 
 
-def largest_rectangle_in_a_histogram_brute() -> None:
-    pass
+class Solution:
+    def largest_rectangle_in_a_histogram_brute(self) -> None:
+        pass
+
+    def largest_rectangle_in_a_histogram_better(self) -> None:
+        pass
+
+    def largest_rectangle_in_a_histogram_optimal(self) -> None:
+        pass
 
 
-def largest_rectangle_in_a_histogram_better() -> None:
-    pass
-
-
-def largest_rectangle_in_a_histogram_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

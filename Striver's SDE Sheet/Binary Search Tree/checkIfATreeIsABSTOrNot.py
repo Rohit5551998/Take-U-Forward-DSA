@@ -41,13 +41,16 @@ TC -> O(), SC -> O()
 """
 
 
-def check_if_a_tree_is_a_bst_or_not_brute() -> None:
-    pass
+class Solution:
+    def check_if_a_tree_is_a_bst_or_not_brute(self) -> None:
+        pass
+
+    def check_if_a_tree_is_a_bst_or_not_better(self) -> None:
+        pass
+
+    def check_if_a_tree_is_a_bst_or_not_optimal(self) -> None:
+        pass
 
 
-def check_if_a_tree_is_a_bst_or_not_better() -> None:
-    pass
-
-
-def check_if_a_tree_is_a_bst_or_not_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

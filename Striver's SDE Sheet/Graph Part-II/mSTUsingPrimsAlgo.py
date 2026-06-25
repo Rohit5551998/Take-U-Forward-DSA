@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def mst_using_prims_algo_brute() -> None:
-    pass
+class Solution:
+    def mst_using_prims_algo_brute(self) -> None:
+        pass
+
+    def mst_using_prims_algo_better(self) -> None:
+        pass
+
+    def mst_using_prims_algo_optimal(self) -> None:
+        pass
 
 
-def mst_using_prims_algo_better() -> None:
-    pass
-
-
-def mst_using_prims_algo_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -51,13 +51,16 @@ TC -> O(), SC -> O()
 """
 
 
-def balanced_paranthesis_brute() -> None:
-    pass
+class Solution:
+    def balanced_paranthesis_brute(self) -> None:
+        pass
+
+    def balanced_paranthesis_better(self) -> None:
+        pass
+
+    def balanced_paranthesis_optimal(self) -> None:
+        pass
 
 
-def balanced_paranthesis_better() -> None:
-    pass
-
-
-def balanced_paranthesis_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

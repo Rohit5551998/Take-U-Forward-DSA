@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def reverse_a_ll_brute() -> None:
-    pass
+class Solution:
+    def reverse_a_ll_brute(self) -> None:
+        pass
+
+    def reverse_a_ll_better(self) -> None:
+        pass
+
+    def reverse_a_ll_optimal(self) -> None:
+        pass
 
 
-def reverse_a_ll_better() -> None:
-    pass
-
-
-def reverse_a_ll_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

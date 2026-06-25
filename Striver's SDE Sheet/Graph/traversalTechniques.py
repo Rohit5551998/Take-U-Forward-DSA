@@ -37,13 +37,16 @@ TC -> O(), SC -> O()
 """
 
 
-def traversal_techniques_brute() -> None:
-    pass
+class Solution:
+    def traversal_techniques_brute(self) -> None:
+        pass
+
+    def traversal_techniques_better(self) -> None:
+        pass
+
+    def traversal_techniques_optimal(self) -> None:
+        pass
 
 
-def traversal_techniques_better() -> None:
-    pass
-
-
-def traversal_techniques_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

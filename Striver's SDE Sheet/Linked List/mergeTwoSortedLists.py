@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def merge_two_sorted_lists_brute() -> None:
-    pass
+class Solution:
+    def merge_two_sorted_lists_brute(self) -> None:
+        pass
+
+    def merge_two_sorted_lists_better(self) -> None:
+        pass
+
+    def merge_two_sorted_lists_optimal(self) -> None:
+        pass
 
 
-def merge_two_sorted_lists_better() -> None:
-    pass
-
-
-def merge_two_sorted_lists_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

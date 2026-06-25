@@ -61,13 +61,16 @@ TC -> O(), SC -> O()
 """
 
 
-def combination_sum_brute() -> None:
-    pass
+class Solution:
+    def combination_sum_brute(self) -> None:
+        pass
+
+    def combination_sum_better(self) -> None:
+        pass
+
+    def combination_sum_optimal(self) -> None:
+        pass
 
 
-def combination_sum_better() -> None:
-    pass
-
-
-def combination_sum_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

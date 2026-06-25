@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def count_subarrays_with_given_xor_k_brute() -> None:
-    pass
+class Solution:
+    def count_subarrays_with_given_xor_k_brute(self) -> None:
+        pass
+
+    def count_subarrays_with_given_xor_k_better(self) -> None:
+        pass
+
+    def count_subarrays_with_given_xor_k_optimal(self) -> None:
+        pass
 
 
-def count_subarrays_with_given_xor_k_better() -> None:
-    pass
-
-
-def count_subarrays_with_given_xor_k_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

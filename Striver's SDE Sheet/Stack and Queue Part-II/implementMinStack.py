@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def implement_min_stack_brute() -> None:
-    pass
+class Solution:
+    def implement_min_stack_brute(self) -> None:
+        pass
+
+    def implement_min_stack_better(self) -> None:
+        pass
+
+    def implement_min_stack_optimal(self) -> None:
+        pass
 
 
-def implement_min_stack_better() -> None:
-    pass
-
-
-def implement_min_stack_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

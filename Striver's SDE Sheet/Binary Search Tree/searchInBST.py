@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def search_in_bst_brute() -> None:
-    pass
+class Solution:
+    def search_in_bst_brute(self) -> None:
+        pass
+
+    def search_in_bst_better(self) -> None:
+        pass
+
+    def search_in_bst_optimal(self) -> None:
+        pass
 
 
-def search_in_bst_better() -> None:
-    pass
-
-
-def search_in_bst_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

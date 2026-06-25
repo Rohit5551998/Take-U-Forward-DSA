@@ -38,13 +38,16 @@ TC -> O(), SC -> O()
 """
 
 
-def next_smaller_element_brute() -> None:
-    pass
+class Solution:
+    def next_smaller_element_brute(self) -> None:
+        pass
+
+    def next_smaller_element_better(self) -> None:
+        pass
+
+    def next_smaller_element_optimal(self) -> None:
+        pass
 
 
-def next_smaller_element_better() -> None:
-    pass
-
-
-def next_smaller_element_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

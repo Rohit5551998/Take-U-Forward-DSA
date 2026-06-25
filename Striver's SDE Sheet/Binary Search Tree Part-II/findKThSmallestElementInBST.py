@@ -35,13 +35,16 @@ TC -> O(), SC -> O()
 """
 
 
-def find_k_th_smallest_element_in_bst_brute() -> None:
-    pass
+class Solution:
+    def find_k_th_smallest_element_in_bst_brute(self) -> None:
+        pass
+
+    def find_k_th_smallest_element_in_bst_better(self) -> None:
+        pass
+
+    def find_k_th_smallest_element_in_bst_optimal(self) -> None:
+        pass
 
 
-def find_k_th_smallest_element_in_bst_better() -> None:
-    pass
-
-
-def find_k_th_smallest_element_in_bst_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

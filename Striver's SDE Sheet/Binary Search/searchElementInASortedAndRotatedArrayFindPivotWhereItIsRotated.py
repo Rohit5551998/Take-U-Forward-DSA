@@ -34,13 +34,22 @@ TC -> O(), SC -> O()
 """
 
 
-def search_element_in_a_sorted_and_rotated_array_find_pivot_where_it_is_rotated_brute() -> None:
-    pass
+class Solution:
+    def search_element_in_a_sorted_and_rotated_array_find_pivot_where_it_is_rotated_brute(
+        self,
+    ) -> None:
+        pass
+
+    def search_element_in_a_sorted_and_rotated_array_find_pivot_where_it_is_rotated_better(
+        self,
+    ) -> None:
+        pass
+
+    def search_element_in_a_sorted_and_rotated_array_find_pivot_where_it_is_rotated_optimal(
+        self,
+    ) -> None:
+        pass
 
 
-def search_element_in_a_sorted_and_rotated_array_find_pivot_where_it_is_rotated_better() -> None:
-    pass
-
-
-def search_element_in_a_sorted_and_rotated_array_find_pivot_where_it_is_rotated_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

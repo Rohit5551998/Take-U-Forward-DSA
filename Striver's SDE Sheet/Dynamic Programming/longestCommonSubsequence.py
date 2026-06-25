@@ -43,13 +43,16 @@ TC -> O(), SC -> O()
 """
 
 
-def longest_common_subsequence_brute() -> None:
-    pass
+class Solution:
+    def longest_common_subsequence_brute(self) -> None:
+        pass
+
+    def longest_common_subsequence_better(self) -> None:
+        pass
+
+    def longest_common_subsequence_optimal(self) -> None:
+        pass
 
 
-def longest_common_subsequence_better() -> None:
-    pass
-
-
-def longest_common_subsequence_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

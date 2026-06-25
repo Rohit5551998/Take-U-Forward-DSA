@@ -45,13 +45,16 @@ TC -> O(), SC -> O()
 """
 
 
-def bst_iterator_brute() -> None:
-    pass
+class Solution:
+    def bst_iterator_brute(self) -> None:
+        pass
+
+    def bst_iterator_better(self) -> None:
+        pass
+
+    def bst_iterator_optimal(self) -> None:
+        pass
 
 
-def bst_iterator_better() -> None:
-    pass
-
-
-def bst_iterator_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

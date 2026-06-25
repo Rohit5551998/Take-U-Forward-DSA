@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def sort_a_stack_brute() -> None:
-    pass
+class Solution:
+    def sort_a_stack_brute(self) -> None:
+        pass
+
+    def sort_a_stack_better(self) -> None:
+        pass
+
+    def sort_a_stack_optimal(self) -> None:
+        pass
 
 
-def sort_a_stack_better() -> None:
-    pass
-
-
-def sort_a_stack_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

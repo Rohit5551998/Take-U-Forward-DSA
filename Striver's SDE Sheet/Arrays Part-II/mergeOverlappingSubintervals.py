@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def merge_overlapping_subintervals_brute() -> None:
-    pass
+class Solution:
+    def merge_overlapping_subintervals_brute(self) -> None:
+        pass
+
+    def merge_overlapping_subintervals_better(self) -> None:
+        pass
+
+    def merge_overlapping_subintervals_optimal(self) -> None:
+        pass
 
 
-def merge_overlapping_subintervals_better() -> None:
-    pass
-
-
-def merge_overlapping_subintervals_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

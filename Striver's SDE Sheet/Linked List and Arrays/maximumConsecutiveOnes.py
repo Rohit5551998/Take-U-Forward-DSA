@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_consecutive_ones_brute() -> None:
-    pass
+class Solution:
+    def maximum_consecutive_ones_brute(self) -> None:
+        pass
+
+    def maximum_consecutive_ones_better(self) -> None:
+        pass
+
+    def maximum_consecutive_ones_optimal(self) -> None:
+        pass
 
 
-def maximum_consecutive_ones_better() -> None:
-    pass
-
-
-def maximum_consecutive_ones_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

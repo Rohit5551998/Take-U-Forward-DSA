@@ -60,59 +60,60 @@ TC -> O(n), SC -> O(1)
   total, so reset it to 0 and start fresh; tracking max-so-far during the single
   pass yields the answer in O(n).
 """
+
 from typing import List
 
-def kadanes_algorithm_brute(arr: List[int]) -> int:
-    maxi = arr[0]
-    for i in range(0, len(arr)):
-        for j in range(i, len(arr)):
+
+class Solution:
+    def kadanes_algorithm_brute(self, arr: List[int]) -> int:
+        maxi = arr[0]
+        for i in range(0, len(arr)):
+            for j in range(i, len(arr)):
+                sum = 0
+                for k in range(i, j + 1):
+                    sum += arr[k]
+                maxi = max(maxi, sum)
+        return maxi
+
+    def kadanes_algorithm_better(self, arr: List[int]) -> int:
+        maxi = arr[0]
+        for i in range(0, len(arr)):
             sum = 0
-            for k in range(i, j+1):
-                sum += arr[k]
-            maxi = max(maxi, sum)
-    return maxi 
+            for j in range(i, len(arr)):
+                sum += arr[j]
+                maxi = max(maxi, sum)
+        return maxi
 
-
-def kadanes_algorithm_better(arr: List[int]) -> int:
-    maxi = arr[0]
-    for i in range(0, len(arr)):
+    def kadanes_algorithm_optimal(self, arr: List[int]) -> int:
         sum = 0
-        for j in range(i, len(arr)):
-            sum += arr[j]
-            maxi = max(maxi, sum)
-    return maxi 
+        start = 0
+        ansStart = 0
+        ansEnd = 0
+        maxi = arr[0]
+
+        for i in range(0, len(arr)):
+            if sum == 0:
+                start = i
+
+            sum += arr[i]
+
+            if sum > maxi:
+                ansStart = start
+                ansEnd = i
+                maxi = sum
+
+            if sum < 0:
+                sum = 0
+
+        print(ansStart, ansEnd)
+        return maxi
 
 
-def kadanes_algorithm_optimal(arr: List[int]) -> int:
-    sum = 0
-    start = 0
-    ansStart = 0
-    ansEnd = 0
-    maxi = arr[0]
-
-    for i in range(0, len(arr)):
-
-        if (sum == 0):
-            start = i
-
-        sum += arr[i]
-
-        if (sum > maxi):
-            ansStart = start
-            ansEnd = i
-            maxi = sum
-
-        if (sum < 0):
-            sum = 0
-
-    print(ansStart, ansEnd)
-    return maxi
-
-
-
-arr = [-2,1,-3,4,-1,2,1,-5,4]
-print(kadanes_algorithm_brute(arr))
-arr = [-2,1,-3,4,-1,2,1,-5,4]
-print(kadanes_algorithm_better(arr))
-arr = [-2,1,-3,4,-1,2,1,-5,4]
-print(kadanes_algorithm_optimal(arr))
+if __name__ == "__main__":
+    sol = Solution()
+    arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    print(sol.kadanes_algorithm_brute(arr))
+    arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    print(sol.kadanes_algorithm_better(arr))
+    arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    print(sol.kadanes_algorithm_optimal(arr))

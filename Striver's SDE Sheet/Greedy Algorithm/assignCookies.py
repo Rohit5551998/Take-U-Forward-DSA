@@ -38,13 +38,16 @@ TC -> O(), SC -> O()
 """
 
 
-def assign_cookies_brute() -> None:
-    pass
+class Solution:
+    def assign_cookies_brute(self) -> None:
+        pass
+
+    def assign_cookies_better(self) -> None:
+        pass
+
+    def assign_cookies_optimal(self) -> None:
+        pass
 
 
-def assign_cookies_better() -> None:
-    pass
-
-
-def assign_cookies_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

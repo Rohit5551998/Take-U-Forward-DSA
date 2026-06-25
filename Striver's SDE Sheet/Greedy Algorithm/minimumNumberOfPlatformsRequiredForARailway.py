@@ -44,13 +44,16 @@ TC -> O(), SC -> O()
 """
 
 
-def minimum_number_of_platforms_required_for_a_railway_brute() -> None:
-    pass
+class Solution:
+    def minimum_number_of_platforms_required_for_a_railway_brute(self) -> None:
+        pass
+
+    def minimum_number_of_platforms_required_for_a_railway_better(self) -> None:
+        pass
+
+    def minimum_number_of_platforms_required_for_a_railway_optimal(self) -> None:
+        pass
 
 
-def minimum_number_of_platforms_required_for_a_railway_better() -> None:
-    pass
-
-
-def minimum_number_of_platforms_required_for_a_railway_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

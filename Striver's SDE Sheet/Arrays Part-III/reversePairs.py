@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def reverse_pairs_brute() -> None:
-    pass
+class Solution:
+    def reverse_pairs_brute(self) -> None:
+        pass
+
+    def reverse_pairs_better(self) -> None:
+        pass
+
+    def reverse_pairs_optimal(self) -> None:
+        pass
 
 
-def reverse_pairs_better() -> None:
-    pass
-
-
-def reverse_pairs_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

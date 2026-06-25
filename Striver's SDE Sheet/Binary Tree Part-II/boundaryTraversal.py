@@ -36,13 +36,16 @@ TC -> O(), SC -> O()
 """
 
 
-def boundary_traversal_brute() -> None:
-    pass
+class Solution:
+    def boundary_traversal_brute(self) -> None:
+        pass
+
+    def boundary_traversal_better(self) -> None:
+        pass
+
+    def boundary_traversal_optimal(self) -> None:
+        pass
 
 
-def boundary_traversal_better() -> None:
-    pass
-
-
-def boundary_traversal_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

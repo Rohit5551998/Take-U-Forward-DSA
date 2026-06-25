@@ -55,13 +55,16 @@ TC -> O(), SC -> O()
 """
 
 
-def n_queen_brute() -> None:
-    pass
+class Solution:
+    def n_queen_brute(self) -> None:
+        pass
+
+    def n_queen_better(self) -> None:
+        pass
+
+    def n_queen_optimal(self) -> None:
+        pass
 
 
-def n_queen_better() -> None:
-    pass
-
-
-def n_queen_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

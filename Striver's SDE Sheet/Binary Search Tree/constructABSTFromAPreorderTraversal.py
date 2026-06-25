@@ -42,13 +42,16 @@ TC -> O(), SC -> O()
 """
 
 
-def construct_a_bst_from_a_preorder_traversal_brute() -> None:
-    pass
+class Solution:
+    def construct_a_bst_from_a_preorder_traversal_brute(self) -> None:
+        pass
+
+    def construct_a_bst_from_a_preorder_traversal_better(self) -> None:
+        pass
+
+    def construct_a_bst_from_a_preorder_traversal_optimal(self) -> None:
+        pass
 
 
-def construct_a_bst_from_a_preorder_traversal_better() -> None:
-    pass
-
-
-def construct_a_bst_from_a_preorder_traversal_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

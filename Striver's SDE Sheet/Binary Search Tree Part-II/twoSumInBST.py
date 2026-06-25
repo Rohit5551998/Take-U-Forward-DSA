@@ -30,13 +30,16 @@ TC -> O(), SC -> O()
 """
 
 
-def two_sum_in_bst_brute() -> None:
-    pass
+class Solution:
+    def two_sum_in_bst_brute(self) -> None:
+        pass
+
+    def two_sum_in_bst_better(self) -> None:
+        pass
+
+    def two_sum_in_bst_optimal(self) -> None:
+        pass
 
 
-def two_sum_in_bst_better() -> None:
-    pass
-
-
-def two_sum_in_bst_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

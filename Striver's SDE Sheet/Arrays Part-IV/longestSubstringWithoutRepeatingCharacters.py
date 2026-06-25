@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def longest_substring_without_repeating_characters_brute() -> None:
-    pass
+class Solution:
+    def longest_substring_without_repeating_characters_brute(self) -> None:
+        pass
+
+    def longest_substring_without_repeating_characters_better(self) -> None:
+        pass
+
+    def longest_substring_without_repeating_characters_optimal(self) -> None:
+        pass
 
 
-def longest_substring_without_repeating_characters_better() -> None:
-    pass
-
-
-def longest_substring_without_repeating_characters_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

@@ -39,13 +39,16 @@ TC -> O(), SC -> O()
 """
 
 
-def n_meetings_in_one_room_brute() -> None:
-    pass
+class Solution:
+    def n_meetings_in_one_room_brute(self) -> None:
+        pass
+
+    def n_meetings_in_one_room_better(self) -> None:
+        pass
+
+    def n_meetings_in_one_room_optimal(self) -> None:
+        pass
 
 
-def n_meetings_in_one_room_better() -> None:
-    pass
-
-
-def n_meetings_in_one_room_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

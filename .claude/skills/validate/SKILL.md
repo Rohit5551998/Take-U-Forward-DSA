@@ -16,7 +16,7 @@ The sheet is inferred from the file path's first segment.
 
 2. **Look up the problem** — use WebSearch to find the exact problem on takeuforward.org / LeetCode to understand constraints and known optimal complexity. If web search fails, ask the user for the problem link. NEVER guess optimal complexity from memory.
 
-3. **Identify which function was written/changed** — check `_brute`, `_better`, `_optimal` functions. Validate the one that has a real implementation (not `pass`).
+3. **Identify which method was written/changed** — solutions are methods of a `class Solution`. Check the `_brute`/`_better`/`_optimal` methods (SDE sheet) or `findSolution`/`findSolution1`/… methods (A2Z sheet). Validate the one that has a real implementation (not `pass`).
 
 4. **Analyze the implementation:**
    - Identify the algorithm/approach used
@@ -64,15 +64,21 @@ The sheet is inferred from the file path's first segment.
    - If the file's functions are actually **separate problem variants** (not brute/better/optimal of one problem — e.g. "value at (r,c)" vs "n-th row" vs "full triangle"), restructure the docstring into per-variant sections (`#Variant I — <name>: <func_name>`) each with its own steps + `TC -> O(), SC -> O()`, instead of forcing them into the Brute/Better/Optimal template.
    - Update the docstring in the file using Edit
 
-8. **Sync notes to that sheet's tracker:**
+8. **Auto-SKIP tiers that genuinely don't exist:** if a `_brute` or `_better` method is a bare `pass` AND there is no meaningful distinct approach at that tier for this problem (e.g. the problem jumps straight from an O(n^2) brute force to the O(n) optimal, with no sensible intermediate), add a `# SKIP: <reason>` comment to that method explaining *why* the tier doesn't exist. This is the one case where you may touch an unimplemented method — you are marking intent, not writing a solution.
+   - Place the SKIP exactly like: a `# SKIP: <reason>` comment as the first line(s) of the method body, above the `pass`.
+   - Also reflect it in the docstring section (e.g. `#Better Approach:` → `SKIPPED — <reason>`), matching the existing SKIP style in other files.
+   - Do this only when the tier is genuinely absent. If a real approach exists at that tier but the user simply hasn't written it yet, leave it as `pass` and do NOT reveal the approach.
+   - The `_optimal` method is never auto-skipped — it always requires a real implementation.
+
+9. **Sync notes to that sheet's tracker:**
    - From repo root: `cd "<sheet>" && python3 sync_notes.py` (only if the sheet has `sync_notes.py` + `index.html`)
    - Do NOT edit `index.html` directly — let `sync_notes.py` do it. The PreToolUse hook blocks direct edits anyway.
 
-9. **If the solution is optimal:**
+10. **If the solution is optimal:**
     - Confirm it and congratulate
     - Fill in the `#KEY INSIGHT:` in the docstring
 
-10. **Do NOT:**
+11. **Do NOT:**
     - Write or rewrite the solution code
     - Give away other approaches — only hints
-    - Fill in notes for approaches the user hasn't implemented
+    - Fill in notes for approaches the user hasn't implemented (auto-SKIP per step 8 is the only exception)

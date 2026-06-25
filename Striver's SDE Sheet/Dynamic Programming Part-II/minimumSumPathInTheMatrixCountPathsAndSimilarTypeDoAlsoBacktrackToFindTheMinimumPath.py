@@ -42,13 +42,22 @@ TC -> O(), SC -> O()
 """
 
 
-def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_brute() -> None:
-    pass
+class Solution:
+    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_brute(
+        self,
+    ) -> None:
+        pass
+
+    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_better(
+        self,
+    ) -> None:
+        pass
+
+    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_optimal(
+        self,
+    ) -> None:
+        pass
 
 
-def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_better() -> None:
-    pass
-
-
-def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

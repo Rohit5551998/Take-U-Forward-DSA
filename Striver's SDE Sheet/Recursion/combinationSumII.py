@@ -36,13 +36,16 @@ TC -> O(), SC -> O()
 """
 
 
-def combination_sum_ii_brute() -> None:
-    pass
+class Solution:
+    def combination_sum_ii_brute(self) -> None:
+        pass
+
+    def combination_sum_ii_better(self) -> None:
+        pass
+
+    def combination_sum_ii_optimal(self) -> None:
+        pass
 
 
-def combination_sum_ii_better() -> None:
-    pass
-
-
-def combination_sum_ii_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

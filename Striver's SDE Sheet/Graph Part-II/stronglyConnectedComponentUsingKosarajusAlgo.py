@@ -31,13 +31,16 @@ TC -> O(), SC -> O()
 """
 
 
-def strongly_connected_component_using_kosarajus_algo_brute() -> None:
-    pass
+class Solution:
+    def strongly_connected_component_using_kosarajus_algo_brute(self) -> None:
+        pass
+
+    def strongly_connected_component_using_kosarajus_algo_better(self) -> None:
+        pass
+
+    def strongly_connected_component_using_kosarajus_algo_optimal(self) -> None:
+        pass
 
 
-def strongly_connected_component_using_kosarajus_algo_better() -> None:
-    pass
-
-
-def strongly_connected_component_using_kosarajus_algo_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

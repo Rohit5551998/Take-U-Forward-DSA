@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def postorder_traversal_brute() -> None:
-    pass
+class Solution:
+    def postorder_traversal_brute(self) -> None:
+        pass
+
+    def postorder_traversal_better(self) -> None:
+        pass
+
+    def postorder_traversal_optimal(self) -> None:
+        pass
 
 
-def postorder_traversal_better() -> None:
-    pass
-
-
-def postorder_traversal_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

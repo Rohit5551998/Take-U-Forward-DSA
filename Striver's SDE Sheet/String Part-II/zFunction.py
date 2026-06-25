@@ -52,13 +52,16 @@ TC -> O(), SC -> O()
 """
 
 
-def z_function_brute() -> None:
-    pass
+class Solution:
+    def z_function_brute(self) -> None:
+        pass
+
+    def z_function_better(self) -> None:
+        pass
+
+    def z_function_optimal(self) -> None:
+        pass
 
 
-def z_function_better() -> None:
-    pass
-
-
-def z_function_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

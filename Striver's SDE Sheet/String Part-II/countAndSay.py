@@ -33,13 +33,16 @@ TC -> O(), SC -> O()
 """
 
 
-def count_and_say_brute() -> None:
-    pass
+class Solution:
+    def count_and_say_brute(self) -> None:
+        pass
+
+    def count_and_say_better(self) -> None:
+        pass
+
+    def count_and_say_optimal(self) -> None:
+        pass
 
 
-def count_and_say_better() -> None:
-    pass
-
-
-def count_and_say_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

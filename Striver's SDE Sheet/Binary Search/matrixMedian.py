@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def matrix_median_brute() -> None:
-    pass
+class Solution:
+    def matrix_median_brute(self) -> None:
+        pass
+
+    def matrix_median_better(self) -> None:
+        pass
+
+    def matrix_median_optimal(self) -> None:
+        pass
 
 
-def matrix_median_better() -> None:
-    pass
-
-
-def matrix_median_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

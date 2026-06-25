@@ -39,13 +39,16 @@ TC -> O(), SC -> O()
 """
 
 
-def max_product_subarray_brute() -> None:
-    pass
+class Solution:
+    def max_product_subarray_brute(self) -> None:
+        pass
+
+    def max_product_subarray_better(self) -> None:
+        pass
+
+    def max_product_subarray_optimal(self) -> None:
+        pass
 
 
-def max_product_subarray_better() -> None:
-    pass
-
-
-def max_product_subarray_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

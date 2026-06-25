@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def pre_post_inorder_in_one_traversal_brute() -> None:
-    pass
+class Solution:
+    def pre_post_inorder_in_one_traversal_brute(self) -> None:
+        pass
+
+    def pre_post_inorder_in_one_traversal_better(self) -> None:
+        pass
+
+    def pre_post_inorder_in_one_traversal_optimal(self) -> None:
+        pass
 
 
-def pre_post_inorder_in_one_traversal_better() -> None:
-    pass
-
-
-def pre_post_inorder_in_one_traversal_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

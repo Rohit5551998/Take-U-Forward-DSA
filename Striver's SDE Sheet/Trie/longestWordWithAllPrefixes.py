@@ -52,13 +52,16 @@ TC -> O(), SC -> O()
 """
 
 
-def longest_word_with_all_prefixes_brute() -> None:
-    pass
+class Solution:
+    def longest_word_with_all_prefixes_brute(self) -> None:
+        pass
+
+    def longest_word_with_all_prefixes_better(self) -> None:
+        pass
+
+    def longest_word_with_all_prefixes_optimal(self) -> None:
+        pass
 
 
-def longest_word_with_all_prefixes_better() -> None:
-    pass
-
-
-def longest_word_with_all_prefixes_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

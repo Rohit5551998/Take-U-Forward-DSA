@@ -40,13 +40,16 @@ TC -> O(), SC -> O()
 """
 
 
-def maximum_sum_increasing_subsequence_brute() -> None:
-    pass
+class Solution:
+    def maximum_sum_increasing_subsequence_brute(self) -> None:
+        pass
+
+    def maximum_sum_increasing_subsequence_better(self) -> None:
+        pass
+
+    def maximum_sum_increasing_subsequence_optimal(self) -> None:
+        pass
 
 
-def maximum_sum_increasing_subsequence_better() -> None:
-    pass
-
-
-def maximum_sum_increasing_subsequence_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

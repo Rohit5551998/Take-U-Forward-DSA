@@ -29,13 +29,16 @@ TC -> O(), SC -> O()
 """
 
 
-def delete_node_in_a_linked_list_o_one_brute() -> None:
-    pass
+class Solution:
+    def delete_node_in_a_linked_list_o_one_brute(self) -> None:
+        pass
+
+    def delete_node_in_a_linked_list_o_one_better(self) -> None:
+        pass
+
+    def delete_node_in_a_linked_list_o_one_optimal(self) -> None:
+        pass
 
 
-def delete_node_in_a_linked_list_o_one_better() -> None:
-    pass
-
-
-def delete_node_in_a_linked_list_o_one_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

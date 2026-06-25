@@ -30,13 +30,16 @@ TC -> O(), SC -> O()
 """
 
 
-def reverse_ll_in_group_of_given_size_k_brute() -> None:
-    pass
+class Solution:
+    def reverse_ll_in_group_of_given_size_k_brute(self) -> None:
+        pass
+
+    def reverse_ll_in_group_of_given_size_k_better(self) -> None:
+        pass
+
+    def reverse_ll_in_group_of_given_size_k_optimal(self) -> None:
+        pass
 
 
-def reverse_ll_in_group_of_given_size_k_better() -> None:
-    pass
-
-
-def reverse_ll_in_group_of_given_size_k_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

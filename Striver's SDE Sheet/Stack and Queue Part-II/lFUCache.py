@@ -53,13 +53,16 @@ TC -> O(), SC -> O()
 """
 
 
-def lfu_cache_brute() -> None:
-    pass
+class Solution:
+    def lfu_cache_brute(self) -> None:
+        pass
+
+    def lfu_cache_better(self) -> None:
+        pass
+
+    def lfu_cache_optimal(self) -> None:
+        pass
 
 
-def lfu_cache_better() -> None:
-    pass
-
-
-def lfu_cache_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

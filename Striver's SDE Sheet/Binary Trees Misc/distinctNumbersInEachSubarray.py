@@ -20,13 +20,16 @@ TC -> O(), SC -> O()
 """
 
 
-def distinct_numbers_in_each_subarray_brute() -> None:
-    pass
+class Solution:
+    def distinct_numbers_in_each_subarray_brute(self) -> None:
+        pass
+
+    def distinct_numbers_in_each_subarray_better(self) -> None:
+        pass
+
+    def distinct_numbers_in_each_subarray_optimal(self) -> None:
+        pass
 
 
-def distinct_numbers_in_each_subarray_better() -> None:
-    pass
-
-
-def distinct_numbers_in_each_subarray_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

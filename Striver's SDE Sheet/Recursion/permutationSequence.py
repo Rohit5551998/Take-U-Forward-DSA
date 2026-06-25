@@ -54,13 +54,16 @@ TC -> O(), SC -> O()
 """
 
 
-def permutation_sequence_brute() -> None:
-    pass
+class Solution:
+    def permutation_sequence_brute(self) -> None:
+        pass
+
+    def permutation_sequence_better(self) -> None:
+        pass
+
+    def permutation_sequence_optimal(self) -> None:
+        pass
 
 
-def permutation_sequence_better() -> None:
-    pass
-
-
-def permutation_sequence_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

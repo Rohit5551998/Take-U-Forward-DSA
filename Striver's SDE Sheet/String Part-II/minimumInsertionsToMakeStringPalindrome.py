@@ -55,13 +55,16 @@ TC -> O(), SC -> O()
 """
 
 
-def minimum_insertions_to_make_string_palindrome_brute() -> None:
-    pass
+class Solution:
+    def minimum_insertions_to_make_string_palindrome_brute(self) -> None:
+        pass
+
+    def minimum_insertions_to_make_string_palindrome_better(self) -> None:
+        pass
+
+    def minimum_insertions_to_make_string_palindrome_optimal(self) -> None:
+        pass
 
 
-def minimum_insertions_to_make_string_palindrome_better() -> None:
-    pass
-
-
-def minimum_insertions_to_make_string_palindrome_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()

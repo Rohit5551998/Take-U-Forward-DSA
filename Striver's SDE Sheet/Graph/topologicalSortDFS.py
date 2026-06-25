@@ -27,13 +27,16 @@ TC -> O(), SC -> O()
 """
 
 
-def topological_sort_dfs_brute() -> None:
-    pass
+class Solution:
+    def topological_sort_dfs_brute(self) -> None:
+        pass
+
+    def topological_sort_dfs_better(self) -> None:
+        pass
+
+    def topological_sort_dfs_optimal(self) -> None:
+        pass
 
 
-def topological_sort_dfs_better() -> None:
-    pass
-
-
-def topological_sort_dfs_optimal() -> None:
-    pass
+if __name__ == "__main__":
+    sol = Solution()
