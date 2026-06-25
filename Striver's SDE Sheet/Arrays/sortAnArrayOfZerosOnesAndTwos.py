@@ -26,17 +26,23 @@ TC -> O(n log n), SC -> O(1)
 3. Two linear passes, no comparisons, but we read the array twice.
 TC -> O(n), SC -> O(1)  # hashmap holds at most 3 keys
 
-#Optimal Approach:
-1. Maintain three pointers with an invariant: [0, low) are sorted 0s,
-   [low, mid) are 1s, (high, end] are 2s, and [mid, high] is the unprocessed
-   region we still scan.
-2. Look at arr[mid]:
-   - if 0: swap it down to `low`, advance both low and mid (the element swapped
-     into mid is already known to be a 1, so it's safe to step past).
-   - if 1: it's already in its final region, just advance mid.
-   - if 2: swap it up to `high`, shrink high, but do NOT advance mid — the
-     element pulled in from `high` is unexamined and must still be checked.
-3. The loop ends when mid passes high, partitioning the array in a single pass.
+#Optimal Approach (Dutch National Flag — one pass, three pointers):
+1. Carve the array into four regions via three pointers: [0, low) = settled 0s,
+   [low, mid) = settled 1s, [mid, high] = the unknown region still to scan, and
+   (high, end] = settled 2s.
+2. Initialise low = 0, mid = 0, high = len-1 — at the start everything is in the
+   "unknown" region.
+3. Scan with `mid`, looping while mid <= high (i.e. while the unknown region is
+   non-empty), and branch on arr[mid]:
+4.   - arr[mid] == 0: it belongs at the front, so swap arr[low] <-> arr[mid], then
+     advance BOTH low and mid — the value that just moved into mid came from the
+     1s region, so it's already correct and safe to step past.
+5.   - arr[mid] == 1: it's already in its final region, so just advance mid.
+6.   - arr[mid] == 2: swap arr[mid] <-> arr[high] and shrink high by 1, but do NOT
+     advance mid — the value pulled in from `high` is unexamined, so it must be
+     re-checked on the next iteration.
+7. When mid passes high the unknown region is empty and the array is partitioned
+   0s | 1s | 2s — sorted in a single pass with no counting and no extra space.
 TC -> O(n), SC -> O(1)
 
 #KEY INSIGHT:

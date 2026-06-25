@@ -30,6 +30,8 @@ PLAN: list[tuple[int, str, list[str]]] = [
             "Rotate matrix by 90 degrees",
             "Merge Overlapping Subintervals",
             "Merge two sorted arrays without extra space",
+            "Find the Duplicate Number",
+            "Search in a 2D matrix",
         ],
     ),
     (1, "Fri", ["Sort an array of 0's 1's and 2's", "Stock Buy and Sell"]),
@@ -37,12 +39,11 @@ PLAN: list[tuple[int, str, list[str]]] = [
         1,
         "Sat",
         [
-            "Find the Duplicate Number",
             "Find the repeating and missing number",
             "Inversion of Array (Pre-req: Merge Sort)",
         ],
     ),
-    (1, "Sun", ["Search in a 2D matrix", "Pow(x, n)", "Majority Element-I"]),
+    (1, "Sun", ["Pow(x, n)", "Majority Element-I"]),
     # Week 2 (15)
     (2, "Mon", ["Majority Element-II", "Grid unique paths"]),
     (2, "Tue", ["Reverse a LL", "Find Middle of Linked List", "Merge two Sorted Lists"]),
