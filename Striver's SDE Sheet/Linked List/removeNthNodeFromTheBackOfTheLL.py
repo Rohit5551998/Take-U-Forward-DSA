@@ -51,17 +51,52 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None) -> None:
+        self.val = val
+        self.next = next
+
+
+def build_linked_list(values: List[int]) -> Optional[ListNode]:
+    dummy = ListNode()
+    curr = dummy
+    for value in values:
+        node = ListNode(value)
+        curr.next = node
+        curr = node
+    return dummy.next
+
+
+def to_list(head: Optional[ListNode]) -> List[int]:
+    values: List[int] = []
+    while head is not None:
+        values.append(head.val)
+        head = head.next
+    return values
+
 
 class Solution:
-    def remove_nth_node_from_the_back_of_the_ll_brute(self) -> None:
+    def remove_nth_node_from_the_back_of_the_ll_brute(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         pass
 
-    def remove_nth_node_from_the_back_of_the_ll_better(self) -> None:
+    def remove_nth_node_from_the_back_of_the_ll_better(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         pass
 
-    def remove_nth_node_from_the_back_of_the_ll_optimal(self) -> None:
+    def remove_nth_node_from_the_back_of_the_ll_optimal(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    head = build_linked_list([1, 2, 3, 4, 5])
+    n = 2
+    # print(to_list(sol.remove_nth_node_from_the_back_of_the_ll_optimal(head, n)))

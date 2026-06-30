@@ -35,17 +35,57 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List, Optional
+
+
+class Node:
+    def __init__(
+        self,
+        val: int = 0,
+        next: Optional["Node"] = None,
+        random: Optional["Node"] = None,
+    ) -> None:
+        self.val = val
+        self.next = next
+        self.random = random
+
+
+def build_linked_list(values: List[int]) -> Optional[Node]:
+    # Builds the `next` chain only; wire `random` pointers manually for testing.
+    dummy = Node()
+    curr = dummy
+    for value in values:
+        node = Node(value)
+        curr.next = node
+        curr = node
+    return dummy.next
+
+
+def to_list(head: Optional[Node]) -> List[int]:
+    values: List[int] = []
+    while head is not None:
+        values.append(head.val)
+        head = head.next
+    return values
+
 
 class Solution:
-    def clone_a_ll_with_random_and_next_pointer_brute(self) -> None:
+    def clone_a_ll_with_random_and_next_pointer_brute(self, head: Optional[Node]) -> Optional[Node]:
         pass
 
-    def clone_a_ll_with_random_and_next_pointer_better(self) -> None:
+    def clone_a_ll_with_random_and_next_pointer_better(
+        self, head: Optional[Node]
+    ) -> Optional[Node]:
         pass
 
-    def clone_a_ll_with_random_and_next_pointer_optimal(self) -> None:
+    def clone_a_ll_with_random_and_next_pointer_optimal(
+        self, head: Optional[Node]
+    ) -> Optional[Node]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    head = build_linked_list([1, 2, 3, 4, 5])
+    # Wire random pointers manually, e.g. head.random = head.next.next
+    # print(to_list(sol.clone_a_ll_with_random_and_next_pointer_optimal(head)))

@@ -29,17 +29,52 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None) -> None:
+        self.val = val
+        self.next = next
+
+
+def build_linked_list(values: List[int]) -> Optional[ListNode]:
+    dummy = ListNode()
+    curr = dummy
+    for value in values:
+        node = ListNode(value)
+        curr.next = node
+        curr = node
+    return dummy.next
+
+
+def to_list(head: Optional[ListNode]) -> List[int]:
+    values: List[int] = []
+    while head is not None:
+        values.append(head.val)
+        head = head.next
+    return values
+
 
 class Solution:
-    def reverse_ll_in_group_of_given_size_k_brute(self) -> None:
+    def reverse_ll_in_group_of_given_size_k_brute(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         pass
 
-    def reverse_ll_in_group_of_given_size_k_better(self) -> None:
+    def reverse_ll_in_group_of_given_size_k_better(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         pass
 
-    def reverse_ll_in_group_of_given_size_k_optimal(self) -> None:
+    def reverse_ll_in_group_of_given_size_k_optimal(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    head = build_linked_list([1, 2, 3, 4, 5])
+    k = 2
+    # print(to_list(sol.reverse_ll_in_group_of_given_size_k_optimal(head, k)))

@@ -32,17 +32,52 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None) -> None:
+        self.val = val
+        self.next = next
+
+
+def build_linked_list(values: List[int]) -> Optional[ListNode]:
+    dummy = ListNode()
+    curr = dummy
+    for value in values:
+        node = ListNode(value)
+        curr.next = node
+        curr = node
+    return dummy.next
+
+
+def to_list(head: Optional[ListNode]) -> List[int]:
+    values: List[int] = []
+    while head is not None:
+        values.append(head.val)
+        head = head.next
+    return values
+
 
 class Solution:
-    def add_two_numbers_as_linkedlist_brute(self) -> None:
+    def add_two_numbers_as_linkedlist_brute(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         pass
 
-    def add_two_numbers_as_linkedlist_better(self) -> None:
+    def add_two_numbers_as_linkedlist_better(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         pass
 
-    def add_two_numbers_as_linkedlist_optimal(self) -> None:
+    def add_two_numbers_as_linkedlist_optimal(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    l1 = build_linked_list([2, 4, 3])
+    l2 = build_linked_list([5, 6, 4])
+    # print(to_list(sol.add_two_numbers_as_linkedlist_optimal(l1, l2)))

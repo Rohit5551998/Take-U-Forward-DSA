@@ -28,17 +28,48 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None) -> None:
+        self.val = val
+        self.next = next
+
+
+def build_linked_list(values: List[int]) -> Optional[ListNode]:
+    dummy = ListNode()
+    curr = dummy
+    for value in values:
+        node = ListNode(value)
+        curr.next = node
+        curr = node
+    return dummy.next
+
+
+def to_list(head: Optional[ListNode]) -> List[int]:
+    values: List[int] = []
+    while head is not None:
+        values.append(head.val)
+        head = head.next
+    return values
+
 
 class Solution:
-    def delete_node_in_a_linked_list_o_one_brute(self) -> None:
+    # Only the node to delete is given (no head); it is never the tail node.
+    def delete_node_in_a_linked_list_o_one_brute(self, node: ListNode) -> None:
         pass
 
-    def delete_node_in_a_linked_list_o_one_better(self) -> None:
+    def delete_node_in_a_linked_list_o_one_better(self, node: ListNode) -> None:
         pass
 
-    def delete_node_in_a_linked_list_o_one_optimal(self) -> None:
+    def delete_node_in_a_linked_list_o_one_optimal(self, node: ListNode) -> None:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    head = build_linked_list([1, 4, 2, 3])
+    # node_to_delete = head.next.next  # the node holding value 2
+    # sol.delete_node_in_a_linked_list_o_one_optimal(node_to_delete)
+    # print(to_list(head))
