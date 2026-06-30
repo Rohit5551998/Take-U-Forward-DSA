@@ -51,12 +51,23 @@ def escape_for_js(text: str) -> str:
 def _has_skip_comment(py_file: Path, func_name: str) -> bool:
     """Check if a function has a # SKIP comment in its source."""
     in_func = False
+    in_signature = False
     for line in py_file.read_text().splitlines():
         stripped = line.strip()
         if stripped.startswith(f"def {func_name}("):
             in_func = True
+            # A wrapped signature spans several lines; it ends on the line whose
+            # stripped form ends with ':'. Skip those lines so the body's leading
+            # `# SKIP` comment is still found.
+            in_signature = not stripped.endswith(":")
             continue
         if in_func:
+            if in_signature:
+                if stripped.endswith(":"):
+                    in_signature = False
+                continue
+            if stripped.upper().startswith("# SKIP"):
+                return True
             if stripped.startswith("def ") or (
                 stripped
                 and not stripped.startswith("#")
@@ -64,8 +75,6 @@ def _has_skip_comment(py_file: Path, func_name: str) -> bool:
                 and not stripped == ""
             ):
                 break
-            if stripped.upper().startswith("# SKIP"):
-                return True
     return False
 
 

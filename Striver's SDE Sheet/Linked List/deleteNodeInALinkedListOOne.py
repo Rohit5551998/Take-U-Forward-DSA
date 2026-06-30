@@ -13,19 +13,30 @@
 
 """
 #Brute Force:
-1.
-TC -> O(), SC -> O()
+SKIPPED — there is no naive tier: you are given ONLY the node, not the head, so you
+can't even traverse to find its predecessor. The single O(1) trick below is the only
+approach.
 
 #Better Approach:
-1.
-TC -> O(), SC -> O()
+SKIPPED — same reason; no distinct intermediate exists for this problem.
 
 #Optimal Approach:
-1.
-TC -> O(), SC -> O()
+1. We can't unlink `node` directly: there's no head/prev reference to reach the node
+   before it, and rebinding the local `node` would change only the name, not the list.
+2. Trick — instead of removing `node`, make `node` BECOME its successor. Copy
+   node.next.val into node.val, so this node now carries the next node's data.
+3. Then bypass the now-duplicate successor with node.next = node.next.next. Reading the
+   list from the head, it looks exactly as if `node` had been deleted (its old value is
+   gone, the successor is skipped).
+4. This relies on node being guaranteed non-tail, so node.next always exists. It's a
+   fixed number of pointer assignments with no traversal, hence constant time.
+TC -> O(1), SC -> O(1)
 
 #KEY INSIGHT:
--
+- With only a node reference (no head, no prev), you cannot unlink the node itself —
+  but overwriting it with its successor's value and dropping the successor is
+  observationally identical to deleting it. This needs the non-tail guarantee, since a
+  tail has no successor to copy from.
 """
 
 from typing import List, Optional
@@ -58,18 +69,25 @@ def to_list(head: Optional[ListNode]) -> List[int]:
 class Solution:
     # Only the node to delete is given (no head); it is never the tail node.
     def delete_node_in_a_linked_list_o_one_brute(self, node: ListNode) -> None:
+        # SKIP: only the node is given (no head), so there's no traversal-based naive
+        # version — the O(1) copy-and-unlink trick is the only approach.
         pass
 
     def delete_node_in_a_linked_list_o_one_better(self, node: ListNode) -> None:
+        # SKIP: no distinct intermediate tier for this problem.
         pass
 
     def delete_node_in_a_linked_list_o_one_optimal(self, node: ListNode) -> None:
-        pass
+        # Guaranteed not the tail, so node.next always exists: overwrite this node
+        # with its successor's value, then unlink the successor.
+        node.val = node.next.val  # type: ignore[union-attr]
+        node.next = node.next.next  # type: ignore[union-attr]
 
 
 if __name__ == "__main__":
     sol = Solution()
     head = build_linked_list([1, 4, 2, 3])
-    # node_to_delete = head.next.next  # the node holding value 2
-    # sol.delete_node_in_a_linked_list_o_one_optimal(node_to_delete)
-    # print(to_list(head))
+    assert head is not None and head.next is not None and head.next.next is not None
+    node_to_delete = head.next.next  # the node holding value 2
+    sol.delete_node_in_a_linked_list_o_one_optimal(node_to_delete)
+    print(to_list(head))

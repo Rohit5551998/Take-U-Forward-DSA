@@ -36,19 +36,36 @@
 
 """
 #Brute Force:
-1.
-TC -> O(), SC -> O()
+1. To delete the Nth-from-end node we first need its position from the FRONT, which
+   means knowing the length. So walk the whole list once, counting nodes into cnt.
+2. The node to remove is the (cnt - n)-th from the front. Special case: if cnt == n the
+   target IS the head, so just return head.next.
+3. Otherwise walk a SECOND time, keeping `prev` one node behind `temp`, advancing
+   (cnt - n) steps so prev lands exactly on the predecessor of the target.
+4. Unlink the target with prev.next = temp.next, then return head.
+5. Two passes over the list (one to count, one to locate).
+TC -> O(L) (O(2L)), SC -> O(1)
 
 #Better Approach:
-1.
-TC -> O(), SC -> O()
+SKIPPED — no distinct middle tier: the problem goes from the two-pass count-then-delete
+straight to the one-pass two-pointer optimal.
 
 #Optimal Approach:
-1.
-TC -> O(), SC -> O()
+1. Do it in ONE pass with two pointers held a fixed n nodes apart. A dummy node before
+   head makes removing the head a non-special case (there's always a predecessor).
+2. Advance `fast` n steps ahead of `slow` (both start at dummy) — this bakes in the
+   n-node gap between them.
+3. Move both one step at a time until fast reaches the last node (fast.next is None).
+   The gap is preserved, so slow now sits exactly on the node BEFORE the target.
+4. Unlink with slow.next = slow.next.next, and return dummy.next (which also covers the
+   case where the head itself was removed).
+TC -> O(L), SC -> O(1)
 
 #KEY INSIGHT:
--
+- A fixed n-gap between two pointers turns "Nth from the end" into "stop slow on the
+  target's predecessor in a single pass": when fast hits the end, slow is exactly the
+  right distance behind. The dummy node erases the head-deletion special case so one
+  `slow.next = slow.next.next` handles every input.
 """
 
 from typing import List, Optional
@@ -82,21 +99,62 @@ class Solution:
     def remove_nth_node_from_the_back_of_the_ll_brute(
         self, head: Optional[ListNode], n: int
     ) -> Optional[ListNode]:
-        pass
+        cnt = 0
+        temp = head
+
+        while temp is not None:
+            cnt += 1
+            temp = temp.next
+
+        # Head of Linked List Needs to be removed
+        if cnt == n:
+            head = head.next  # type: ignore[union-attr]
+        else:
+            cnt -= n
+            temp = head
+            prev = None
+
+            while cnt > 0:
+                prev = temp
+                temp = temp.next  # type: ignore[union-attr]
+                cnt -= 1
+
+            prev.next = temp.next  # type: ignore[union-attr]
+
+        return head
 
     def remove_nth_node_from_the_back_of_the_ll_better(
         self, head: Optional[ListNode], n: int
     ) -> Optional[ListNode]:
+        # SKIP: no distinct middle tier — the problem goes from the two-pass
+        # count-then-delete straight to the one-pass two-pointer optimal.
         pass
 
     def remove_nth_node_from_the_back_of_the_ll_optimal(
         self, head: Optional[ListNode], n: int
     ) -> Optional[ListNode]:
-        pass
+        dummy = ListNode(0, head)
+        slow, fast = dummy, dummy
+
+        for _ in range(0, n):
+            fast = fast.next  # type: ignore[assignment]
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next  # type: ignore[assignment]
+            fast = fast.next
+
+        slow.next = slow.next.next  # type: ignore[union-attr]
+
+        return dummy.next
 
 
 if __name__ == "__main__":
     sol = Solution()
     head = build_linked_list([1, 2, 3, 4, 5])
     n = 2
-    # print(to_list(sol.remove_nth_node_from_the_back_of_the_ll_optimal(head, n)))
+    print(to_list(sol.remove_nth_node_from_the_back_of_the_ll_brute(head, n)))
+    head = build_linked_list([1, 2, 3, 4, 5])
+    n = 2
+    head = build_linked_list([1, 2])
+    n = 2
+    print(to_list(sol.remove_nth_node_from_the_back_of_the_ll_optimal(head, n)))
