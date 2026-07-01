@@ -1,4 +1,4 @@
-# QUESTION: Minimum sum path in the matrix
+# QUESTION: Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)
 # Given an m x n grid filled with non-negative numbers, find a path from
 # top-left to bottom-right which minimizes the sum of all numbers along
 # its path. You can only move either DOWN or RIGHT at any point in time.
