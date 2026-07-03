@@ -1,5 +1,25 @@
 # QUESTION: Pre, Post, Inorder in one traversal
-# Given the root of a Binary Tree, return the preorder, inorder and postorder traversal sequence of the given tree by making just one traversal.
+# Given a binary tree with root node, return the In-order, Pre-order and Post-order traversal
+# of the binary tree — computed by making just one traversal of the tree.
+#
+# Examples:
+# Example 1:
+# Input: root = [1, 3, 4, 5, 2, 7, 6]
+# Output: [[5, 3, 2, 1, 7, 4, 6], [1, 3, 5, 2, 4, 7, 6], [5, 2, 3, 7, 6, 4, 1]]
+# Explanation: The In-order traversal is [5, 3, 2, 1, 7, 4, 6].
+# The Pre-order traversal is [1, 3, 5, 2, 4, 7, 6].
+# The Post-order traversal is [5, 2, 3, 7, 6, 4, 1].
+#
+# Example 2:
+# Input: root = [1, 2, 3, null, null, null, 6]
+# Output: [[2, 1, 3, 6], [1, 2, 3, 6], [2, 6, 3, 1]]
+# Explanation: The In-order traversal is [2, 1, 3, 6].
+# The Pre-order traversal is [1, 2, 3, 6].
+# The Post-order traversal is [2, 6, 3, 1].
+#
+# Constraints:
+# 1 <= Number of Nodes <= 10^5
+# 0 <= Node.val <= 10^5
 
 
 """

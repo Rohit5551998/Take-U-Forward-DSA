@@ -1,5 +1,26 @@
 # QUESTION: Trapping Rainwater
-# Given an array of non-negative integers representation elevation of ground. Your task is to find the water that can be trapped after rain .
+# Given an array height of n non-negative integers representing an elevation map, where the
+# width of each bar is 1, compute how much water can be trapped between the bars after raining.
+#
+# Examples:
+# Example 1:
+# Input: height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+# Output: 6
+# Explanation: The elevation map traps water in the dips between the taller bars: 1 unit above
+# index 2 (between walls of height 1 and 2), 4 units above indices 4-6 (between walls of
+# height 2 and 3), and 1 unit above index 9 (between walls of height 2 and 2) — 6 units total.
+#
+# Example 2:
+# Input: height = [4, 2, 0, 3, 2, 5]
+# Output: 9
+# Explanation: Water above each index i is min(max height to its left, max height to its right)
+# minus height[i]: index 1 holds 2, index 2 holds 4, index 3 holds 1, index 4 holds 2,
+# for a total of 2 + 4 + 1 + 2 = 9 units.
+#
+# Constraints:
+# - n == height.length
+# - 1 <= n <= 2 * 10^4
+# - 0 <= height[i] <= 10^5
 
 
 """

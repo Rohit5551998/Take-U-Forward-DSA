@@ -1,15 +1,20 @@
 # QUESTION: Sort a Stack
-# You are given a stack of integers. Your task is to sort the stack in descending order using recursion, such that the top of the stack contains the greatest element. You are not a.
+# You are given a stack of integers. Your task is to sort the stack in descending order using
+# recursion, such that the top of the stack contains the greatest element and the bottom contains
+# the smallest. You are not allowed to use any explicit loop constructs or any additional data
+# structure — only the standard stack operations (push, pop, top, isEmpty) and recursion (the
+# implicit call stack) may be used.
 #
 # Examples:
 # Example 1:
-# Input: stack = [4, 1, 3, 2]
-# Output: [4, 3, 2, 1]
-# Explanation: After sorting, the largest element (4) is at the top, and the smallest (1) is at the bottom.
+# Input: stack (bottom -> top) = [4, 1, 3, 2]
+# Output: stack (bottom -> top) = [1, 2, 3, 4]
+# Explanation: After sorting, the greatest element (4) is at the top of the stack, and the
+# smallest (1) is at the bottom.
 #
 # Example 2:
-# Input: stack = [1]
-# Output: [1]
+# Input: stack (bottom -> top) = [1]
+# Output: stack (bottom -> top) = [1]
 # Explanation: A single-element stack is already sorted.
 
 

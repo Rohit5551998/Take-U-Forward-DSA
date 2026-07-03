@@ -1,5 +1,23 @@
 # QUESTION: Longest Palindrome in a string
-# Given a string s , return the longest palindromic substring in s. A palindromic substring is a contiguous sequence of characters within the string that reads the same forward and backward .
+# Given a string s, return the longest palindromic substring in s. A palindromic substring is a
+# contiguous sequence of characters within the string that reads the same forward and backward.
+# If multiple palindromic substrings share the maximum length, any one of them may be returned.
+#
+# Examples:
+# Example 1:
+# Input: s = "babad"
+# Output: "bab"
+# Explanation: "bab" is a palindrome of length 3, the maximum possible; "aba" is an equally
+# valid answer.
+#
+# Example 2:
+# Input: s = "cbbd"
+# Output: "bb"
+# Explanation: The longest palindromic substring is "bb", of length 2.
+#
+# Constraints:
+# - 1 <= s.length <= 1000
+# - s consists of digits and English letters
 
 
 """

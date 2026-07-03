@@ -1,16 +1,30 @@
 # QUESTION: 3 Sum
-# Given an array of N integers, your task is to find unique triplets that add up to give a sum of zero. In short, you need to return  an array of all the unique triplets [arr[a.
+# Given an integer array nums. Return all triplets such that:
+# - i != j, i != k, and j != k
+# - nums[i] + nums[j] + nums[k] == 0.
+# Notice that the solution set must not contain duplicate triplets. One element can be a part of
+# multiple triplets. The output and the triplets can be returned in any order.
 #
 # Examples:
 # Example 1:
-# Input: nums = [-1,0,1,2,-1,-4]
-# Output: [[-1,-1,2],[-1,0,1]]
-# Explanation: Out of all possible unique triplets possible, [-1,-1,2] and [-1,0,1] satisfy the condition of summing up to zero with i!=j!=k
+# Input: nums = [2, -2, 0, 3, -3, 5]
+# Output: [[-2, 0, 2], [-3, -2, 5], [-3, 0, 3]]
+# Explanation:
+# nums[1] + nums[2] + nums[0] = 0
+# nums[4] + nums[1] + nums[5] = 0
+# nums[4] + nums[2] + nums[3] = 0
 #
 # Example 2:
-# Input: nums=[-1,0,1,0]
-# Output: Output: [[-1,0,1],[-1,1,0]]
-# Explanation: Out of all possible unique triplets possible, [-1,0,1] and [-1,1,0] satisfy the condition of summing up to zero with i!=j!=k
+# Input: nums = [2, -1, -1, 3, -1]
+# Output: [[-1, -1, 2]]
+# Explanation:
+# nums[1] + nums[2] + nums[0] = 0
+# Note that we have used two -1s as they are separate elements with different indexes.
+# But we have not used the -1 at index 4 as that would create a duplicate triplet.
+#
+# Constraints:
+# - 1 <= nums.length <= 3000
+# - -10^4 <= nums[i] <= 10^4
 
 
 """

@@ -1,5 +1,21 @@
 # QUESTION: Rabin Karp Algorithm
-# Given a string text and a string pattern, implement the Rabin-Karp algorithm to find the starting index of all occurrences of pattern in text. If pattern is not found, return an empty list.
+# Given a string text and a string pattern, implement the Rabin-Karp algorithm to find the
+# starting index of all occurrences of pattern in text. If pattern is not found, return an
+# empty list.
+#
+# Examples:
+# Example 1:
+# Input: text = "ababcabcababc", pattern = "abc"
+# Output: [2, 5, 10]
+# Explanation: The pattern "abc" is found at indices 2, 5, and 10 in the text.
+#
+# Example 2:
+# Input: text = "hello", pattern = "ll"
+# Output: [2]
+# Explanation: The pattern "ll" is found at index 2 in the text.
+#
+# Constraints:
+# - 1 <= text.length, pattern.length <= 5*10^4
 
 
 """

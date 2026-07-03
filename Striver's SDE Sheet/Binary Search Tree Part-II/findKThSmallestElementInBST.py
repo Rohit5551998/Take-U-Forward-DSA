@@ -1,5 +1,7 @@
 # QUESTION: Find K-th smallest element in BST
-# Given the root node of a binary search tree (BST) and an integer k. Return the kth smallest and largest value (1-indexed) of all values of the nodes in the tree. Return the 1st i.
+# Given the root node of a binary search tree (BST) and an integer k. Return the kth smallest
+# and largest value (1-indexed) of all values of the nodes in the tree. Return the 1st integer
+# as the kth smallest and the 2nd integer as the kth largest in the returned array.
 #
 # Examples:
 # Example 1:
@@ -15,6 +17,11 @@
 # Explanation:
 # The 3rd smallest value in the given BST is 3.
 # The 3rd largest value in the given BST is 3.
+#
+# Constraints:
+# The number of nodes in the tree is n.
+# 1 <= k <= n <= 10^4
+# 0 <= Node.val <= 10^5
 
 
 """

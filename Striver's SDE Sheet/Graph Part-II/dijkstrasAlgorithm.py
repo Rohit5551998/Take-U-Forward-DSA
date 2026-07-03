@@ -1,15 +1,33 @@
 # QUESTION: Dijkstra's algorithm
-# Given a weighted, undirected, and connected graph of V vertices and E
-# edges (represented as an adjacency list of [neighbor, weight] pairs),
-# find the shortest distance of all vertices from a given source vertex S.
-# Note: The graph does NOT contain any negative edge weights (Dijkstra
-# requires non-negative weights).
-# Use a Priority Queue (min-heap) keyed on distance:
-#   1. Initialize dist[S] = 0, dist[v] = infinity for v != S.
-#   2. Push (0, S) onto the heap.
-#   3. Pop the smallest-distance node; for each neighbor, relax the edge
-#      (if dist[u] + w < dist[v], update dist[v] and push (dist[v], v)).
-#   4. Continue until the heap is empty. The dist[] array is the answer.
+# Given a weighted, undirected graph of V vertices, numbered from 0 to V-1, and a 2D
+# vector/array which represents the edges. Each entry in edges[i] is of the form
+# [u, v, weight], where u, v represent the vertices having an undirected edge between them,
+# and weight is the weight of the edge between u and v.
+# Given a source node S, find the shortest distance of all the vertices from the source
+# vertex S. Return a list of integers denoting the shortest distance between each node and
+# source vertex S. If a vertex is not reachable from the source then its distance will
+# be 10^9.
+#
+# Examples:
+# Example 1:
+# Input: V = 2, edges = [[0, 1, 9]], S = 0
+# Output: [0, 9]
+# Explanation: The shortest distance from node 0 (source) to node 0 is 0, and the shortest
+# distance from node 0 to node 1 is 9.
+#
+# Example 2:
+# Input: V = 3, edges = [[0, 1, 1], [0, 2, 6], [1, 2, 3]], S = 2
+# Output: [4, 3, 0]
+# Explanation:
+# For node 0, the shortest path is 2->1->0 (distance=4).
+# For node 1, the shortest path is 2->1 (distance=3).
+# For node 2 (the source), the distance is 0.
+#
+# Constraints:
+# 1 <= V <= 10000
+# 0 <= edges[i][j] <= 10000
+# 1 <= edges.size() <= (V*(V-1))/2
+# 0 <= S < V
 
 
 """

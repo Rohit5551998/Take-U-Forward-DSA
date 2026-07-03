@@ -1,14 +1,23 @@
 # QUESTION: Merge two Sorted Lists
-# Given the heads of two linked lists, list1 and list2, where each linked list has its elements sorted in non-decreasing order, merge them into a single sorted linked list and retu.
+# Given the heads of two linked lists, list1 and list2, where each linked list has its elements
+# sorted in non-decreasing order, merge them into a single sorted linked list and return the head
+# of the merged linked list.
 #
 # Examples:
-# Input : List1: 2 4 8 10, List2: 1 3 3 6 11 14
-# Output : Combined List: 1 2 3 3 6 8 10 11 14
-# Explanation : Below is the image of original and sorted list.
+# Example 1:
+# Input: list1 = head -> 2 -> 4 -> 7 -> 9, list2 = head -> 1 -> 2 -> 5 -> 6
+# Output: head -> 1 -> 2 -> 2 -> 4 -> 5 -> 6 -> 7 -> 9
+# Explanation: The nodes 1, 2, 5, 6 come from list2; the nodes 2, 4, 7, 9 come from list1.
 #
-# Input : List1: 7 8, List2: 1 3 4 6
-# Output : Combined List: 1 3 4 6 7 8
-# Explanation : Below is the image of original and sorted list.
+# Example 2:
+# Input: list1 = head -> 1 -> 2 -> 3 -> 4, list2 = head -> 5 -> 6 -> 10
+# Output: head -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 10
+# Explanation: The nodes 5, 6, 10 come from list2; the nodes 1, 2, 3, 4 come from list1.
+#
+# Constraints:
+# - 0 <= number of nodes in list1, list2 <= 5 * 10^4
+# - -10^4 <= ListNode.val <= 10^4
+# - list1 and list2 are sorted in non-decreasing order.
 
 
 """

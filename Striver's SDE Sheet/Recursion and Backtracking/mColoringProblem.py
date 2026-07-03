@@ -1,5 +1,30 @@
 # QUESTION: M Coloring Problem
-# Coloring Problem - Problem Statement: Given an undirected graph and a number m, determine if the graph can be colored with at most m colors such that no two adjacent vertices of the graph are colored with the same co.
+# Given an integer M and an undirected graph with N vertices (zero indexed) and E edges. The goal
+# is to determine whether the graph can be coloured with a maximum of M colors so that no two of
+# its adjacent vertices have the same colour applied to them. In this context, colouring a graph
+# refers to giving each vertex a colour. If the colouring of vertices is possible then return
+# true, otherwise return false.
+#
+# Examples:
+# Example 1:
+# Input: N = 4, M = 3, E = 5, Edges = [(0, 1), (1, 2), (2, 3), (3, 0), (0, 2)]
+# Output: true
+# Explanation: Consider the three colors to be red, green, blue.
+# We can color vertex 0 with red, vertex 1 with blue, vertex 2 with green, vertex 3 with blue.
+# In this way we can color the graph using 3 colors at most.
+#
+# Example 2:
+# Input: N = 3, M = 2, E = 3, Edges = [(0, 1), (1, 2), (0, 2)]
+# Output: false
+# Explanation: Consider the two colors to be red, green.
+# We can color vertex 0 with red and vertex 1 with green.
+# As vertex 2 is adjacent to both vertex 1 and vertex 0, it can be colored with neither red nor
+# green. Hence, as we could not color all vertices of the graph, we return false.
+#
+# Constraints:
+# - 1 <= N <= 20
+# - 1 <= E <= (N*(N-1)/2)
+# - 1 <= M <= N
 
 
 """

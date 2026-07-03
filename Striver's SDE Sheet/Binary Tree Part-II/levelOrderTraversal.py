@@ -1,5 +1,23 @@
 # QUESTION: Level Order Traversal
-# Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+# Given the root of a binary tree, return the level order traversal of its nodes' values
+# (i.e., from left to right, level by level).
+#
+# Examples:
+# Example 1:
+# Input: root = [3, 9, 20, null, null, 15, 7]
+# Output: [[3], [9, 20], [15, 7]]
+# Explanation: Level 0 has the root 3, level 1 has its children 9 and 20, and level 2 has
+# 20's children 15 and 7.
+#
+# Example 2:
+# Input: root = [1, 4, null, 4, 2]
+# Output: [[1], [4], [4, 2]]
+# Explanation: Level 0 has the root 1, level 1 has its left child 4, and level 2 has that
+# node's children 4 and 2.
+#
+# Constraints:
+# 0 <= Number of Nodes <= 2000
+# -1000 <= Node.val <= 2000
 
 
 """

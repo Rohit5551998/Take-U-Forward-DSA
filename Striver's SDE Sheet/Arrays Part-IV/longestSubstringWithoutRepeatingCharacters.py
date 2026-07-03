@@ -1,5 +1,20 @@
 # QUESTION: Longest Substring Without Repeating Characters
 # Given a string, S. Find the length of the longest substring without repeating characters.
+#
+# Examples:
+# Example 1:
+# Input: S = "abcddabac"
+# Output: 4
+# Explanation: The answer is "abcd", with a length of 4.
+#
+# Example 2:
+# Input: S = "aaabbbccc"
+# Output: 2
+# Explanation: The answers are "ab", "bc". Both have maximum length 2.
+#
+# Constraints:
+# 1 <= S.length <= 5*10^4
+# S contains only English lowercase letters.
 
 
 """

@@ -1,5 +1,24 @@
 # QUESTION: Palindrome partitioning
-# Given a string s partition string s such that every substring of partition is palindrome. Return all possible palindrome partition of string s .
+# Given a string s, partition string s such that every substring of the partition is a
+# palindrome. Return all possible palindrome partitions of string s.
+#
+# Examples:
+# Example 1:
+# Input: s = "aabaa"
+# Output: [["a", "a", "b", "a", "a"], ["a", "a", "b", "aa"], ["a", "aba", "a"],
+#          ["aa", "b", "a", "a"], ["aa", "b", "aa"], ["aabaa"]]
+# Explanation: Above are all the possible ways in which the string can be partitioned so that
+# each substring is a palindrome.
+#
+# Example 2:
+# Input: s = "baa"
+# Output: [["b", "a", "a"], ["b", "aa"]]
+# Explanation: Above are all the possible ways in which the string can be partitioned so that
+# each substring is a palindrome.
+#
+# Constraints:
+# 1 <= s.length <= 16
+# s contains only lowercase English letters.
 
 
 """

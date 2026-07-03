@@ -87,6 +87,7 @@ if __name__ == "__main__":
 
 - `C0200` (consider-using-enumerate) is disabled — `for i in range(len(...))` is intentional in DSA code where index access matters
 - Do NOT suggest `enumerate` replacements in solution files unless the user asks
+- Both camelCase and snake_case are allowed for function, argument, and variable names (`N802`/`N803`/`N806` are ignored in ruff) — do NOT rename identifiers to snake_case
 
 ## Git
 

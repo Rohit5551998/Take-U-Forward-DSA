@@ -1,5 +1,11 @@
 # QUESTION: Implement Stack using Arrays
-# Implement a Last-In-First-Out (LIFO) stack using an array. The implemented stack should support the following operations: push, pop, peek, and isEmpty. Implement the ArrayStack c.
+# Implement a Last-In-First-Out (LIFO) stack using an array. The implemented stack should
+# support the following operations: push, pop, top, and isEmpty.
+# Implement the ArrayStack class:
+# - void push(int x): Pushes element x onto the top of the stack.
+# - int pop(): Removes and returns the top element of the stack.
+# - int top(): Returns the top element of the stack without removing it.
+# - boolean isEmpty(): Returns true if the stack is empty, false otherwise.
 #
 # Examples:
 # Example 1:
@@ -23,6 +29,10 @@
 # - stack.push(1);
 # - stack.pop(); // returns 1
 # - stack.isEmpty(); // returns true
+#
+# Constraints:
+# - 1 <= number of calls made <= 100
+# - 1 <= x <= 100
 
 
 """

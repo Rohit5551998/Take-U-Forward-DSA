@@ -1,5 +1,23 @@
 # QUESTION: K-th largest element in an unsorted array.
-# Given an array nums , return the k th largest element in the array.
+# Given an unsorted integer array nums and an integer k, return the k-th largest element in the
+# array. Note that it is the k-th largest element in the sorted order, not the k-th distinct
+# element (duplicate values are counted separately).
+#
+# Examples:
+# Example 1:
+# Input: nums = [3, 2, 1, 5, 6, 4], k = 2
+# Output: 5
+# Explanation: Sorted in descending order: [6, 5, 4, 3, 2, 1]. The 2nd largest element is 5.
+#
+# Example 2:
+# Input: nums = [3, 3, 6, 1], k = 2
+# Output: 3
+# Explanation: Sorted in descending order: [6, 3, 3, 1]. The 2nd largest element is 3, since
+# duplicates are counted separately.
+#
+# Constraints:
+# 1 <= k <= nums.length <= 10^5
+# -10^4 <= nums[i] <= 10^4
 
 
 """

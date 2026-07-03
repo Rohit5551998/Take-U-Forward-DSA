@@ -1,16 +1,24 @@
 # QUESTION: Floyd Warshall Algorithm
-# Given a directed, edge-weighted graph of V vertices numbered 0 to V-1,
-# find the shortest distances between every pair of vertices (all-pairs
-# shortest path). The graph is represented as a V x V matrix `mat`
-# where mat[i][j] is the weight of the edge from i to j, or -1 if no
-# direct edge exists.
-# The graph may contain negative weights but no negative cycles.
-# Algorithm (O(V^3)):
-#   for k in 0..V-1:
-#     for i in 0..V-1:
-#       for j in 0..V-1:
-#         dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-# Optionally detect a negative cycle by checking dist[i][i] < 0 at the end.
+# Given a graph of V vertices numbered from 0 to V-1. Find the shortest distances between
+# every pair of vertices in a given edge-weighted directed graph. The graph is represented
+# as an adjacency matrix of size n x n. Matrix[i][j] denotes the weight of the edge from
+# i to j. If Matrix[i][j] = -1, it means there is no edge from i to j.
+#
+# Examples:
+# Example 1:
+# Input: matrix = [[0, 2, -1, -1], [1, 0, 3, -1], [-1, -1, 0, 1], [3, 5, 4, 0]]
+# Output: [[0, 2, 5, 6], [1, 0, 3, 4], [4, 6, 0, 1], [3, 5, 4, 0]]
+# Explanation: matrix[0][0] is storing the distance from vertex 0 to vertex 0, the distance
+# from vertex 0 to vertex 1 is 2, and so on.
+#
+# Example 2:
+# Input: matrix = [[0, 25], [-1, 0]]
+# Output: [[0, 25], [-1, 0]]
+# Explanation: The matrix already contains the shortest distances.
+#
+# Constraints:
+# 1 <= n <= 100
+# -1 <= matrix[i][j] <= 1000
 
 
 """

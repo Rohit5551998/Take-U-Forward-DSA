@@ -1,10 +1,24 @@
 # QUESTION: Detect A cycle in a Directed Graph using DFS
-# Given a Directed Graph with V vertices and E edges (represented as an
-# adjacency list), check whether it contains any cycle using DFS. Return
-# true if a cycle exists; otherwise false.
-# Use DFS with two tracking sets: `visited` (node already processed in
-# any DFS subtree) and `path-visited` (node currently in the recursion
-# stack). A back-edge to a path-visited node means a cycle.
+# Given a directed graph with V vertices labeled from 0 to V-1. The graph is represented using an
+# adjacency list where adj[i] lists all nodes connected to node i (via a directed edge i -> j).
+# Determine if the graph contains any cycles.
+#
+# Examples:
+# Example 1:
+# Input: V = 6, adj = [[1], [2, 5], [3], [4], [1], []]
+# Output: True
+# Explanation: The graph contains a cycle: 1 -> 2 -> 3 -> 4 -> 1.
+#
+# Example 2:
+# Input: V = 4, adj = [[1, 2], [2], [], [0, 2]]
+# Output: False
+# Explanation: The graph does not contain a cycle.
+#
+# Constraints:
+# 1 <= V <= 10^4
+# adj.size() == V
+# 0 <= adj[i][j] < V
+# 1 <= sum(adj[i].size()) <= 10^4
 
 
 """

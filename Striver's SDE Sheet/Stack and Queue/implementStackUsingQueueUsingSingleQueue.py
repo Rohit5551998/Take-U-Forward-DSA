@@ -1,5 +1,11 @@
 # QUESTION: Implement Stack using Queue (using single queue)
-# Implement a Last-In-First-Out (LIFO) stack using a single queue. The implemented stack should support the following operations: push, pop, top, and isEmpty. Implement the QueueSt.
+# Implement a Last-In-First-Out (LIFO) stack using a single queue. The implemented stack should
+# support the following operations: push, pop, top, and isEmpty.
+# Implement the QueueStack class:
+# - void push(int x): Pushes element x onto the stack.
+# - int pop(): Removes and returns the top element of the stack.
+# - int top(): Returns the top element of the stack without removing it.
+# - boolean isEmpty(): Returns true if the stack is empty, false otherwise.
 #
 # Examples:
 # Example 1:
@@ -21,6 +27,10 @@
 # Output: [null, true]
 # Explanation: QueueStack stack = new QueueStack();
 # - stack.isEmpty(); // returns true
+#
+# Constraints:
+# - 1 <= number of calls made <= 100
+# - 1 <= x <= 100
 
 
 """

@@ -1,14 +1,24 @@
 # QUESTION: KMP Algorithm or LPS array
-# Given two strings, one is a text string and the other is a pattern string. Find and print the indices of all the occurrences of the pattern string within the text string. Use 0-b.
+# Given two strings, one is a text string, text, and the other is a pattern string, pattern. Find
+# and print the indices of all the occurrences of the pattern string within the text string. Use
+# 0-based indexing for the indices, and ensure that the indices are in ascending order. If the
+# pattern does not occur in the text, return an empty list.
+# Implement this solution using the Knuth-Morris-Pratt (KMP) algorithm for efficient pattern
+# matching.
 #
 # Examples:
+# Example 1:
 # Input: text = "abracadabra", pattern = "abra"
 # Output: [0, 7]
-# Explanation: The pattern "abra" appears at the 0st and 7th positions in the text "abracadabra".
+# Explanation: The pattern "abra" appears at indices 0 and 7 in the text "abracadabra".
 #
+# Example 2:
 # Input: text = "abcabcabc", pattern = "abc"
 # Output: [0, 3, 6]
-# Explanation: The pattern "abc" appears at the 0st, 3th, and 6th positions in the text "abcabcabc".
+# Explanation: The pattern "abc" appears at indices 0, 3, and 6 in the text "abcabcabc".
+#
+# Constraints:
+# - 1 <= text.length, pattern.length <= 5*10^4
 
 
 """

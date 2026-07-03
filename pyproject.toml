@@ -21,6 +21,9 @@ select = [
 ignore = [
   "ANN101",  # missing type for self
   "ANN102",  # missing type for cls
+  "N802",    # function names may be camelCase or snake_case
+  "N803",    # argument names may be camelCase or snake_case
+  "N806",    # variables in functions may be camelCase or snake_case
 ]
 
 [tool.ruff.format]

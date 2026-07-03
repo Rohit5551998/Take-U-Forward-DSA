@@ -1,22 +1,32 @@
 # QUESTION: Traversal Techniques
-# Given an undirected graph (represented as an adjacency list), return
-# the BFS and DFS traversals starting from vertex 0 (or 1, depending on
-# the convention).
-# (Striver's sheet groups BFS + DFS basics under this entry. This is a
-# meta-problem — implementing both to ensure you have the patterns down.)
+# Given an undirected connected graph with V vertices numbered from 0 to V-1, the task is to
+# implement both Depth First Search (DFS) and Breadth First Search (BFS) traversals starting
+# from the 0th vertex.
+# The graph is represented using an array/vector of edges, where each element is a pair [u, v]
+# indicating an undirected edge between vertex u and vertex v.
 #
-# BFS Traversal:
-#   1. Start at the source, mark it visited, enqueue.
-#   2. Pop the front, append to result, then enqueue all unvisited
-#      neighbors (mark them visited as they're enqueued).
-#   3. Repeat until queue is empty.
+# Examples:
+# Example 1:
+# Input: V = 5, edges = [ [0, 1], [0, 2], [0, 3], [2, 4] ]
+# Output: [0, 2, 4, 3, 1], [0, 2, 3, 1, 4]
+# Explanation:
+# DFS: Start from vertex 0. Visit vertex 2, then vertex 4, backtrack to vertex 0, then visit
+# vertex 3, and finally vertex 1. The traversal is 0 -> 2 -> 4 -> 3 -> 1.
+# BFS: Start from vertex 0. Visit vertices 2, 3, and 1 (in the order they appear in the
+# adjacency list). Then, visit vertex 4 from vertex 2. The traversal is 0 -> 2 -> 3 -> 1 -> 4.
 #
-# DFS Traversal:
-#   1. Start at the source, mark it visited, append to result.
-#   2. Recursively DFS into each unvisited neighbor.
+# Example 2:
+# Input: V = 4, edges = [ [0, 1], [0, 3], [1, 2] ]
+# Output: [0, 1, 2, 3], [0, 1, 3, 2]
+# Explanation:
+# DFS: Start from vertex 0. Visit vertex 1, then vertex 2, backtrack to vertex 0, then visit
+# vertex 3. The traversal is 0 -> 1 -> 2 -> 3.
+# BFS: Start from vertex 0. Visit vertices 1 and 3, then visit vertex 2 from vertex 1.
+# The traversal is 0 -> 1 -> 3 -> 2.
 #
-# Both produce a list of all reachable nodes from the source in their
-# respective traversal orders.
+# Constraints:
+# E = Number of Edges
+# 1 <= V, E <= 10^4
 
 
 """

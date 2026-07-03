@@ -1,14 +1,20 @@
 # QUESTION: Delete Node in a Linked List O(1)
-# Write a function to delete a node in a singly linked list. You will not be given access to the head of the list instead, you will be given access to the node to be deleted direct.
+# Write a function to delete a node in a singly linked list. You will not be given access to the
+# head of the list; instead, you will be given access to the node to be deleted directly.
+# It is guaranteed that the given node is not the tail node (it has a successor). After deletion,
+# the value of the given node should no longer exist in the list, the number of nodes should
+# decrease by one, and the relative order of all other nodes should stay the same.
 #
 # Examples:
-# Input : 1->4->2->3, Node = 2
-# Output : 1->4->3
-# Explanation : Node 2 is deleted from the given linked list.
+# Example 1:
+# Input: list = 1 -> 4 -> 2 -> 3, node = 2
+# Output: 1 -> 4 -> 3
+# Explanation: The node with value 2 is deleted from the given linked list.
 #
-# Input : 1->2->3->4, Node = 1
-# Output : 2->3->4
-# Explanation : Node 1 is deleted from the given linked list.
+# Example 2:
+# Input: list = 1 -> 2 -> 3 -> 4, node = 1
+# Output: 2 -> 3 -> 4
+# Explanation: The node with value 1 (the head) is deleted from the given linked list.
 
 
 """

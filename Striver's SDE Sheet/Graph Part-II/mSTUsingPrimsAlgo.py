@@ -1,18 +1,22 @@
 # QUESTION: MST using Prim's Algo
-# Given a weighted, undirected, and connected graph of V vertices and E
-# edges (represented as an adjacency list of [neighbor, weight] pairs),
-# find the sum of weights of the edges of the Minimum Spanning Tree (MST).
-# An MST is a subset of E edges that connects all V vertices with the
-# minimum total edge weight and contains no cycles.
-# Use Prim's algorithm (priority-queue based):
-#   1. Start from any vertex (say 0). Mark it in the MST. Push all its
-#      edges into a min-heap keyed on edge weight.
-#   2. While the heap isn't empty: pop the minimum-weight edge. If the
-#      other endpoint isn't yet in the MST, add it, accumulate the weight,
-#      and push its outgoing edges into the heap.
-#   3. Repeat until V vertices are included.
-# (Note: sometimes "the MST" is unique; sometimes multiple MSTs exist
-# with the same total weight — any one is acceptable.)
+# Given a weighted, undirected, and connected graph of V vertices (numbered 0 to V-1) and E
+# edges, where each edge is represented as [u, v, w] (an undirected edge between u and v of
+# weight w), find the sum of the edge weights of the Minimum Spanning Tree (MST) of the graph.
+# A spanning tree is a subset of exactly V-1 edges that connects all V vertices without
+# forming any cycle; the MST is the spanning tree whose total edge weight is minimum. Multiple
+# MSTs may exist, but they all share the same minimum total weight, so the answer is unique.
+#
+# Examples:
+# Example 1:
+# Input: V = 3, edges = [[0, 1, 2], [1, 2, 3], [0, 2, 1]]
+# Output: 3
+# Explanation: The MST uses edges (0,2) with weight 1 and (0,1) with weight 2, total = 3.
+# The other two spanning trees weigh 4 ({(0,2), (1,2)}) and 5 ({(0,1), (1,2)}).
+#
+# Example 2:
+# Input: V = 5, edges = [[0, 1, 2], [0, 2, 1], [1, 2, 1], [2, 3, 2], [3, 4, 1], [4, 2, 2]]
+# Output: 5
+# Explanation: One MST is {(0,2), (1,2), (3,4), (2,3)} with total weight 1 + 1 + 1 + 2 = 5.
 
 
 """

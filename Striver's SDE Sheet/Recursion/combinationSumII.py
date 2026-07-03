@@ -1,21 +1,25 @@
 # QUESTION: Combination Sum II
-# Find all unique combinations - Problem Statement: Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target. Each numb.
+# Given a collection of candidate numbers (candidates) and an integer target, find all unique
+# combinations in candidates where the sum is equal to the target. There can only be one usage
+# of each number in a candidates combination, and return the answer in sorted order.
+# e.g.: The combinations [1, 1, 2] and [1, 2, 1] are not unique.
 #
 # Examples:
 # Example 1:
-# Input: candidates = [10,1,2,7,6,1,5], target = 8
-# Output:
-# [
-# [1,1,6],
-# [1,2,5],
-# [1,7],
-# [2,6]]
-# Explanation: These are the unique combinations whose sum is equal to target.
+# Input: candidates = [2, 1, 2, 7, 6, 1, 5], target = 8
+# Output: [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
+# Explanation: The combinations that sum up to target are
+# 1 + 1 + 6 => 8; 1 + 2 + 5 => 8; 1 + 7 => 8; 2 + 6 => 8.
 #
 # Example 2:
-# Input: candidates = [2,5,2,1,2], target = 5
-# Output: [[1,2,2],[5]]
-# Explanation: These are the unique combinations whose sum is equal to target.
+# Input: candidates = [2, 5, 2, 1, 2], target = 5
+# Output: [[1, 2, 2], [5]]
+# Explanation: The combinations that sum up to target are 1 + 2 + 2 => 5; 5 => 5.
+#
+# Constraints:
+# 1 <= candidates.length <= 100
+# 1 <= candidates[i] <= 50
+# 1 <= target <= 30
 
 
 """
