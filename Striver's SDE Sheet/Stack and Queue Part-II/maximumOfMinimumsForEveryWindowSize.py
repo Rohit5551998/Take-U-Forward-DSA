@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Maximum of Minimums for Every Window Size
 # Given an array arr[] of size n, for every window size i from 1 to n,
 # find the maximum of the minimum of all contiguous subarrays of size i.
@@ -45,17 +46,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def maximum_of_minimums_for_every_window_size_brute(self) -> None:
+    def maximum_of_minimums_for_every_window_size_brute(self, arr: List[int]) -> List[int]:
         pass
 
-    def maximum_of_minimums_for_every_window_size_better(self) -> None:
+    def maximum_of_minimums_for_every_window_size_better(self, arr: List[int]) -> List[int]:
         pass
 
-    def maximum_of_minimums_for_every_window_size_optimal(self) -> None:
+    def maximum_of_minimums_for_every_window_size_optimal(self, arr: List[int]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [10, 20, 30, 50, 10, 70, 30]
+    print(sol.maximum_of_minimums_for_every_window_size_optimal(arr))

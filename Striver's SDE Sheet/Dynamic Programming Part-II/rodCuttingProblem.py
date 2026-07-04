@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Rod cutting problem
 # Given a rod of length N inches and an array price[] where price[i]
 # denotes the value of a piece of rod of length (i+1) inches (so
@@ -34,17 +35,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def rod_cutting_problem_brute(self) -> None:
+    def rod_cutting_problem_brute(self, price: List[int], n: int) -> int:
         pass
 
-    def rod_cutting_problem_better(self) -> None:
+    def rod_cutting_problem_better(self, price: List[int], n: int) -> int:
         pass
 
-    def rod_cutting_problem_optimal(self) -> None:
+    def rod_cutting_problem_optimal(self, price: List[int], n: int) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    price = [1, 6, 8, 9, 10, 19, 7, 20]
+    n = 8
+    print(sol.rod_cutting_problem_optimal(price, n))

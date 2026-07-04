@@ -36,19 +36,50 @@
 
 """
 #Brute Force:
-1.
-TC -> O(), SC -> O()
+1. The hard part of cloning is the random pointer: original.random points to
+   some original node, but the copy must point to the CORRESPONDING copy. Solve
+   that lookup with a hash map from original node -> its copy.
+2. First pass: walk the list, create a bare copy (value only) for each original
+   node, and record hashMap[original] = copy. No links wired yet — the copies
+   of later nodes may not exist when an earlier random needs them.
+3. Second pass: for each original, use the map to translate its next and random
+   into the clone world — copy.next = hashMap[original.next] and
+   copy.random = hashMap[original.random]. Because every copy already exists,
+   both lookups always resolve.
+4. Return hashMap[head] as the cloned head.
+TC -> O(2n) ~ O(n) (two passes, O(1) average map ops),
+SC -> O(n) for the hash map of n original->copy entries
 
 #Better Approach:
-1.
-TC -> O(), SC -> O()
+SKIPPED — no distinct middle tier exists. The problem goes straight from the
+O(n)-space hash-map clone to the O(1)-space interleaving trick; nothing
+sensible sits in between.
 
 #Optimal Approach:
-1.
-TC -> O(), SC -> O()
+1. Kill the hash map by encoding the original->copy mapping INTO the list
+   itself: weave each copy in right after its original, so original.next is
+   always its own copy.
+2. Pass 1 (insert): for each original node, make a copy, splice it between the
+   node and its successor (copy.next = temp.next; temp.next = copy), then jump
+   two steps to the next original.
+3. Pass 2 (wire randoms): now for any original temp, temp.next is its copy and
+   temp.random.next is the copy of temp.random — exactly the node the clone's
+   random must point to. So copy.random = temp.random.next (guarding None).
+   This is the whole payoff of interleaving: the mapping lookup is now a single
+   .next hop instead of a hash lookup.
+4. Pass 3 (detach): un-weave the two lists. For each original, re-link
+   temp.next to the following ORIGINAL (front = temp.next.next) and link the
+   copy to the following COPY (copy.next = front.next). This both extracts the
+   clone AND restores the original list to its input state.
+5. Return the head of the extracted copy list.
+TC -> O(3n) ~ O(n) (three linear passes), SC -> O(1) (only the copies
+themselves are allocated; no auxiliary map)
 
 #KEY INSIGHT:
--
+- Interleaving each copy directly after its original turns the random-pointer
+  translation into pure pointer arithmetic: the copy of X is always X.next, so
+  the copy of X.random is always X.random.next — no hash map needed. The final
+  un-weaving pass must restore the original list, not just extract the clone.
 """
 
 from typing import List, Optional, Set
@@ -123,21 +154,70 @@ def is_deep_clone(original: Optional[Node], clone: Optional[Node]) -> bool:
 
 class Solution:
     def clone_a_ll_with_random_and_next_pointer_brute(self, head: Optional[Node]) -> Optional[Node]:
-        pass
+        hashMap = {}
+
+        temp = head
+        while temp is not None:
+            copy = Node(temp.val)
+            hashMap[temp] = copy
+            temp = temp.next
+
+        temp = head
+        newHead = hashMap[temp] if temp else None
+
+        while temp is not None:
+            copy = hashMap[temp]
+            if temp.next is not None:
+                copy.next = hashMap[temp.next]
+            if temp.random is not None:
+                copy.random = hashMap[temp.random]
+            temp = temp.next
+
+        return newHead
 
     def clone_a_ll_with_random_and_next_pointer_better(
         self, head: Optional[Node]
     ) -> Optional[Node]:
+        # SKIP: no tier between the O(n)-space hash-map clone and the O(1)-space interleaving trick
         pass
 
     def clone_a_ll_with_random_and_next_pointer_optimal(
         self, head: Optional[Node]
     ) -> Optional[Node]:
-        pass
+        temp = head
+        newHead = None
+
+        while temp is not None:
+            copy = Node(temp.val)
+            copy.next = temp.next
+            temp.next = copy
+            temp = temp.next.next
+
+        temp = head
+
+        while temp is not None:
+            copy = temp.next  # type: ignore[assignment]
+            copy.random = temp.random.next if temp.random else None  # type: ignore[union-attr]
+            temp = temp.next.next  # type: ignore[union-attr]
+
+        temp = head
+        newHead = temp.next if temp else None
+
+        while temp is not None:
+            copy = temp.next  # type: ignore[assignment]
+            front = temp.next.next if temp.next else None
+            copy.next = front.next if front else None  # type: ignore[union-attr]
+            temp.next = front
+            temp = temp.next
+
+        return newHead
 
 
 if __name__ == "__main__":
     sol = Solution()
     head = build_linked_list_with_random([[1, -1], [2, 0], [3, 4], [4, 1], [5, 2]])
-    # clone = sol.clone_a_ll_with_random_and_next_pointer_optimal(head)
-    # print(to_pairs(clone), is_deep_clone(head, clone))  # expect: same pairs, True
+    clone = sol.clone_a_ll_with_random_and_next_pointer_brute(head)
+    print(to_pairs(clone), is_deep_clone(head, clone))  # expect: same pairs, True
+    head = build_linked_list_with_random([[1, -1], [2, 0], [3, 4], [4, 1], [5, 2]])
+    clone = sol.clone_a_ll_with_random_and_next_pointer_optimal(head)
+    print(to_pairs(clone), is_deep_clone(head, clone))  # expect: same pairs, True

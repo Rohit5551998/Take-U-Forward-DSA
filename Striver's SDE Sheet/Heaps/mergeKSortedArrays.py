@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Merge K Sorted Arrays
 # You are given k sorted arrays, each of size k. Merge all the arrays
 # into one sorted array and return it.
@@ -42,17 +43,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def merge_k_sorted_arrays_brute(self) -> None:
+    def merge_k_sorted_arrays_brute(self, arrays: List[List[int]]) -> List[int]:
         pass
 
-    def merge_k_sorted_arrays_better(self) -> None:
+    def merge_k_sorted_arrays_better(self, arrays: List[List[int]]) -> List[int]:
         pass
 
-    def merge_k_sorted_arrays_optimal(self) -> None:
+    def merge_k_sorted_arrays_optimal(self, arrays: List[List[int]]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arrays = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    print(sol.merge_k_sorted_arrays_optimal(arrays))

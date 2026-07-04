@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Longest Word with All Prefixes
 # Given a string array `nums` of length n, a string is called a COMPLETE
 # string if every prefix of this string is also present in the array
@@ -51,17 +52,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def longest_word_with_all_prefixes_brute(self) -> None:
+    def longest_word_with_all_prefixes_brute(self, nums: List[str]) -> str:
         pass
 
-    def longest_word_with_all_prefixes_better(self) -> None:
+    def longest_word_with_all_prefixes_better(self, nums: List[str]) -> str:
         pass
 
-    def longest_word_with_all_prefixes_optimal(self) -> None:
+    def longest_word_with_all_prefixes_optimal(self, nums: List[str]) -> str:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = ["n", "ni", "nin", "ninj", "ninja", "nile"]
+    print(sol.longest_word_with_all_prefixes_optimal(nums))

@@ -23,13 +23,12 @@
 
 """
 #Brute Force:
-1.
-TC -> O(), SC -> O()
+SKIPPED — TUF presents a single approach for this problem (in-place group
+reversal); there is no separate brute-force tier.
 
 #Better Approach:
-SKIPPED — no distinct middle tier exists. The problem goes straight from an
-extra-space brute force to the in-place pointer-relinking optimal; nothing
-sensible sits in between.
+SKIPPED — likewise no distinct better tier; the in-place pointer-relinking
+group reversal is the only approach.
 
 #Optimal Approach:
 1. Reverse each k-sized block in place and stitch the blocks together. No extra
@@ -94,11 +93,13 @@ class Solution:
     def reverse_ll_in_group_of_given_size_k_brute(
         self, head: Optional[ListNode], k: int
     ) -> Optional[ListNode]:
+        # SKIP: TUF gives a single approach (in-place group reversal); no separate brute tier
         pass
 
     def reverse_ll_in_group_of_given_size_k_better(
         self, head: Optional[ListNode], k: int
     ) -> Optional[ListNode]:
+        # SKIP: single-approach problem; the in-place group reversal is the only tier
         pass
 
     def reverse_ll(self, head: Optional[ListNode]) -> Optional[ListNode]:

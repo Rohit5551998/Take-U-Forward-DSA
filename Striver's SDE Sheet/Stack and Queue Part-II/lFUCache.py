@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: LFU Cache
 # Design and implement a data structure for a Least Frequently Used (LFU) cache.
 # Implement the LFUCache class with the following functions:
@@ -71,16 +72,22 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def lfu_cache_brute(self) -> None:
+class LFUCache:
+    def __init__(self, capacity: int) -> None:
         pass
 
-    def lfu_cache_better(self) -> None:
+    def get(self, key: int) -> int:
         pass
 
-    def lfu_cache_optimal(self) -> None:
+    def put(self, key: int, value: int) -> None:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    cache = LFUCache(2)
+    cache.put(1, 1)
+    cache.put(2, 2)
+    print(cache.get(1))
+    cache.put(3, 3)
+    print(cache.get(2))
+    print(cache.get(3))

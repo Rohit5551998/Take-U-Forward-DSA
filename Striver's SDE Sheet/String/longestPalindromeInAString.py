@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Longest Palindrome in a string
 # Given a string s, return the longest palindromic substring in s. A palindromic substring is a
 # contiguous sequence of characters within the string that reads the same forward and backward.
@@ -39,15 +40,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def longest_palindrome_in_a_string_brute(self) -> None:
+    def longest_palindrome_in_a_string_brute(self, s: str) -> str:
         pass
 
-    def longest_palindrome_in_a_string_better(self) -> None:
+    def longest_palindrome_in_a_string_better(self, s: str) -> str:
         pass
 
-    def longest_palindrome_in_a_string_optimal(self) -> None:
+    def longest_palindrome_in_a_string_optimal(self, s: str) -> str:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "babad"
+    print(sol.longest_palindrome_in_a_string_optimal(s))

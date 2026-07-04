@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Z function
 # Given a pattern P and a text T, find all occurrences of P inside T
 # using the Z-function (Z-algorithm) for string matching in O(|T| + |P|)
@@ -51,17 +52,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def z_function_brute(self) -> None:
+    def z_function_brute(self, text: str, pattern: str) -> List[int]:
         pass
 
-    def z_function_better(self) -> None:
+    def z_function_better(self, text: str, pattern: str) -> List[int]:
         pass
 
-    def z_function_optimal(self) -> None:
+    def z_function_optimal(self, text: str, pattern: str) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    text = "aabaacaadaabaaba"
+    pattern = "aaba"
+    print(sol.z_function_optimal(text, pattern))

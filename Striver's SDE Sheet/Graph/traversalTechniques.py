@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Traversal Techniques
 # Given an undirected connected graph with V vertices numbered from 0 to V-1, the task is to
 # implement both Depth First Search (DFS) and Breadth First Search (BFS) traversals starting
@@ -46,17 +47,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def traversal_techniques_brute(self) -> None:
+    def traversal_techniques_brute(self, v: int, edges: List[List[int]]) -> List[int]:
         pass
 
-    def traversal_techniques_better(self) -> None:
+    def traversal_techniques_better(self, v: int, edges: List[List[int]]) -> List[int]:
         pass
 
-    def traversal_techniques_optimal(self) -> None:
+    def traversal_techniques_optimal(self, v: int, edges: List[List[int]]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 5
+    edges = [[0, 1], [0, 2], [0, 3], [2, 4]]
+    print(sol.traversal_techniques_optimal(v, edges))

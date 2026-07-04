@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Detect A cycle in a Directed Graph using BFS
 # Given a directed graph with V vertices labeled from 0 to V-1. The graph is represented using an
 # adjacency list where adj[i] lists all nodes connected to node i (via a directed edge i -> j).
@@ -38,17 +39,28 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def detect_a_cycle_in_a_directed_graph_using_bfs_brute(self) -> None:
+    def detect_a_cycle_in_a_directed_graph_using_bfs_brute(
+        self, v: int, adj: List[List[int]]
+    ) -> bool:
         pass
 
-    def detect_a_cycle_in_a_directed_graph_using_bfs_better(self) -> None:
+    def detect_a_cycle_in_a_directed_graph_using_bfs_better(
+        self, v: int, adj: List[List[int]]
+    ) -> bool:
         pass
 
-    def detect_a_cycle_in_a_directed_graph_using_bfs_optimal(self) -> None:
+    def detect_a_cycle_in_a_directed_graph_using_bfs_optimal(
+        self, v: int, adj: List[List[int]]
+    ) -> bool:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 6
+    adj = [[1], [2, 5], [3], [4], [1], []]
+    print(sol.detect_a_cycle_in_a_directed_graph_using_bfs_optimal(v, adj))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Palindrome Partitioning (MCM Variation)
 # Given a string s, return the minimum number of cuts needed for a
 # palindrome partitioning of s. A partitioning of s is a palindrome
@@ -46,15 +47,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def palindrome_partitioning_mcm_variation_brute(self) -> None:
+    def palindrome_partitioning_mcm_variation_brute(self, s: str) -> int:
         pass
 
-    def palindrome_partitioning_mcm_variation_better(self) -> None:
+    def palindrome_partitioning_mcm_variation_better(self, s: str) -> int:
         pass
 
-    def palindrome_partitioning_mcm_variation_optimal(self) -> None:
+    def palindrome_partitioning_mcm_variation_optimal(self, s: str) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "aab"
+    print(sol.palindrome_partitioning_mcm_variation_optimal(s))

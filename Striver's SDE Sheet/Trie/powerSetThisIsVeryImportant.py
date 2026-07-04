@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Power Set (this is very important)
 # Problem Description: Given a string, find all the possible subsequences of the string.
 #
@@ -28,17 +29,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def power_set_this_is_very_important_brute(self) -> None:
+    def power_set_this_is_very_important_brute(self, s: str) -> List[str]:
         pass
 
-    def power_set_this_is_very_important_better(self) -> None:
+    def power_set_this_is_very_important_better(self, s: str) -> List[str]:
         pass
 
-    def power_set_this_is_very_important_optimal(self) -> None:
+    def power_set_this_is_very_important_optimal(self, s: str) -> List[str]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "abc"
+    print(sol.power_set_this_is_very_important_optimal(s))

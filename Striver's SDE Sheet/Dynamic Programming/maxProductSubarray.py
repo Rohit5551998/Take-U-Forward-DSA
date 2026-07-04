@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Max Product Subarray
 # Given an integer array nums (containing positive, negative, and zero
 # values), find a contiguous non-empty subarray whose product is the
@@ -38,17 +39,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def max_product_subarray_brute(self) -> None:
+    def max_product_subarray_brute(self, nums: List[int]) -> int:
         pass
 
-    def max_product_subarray_better(self) -> None:
+    def max_product_subarray_better(self, nums: List[int]) -> int:
         pass
 
-    def max_product_subarray_optimal(self) -> None:
+    def max_product_subarray_optimal(self, nums: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [2, 3, -2, 4]
+    print(sol.max_product_subarray_optimal(nums))

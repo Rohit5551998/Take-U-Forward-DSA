@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: MST using Prim's Algo
 # Given a weighted, undirected, and connected graph of V vertices (numbered 0 to V-1) and E
 # edges, where each edge is represented as [u, v, w] (an undirected edge between u and v of
@@ -36,17 +37,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def mst_using_prims_algo_brute(self) -> None:
+    def mst_using_prims_algo_brute(self, v: int, edges: List[List[int]]) -> int:
         pass
 
-    def mst_using_prims_algo_better(self) -> None:
+    def mst_using_prims_algo_better(self, v: int, edges: List[List[int]]) -> int:
         pass
 
-    def mst_using_prims_algo_optimal(self) -> None:
+    def mst_using_prims_algo_optimal(self, v: int, edges: List[List[int]]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 3
+    edges = [[0, 1, 2], [1, 2, 3], [0, 2, 1]]
+    print(sol.mst_using_prims_algo_optimal(v, edges))

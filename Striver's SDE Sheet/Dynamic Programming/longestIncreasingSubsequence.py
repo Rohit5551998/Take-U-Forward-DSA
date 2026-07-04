@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Longest Increasing Subsequence
 # Given an integer array nums, return the length of the longest STRICTLY
 # increasing subsequence. A subsequence is a sequence derived from the
@@ -33,17 +34,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def longest_increasing_subsequence_brute(self) -> None:
+    def longest_increasing_subsequence_brute(self, nums: List[int]) -> int:
         pass
 
-    def longest_increasing_subsequence_better(self) -> None:
+    def longest_increasing_subsequence_better(self, nums: List[int]) -> int:
         pass
 
-    def longest_increasing_subsequence_optimal(self) -> None:
+    def longest_increasing_subsequence_optimal(self, nums: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [10, 9, 2, 5, 3, 7, 101, 18]
+    print(sol.longest_increasing_subsequence_optimal(nums))

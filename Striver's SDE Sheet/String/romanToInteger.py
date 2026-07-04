@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Roman to Integer
 # Roman numerals are represented by seven different symbols with the following values:
 # I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000.
@@ -46,15 +47,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def roman_to_integer_brute(self) -> None:
+    def roman_to_integer_brute(self, s: str) -> int:
         pass
 
-    def roman_to_integer_better(self) -> None:
+    def roman_to_integer_better(self, s: str) -> int:
         pass
 
-    def roman_to_integer_optimal(self) -> None:
+    def roman_to_integer_optimal(self, s: str) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "LVIII"
+    print(sol.roman_to_integer_optimal(s))

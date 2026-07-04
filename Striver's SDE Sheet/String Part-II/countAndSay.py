@@ -1,5 +1,8 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Count and say
-# The count-and-say sequence is a sequence of digit strings defined by the recursive formula: countAndSay(1) = "1" countAndSay(n) is the run-length encoding of countAndSay(n - 1).
+# The count-and-say sequence is a sequence of digit strings defined by the recursive
+# formula: countAndSay(1) = "1"; countAndSay(n) is the run-length encoding of
+# countAndSay(n - 1).
 #
 # Examples:
 # Input: 4
@@ -34,15 +37,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def count_and_say_brute(self) -> None:
+    def count_and_say_brute(self, n: int) -> str:
         pass
 
-    def count_and_say_better(self) -> None:
+    def count_and_say_better(self, n: int) -> str:
         pass
 
-    def count_and_say_optimal(self) -> None:
+    def count_and_say_optimal(self, n: int) -> str:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    n = 4
+    print(sol.count_and_say_optimal(n))

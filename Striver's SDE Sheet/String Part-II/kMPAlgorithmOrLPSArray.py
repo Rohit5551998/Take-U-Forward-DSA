@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: KMP Algorithm or LPS array
 # Given two strings, one is a text string, text, and the other is a pattern string, pattern. Find
 # and print the indices of all the occurrences of the pattern string within the text string. Use
@@ -38,17 +39,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def kmp_algorithm_or_lps_array_brute(self) -> None:
+    def kmp_algorithm_or_lps_array_brute(self, text: str, pattern: str) -> List[int]:
         pass
 
-    def kmp_algorithm_or_lps_array_better(self) -> None:
+    def kmp_algorithm_or_lps_array_better(self, text: str, pattern: str) -> List[int]:
         pass
 
-    def kmp_algorithm_or_lps_array_optimal(self) -> None:
+    def kmp_algorithm_or_lps_array_optimal(self, text: str, pattern: str) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    text = "abracadabra"
+    pattern = "abra"
+    print(sol.kmp_algorithm_or_lps_array_optimal(text, pattern))

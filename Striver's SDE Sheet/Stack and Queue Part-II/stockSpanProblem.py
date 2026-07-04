@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Stock span problem
 # Given an array arr of size n, where each element arr[i] represents the
 # stock price on day i, calculate the SPAN of stock prices for each day.
@@ -46,17 +47,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def stock_span_problem_brute(self) -> None:
+    def stock_span_problem_brute(self, arr: List[int]) -> List[int]:
         pass
 
-    def stock_span_problem_better(self) -> None:
+    def stock_span_problem_better(self, arr: List[int]) -> List[int]:
         pass
 
-    def stock_span_problem_optimal(self) -> None:
+    def stock_span_problem_optimal(self, arr: List[int]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [100, 80, 60, 70, 60, 75, 85]
+    print(sol.stock_span_problem_optimal(arr))

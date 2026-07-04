@@ -52,17 +52,54 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import Dict, List, Optional
+
+
+class Node:
+    def __init__(self, val: int = 0, neighbors: Optional[List["Node"]] = None) -> None:
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+
+def build_graph(adj_list: List[List[int]]) -> Optional[Node]:
+    # adj_list is 1-indexed (LeetCode 133): adj_list[i-1] lists neighbors of node i.
+    if not adj_list:
+        return None
+    nodes = {i: Node(i) for i in range(1, len(adj_list) + 1)}
+    for i in range(1, len(adj_list) + 1):
+        nodes[i].neighbors = [nodes[j] for j in adj_list[i - 1]]
+    return nodes[1]
+
+
+def to_adj_list(node: Optional[Node]) -> List[List[int]]:
+    # Serialize a graph (reachable from `node`) to a 1-indexed adjacency list.
+    if node is None:
+        return []
+    visited: Dict[int, Node] = {}
+    stack = [node]
+    while stack:
+        cur = stack.pop()
+        if cur.val in visited:
+            continue
+        visited[cur.val] = cur
+        for nb in cur.neighbors:
+            if nb.val not in visited:
+                stack.append(nb)
+    return [sorted(nb.val for nb in visited[val].neighbors) for val in sorted(visited)]
+
 
 class Solution:
-    def clone_graph_brute(self) -> None:
+    def clone_graph_brute(self, node: Optional[Node]) -> Optional[Node]:
         pass
 
-    def clone_graph_better(self) -> None:
+    def clone_graph_better(self, node: Optional[Node]) -> Optional[Node]:
         pass
 
-    def clone_graph_optimal(self) -> None:
+    def clone_graph_optimal(self, node: Optional[Node]) -> Optional[Node]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    node = build_graph([[2, 4], [1, 3], [2, 4], [1, 3]])
+    print(to_adj_list(sol.clone_graph_optimal(node)))

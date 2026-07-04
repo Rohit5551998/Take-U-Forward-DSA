@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Matrix chain multiplication
 # Given a chain of n matrices A1, A2, ..., An, denoted by an array of
 # size n+1 where arr[i-1] x arr[i] gives the dimensions of matrix A_i,
@@ -34,17 +35,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def matrix_chain_multiplication_brute(self) -> None:
+    def matrix_chain_multiplication_brute(self, dims: List[int]) -> int:
         pass
 
-    def matrix_chain_multiplication_better(self) -> None:
+    def matrix_chain_multiplication_better(self, dims: List[int]) -> int:
         pass
 
-    def matrix_chain_multiplication_optimal(self) -> None:
+    def matrix_chain_multiplication_optimal(self, dims: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    dims = [40, 20, 30, 10, 30]
+    print(sol.matrix_chain_multiplication_optimal(dims))

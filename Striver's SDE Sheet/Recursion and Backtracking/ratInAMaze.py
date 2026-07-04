@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Rat in a Maze
 # Given a grid of dimensions n x n. A rat is placed at coordinates (0, 0) and wants to reach at
 # coordinates (n-1, n-1). Find all possible paths that rat can take to travel from (0, 0) to
@@ -45,17 +46,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def rat_in_a_maze_brute(self) -> None:
+    def rat_in_a_maze_brute(self, grid: List[List[int]], n: int) -> List[str]:
         pass
 
-    def rat_in_a_maze_better(self) -> None:
+    def rat_in_a_maze_better(self, grid: List[List[int]], n: int) -> List[str]:
         pass
 
-    def rat_in_a_maze_optimal(self) -> None:
+    def rat_in_a_maze_optimal(self, grid: List[List[int]], n: int) -> List[str]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    grid = [[1, 0, 0, 0], [1, 1, 0, 1], [1, 1, 0, 0], [0, 1, 1, 1]]
+    n = 4
+    print(sol.rat_in_a_maze_optimal(grid, n))

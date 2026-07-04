@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Implement Min Stack
 # Design a stack that supports the following operations in constant time: push, pop, top, and
 # retrieving the minimum element.
@@ -63,16 +64,29 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def implement_min_stack_brute(self) -> None:
+class MinStack:
+    def __init__(self) -> None:
         pass
 
-    def implement_min_stack_better(self) -> None:
+    def push(self, val: int) -> None:
         pass
 
-    def implement_min_stack_optimal(self) -> None:
+    def pop(self) -> None:
+        pass
+
+    def top(self) -> int:
+        pass
+
+    def get_min(self) -> int:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    st = MinStack()
+    st.push(-2)
+    st.push(0)
+    st.push(-3)
+    print(st.get_min())
+    st.pop()
+    print(st.top())
+    print(st.get_min())

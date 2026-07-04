@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Maximum path sum
 # Given the root of a Binary Tree, determine the maximum sum achievable
 # along any path within the tree. A path in a binary tree is defined as a
@@ -39,17 +40,73 @@ TC -> O(), SC -> O()
 -
 """
 
+from collections import deque
+from typing import List, Optional
+
+
+class TreeNode:
+    def __init__(
+        self,
+        val: int = 0,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+    ) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
+    # Level-order build with None for missing children (LeetCode style).
+    if not values or values[0] is None:
+        return None
+    root = TreeNode(values[0])
+    queue = deque([root])
+    i = 1
+    while queue and i < len(values):
+        node = queue.popleft()
+        left_val = values[i] if i < len(values) else None
+        if left_val is not None:
+            node.left = TreeNode(left_val)
+            queue.append(node.left)
+        i += 1
+        right_val = values[i] if i < len(values) else None
+        if right_val is not None:
+            node.right = TreeNode(right_val)
+            queue.append(node.right)
+        i += 1
+    return root
+
+
+def to_level_order(root: Optional[TreeNode]) -> List[Optional[int]]:
+    # Serialize to a level-order list with None markers (trailing None trimmed).
+    result: List[Optional[int]] = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node is None:
+            result.append(None)
+            continue
+        result.append(node.val)
+        queue.append(node.left)
+        queue.append(node.right)
+    while result and result[-1] is None:
+        result.pop()
+    return result
+
 
 class Solution:
-    def maximum_path_sum_brute(self) -> None:
+    def maximum_path_sum_brute(self, root: Optional[TreeNode]) -> int:
         pass
 
-    def maximum_path_sum_better(self) -> None:
+    def maximum_path_sum_better(self, root: Optional[TreeNode]) -> int:
         pass
 
-    def maximum_path_sum_optimal(self) -> None:
+    def maximum_path_sum_optimal(self, root: Optional[TreeNode]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    root = build_tree([1, 2, 3])
+    print(sol.maximum_path_sum_optimal(root))

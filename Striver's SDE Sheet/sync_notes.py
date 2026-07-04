@@ -98,7 +98,7 @@ def _has_real_body(node: ast.FunctionDef) -> bool:
 def is_fully_solved(py_file: Path) -> bool:
     """Check if a solution file is fully solved.
 
-    Two file shapes are supported:
+    Three file shapes are supported:
     - Approach-based: the 3 approaches (_brute, _better, _optimal) are all
       implemented. A function counts as done if it has real code, or has a
       '# SKIP: <reason>' comment. The _optimal function always needs real code.
@@ -106,6 +106,10 @@ def is_fully_solved(py_file: Path) -> bool:
       names contain '_variant_' (e.g. Pascal's Triangle: value-at-(r,c) vs
       n-th row vs full triangle). Solved when every such function has real code
       (or a '# SKIP' comment).
+    - Implement-a-class: the file has no _brute/_better/_optimal and no
+      variants, but a domain class (e.g. MinStack, LRUCache, MaxHeap) carries
+      the solution. Solved when every non-dunder method of a non-Solution
+      class has real code (or a '# SKIP' comment).
     """
     source = py_file.read_text()
     try:
@@ -130,17 +134,37 @@ def is_fully_solved(py_file: Path) -> bool:
         for s in suffixes:
             if node.name.endswith(s):
                 found[s] = node
-    if len(found) != 3:
+    if len(found) == 3:
+        for suffix, node in found.items():
+            if not _has_real_body(node):
+                # _optimal is always required
+                if suffix == "_optimal":
+                    return False
+                # Allow skip if # SKIP comment is present
+                if not _has_skip_comment(py_file, node.name):
+                    return False
+        return True
+    if found:
+        # Some but not all of _brute/_better/_optimal present: malformed
+        # approach file, treat as unsolved.
         return False
-    for suffix, node in found.items():
-        if not _has_real_body(node):
-            # _optimal is always required
-            if suffix == "_optimal":
-                return False
-            # Allow skip if # SKIP comment is present
-            if not _has_skip_comment(py_file, node.name):
-                return False
-    return True
+
+    # Implement-a-class files: a domain class (non-Solution) carries the
+    # solution. Solved when every non-dunder method has real code (or # SKIP).
+    class_methods = [
+        m
+        for cls in ast.walk(tree)
+        if isinstance(cls, ast.ClassDef) and cls.name != "Solution"
+        for m in cls.body
+        if isinstance(m, ast.FunctionDef)
+        and not (m.name.startswith("__") and m.name.endswith("__"))
+    ]
+    if class_methods:
+        return all(
+            _has_real_body(m) or _has_skip_comment(py_file, m.name)
+            for m in class_methods
+        )
+    return False
 
 
 def extract_question(py_file: Path) -> str | None:

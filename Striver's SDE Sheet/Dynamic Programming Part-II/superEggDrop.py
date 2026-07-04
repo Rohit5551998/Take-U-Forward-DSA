@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Super Egg Drop
 # You are given n identical eggs and a building with k floors numbered
 # from 1 to k. There exists an unknown floor f (0 <= f <= k) such that:
@@ -47,15 +48,18 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def super_egg_drop_brute(self) -> None:
+    def super_egg_drop_brute(self, n: int, k: int) -> int:
         pass
 
-    def super_egg_drop_better(self) -> None:
+    def super_egg_drop_better(self, n: int, k: int) -> int:
         pass
 
-    def super_egg_drop_optimal(self) -> None:
+    def super_egg_drop_optimal(self, n: int, k: int) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    n = 1
+    k = 2
+    print(sol.super_egg_drop_optimal(n, k))

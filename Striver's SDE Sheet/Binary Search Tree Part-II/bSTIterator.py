@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: BST iterator
 # Implement the BSTIterator class that represents an iterator over the
 # in-order traversal of a binary search tree (BST):
@@ -14,7 +15,8 @@
 # Examples:
 # Example 1:
 # Input:
-# ["BSTIterator", "next", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext"]
+# ["BSTIterator", "next", "next", "hasNext", "next", "hasNext", "next", "hasNext",
+#  "next", "hasNext"]
 # [[[7, 3, 15, null, null, 9, 20]], [], [], [], [], [], [], [], [], []]
 # Output: [null, 3, 7, true, 9, true, 15, true, 20, false]
 #
@@ -44,17 +46,76 @@ TC -> O(), SC -> O()
 -
 """
 
+from collections import deque
+from typing import List, Optional
 
-class Solution:
-    def bst_iterator_brute(self) -> None:
+
+class TreeNode:
+    def __init__(
+        self,
+        val: int = 0,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+    ) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
+    # Level-order build with None for missing children (LeetCode style).
+    if not values or values[0] is None:
+        return None
+    root = TreeNode(values[0])
+    queue = deque([root])
+    i = 1
+    while queue and i < len(values):
+        node = queue.popleft()
+        left_val = values[i] if i < len(values) else None
+        if left_val is not None:
+            node.left = TreeNode(left_val)
+            queue.append(node.left)
+        i += 1
+        right_val = values[i] if i < len(values) else None
+        if right_val is not None:
+            node.right = TreeNode(right_val)
+            queue.append(node.right)
+        i += 1
+    return root
+
+
+def to_level_order(root: Optional[TreeNode]) -> List[Optional[int]]:
+    # Serialize to a level-order list with None markers (trailing None trimmed).
+    result: List[Optional[int]] = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node is None:
+            result.append(None)
+            continue
+        result.append(node.val)
+        queue.append(node.left)
+        queue.append(node.right)
+    while result and result[-1] is None:
+        result.pop()
+    return result
+
+
+class BSTIterator:
+    def __init__(self, root: Optional[TreeNode]) -> None:
         pass
 
-    def bst_iterator_better(self) -> None:
+    def next(self) -> int:
         pass
 
-    def bst_iterator_optimal(self) -> None:
+    def has_next(self) -> bool:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    it = BSTIterator(build_tree([7, 3, 15, None, None, 9, 20]))
+    print(it.next())
+    print(it.next())
+    print(it.has_next())
+    print(it.next())
+    print(it.has_next())

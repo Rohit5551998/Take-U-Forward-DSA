@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Palindrome partitioning
 # Given a string s, partition string s such that every substring of the partition is a
 # palindrome. Return all possible palindrome partitions of string s.
@@ -38,17 +39,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def palindrome_partitioning_brute(self) -> None:
+    def palindrome_partitioning_brute(self, s: str) -> List[List[str]]:
         pass
 
-    def palindrome_partitioning_better(self) -> None:
+    def palindrome_partitioning_better(self, s: str) -> List[List[str]]:
         pass
 
-    def palindrome_partitioning_optimal(self) -> None:
+    def palindrome_partitioning_optimal(self, s: str) -> List[List[str]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "aabaa"
+    print(sol.palindrome_partitioning_optimal(s))

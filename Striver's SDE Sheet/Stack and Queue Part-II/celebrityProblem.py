@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Celebrity Problem
 # A celebrity is a person who is known by everyone else at the party but does not know anyone
 # in return. Given a square matrix M of size N x N where M[i][j] is 1 if person i knows person
@@ -39,17 +40,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def celebrity_problem_brute(self) -> None:
+    def celebrity_problem_brute(self, m: List[List[int]]) -> int:
         pass
 
-    def celebrity_problem_better(self) -> None:
+    def celebrity_problem_better(self, m: List[List[int]]) -> int:
         pass
 
-    def celebrity_problem_optimal(self) -> None:
+    def celebrity_problem_optimal(self, m: List[List[int]]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    m = [[0, 1, 1, 0], [0, 0, 0, 0], [1, 1, 0, 0], [0, 1, 1, 0]]
+    print(sol.celebrity_problem_optimal(m))

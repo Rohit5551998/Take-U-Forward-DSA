@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Maximum XOR of two numbers in an array
 # Given an integer array nums, return the maximum result of nums[i] XOR nums[j],
 # where 0 <= i <= j < n.
@@ -35,17 +36,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def maximum_xor_of_two_numbers_in_an_array_brute(self) -> None:
+    def maximum_xor_of_two_numbers_in_an_array_brute(self, nums: List[int]) -> int:
         pass
 
-    def maximum_xor_of_two_numbers_in_an_array_better(self) -> None:
+    def maximum_xor_of_two_numbers_in_an_array_better(self, nums: List[int]) -> int:
         pass
 
-    def maximum_xor_of_two_numbers_in_an_array_optimal(self) -> None:
+    def maximum_xor_of_two_numbers_in_an_array_optimal(self, nums: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [3, 9, 10, 5, 1]
+    print(sol.maximum_xor_of_two_numbers_in_an_array_optimal(nums))

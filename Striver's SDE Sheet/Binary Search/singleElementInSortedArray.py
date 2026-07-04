@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Single element in sorted array
 # Given an array nums sorted in non-decreasing order. Every number in the array except one
 # appears twice. Find the single number in the array.
@@ -36,17 +37,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def single_element_in_sorted_array_brute(self) -> None:
+    def single_element_in_sorted_array_brute(self, nums: List[int]) -> int:
         pass
 
-    def single_element_in_sorted_array_better(self) -> None:
+    def single_element_in_sorted_array_better(self, nums: List[int]) -> int:
         pass
 
-    def single_element_in_sorted_array_optimal(self) -> None:
+    def single_element_in_sorted_array_optimal(self, nums: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6]
+    print(sol.single_element_in_sorted_array_optimal(nums))

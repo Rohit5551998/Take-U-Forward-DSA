@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Serialize and De-serialize BT
 # Given a Binary Tree, design an algorithm to serialize and deserialize it.
 # Serialization is the process of converting a tree into a sequence of bits
@@ -44,17 +45,71 @@ TC -> O(), SC -> O()
 -
 """
 
+from collections import deque
+from typing import List, Optional
 
-class Solution:
-    def serialize_and_de_serialize_bt_brute(self) -> None:
+
+class TreeNode:
+    def __init__(
+        self,
+        val: int = 0,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+    ) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
+    # Level-order build with None for missing children (LeetCode style).
+    if not values or values[0] is None:
+        return None
+    root = TreeNode(values[0])
+    queue = deque([root])
+    i = 1
+    while queue and i < len(values):
+        node = queue.popleft()
+        left_val = values[i] if i < len(values) else None
+        if left_val is not None:
+            node.left = TreeNode(left_val)
+            queue.append(node.left)
+        i += 1
+        right_val = values[i] if i < len(values) else None
+        if right_val is not None:
+            node.right = TreeNode(right_val)
+            queue.append(node.right)
+        i += 1
+    return root
+
+
+def to_level_order(root: Optional[TreeNode]) -> List[Optional[int]]:
+    # Serialize to a level-order list with None markers (trailing None trimmed).
+    result: List[Optional[int]] = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node is None:
+            result.append(None)
+            continue
+        result.append(node.val)
+        queue.append(node.left)
+        queue.append(node.right)
+    while result and result[-1] is None:
+        result.pop()
+    return result
+
+
+class Codec:
+    def serialize(self, root: Optional[TreeNode]) -> str:
         pass
 
-    def serialize_and_de_serialize_bt_better(self) -> None:
-        pass
-
-    def serialize_and_de_serialize_bt_optimal(self) -> None:
+    def deserialize(self, data: str) -> Optional[TreeNode]:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    codec = Codec()
+    tree = build_tree([1, 2, 3, None, None, 4, 5])
+    data = codec.serialize(tree)
+    print(to_level_order(codec.deserialize(data)))

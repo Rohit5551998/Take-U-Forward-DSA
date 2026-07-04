@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Edit distance
 # Given two strings S1 and S2, we need to convert S1 to S2. The following
 # three operations are allowed:
@@ -47,15 +48,18 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def edit_distance_brute(self) -> None:
+    def edit_distance_brute(self, start: str, target: str) -> int:
         pass
 
-    def edit_distance_better(self) -> None:
+    def edit_distance_better(self, start: str, target: str) -> int:
         pass
 
-    def edit_distance_optimal(self) -> None:
+    def edit_distance_optimal(self, start: str, target: str) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    start = "planet"
+    target = "plan"
+    print(sol.edit_distance_optimal(start, target))

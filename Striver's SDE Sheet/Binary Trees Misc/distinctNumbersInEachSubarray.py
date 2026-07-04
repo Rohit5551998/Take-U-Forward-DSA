@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Distinct Numbers in Each Subarray
 # Given an integer array nums of size n and an integer k, construct an array ans of size n-k+1
 # where ans[i] represents the number of distinct numbers in the subarray
@@ -38,17 +39,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def distinct_numbers_in_each_subarray_brute(self) -> None:
+    def distinct_numbers_in_each_subarray_brute(self, nums: List[int], k: int) -> List[int]:
         pass
 
-    def distinct_numbers_in_each_subarray_better(self) -> None:
+    def distinct_numbers_in_each_subarray_better(self, nums: List[int], k: int) -> List[int]:
         pass
 
-    def distinct_numbers_in_each_subarray_optimal(self) -> None:
+    def distinct_numbers_in_each_subarray_optimal(self, nums: List[int], k: int) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [1, 2, 1, 3, 4, 2, 3]
+    k = 4
+    print(sol.distinct_numbers_in_each_subarray_optimal(nums, k))

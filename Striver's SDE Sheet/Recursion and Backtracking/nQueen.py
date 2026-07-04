@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: N Queen
 # The n-queens puzzle is the problem of placing n queens on an n × n
 # chessboard such that no two queens attack each other (no two queens
@@ -54,17 +55,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def n_queen_brute(self) -> None:
+    def n_queen_brute(self, n: int) -> List[List[str]]:
         pass
 
-    def n_queen_better(self) -> None:
+    def n_queen_better(self, n: int) -> List[List[str]]:
         pass
 
-    def n_queen_optimal(self) -> None:
+    def n_queen_optimal(self, n: int) -> List[List[str]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    n = 4
+    print(sol.n_queen_optimal(n))

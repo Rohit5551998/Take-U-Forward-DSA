@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Reverse every word in a string
 # Given an input string, containing upper-case and lower-case letters, digits, and spaces (' ').
 # A word is defined as a sequence of non-space characters. The words in s are separated by at
@@ -47,15 +48,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def reverse_every_word_in_a_string_brute(self) -> None:
+    def reverse_every_word_in_a_string_brute(self, s: str) -> str:
         pass
 
-    def reverse_every_word_in_a_string_better(self) -> None:
+    def reverse_every_word_in_a_string_better(self, s: str) -> str:
         pass
 
-    def reverse_every_word_in_a_string_optimal(self) -> None:
+    def reverse_every_word_in_a_string_optimal(self, s: str) -> str:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "welcome to the jungle"
+    print(sol.reverse_every_word_in_a_string_optimal(s))

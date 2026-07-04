@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: The N-th root of an integer
 # Given two numbers N and M, find the Nth root of M. The N-th root of a
 # number M is defined as a number X when raised to the power N equals M
@@ -32,15 +33,18 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def the_n_th_root_of_an_integer_brute(self) -> None:
+    def the_n_th_root_of_an_integer_brute(self, n: int, m: int) -> int:
         pass
 
-    def the_n_th_root_of_an_integer_better(self) -> None:
+    def the_n_th_root_of_an_integer_better(self, n: int, m: int) -> int:
         pass
 
-    def the_n_th_root_of_an_integer_optimal(self) -> None:
+    def the_n_th_root_of_an_integer_optimal(self, n: int, m: int) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    n = 3
+    m = 27
+    print(sol.the_n_th_root_of_an_integer_optimal(n, m))

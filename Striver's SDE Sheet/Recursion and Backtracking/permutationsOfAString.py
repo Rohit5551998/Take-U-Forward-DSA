@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Permutations of a String
 # Given an array arr of distinct integers, print all possible permutations of the given array.
 # A permutation is an arrangement of all the elements of the array into some sequence or order.
@@ -34,17 +35,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def permutations_of_a_string_brute(self) -> None:
+    def permutations_of_a_string_brute(self, nums: List[int]) -> List[List[int]]:
         pass
 
-    def permutations_of_a_string_better(self) -> None:
+    def permutations_of_a_string_better(self, nums: List[int]) -> List[List[int]]:
         pass
 
-    def permutations_of_a_string_optimal(self) -> None:
+    def permutations_of_a_string_optimal(self, nums: List[int]) -> List[List[int]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [1, 2, 3]
+    print(sol.permutations_of_a_string_optimal(nums))

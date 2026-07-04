@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Median of 2 sorted arrays
 # Given two sorted arrays arr1 and arr2 of size m and n respectively,
 # return the median of the two sorted arrays. The median is defined as
@@ -40,17 +41,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def median_of_two_sorted_arrays_brute(self) -> None:
+    def median_of_two_sorted_arrays_brute(self, arr1: List[int], arr2: List[int]) -> float:
         pass
 
-    def median_of_two_sorted_arrays_better(self) -> None:
+    def median_of_two_sorted_arrays_better(self, arr1: List[int], arr2: List[int]) -> float:
         pass
 
-    def median_of_two_sorted_arrays_optimal(self) -> None:
+    def median_of_two_sorted_arrays_optimal(self, arr1: List[int], arr2: List[int]) -> float:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr1 = [1, 3]
+    arr2 = [2]
+    print(sol.median_of_two_sorted_arrays_optimal(arr1, arr2))

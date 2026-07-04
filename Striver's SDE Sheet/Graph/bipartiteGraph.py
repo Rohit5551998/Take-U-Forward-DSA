@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Bipartite graph
 # Given an undirected graph with V vertices labeled from 0 to V-1. The graph is represented using
 # a 2D vector `edges`, where edges[i] represents an undirected edge between edges[i][0] and
@@ -40,17 +41,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def bipartite_graph_brute(self) -> None:
+    def bipartite_graph_brute(self, v: int, edges: List[List[int]]) -> bool:
         pass
 
-    def bipartite_graph_better(self) -> None:
+    def bipartite_graph_better(self, v: int, edges: List[List[int]]) -> bool:
         pass
 
-    def bipartite_graph_optimal(self) -> None:
+    def bipartite_graph_optimal(self, v: int, edges: List[List[int]]) -> bool:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 4
+    edges = [[0, 1], [0, 3], [1, 2], [2, 3]]
+    print(sol.bipartite_graph_optimal(v, edges))

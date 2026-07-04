@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Rotten Oranges
 # Given an n x m grid, where each cell has the following values:
 # 2 - represents a rotten orange, 1 - represents a fresh orange, 0 - represents an empty cell.
@@ -40,17 +41,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def rotten_oranges_brute(self) -> None:
+    def rotten_oranges_brute(self, grid: List[List[int]]) -> int:
         pass
 
-    def rotten_oranges_better(self) -> None:
+    def rotten_oranges_better(self, grid: List[List[int]]) -> int:
         pass
 
-    def rotten_oranges_optimal(self) -> None:
+    def rotten_oranges_optimal(self, grid: List[List[int]]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    grid = [[2, 1, 1], [0, 1, 1], [1, 0, 1]]
+    print(sol.rotten_oranges_optimal(grid))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Topological Sort BFS
 # Given a Directed Acyclic Graph (DAG) with V vertices labeled from 0 to V-1. The graph is
 # represented using an adjacency list where adj[i] lists all nodes connected to node i (via a
@@ -46,17 +47,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def topological_sort_bfs_brute(self) -> None:
+    def topological_sort_bfs_brute(self, v: int, adj: List[List[int]]) -> List[int]:
         pass
 
-    def topological_sort_bfs_better(self) -> None:
+    def topological_sort_bfs_better(self, v: int, adj: List[List[int]]) -> List[int]:
         pass
 
-    def topological_sort_bfs_optimal(self) -> None:
+    def topological_sort_bfs_optimal(self, v: int, adj: List[List[int]]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 6
+    adj = [[], [], [3], [1], [0, 1], [0, 2]]
+    print(sol.topological_sort_bfs_optimal(v, adj))

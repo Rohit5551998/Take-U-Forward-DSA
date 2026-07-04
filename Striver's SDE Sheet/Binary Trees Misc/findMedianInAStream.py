@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Find Median in a Stream
 # You are given a stream of integers arr[], arriving one by one. After
 # each new integer is added to the stream, output the median of all
@@ -47,17 +48,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def find_median_in_a_stream_brute(self) -> None:
+    def find_median_in_a_stream_brute(self, arr: List[int]) -> List[float]:
         pass
 
-    def find_median_in_a_stream_better(self) -> None:
+    def find_median_in_a_stream_better(self, arr: List[int]) -> List[float]:
         pass
 
-    def find_median_in_a_stream_optimal(self) -> None:
+    def find_median_in_a_stream_optimal(self, arr: List[int]) -> List[float]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [5, 15, 1, 3]
+    print(sol.find_median_in_a_stream_optimal(arr))

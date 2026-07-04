@@ -1,5 +1,7 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Largest rectangle in a histogram
-# Given an array of integers heights representing the histogram's bar height where the width of each bar is 1 return the area of the largest rectangle in histogram. .
+# Given an array of integers 'heights' representing a histogram's bar heights where the
+# width of each bar is 1, return the area of the largest rectangle in the histogram.
 #
 # Examples:
 # Example:
@@ -25,17 +27,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def largest_rectangle_in_a_histogram_brute(self) -> None:
+    def largest_rectangle_in_a_histogram_brute(self, heights: List[int]) -> int:
         pass
 
-    def largest_rectangle_in_a_histogram_better(self) -> None:
+    def largest_rectangle_in_a_histogram_better(self, heights: List[int]) -> int:
         pass
 
-    def largest_rectangle_in_a_histogram_optimal(self) -> None:
+    def largest_rectangle_in_a_histogram_optimal(self, heights: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    heights = [2, 1, 5, 6, 2, 3]
+    print(sol.largest_rectangle_in_a_histogram_optimal(heights))

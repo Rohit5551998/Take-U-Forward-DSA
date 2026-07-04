@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Sort a Stack
 # You are given a stack of integers. Your task is to sort the stack in descending order using
 # recursion, such that the top of the stack contains the greatest element and the bottom contains
@@ -35,17 +36,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def sort_a_stack_brute(self) -> None:
+    def sort_a_stack_brute(self, stack: List[int]) -> List[int]:
         pass
 
-    def sort_a_stack_better(self) -> None:
+    def sort_a_stack_better(self, stack: List[int]) -> List[int]:
         pass
 
-    def sort_a_stack_optimal(self) -> None:
+    def sort_a_stack_optimal(self, stack: List[int]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    stack = [4, 1, 3, 2]
+    print(sol.sort_a_stack_optimal(stack))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Flood-fill Algorithm
 # An image is represented by an m x n integer grid `image` where each
 # integer represents the pixel value of the image. You are also given
@@ -48,17 +49,30 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def flood_fill_algorithm_brute(self) -> None:
+    def flood_fill_algorithm_brute(
+        self, image: List[List[int]], sr: int, sc: int, color: int
+    ) -> List[List[int]]:
         pass
 
-    def flood_fill_algorithm_better(self) -> None:
+    def flood_fill_algorithm_better(
+        self, image: List[List[int]], sr: int, sc: int, color: int
+    ) -> List[List[int]]:
         pass
 
-    def flood_fill_algorithm_optimal(self) -> None:
+    def flood_fill_algorithm_optimal(
+        self, image: List[List[int]], sr: int, sc: int, color: int
+    ) -> List[List[int]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
+    sr = 1
+    sc = 1
+    color = 2
+    print(sol.flood_fill_algorithm_optimal(image, sr, sc, color))

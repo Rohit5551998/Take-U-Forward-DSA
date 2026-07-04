@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Top K Frequent Elements
 # Given an integer array `nums` and an integer k, return the k most
 # frequent elements. You may return the answer in any order.
@@ -46,17 +47,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def top_k_frequent_elements_brute(self) -> None:
+    def top_k_frequent_elements_brute(self, nums: List[int], k: int) -> List[int]:
         pass
 
-    def top_k_frequent_elements_better(self) -> None:
+    def top_k_frequent_elements_better(self, nums: List[int], k: int) -> List[int]:
         pass
 
-    def top_k_frequent_elements_optimal(self) -> None:
+    def top_k_frequent_elements_optimal(self, nums: List[int], k: int) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [1, 1, 1, 2, 2, 3]
+    k = 2
+    print(sol.top_k_frequent_elements_optimal(nums, k))

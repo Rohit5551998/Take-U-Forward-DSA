@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Permutation Sequence
 # Given N and K, where N is the sequence of numbers from 1 to N (i.e.,
 # [1, 2, 3, ..., N]), find the K-th permutation sequence (1-indexed) in
@@ -18,22 +19,6 @@
 # Constraints:
 # 1 <= N <= 9
 # 1 <= K <= N!
-#
-# Approach: Use factorial-base math to directly compute the K-th
-# permutation without generating all of them — for each position, the
-# leading digit is determined by K / (N-1)! after appropriate
-# 0-indexing of K.
-#
-# Examples:
-# Example 1:
-# Input: N = 3, K = 3
-# Output: “213”
-# Explanation: The sequence has 3! permutations as illustrated in the figure above. K = 3 corresponds to the third sequence.
-#
-# Example 2:
-# Input: N = 3, K = 5
-# Result: “312”
-# Explanation: The sequence has 3! permutations as illustrated in the figure above. K = 5 corresponds to the fifth sequence.
 
 
 """
@@ -55,15 +40,18 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def permutation_sequence_brute(self) -> None:
+    def permutation_sequence_brute(self, n: int, k: int) -> str:
         pass
 
-    def permutation_sequence_better(self) -> None:
+    def permutation_sequence_better(self, n: int, k: int) -> str:
         pass
 
-    def permutation_sequence_optimal(self) -> None:
+    def permutation_sequence_optimal(self, n: int, k: int) -> str:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    n = 3
+    k = 3
+    print(sol.permutation_sequence_optimal(n, k))

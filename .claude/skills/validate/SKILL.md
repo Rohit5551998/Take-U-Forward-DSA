@@ -71,15 +71,21 @@ The sheet is inferred from the file path's first segment.
    - Do this only when the tier is genuinely absent. If a real approach exists at that tier but the user simply hasn't written it yet, leave it as `pass` and do NOT reveal the approach.
    - The `_optimal` method is never auto-skipped — it always requires a real implementation.
 
-9. **Sync notes to that sheet's tracker:**
+9. **Remove the `# mypy: disable-error-code="empty-body"` header when it is no longer needed:** scaffold files carry this directive as line 1 so typed `pass` stubs don't fail mypy's `empty-body` check. Once the user has implemented the solution, remove that line — but ONLY when it is safe:
+   - Safe to remove **only if** no method with a **non-`Optional` / non-`None` return type** still has a body of just `pass`. This explicitly includes `# SKIP` tiers (a skipped method is still `pass`) and any tier the user hasn't written yet.
+   - So: if every `_brute`/`_better`/`_optimal` method (or every domain-class method, for implement-a-class files) that returns a non-`Optional` type now has real code, delete the header line. Otherwise leave it in place.
+   - `Optional[...]`/`None`-returning `pass` stubs never trip `empty-body`, so they don't force the header to stay.
+   - After deleting, run `mypy "<file>"` to confirm no `empty-body` error reappeared; if it did, restore the header line (a remaining `pass`/SKIP stub with a non-None return still needs it).
+
+10. **Sync notes to that sheet's tracker:**
    - From repo root: `cd "<sheet>" && python3 sync_notes.py` (only if the sheet has `sync_notes.py` + `index.html`)
    - Do NOT edit `index.html` directly — let `sync_notes.py` do it. The PreToolUse hook blocks direct edits anyway.
 
-10. **If the solution is optimal:**
+11. **If the solution is optimal:**
     - Confirm it and congratulate
     - Fill in the `#KEY INSIGHT:` in the docstring
 
-11. **Do NOT:**
+12. **Do NOT:**
     - Write or rewrite the solution code
     - Give away other approaches — only hints
     - Fill in notes for approaches the user hasn't implemented (auto-SKIP per step 8 is the only exception)

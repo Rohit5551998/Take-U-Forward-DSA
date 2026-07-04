@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Bellman ford algorithm
 # Given a weighted and directed graph of V vertices and E edges. An edge is represented as
 # [ai, bi, wi], meaning there is a directed edge from ai to bi having weight wi. Find the
@@ -46,17 +47,23 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def bellman_ford_algorithm_brute(self) -> None:
+    def bellman_ford_algorithm_brute(self, v: int, edges: List[List[int]], s: int) -> List[int]:
         pass
 
-    def bellman_ford_algorithm_better(self) -> None:
+    def bellman_ford_algorithm_better(self, v: int, edges: List[List[int]], s: int) -> List[int]:
         pass
 
-    def bellman_ford_algorithm_optimal(self) -> None:
+    def bellman_ford_algorithm_optimal(self, v: int, edges: List[List[int]], s: int) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 6
+    edges = [[3, 2, 6], [5, 3, 1], [0, 1, 5], [1, 5, -3], [1, 2, -2], [3, 4, -2]]
+    s = 0
+    print(sol.bellman_ford_algorithm_optimal(v, edges, s))

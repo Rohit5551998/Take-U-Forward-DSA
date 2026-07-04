@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Minimum insertions to make string palindrome
 # Given a string s, find the minimum number of insertions needed to make
 # it a palindrome. A palindrome is a sequence that reads the same
@@ -56,15 +57,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def minimum_insertions_to_make_string_palindrome_brute(self) -> None:
+    def minimum_insertions_to_make_string_palindrome_brute(self, s: str) -> int:
         pass
 
-    def minimum_insertions_to_make_string_palindrome_better(self) -> None:
+    def minimum_insertions_to_make_string_palindrome_better(self, s: str) -> int:
         pass
 
-    def minimum_insertions_to_make_string_palindrome_optimal(self) -> None:
+    def minimum_insertions_to_make_string_palindrome_optimal(self, s: str) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "zzazz"
+    print(sol.minimum_insertions_to_make_string_palindrome_optimal(s))

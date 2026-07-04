@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Implement Max Heap
 # You need to implement the Max Heap with the following given methods.
 # - insert(x)         -> insert value x to the max heap
@@ -49,16 +50,24 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def implement_max_heap_brute(self) -> None:
+class MaxHeap:
+    def __init__(self) -> None:
         pass
 
-    def implement_max_heap_better(self) -> None:
+    def insert(self, val: int) -> None:
         pass
 
-    def implement_max_heap_optimal(self) -> None:
+    def get_max(self) -> int:
+        pass
+
+    def extract_max(self) -> int:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    heap = MaxHeap()
+    heap.insert(4)
+    heap.insert(9)
+    print(heap.get_max())
+    print(heap.extract_max())
+    print(heap.get_max())

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: M Coloring Problem
 # Given an integer M and an undirected graph with N vertices (zero indexed) and E edges. The goal
 # is to determine whether the graph can be coloured with a maximum of M colors so that no two of
@@ -44,17 +45,23 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def m_coloring_problem_brute(self) -> None:
+    def m_coloring_problem_brute(self, n: int, m: int, edges: List[List[int]]) -> bool:
         pass
 
-    def m_coloring_problem_better(self) -> None:
+    def m_coloring_problem_better(self, n: int, m: int, edges: List[List[int]]) -> bool:
         pass
 
-    def m_coloring_problem_optimal(self) -> None:
+    def m_coloring_problem_optimal(self, n: int, m: int, edges: List[List[int]]) -> bool:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    n = 4
+    m = 3
+    edges = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 2]]
+    print(sol.m_coloring_problem_optimal(n, m, edges))

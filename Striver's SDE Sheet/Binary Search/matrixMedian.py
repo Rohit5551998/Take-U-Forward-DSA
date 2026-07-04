@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Matrix Median
 # Given a 2D array matrix that is row-wise sorted (each row is sorted in non-decreasing order).
 # The task is to find the median of the given matrix. Note: the total number of elements is
@@ -41,17 +42,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def matrix_median_brute(self) -> None:
+    def matrix_median_brute(self, matrix: List[List[int]]) -> int:
         pass
 
-    def matrix_median_better(self) -> None:
+    def matrix_median_better(self, matrix: List[List[int]]) -> int:
         pass
 
-    def matrix_median_optimal(self) -> None:
+    def matrix_median_optimal(self, matrix: List[List[int]]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    matrix = [[1, 4, 9], [2, 5, 6], [3, 7, 8]]
+    print(sol.matrix_median_optimal(matrix))

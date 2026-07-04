@@ -56,17 +56,33 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def sudoku_solver_brute(self) -> None:
+    def sudoku_solver_brute(self, board: List[List[str]]) -> None:
         pass
 
-    def sudoku_solver_better(self) -> None:
+    def sudoku_solver_better(self, board: List[List[str]]) -> None:
         pass
 
-    def sudoku_solver_optimal(self) -> None:
+    def sudoku_solver_optimal(self, board: List[List[str]]) -> None:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    board = [
+        ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+        ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+        [".", "9", "8", ".", ".", ".", ".", "6", "."],
+        ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+        ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+        ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+        [".", "6", ".", ".", ".", ".", "2", "8", "."],
+        [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+        [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+    ]
+    sol.sudoku_solver_optimal(board)
+    for row in board:
+        print("".join(row))

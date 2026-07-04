@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Next Greater Element
 # Given an array arr of size n, find the next greater element for each element in the array in
 # the order of their appearance. The next greater element of an element in the array is the
@@ -40,17 +41,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def next_greater_element_brute(self) -> None:
+    def next_greater_element_brute(self, arr: List[int]) -> List[int]:
         pass
 
-    def next_greater_element_better(self) -> None:
+    def next_greater_element_better(self, arr: List[int]) -> List[int]:
         pass
 
-    def next_greater_element_optimal(self) -> None:
+    def next_greater_element_optimal(self, arr: List[int]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [1, 3, 2, 4]
+    print(sol.next_greater_element_optimal(arr))

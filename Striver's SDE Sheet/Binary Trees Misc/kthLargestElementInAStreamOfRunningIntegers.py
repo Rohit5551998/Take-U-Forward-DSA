@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Kth largest element in a stream of running integers
 # Implement a class KthLargest to find the k-th largest number in a stream. It should have the
 # following methods:
@@ -49,17 +50,19 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
 
-class Solution:
-    def kth_largest_element_in_a_stream_of_running_integers_brute(self) -> None:
+
+class KthLargest:
+    def __init__(self, k: int, nums: List[int]) -> None:
         pass
 
-    def kth_largest_element_in_a_stream_of_running_integers_better(self) -> None:
-        pass
-
-    def kth_largest_element_in_a_stream_of_running_integers_optimal(self) -> None:
+    def add(self, val: int) -> int:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    kth = KthLargest(3, [1, 2, 3, 4])
+    print(kth.add(5))
+    print(kth.add(2))
+    print(kth.add(7))

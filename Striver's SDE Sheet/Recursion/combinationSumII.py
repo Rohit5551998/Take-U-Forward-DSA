@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Combination Sum II
 # Given a collection of candidate numbers (candidates) and an integer target, find all unique
 # combinations in candidates where the sum is equal to the target. There can only be one usage
@@ -39,17 +40,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def combination_sum_ii_brute(self) -> None:
+    def combination_sum_ii_brute(self, candidates: List[int], target: int) -> List[List[int]]:
         pass
 
-    def combination_sum_ii_better(self) -> None:
+    def combination_sum_ii_better(self, candidates: List[int], target: int) -> List[List[int]]:
         pass
 
-    def combination_sum_ii_optimal(self) -> None:
+    def combination_sum_ii_optimal(self, candidates: List[int], target: int) -> List[List[int]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    candidates = [2, 1, 2, 7, 6, 1, 5]
+    target = 8
+    print(sol.combination_sum_ii_optimal(candidates, target))

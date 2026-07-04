@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Valid Anagram
 # Given two strings, check if two strings are anagrams of each other or not.
 #
@@ -32,15 +33,18 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def valid_anagram_brute(self) -> None:
+    def valid_anagram_brute(self, s: str, t: str) -> bool:
         pass
 
-    def valid_anagram_better(self) -> None:
+    def valid_anagram_better(self, s: str, t: str) -> bool:
         pass
 
-    def valid_anagram_optimal(self) -> None:
+    def valid_anagram_optimal(self, s: str, t: str) -> bool:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "CAT"
+    t = "ACT"
+    print(sol.valid_anagram_optimal(s, t))

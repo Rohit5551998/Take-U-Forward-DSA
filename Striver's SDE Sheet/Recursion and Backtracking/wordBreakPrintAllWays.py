@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Word Break (print all ways)
 # Given a string s and a dictionary of strings wordDict, return ALL
 # possible sentences that can be formed by adding spaces in s such that
@@ -47,17 +48,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def word_break_print_all_ways_brute(self) -> None:
+    def word_break_print_all_ways_brute(self, s: str, word_dict: List[str]) -> List[str]:
         pass
 
-    def word_break_print_all_ways_better(self) -> None:
+    def word_break_print_all_ways_better(self, s: str, word_dict: List[str]) -> List[str]:
         pass
 
-    def word_break_print_all_ways_optimal(self) -> None:
+    def word_break_print_all_ways_optimal(self, s: str, word_dict: List[str]) -> List[str]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "catsanddog"
+    word_dict = ["cat", "cats", "and", "sand", "dog"]
+    print(sol.word_break_print_all_ways_optimal(s, word_dict))

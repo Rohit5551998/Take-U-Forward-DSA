@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)
 # Given an m x n grid filled with non-negative numbers, find a path from
 # top-left to bottom-right which minimizes the sum of all numbers along
@@ -41,23 +42,34 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_brute(
+    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_brute(  # noqa: E501
         self,
-    ) -> None:
+        grid: List[List[int]],
+    ) -> int:
         pass
 
-    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_better(
+    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_better(  # noqa: E501
         self,
-    ) -> None:
+        grid: List[List[int]],
+    ) -> int:
         pass
 
-    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_optimal(
+    def minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_optimal(  # noqa: E501
         self,
-    ) -> None:
+        grid: List[List[int]],
+    ) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    grid = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+    print(
+        sol.minimum_sum_path_in_the_matrix_count_paths_and_similar_type_do_also_backtrack_to_find_the_minimum_path_optimal(
+            grid
+        )
+    )

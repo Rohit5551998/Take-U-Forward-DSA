@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Implement Stack using Queue (using single queue)
 # Implement a Last-In-First-Out (LIFO) stack using a single queue. The implemented stack should
 # support the following operations: push, pop, top, and isEmpty.
@@ -51,16 +52,27 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def implement_stack_using_queue_using_single_queue_brute(self) -> None:
+class MyStack:
+    def __init__(self) -> None:
         pass
 
-    def implement_stack_using_queue_using_single_queue_better(self) -> None:
+    def push(self, x: int) -> None:
         pass
 
-    def implement_stack_using_queue_using_single_queue_optimal(self) -> None:
+    def pop(self) -> int:
+        pass
+
+    def top(self) -> int:
+        pass
+
+    def is_empty(self) -> bool:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    st = MyStack()
+    st.push(8)
+    st.push(4)
+    print(st.pop())
+    print(st.top())
+    print(st.is_empty())

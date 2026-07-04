@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Trie Implementation and Advanced Operations
 # Implement "TRIE" data structure from scratch with the following functions.
 # - Trie(): Initialize the object of this "TRIE" data structure.
@@ -61,16 +62,28 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def trie_implementation_and_advanced_operations_brute(self) -> None:
+class Trie:
+    def __init__(self) -> None:
         pass
 
-    def trie_implementation_and_advanced_operations_better(self) -> None:
+    def insert(self, word: str) -> None:
         pass
 
-    def trie_implementation_and_advanced_operations_optimal(self) -> None:
+    def count_words_equal_to(self, word: str) -> int:
+        pass
+
+    def count_words_starting_with(self, prefix: str) -> int:
+        pass
+
+    def erase(self, word: str) -> None:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    trie = Trie()
+    trie.insert("apple")
+    print(trie.count_words_equal_to("apple"))
+    trie.insert("apple")
+    print(trie.count_words_starting_with("app"))
+    trie.erase("apple")
+    print(trie.count_words_equal_to("apple"))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Balanced Paranthesis
 # Given a string str containing just the characters '(', ')', '{', '}',
 # '[' and ']', determine if the input string is valid. The input string
@@ -52,15 +53,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def balanced_paranthesis_brute(self) -> None:
+    def balanced_paranthesis_brute(self, s: str) -> bool:
         pass
 
-    def balanced_paranthesis_better(self) -> None:
+    def balanced_paranthesis_better(self, s: str) -> bool:
         pass
 
-    def balanced_paranthesis_optimal(self) -> None:
+    def balanced_paranthesis_optimal(self, s: str) -> bool:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "()[]{}"
+    print(sol.balanced_paranthesis_optimal(s))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: 0 and 1 Knapsack
 # A thief wants to rob a store. He is carrying a bag of capacity W. The
 # store has 'n' items. Item i has weight wt[i] and value val[i]. He can
@@ -34,17 +35,23 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def zero_and_one_knapsack_brute(self) -> None:
+    def zero_and_one_knapsack_brute(self, val: List[int], wt: List[int], capacity: int) -> int:
         pass
 
-    def zero_and_one_knapsack_better(self) -> None:
+    def zero_and_one_knapsack_better(self, val: List[int], wt: List[int], capacity: int) -> int:
         pass
 
-    def zero_and_one_knapsack_optimal(self) -> None:
+    def zero_and_one_knapsack_optimal(self, val: List[int], wt: List[int], capacity: int) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    val = [60, 100, 120]
+    wt = [10, 20, 30]
+    capacity = 50
+    print(sol.zero_and_one_knapsack_optimal(val, wt, capacity))

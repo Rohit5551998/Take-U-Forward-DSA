@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Maximum Xor with an element from an array
 # Given an array nums consisting of non-negative integers and a queries array, where
 # queries[i] = [xi, mi]. The answer to the ith query is the maximum bitwise XOR value of xi and
@@ -50,17 +51,28 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def maximum_xor_with_an_element_from_an_array_brute(self) -> None:
+    def maximum_xor_with_an_element_from_an_array_brute(
+        self, nums: List[int], queries: List[List[int]]
+    ) -> List[int]:
         pass
 
-    def maximum_xor_with_an_element_from_an_array_better(self) -> None:
+    def maximum_xor_with_an_element_from_an_array_better(
+        self, nums: List[int], queries: List[List[int]]
+    ) -> List[int]:
         pass
 
-    def maximum_xor_with_an_element_from_an_array_optimal(self) -> None:
+    def maximum_xor_with_an_element_from_an_array_optimal(
+        self, nums: List[int], queries: List[List[int]]
+    ) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [4, 9, 2, 5, 0, 1]
+    queries = [[3, 0], [3, 10], [7, 5], [7, 9]]
+    print(sol.maximum_xor_with_an_element_from_an_array_optimal(nums, queries))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Maximum Profit in Job Scheduling
 # You are given n jobs, where each job i is represented by three values:
 #   - startTime[i]: the start time of the job
@@ -43,17 +44,29 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def maximum_profit_in_job_scheduling_brute(self) -> None:
+    def maximum_profit_in_job_scheduling_brute(
+        self, start_time: List[int], end_time: List[int], profit: List[int]
+    ) -> int:
         pass
 
-    def maximum_profit_in_job_scheduling_better(self) -> None:
+    def maximum_profit_in_job_scheduling_better(
+        self, start_time: List[int], end_time: List[int], profit: List[int]
+    ) -> int:
         pass
 
-    def maximum_profit_in_job_scheduling_optimal(self) -> None:
+    def maximum_profit_in_job_scheduling_optimal(
+        self, start_time: List[int], end_time: List[int], profit: List[int]
+    ) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    start_time = [1, 2, 3, 3]
+    end_time = [3, 4, 5, 6]
+    profit = [50, 10, 40, 70]
+    print(sol.maximum_profit_in_job_scheduling_optimal(start_time, end_time, profit))

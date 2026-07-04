@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Implement Queue using Arrays
 # Implement a First-In-First-Out (FIFO) queue using an array. The implemented queue should
 # support the following operations: push, peek, pop, and isEmpty.
@@ -54,16 +55,27 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def implement_queue_using_arrays_brute(self) -> None:
+class MyQueue:
+    def __init__(self) -> None:
         pass
 
-    def implement_queue_using_arrays_better(self) -> None:
+    def push(self, x: int) -> None:
         pass
 
-    def implement_queue_using_arrays_optimal(self) -> None:
+    def pop(self) -> int:
+        pass
+
+    def peek(self) -> int:
+        pass
+
+    def is_empty(self) -> bool:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    q = MyQueue()
+    q.push(5)
+    q.push(10)
+    print(q.pop())
+    print(q.peek())
+    print(q.is_empty())

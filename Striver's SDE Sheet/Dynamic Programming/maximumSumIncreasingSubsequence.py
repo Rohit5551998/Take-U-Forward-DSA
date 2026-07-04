@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Maximum Sum Increasing Subsequence
 # Given an array arr[] of positive integers, find the maximum possible
 # sum of a subsequence such that the elements of the subsequence are in
@@ -39,17 +40,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def maximum_sum_increasing_subsequence_brute(self) -> None:
+    def maximum_sum_increasing_subsequence_brute(self, arr: List[int]) -> int:
         pass
 
-    def maximum_sum_increasing_subsequence_better(self) -> None:
+    def maximum_sum_increasing_subsequence_better(self, arr: List[int]) -> int:
         pass
 
-    def maximum_sum_increasing_subsequence_optimal(self) -> None:
+    def maximum_sum_increasing_subsequence_optimal(self, arr: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [1, 101, 2, 3, 100, 4, 5]
+    print(sol.maximum_sum_increasing_subsequence_optimal(arr))

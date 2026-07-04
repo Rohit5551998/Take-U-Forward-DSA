@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: LRU Cache
 # Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 # Implement the LRUCache class:
@@ -67,16 +68,25 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def lru_cache_brute(self) -> None:
+class LRUCache:
+    def __init__(self, capacity: int) -> None:
         pass
 
-    def lru_cache_better(self) -> None:
+    def get(self, key: int) -> int:
         pass
 
-    def lru_cache_optimal(self) -> None:
+    def put(self, key: int, value: int) -> None:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    cache = LRUCache(2)
+    cache.put(1, 1)
+    cache.put(2, 2)
+    print(cache.get(1))
+    cache.put(3, 3)
+    print(cache.get(2))
+    cache.put(4, 4)
+    print(cache.get(1))
+    print(cache.get(3))
+    print(cache.get(4))

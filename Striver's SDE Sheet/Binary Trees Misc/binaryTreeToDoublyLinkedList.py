@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Binary Tree to Doubly Linked List
 # Given a Binary Tree, convert it into a Doubly Linked List (DLL) in-place.
 # The conversion should maintain the in-order traversal order of the
@@ -42,17 +43,68 @@ TC -> O(), SC -> O()
 -
 """
 
+from collections import deque
+from typing import List, Optional
+
+
+class TreeNode:
+    def __init__(
+        self,
+        val: int = 0,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+    ) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
+    # Level-order build with None for missing children (LeetCode style).
+    if not values or values[0] is None:
+        return None
+    root = TreeNode(values[0])
+    queue = deque([root])
+    i = 1
+    while queue and i < len(values):
+        node = queue.popleft()
+        left_val = values[i] if i < len(values) else None
+        if left_val is not None:
+            node.left = TreeNode(left_val)
+            queue.append(node.left)
+        i += 1
+        right_val = values[i] if i < len(values) else None
+        if right_val is not None:
+            node.right = TreeNode(right_val)
+            queue.append(node.right)
+        i += 1
+    return root
+
 
 class Solution:
-    def binary_tree_to_doubly_linked_list_brute(self) -> None:
+    def binary_tree_to_doubly_linked_list_brute(
+        self, root: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         pass
 
-    def binary_tree_to_doubly_linked_list_better(self) -> None:
+    def binary_tree_to_doubly_linked_list_better(
+        self, root: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         pass
 
-    def binary_tree_to_doubly_linked_list_optimal(self) -> None:
+    def binary_tree_to_doubly_linked_list_optimal(
+        self, root: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    root = build_tree([10, 12, 15, 25, 30, 36])
+    head = sol.binary_tree_to_doubly_linked_list_optimal(root)
+    out = []
+    node = head
+    while node is not None:
+        out.append(node.val)
+        node = node.right
+    print(out)

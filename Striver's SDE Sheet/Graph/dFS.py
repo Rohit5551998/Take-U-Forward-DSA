@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: DFS
 # Given an undirected graph (represented as an adjacency list), starting
 # from vertex 0, return a list of all nodes obtained by traversing the
@@ -34,17 +35,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def dfs_brute(self) -> None:
+    def dfs_brute(self, v: int, adj: List[List[int]]) -> List[int]:
         pass
 
-    def dfs_better(self) -> None:
+    def dfs_better(self, v: int, adj: List[List[int]]) -> List[int]:
         pass
 
-    def dfs_optimal(self) -> None:
+    def dfs_optimal(self, v: int, adj: List[List[int]]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 5
+    adj = [[2, 3], [1, 4, 5], [1], [2, 5], [4, 5]]
+    print(sol.dfs_optimal(v, adj))

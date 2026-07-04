@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Trie Implementation and Operations
 # Implement the Trie class:
 # - Trie(): Initializes the trie object.
@@ -58,16 +59,25 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def trie_implementation_and_operations_brute(self) -> None:
+class Trie:
+    def __init__(self) -> None:
         pass
 
-    def trie_implementation_and_operations_better(self) -> None:
+    def insert(self, word: str) -> None:
         pass
 
-    def trie_implementation_and_operations_optimal(self) -> None:
+    def search(self, word: str) -> bool:
+        pass
+
+    def starts_with(self, prefix: str) -> bool:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    trie = Trie()
+    trie.insert("apple")
+    print(trie.search("apple"))
+    print(trie.search("app"))
+    print(trie.starts_with("app"))
+    trie.insert("app")
+    print(trie.search("app"))

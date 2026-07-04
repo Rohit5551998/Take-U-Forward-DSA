@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Implement Stack using Arrays
 # Implement a Last-In-First-Out (LIFO) stack using an array. The implemented stack should
 # support the following operations: push, pop, top, and isEmpty.
@@ -53,16 +54,27 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def implement_stack_using_arrays_brute(self) -> None:
+class MyStack:
+    def __init__(self) -> None:
         pass
 
-    def implement_stack_using_arrays_better(self) -> None:
+    def push(self, x: int) -> None:
         pass
 
-    def implement_stack_using_arrays_optimal(self) -> None:
+    def pop(self) -> int:
+        pass
+
+    def top(self) -> int:
+        pass
+
+    def is_empty(self) -> bool:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    st = MyStack()
+    st.push(5)
+    st.push(10)
+    print(st.pop())
+    print(st.top())
+    print(st.is_empty())

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Strongly Connected Component (using Kosaraju's algo)
 # You are given a directed graph with V vertices, numbered from 0 to V-1, and its adjacency
 # list Adj, where Adj[i] contains all vertices j such that there is a directed edge from
@@ -40,17 +41,28 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def strongly_connected_component_using_kosarajus_algo_brute(self) -> None:
+    def strongly_connected_component_using_kosarajus_algo_brute(
+        self, v: int, adj: List[List[int]]
+    ) -> int:
         pass
 
-    def strongly_connected_component_using_kosarajus_algo_better(self) -> None:
+    def strongly_connected_component_using_kosarajus_algo_better(
+        self, v: int, adj: List[List[int]]
+    ) -> int:
         pass
 
-    def strongly_connected_component_using_kosarajus_algo_optimal(self) -> None:
+    def strongly_connected_component_using_kosarajus_algo_optimal(
+        self, v: int, adj: List[List[int]]
+    ) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 5
+    adj = [[2, 3], [0], [1], [4], []]
+    print(sol.strongly_connected_component_using_kosarajus_algo_optimal(v, adj))

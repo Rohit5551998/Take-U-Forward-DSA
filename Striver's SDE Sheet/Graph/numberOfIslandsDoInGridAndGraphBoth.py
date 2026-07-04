@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Number of islands (Do in Grid and Graph Both)
 # Given a boolean 2D matrix `grid` of size N x M, find the number of
 # distinct islands. A group of connected 1s (connected horizontally,
@@ -43,17 +44,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def number_of_islands_do_in_grid_and_graph_both_brute(self) -> None:
+    def number_of_islands_do_in_grid_and_graph_both_brute(self, grid: List[List[int]]) -> int:
         pass
 
-    def number_of_islands_do_in_grid_and_graph_both_better(self) -> None:
+    def number_of_islands_do_in_grid_and_graph_both_better(self, grid: List[List[int]]) -> int:
         pass
 
-    def number_of_islands_do_in_grid_and_graph_both_optimal(self) -> None:
+    def number_of_islands_do_in_grid_and_graph_both_optimal(self, grid: List[List[int]]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    grid = [[1, 1, 0, 0, 0], [1, 1, 0, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]]
+    print(sol.number_of_islands_do_in_grid_and_graph_both_optimal(grid))

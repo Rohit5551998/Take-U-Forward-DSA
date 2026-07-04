@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Floyd Warshall Algorithm
 # Given a graph of V vertices numbered from 0 to V-1. Find the shortest distances between
 # every pair of vertices in a given edge-weighted directed graph. The graph is represented
@@ -38,17 +39,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def floyd_warshall_algorithm_brute(self) -> None:
+    def floyd_warshall_algorithm_brute(self, matrix: List[List[int]]) -> List[List[int]]:
         pass
 
-    def floyd_warshall_algorithm_better(self) -> None:
+    def floyd_warshall_algorithm_better(self, matrix: List[List[int]]) -> List[List[int]]:
         pass
 
-    def floyd_warshall_algorithm_optimal(self) -> None:
+    def floyd_warshall_algorithm_optimal(self, matrix: List[List[int]]) -> List[List[int]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    matrix = [[0, 2, -1, -1], [1, 0, 3, -1], [-1, -1, 0, 1], [3, 5, 4, 0]]
+    print(sol.floyd_warshall_algorithm_optimal(matrix))

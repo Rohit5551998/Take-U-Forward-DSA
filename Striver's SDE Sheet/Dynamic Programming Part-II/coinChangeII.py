@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Coin change II
 # We are given an array Arr with N distinct coins and a target. We have
 # an infinite supply of each coin denomination. We need to find the
@@ -38,17 +39,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def coin_change_ii_brute(self) -> None:
+    def coin_change_ii_brute(self, coins: List[int], amount: int) -> int:
         pass
 
-    def coin_change_ii_better(self) -> None:
+    def coin_change_ii_better(self, coins: List[int], amount: int) -> int:
         pass
 
-    def coin_change_ii_optimal(self) -> None:
+    def coin_change_ii_optimal(self, coins: List[int], amount: int) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    coins = [2, 4, 10]
+    amount = 10
+    print(sol.coin_change_ii_optimal(coins, amount))

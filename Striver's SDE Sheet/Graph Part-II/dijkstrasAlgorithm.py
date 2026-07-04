@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Dijkstra's algorithm
 # Given a weighted, undirected graph of V vertices, numbered from 0 to V-1, and a 2D
 # vector/array which represents the edges. Each entry in edges[i] is of the form
@@ -47,17 +48,23 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def dijkstras_algorithm_brute(self) -> None:
+    def dijkstras_algorithm_brute(self, v: int, edges: List[List[int]], s: int) -> List[int]:
         pass
 
-    def dijkstras_algorithm_better(self) -> None:
+    def dijkstras_algorithm_better(self, v: int, edges: List[List[int]], s: int) -> List[int]:
         pass
 
-    def dijkstras_algorithm_optimal(self) -> None:
+    def dijkstras_algorithm_optimal(self, v: int, edges: List[List[int]], s: int) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 3
+    edges = [[0, 1, 1], [0, 2, 6], [1, 2, 3]]
+    s = 2
+    print(sol.dijkstras_algorithm_optimal(v, edges, s))

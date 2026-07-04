@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: K-th Largest element in an array
 # Given an integer array `nums` and an integer k, return the k-th
 # LARGEST element in the array. Note that it is the k-th largest element
@@ -41,17 +42,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def k_th_largest_element_in_an_array_brute(self) -> None:
+    def k_th_largest_element_in_an_array_brute(self, nums: List[int], k: int) -> int:
         pass
 
-    def k_th_largest_element_in_an_array_better(self) -> None:
+    def k_th_largest_element_in_an_array_better(self, nums: List[int], k: int) -> int:
         pass
 
-    def k_th_largest_element_in_an_array_optimal(self) -> None:
+    def k_th_largest_element_in_an_array_optimal(self, nums: List[int], k: int) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    nums = [3, 2, 1, 5, 6, 4]
+    k = 2
+    print(sol.k_th_largest_element_in_an_array_optimal(nums, k))

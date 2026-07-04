@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Sliding Window Maximum
 # Given an array of integers arr, there is a sliding window of size k which is moving from the
 # very left of the array to the very right. You can only see the k numbers in the window. Each
@@ -47,17 +48,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def sliding_window_maximum_brute(self) -> None:
+    def sliding_window_maximum_brute(self, arr: List[int], k: int) -> List[int]:
         pass
 
-    def sliding_window_maximum_better(self) -> None:
+    def sliding_window_maximum_better(self, arr: List[int], k: int) -> List[int]:
         pass
 
-    def sliding_window_maximum_optimal(self) -> None:
+    def sliding_window_maximum_optimal(self, arr: List[int], k: int) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [4, 0, -1, 3, 5, 3, 6, 8]
+    k = 3
+    print(sol.sliding_window_maximum_optimal(arr, k))

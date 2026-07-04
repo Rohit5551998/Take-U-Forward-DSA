@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Assign Cookies
 # A teacher wants to distribute cookies to students such that each
 # student receives at most one cookie. Given two arrays `student` and
@@ -13,11 +14,13 @@
 # Examples:
 # Input : Student = [1, 2, 3] , Cookie = [1, 1]
 # Output :1
-# Explanation : Only the first cookie (1) satisfies the first student (1), therefore only 1 student is content.
+# Explanation: Only the first cookie (1) satisfies the first student (1), therefore only
+# 1 student is content.
 #
 # Input : Student = [1, 2] , Cookie = [1, 2, 3]
 # Output : 2
-# Explanation : Cookie 1 satisfies student 1 and cookie 2 satisfies student 2. Therefore, 2 students are content.
+# Explanation: Cookie 1 satisfies student 1 and cookie 2 satisfies student 2. Therefore,
+# 2 students are content.
 
 
 """
@@ -37,17 +40,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def assign_cookies_brute(self) -> None:
+    def assign_cookies_brute(self, student: List[int], cookie: List[int]) -> int:
         pass
 
-    def assign_cookies_better(self) -> None:
+    def assign_cookies_better(self, student: List[int], cookie: List[int]) -> int:
         pass
 
-    def assign_cookies_optimal(self) -> None:
+    def assign_cookies_optimal(self, student: List[int], cookie: List[int]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    student = [1, 2, 3]
+    cookie = [1, 1]
+    print(sol.assign_cookies_optimal(student, cookie))

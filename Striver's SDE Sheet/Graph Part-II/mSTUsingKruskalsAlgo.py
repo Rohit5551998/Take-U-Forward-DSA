@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: MST using Kruskal's Algo
 # Given a weighted, undirected, and connected graph of V vertices and E
 # edges, find the sum of weights of the edges of the Minimum Spanning
@@ -19,7 +20,8 @@
 # - [0, 1, 1] with weight 1
 # - [1, 2, 2] with weight 2
 # - [2, 3, 3] with weight 3
-# The total weight of the MST is 1 + 2 + 3 = 6. These edges form a spanning tree that connects all vertices (0, 1, 2, 3) with the minimum possible total edge weight, satisfying the MST properties.
+# The total weight of the MST is 1 + 2 + 3 = 6. These edges form a spanning tree that
+# connects all vertices (0, 1, 2, 3) with the minimum possible total edge weight.
 #
 # Example 2:
 # Input: V = 3, edges = [[0, 1, 5], [1, 2, 10], [2, 0, 15]]
@@ -48,17 +50,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def mst_using_kruskals_algo_brute(self) -> None:
+    def mst_using_kruskals_algo_brute(self, v: int, edges: List[List[int]]) -> int:
         pass
 
-    def mst_using_kruskals_algo_better(self) -> None:
+    def mst_using_kruskals_algo_better(self, v: int, edges: List[List[int]]) -> int:
         pass
 
-    def mst_using_kruskals_algo_optimal(self) -> None:
+    def mst_using_kruskals_algo_optimal(self, v: int, edges: List[List[int]]) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    v = 4
+    edges = [[0, 1, 1], [1, 2, 2], [2, 3, 3], [0, 3, 4]]
+    print(sol.mst_using_kruskals_algo_optimal(v, edges))

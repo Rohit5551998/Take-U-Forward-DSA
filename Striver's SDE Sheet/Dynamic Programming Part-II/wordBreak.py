@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Word Break
 # Given a string s and a dictionary of strings wordDict, return true if
 # s can be segmented into a space-separated sequence of one or more
@@ -45,17 +46,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def word_break_brute(self) -> None:
+    def word_break_brute(self, s: str, word_dict: List[str]) -> bool:
         pass
 
-    def word_break_better(self) -> None:
+    def word_break_better(self, s: str, word_dict: List[str]) -> bool:
         pass
 
-    def word_break_optimal(self) -> None:
+    def word_break_optimal(self, s: str, word_dict: List[str]) -> bool:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "leetcode"
+    word_dict = ["leet", "code"]
+    print(sol.word_break_optimal(s, word_dict))

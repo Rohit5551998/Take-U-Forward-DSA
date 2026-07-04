@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Implement ATOI/STRSTR
 # Implement the function myAtoi(s) which converts the given string s to
 # a 32-bit signed integer (similar to the C/C++ atoi function).
@@ -52,15 +53,17 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def implement_atoi_strstr_brute(self) -> None:
+    def implement_atoi_strstr_brute(self, s: str) -> int:
         pass
 
-    def implement_atoi_strstr_better(self) -> None:
+    def implement_atoi_strstr_better(self, s: str) -> int:
         pass
 
-    def implement_atoi_strstr_optimal(self) -> None:
+    def implement_atoi_strstr_optimal(self, s: str) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    s = "42"
+    print(sol.implement_atoi_strstr_optimal(s))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Find Median from Data Stream
 # Implement the MedianFinder class:
 #   MedianFinder()         — Initializes the object.
@@ -21,11 +22,13 @@
 # Examples:
 # Input : [MedianFinder(), addNum(1), addNum(2), addNum(3), findMedian()]
 # Output : [null, null, null, null, 2]
-# Explanation : MedianFinder() initializes the object. addNum(1) adds 1 to the data stream → [1] addNum(2) adds 2 → [1, 2] addNum(3) adds 3 → [1, 2, 3] findMedian() returns 2 as the median of [1, 2, 3]
+# Explanation: addNum(1) → [1]; addNum(2) → [1, 2]; addNum(3) → [1, 2, 3];
+# findMedian() returns 2 as the median of [1, 2, 3].
 #
 # Input : [MedianFinder(), addNum(1), addNum(6), findMedian(), addNum(3), findMedian()]
 # Output : [null, null, null, 3.5, null, 3]
-# Explanation : MedianFinder() initializes the object. addNum(1) → [1] addNum(6) → [1, 6] findMedian() returns (1+6)/2 = 3.5 addNum(3) → [1, 3, 6] findMedian() returns 3 as the median
+# Explanation: addNum(1) → [1]; addNum(6) → [1, 6]; findMedian() returns (1+6)/2 = 3.5;
+# addNum(3) → [1, 3, 6]; findMedian() returns 3 as the median.
 
 
 """
@@ -46,16 +49,20 @@ TC -> O(), SC -> O()
 """
 
 
-class Solution:
-    def find_median_from_data_stream_brute(self) -> None:
+class MedianFinder:
+    def __init__(self) -> None:
         pass
 
-    def find_median_from_data_stream_better(self) -> None:
+    def add_num(self, num: int) -> None:
         pass
 
-    def find_median_from_data_stream_optimal(self) -> None:
+    def find_median(self) -> float:
         pass
 
 
 if __name__ == "__main__":
-    sol = Solution()
+    mf = MedianFinder()
+    mf.add_num(1)
+    mf.add_num(2)
+    mf.add_num(3)
+    print(mf.find_median())

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Combination Sum
 # Given an array of distinct integers `candidates` and a target integer
 # `target`, return a list of all unique combinations of `candidates`
@@ -60,17 +61,22 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def combination_sum_brute(self) -> None:
+    def combination_sum_brute(self, candidates: List[int], target: int) -> List[List[int]]:
         pass
 
-    def combination_sum_better(self) -> None:
+    def combination_sum_better(self, candidates: List[int], target: int) -> List[List[int]]:
         pass
 
-    def combination_sum_optimal(self) -> None:
+    def combination_sum_optimal(self, candidates: List[int], target: int) -> List[List[int]]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    candidates = [2, 3, 6, 7]
+    target = 7
+    print(sol.combination_sum_optimal(candidates, target))

@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Fractional Knapsack
 # You are given N items, each with a value val[i] and a weight wt[i], and a knapsack with a
 # total weight capacity W. Fill the knapsack so that the total value of the items placed in it
@@ -39,17 +40,23 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def fractional_knapsack_brute(self) -> None:
+    def fractional_knapsack_brute(self, val: List[int], wt: List[int], capacity: int) -> float:
         pass
 
-    def fractional_knapsack_better(self) -> None:
+    def fractional_knapsack_better(self, val: List[int], wt: List[int], capacity: int) -> float:
         pass
 
-    def fractional_knapsack_optimal(self) -> None:
+    def fractional_knapsack_optimal(self, val: List[int], wt: List[int], capacity: int) -> float:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    val = [60, 100, 120]
+    wt = [10, 20, 30]
+    capacity = 50
+    print(sol.fractional_knapsack_optimal(val, wt, capacity))

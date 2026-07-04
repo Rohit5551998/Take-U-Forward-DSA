@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Compare version numbers
 # Given two version numbers, version1 and version2, compare them.
 # A version number is a string consisting of dot-separated integers.
@@ -55,15 +56,18 @@ TC -> O(), SC -> O()
 
 
 class Solution:
-    def compare_version_numbers_brute(self) -> None:
+    def compare_version_numbers_brute(self, version1: str, version2: str) -> int:
         pass
 
-    def compare_version_numbers_better(self) -> None:
+    def compare_version_numbers_better(self, version1: str, version2: str) -> int:
         pass
 
-    def compare_version_numbers_optimal(self) -> None:
+    def compare_version_numbers_optimal(self, version1: str, version2: str) -> int:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    version1 = "1.01"
+    version2 = "1.001"
+    print(sol.compare_version_numbers_optimal(version1, version2))

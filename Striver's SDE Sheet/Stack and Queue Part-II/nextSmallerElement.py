@@ -1,3 +1,4 @@
+# mypy: disable-error-code="empty-body"
 # QUESTION: Next Smaller Element
 # Given an array of integers arr, find the Next Smaller Element (NSE) for every element in the
 # array. The Next Smaller Element of an element x is the first element to the right of x in the
@@ -39,17 +40,21 @@ TC -> O(), SC -> O()
 -
 """
 
+from typing import List
+
 
 class Solution:
-    def next_smaller_element_brute(self) -> None:
+    def next_smaller_element_brute(self, arr: List[int]) -> List[int]:
         pass
 
-    def next_smaller_element_better(self) -> None:
+    def next_smaller_element_better(self, arr: List[int]) -> List[int]:
         pass
 
-    def next_smaller_element_optimal(self) -> None:
+    def next_smaller_element_optimal(self, arr: List[int]) -> List[int]:
         pass
 
 
 if __name__ == "__main__":
     sol = Solution()
+    arr = [4, 8, 5, 2, 25]
+    print(sol.next_smaller_element_optimal(arr))
