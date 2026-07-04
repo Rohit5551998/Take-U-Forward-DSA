@@ -98,13 +98,13 @@ TC -> O(m+n), SC -> O(1)
   overwrite unread data; going back-to-front is what makes it safe.
 """
 
-from typing import List
+from typing import List, Tuple
 
 
 class Solution:
     def merge_two_sorted_arrays_without_extra_space_brute(
         self, nums1: List[int], m: int, nums2: List[int], n: int
-    ) -> List[int]:
+    ) -> Tuple[List[int], List[int]]:
         nums3 = [0 for _ in range(n + m)]
         i = 0
         j = 0
@@ -135,7 +135,7 @@ class Solution:
 
     def merge_two_sorted_arrays_without_extra_space_optimal_variant_i(
         self, nums1: List[int], m: int, nums2: List[int], n: int
-    ) -> List[int]:
+    ) -> Tuple[List[int], List[int]]:
         nums1 = nums1[0:m]
         left = m - 1
         right = 0
@@ -159,7 +159,7 @@ class Solution:
 
     def merge_two_sorted_arrays_without_extra_space_optimal_variant_ii(
         self, nums1: List[int], m: int, nums2: List[int], n: int
-    ) -> List[int]:
+    ) -> Tuple[List[int], List[int]]:
         gap = int((n + m) / 2) + int((n + m) % 2)
 
         while gap > 0:

@@ -62,11 +62,11 @@ TC -> O(n), SC -> O(1)
 """
 
 import math
-from typing import List
+from typing import List, Optional
 
 
 class Solution:
-    def majority_element_i_brute(self, nums: List[int]) -> int:
+    def majority_element_i_brute(self, nums: List[int]) -> Optional[int]:
         majority = math.floor(len(nums) / 2)
         ans = None
 
@@ -80,7 +80,7 @@ class Solution:
                 break
         return ans
 
-    def majority_element_i_better(self, nums: List[int]) -> int:
+    def majority_element_i_better(self, nums: List[int]) -> Optional[int]:
         majority = math.floor(len(nums) / 2)
         hashMap = {}
         ans = None
@@ -97,7 +97,7 @@ class Solution:
 
         return ans
 
-    def majority_element_i_optimal(self, nums: List[int]) -> int:
+    def majority_element_i_optimal(self, nums: List[int]) -> Optional[int]:
         majority = math.floor(len(nums) / 2)
         ans = None
         element = nums[0]

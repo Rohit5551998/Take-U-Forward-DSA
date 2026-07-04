@@ -143,9 +143,9 @@ class Solution:
                 cnt2 += 1
 
         if cnt1 > majority:
-            ans.append(el1)
+            ans.append(int(el1))
         if cnt2 > majority:
-            ans.append(el2)
+            ans.append(int(el2))
 
         return ans
 

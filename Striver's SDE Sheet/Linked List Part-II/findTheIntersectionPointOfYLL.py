@@ -173,14 +173,14 @@ class Solution:
             temp1 = head_a
             l1 = l1 - l2
             while l1 > 0:
-                temp1 = temp1.next
+                temp1 = temp1.next  # type: ignore[union-attr]
                 l1 -= 1
             temp2 = head_b
         else:
             temp2 = head_b
             l2 = l2 - l1
             while l2 > 0:
-                temp2 = temp2.next
+                temp2 = temp2.next  # type: ignore[union-attr]
                 l2 -= 1
             temp1 = head_a
 

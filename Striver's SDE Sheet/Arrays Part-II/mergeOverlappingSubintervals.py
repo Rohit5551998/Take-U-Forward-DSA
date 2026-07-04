@@ -59,7 +59,7 @@ from typing import List
 class Solution:
     def merge_overlapping_subintervals_brute(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort()
-        ans = []
+        ans: list[list[int]] = []
 
         for i in range(0, len(intervals)):
             start = intervals[i][0]
@@ -81,7 +81,7 @@ class Solution:
 
     def merge_overlapping_subintervals_optimal(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort()
-        ans = []
+        ans: list[list[int]] = []
 
         for i in range(0, len(intervals)):
             if not ans or ans[-1][1] < intervals[i][0]:

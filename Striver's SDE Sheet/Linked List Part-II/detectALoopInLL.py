@@ -81,7 +81,7 @@ def build_linked_list_with_loop(values: List[int], pos: int) -> Optional[ListNod
     loop_target = head
     for _ in range(pos):
         assert loop_target is not None
-        loop_target = loop_target.next
+        loop_target = loop_target.next  # type: ignore[assignment]
 
     tail = head
     while tail.next is not None:
@@ -113,7 +113,7 @@ class Solution:
         ans = False
 
         while fast is not None and fast.next is not None:
-            slow = slow.next
+            slow = slow.next  # type: ignore[union-attr]
             fast = fast.next.next
 
             if slow == fast:

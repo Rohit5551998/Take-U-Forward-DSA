@@ -66,14 +66,14 @@ from typing import List
 
 class Solution:
     def pascals_triangle_i_variant_i(self, row: int, col: int) -> int:
-        ans = 1
+        ans = 1.0
         for j in range(1, col):
             ans *= (row - j) / (j)
         return int(ans)
 
     def pascals_triangle_i_variant_ii(self, row: int) -> List[int]:
         res = [1]
-        ans = 1
+        ans = 1.0
         for i in range(1, row):
             ans *= (row - i) / i
             res.append(round(ans))

@@ -76,7 +76,7 @@ class Solution:
         return ans
 
     def two_sum_better(self, nums: List[int], target: int) -> List[int]:
-        hashMap = {}
+        hashMap: dict[int, int] = {}
         ans = []
 
         for i in range(0, len(nums)):

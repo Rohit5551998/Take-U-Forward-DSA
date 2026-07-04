@@ -84,7 +84,7 @@ class Solution:
 
     def longest_substring_without_repeating_characters_better(self, s: str) -> int:
         maxLen = 0
-        hashMap = {}
+        hashMap: dict[int, int] = {}
         left = 0
         right = 0
 
@@ -108,7 +108,7 @@ class Solution:
 
     def longest_substring_without_repeating_characters_optimal(self, s: str) -> int:
         maxLen = 0
-        hashMap = {}
+        hashMap: dict[int, int] = {}
         left = 0
         right = 0
 

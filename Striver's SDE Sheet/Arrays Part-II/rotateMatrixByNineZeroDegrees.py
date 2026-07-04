@@ -55,7 +55,7 @@ from typing import List
 
 
 class Solution:
-    def rotate_matrix_by_ninezero_degrees_brute(self, matrix: List[List[int]]) -> None:
+    def rotate_matrix_by_ninezero_degrees_brute(self, matrix: List[List[int]]) -> List[List[int]]:
         ans = [[0 for _ in range(len(matrix))] for _ in range(len(matrix))]
 
         for i in range(0, len(matrix)):
@@ -77,7 +77,7 @@ class Solution:
             left += 1
             right -= 1
 
-    def rotate_matrix_by_ninezero_degrees_optimal(self, matrix: List[List[int]]) -> None:
+    def rotate_matrix_by_ninezero_degrees_optimal(self, matrix: List[List[int]]) -> List[List[int]]:
         # Transpose Matrix
         for i in range(0, len(matrix)):
             for j in range(i + 1, len(matrix[0])):

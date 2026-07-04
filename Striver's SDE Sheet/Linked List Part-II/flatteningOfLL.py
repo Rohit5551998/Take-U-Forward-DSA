@@ -7,16 +7,17 @@
 # Flatten this linked list such that all nodes appear in a single sorted layer connected by the
 # 'child' pointer and return the head of the modified list.
 #
-# Examples (inputs are shown as diagrams on TUF+; each head node hangs a sorted child list):
+# Examples (on TUF+ the input is drawn as a diagram; here each head node's sorted child
+# chain is written as a bracketed list, and the top-level nodes are linked left-to-right):
 # Example 1:
-# Output: head -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12
-# Explanation: All the linked lists are joined together and sorted in a single level through the
-# child pointer.
+# Input: [5 -> 7 -> 8 -> 30], [10 -> 20], [19 -> 22 -> 50], [28 -> 35 -> 40 -> 45]
+# Output: 5 -> 7 -> 8 -> 10 -> 19 -> 20 -> 22 -> 28 -> 30 -> 35 -> 40 -> 45 -> 50
+# Explanation: All child lists are merged into one sorted list threaded through 'child'.
 #
 # Example 2:
-# Output: head -> 2 -> 4 -> 5 -> 10 -> 12 -> 13 -> 16 -> 17 -> 20
-# Explanation: All the linked lists are joined together and sorted in a single level through the
-# child pointer.
+# Input: [3 -> 8], [7 -> 10 -> 12], [11 -> 12], [4 -> 20 -> 40]
+# Output: 3 -> 4 -> 7 -> 8 -> 10 -> 11 -> 12 -> 12 -> 20 -> 40
+# Explanation: The four sorted child lists are merged into a single sorted 'child' chain.
 #
 # Constraints:
 # n == Number of head nodes

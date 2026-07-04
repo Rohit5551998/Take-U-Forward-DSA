@@ -96,7 +96,7 @@ class Solution:
     # Optimal for Sum with Positives + Negatives, Better for only Positives
     def largest_subarray_with_k_sum_better(self, nums: List[int], k: int) -> int:
         maxLen = 0
-        hashMap = {}
+        hashMap: dict[int, int] = {}
         prefixSum = 0
 
         for i in range(0, len(nums)):

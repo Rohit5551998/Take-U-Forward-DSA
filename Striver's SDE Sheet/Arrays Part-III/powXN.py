@@ -54,7 +54,7 @@ TC -> O(log n), SC -> O(1)
 
 class Solution:
     def pow_x_n_brute(self, x: float, n: int) -> float:
-        ans = 1
+        ans = 1.0
         if n < 0:
             x = 1 / x
             n *= -1
@@ -67,7 +67,7 @@ class Solution:
         pass
 
     def pow_x_n_optimal(self, x: float, n: int) -> float:
-        ans = 1
+        ans = 1.0
         nn = n
 
         if nn < 0:
@@ -75,7 +75,7 @@ class Solution:
 
         while nn > 0:
             if nn % 2 == 0:
-                nn /= 2
+                nn //= 2
                 x *= x
             elif nn % 2 == 1:
                 nn -= 1
