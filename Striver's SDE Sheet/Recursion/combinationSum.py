@@ -46,19 +46,42 @@
 
 """
 #Brute Force:
-1.
-TC -> O(), SC -> O()
+SKIPPED — there is no polynomial / non-recursive way to enumerate every
+combination that sums to target. Any correct solution must explore the
+decision space, so the recursion IS the baseline; there's no cruder tier.
 
 #Better Approach:
-1.
-TC -> O(), SC -> O()
+SKIPPED — no intermediate approach exists between "try every combination"
+and the pick/not-pick recursion below. Sorting only enables an early cut-off,
+it doesn't change the algorithm class, so brute == optimal here.
 
-#Optimal Approach:
-1.
-TC -> O(), SC -> O()
+#Optimal Approach (find_combinations + combination_sum_optimal):
+1. Sort candidates ascending. This isn't for correctness — it lets us stop
+   early: once candidates[index] > current target, every later candidate is
+   also too big, so that whole branch is dead and we can just return.
+2. Recurse over an `index` pointer with a "pick / don't-pick" choice at each
+   step, carrying the running `combination` and the remaining `target`.
+3. Success case: if target has been driven down to exactly 0, we've found a
+   valid combination — append a COPY (list(combination)) to ans, because the
+   working list keeps mutating as recursion unwinds.
+4. Pick branch: if candidates[index] <= target (i.e. target - cand >= 0),
+   append candidates[index] and recurse WITHOUT advancing index. Staying on
+   the same index is what allows the same number to be reused unlimited times.
+5. Backtrack: pop the number we just tried so the list is clean for the next
+   choice.
+6. Don't-pick branch: recurse with index+1 and the SAME target, permanently
+   dropping candidates[index] from consideration. This is what generates the
+   distinct combinations that don't use the current number.
+7. The elif guard doubles as the sorted early-exit: when candidates[index]
+   exceeds target neither branch runs, pruning all larger candidates at once.
+TC -> O(2^t * k), SC -> O(k * x) + O(t/min) recursion stack
+  (t = target, k = avg combination length, x = number of combinations)
 
 #KEY INSIGHT:
--
+- The "reuse a number unlimited times" rule is captured by recursing on the
+  SAME index in the pick branch (instead of index+1). Advancing the index
+  only happens in the not-pick branch, which is what keeps combinations
+  unique and prevents infinite loops.
 """
 
 from typing import List
@@ -66,13 +89,42 @@ from typing import List
 
 class Solution:
     def combination_sum_brute(self, candidates: List[int], target: int) -> List[List[int]]:
+        # SKIP: no non-recursive baseline exists — enumerating combinations that
+        # sum to target inherently requires exploring the decision space.
         pass
 
     def combination_sum_better(self, candidates: List[int], target: int) -> List[List[int]]:
+        # SKIP: no intermediate tier between brute and optimal; sorting only adds
+        # an early cut-off, it doesn't change the algorithm class.
         pass
 
+    def find_combinations(
+        self,
+        candidates: List[int],
+        target: int,
+        ans: List[List[int]],
+        combination: List[int],
+        index: int,
+    ) -> None:
+        if index < len(candidates):
+            if target == 0:
+                ans.append(list(combination))
+
+            elif target - candidates[index] >= 0:
+                combination.append(candidates[index])
+                self.find_combinations(
+                    candidates, target - candidates[index], ans, combination, index
+                )
+                combination.pop()
+                self.find_combinations(candidates, target, ans, combination, index + 1)
+        return
+
     def combination_sum_optimal(self, candidates: List[int], target: int) -> List[List[int]]:
-        pass
+        ans = []
+        combination = []
+        candidates.sort()
+        self.find_combinations(candidates, target, ans, combination, 0)
+        return ans
 
 
 if __name__ == "__main__":
