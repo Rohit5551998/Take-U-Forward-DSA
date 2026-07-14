@@ -20,23 +20,24 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 
 STEPS_BY_NUM = {
-    1: "Step 1 - Basics",
-    2: "Step 2 - Sorting Techniques",
-    3: "Step 3 - Arrays",
-    4: "Step 4 - Binary Search",
-    5: "Step 5 - Strings",
-    6: "Step 6 - Linked Lists",
-    7: "Step 7 - Recursion",
-    8: "Step 8 - Bit Manipulation",
-    9: "Step 9 - Stacks And Queues",
-    10: "Step 10 - Sliding Window & Two Pointer Combined",
-    11: "Step 11 - Heaps",
-    12: "Step 12 - Greedy Algorithms",
-    13: "Step 13 - Binary Trees",
-    14: "Step 14 - Binary Search Trees",
-    15: "Step 15 - Graphs",
-    16: "Step 16 - Dynamic Programming",
-    17: "Step 17 - Tries",
+    1: "Learn the basics",
+    2: "Learn Important Sorting Techniques",
+    3: "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    4: "Binary Search [1D, 2D Arrays, Search Space]",
+    5: "Strings [Basic and Medium]",
+    6: "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    7: "Recursion [PatternWise]",
+    8: "Bit Manipulation [Concepts & Problems]",
+    9: "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    10: "Sliding Window & Two Pointer Combined Problems",
+    11: "Heaps [Learning, Medium, Hard Problems]",
+    12: "Greedy Algorithms [Easy, Medium/Hard]",
+    13: "Binary Trees [Traversals, Medium and Hard Problems]",
+    14: "Binary Search Trees [Concept and Problems]",
+    15: "Graphs [Concepts & Problems]",
+    16: "Dynamic Programming [Patterns and Problems]",
+    17: "Tries [Theory and Problems]",
+    18: "Strings [Advanced]",
 }
 
 SHORT_WORDS = {"of", "a", "the", "in", "on", "and", "or", "for", "to", "with", "at", "by"}
@@ -106,7 +107,7 @@ def _has_skip_comment(py_file: Path, func_name: str) -> bool:
                 stripped
                 and not stripped.startswith("#")
                 and not stripped.startswith("pass")
-                and not stripped == ""
+                and stripped != ""
             ):
                 break
             if stripped.upper().startswith("# SKIP"):
@@ -200,23 +201,21 @@ def render_data(by_step: dict[int, list[dict[str, str | bool]]]) -> str:
         problem_lines = []
         for p in problems:
             # Serialize fields in stable order: name, sub, d, q, n, s
-            fields = [f'name: {json.dumps(p["name"])}']
+            fields = [f"name: {json.dumps(p['name'])}"]
             if p.get("sub"):
-                fields.append(f'sub: {json.dumps(p["sub"])}')
-            fields.append(f'd: {json.dumps(p["d"])}')
+                fields.append(f"sub: {json.dumps(p['sub'])}")
+            fields.append(f"d: {json.dumps(p['d'])}")
             if "q" in p:
-                fields.append(f'q: {json.dumps(p["q"])}')
+                fields.append(f"q: {json.dumps(p['q'])}")
             if "n" in p:
-                fields.append(f'n: {json.dumps(p["n"])}')
+                fields.append(f"n: {json.dumps(p['n'])}")
             if p.get("s"):
                 fields.append("s: true")
             problem_lines.append("      { " + ", ".join(fields) + " }")
         body = ",\n".join(problem_lines)
         if body:
             body = "\n" + body + "\n    "
-        sections.append(
-            f'  {{\n    name: {json.dumps(name)}, problems: [{body}]\n  }}'
-        )
+        sections.append(f"  {{\n    name: {json.dumps(name)}, problems: [{body}]\n  }}")
     return "const DATA = [\n" + ",\n".join(sections) + "\n];"
 
 

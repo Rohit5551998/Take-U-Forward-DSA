@@ -4,7 +4,7 @@ Sheet-specific guidance. Shared conventions live in `../CLAUDE.md` (Python style
 
 ## Sheet Overview
 
-Comprehensive DSA sheet from takeuforward.org. 17 steps, ~455 problems planned. Step directories are nested two levels deep: `Step N - Topic/Sub-Topic/file.py`.
+Comprehensive DSA sheet from takeuforward.org. 18 steps, 474 problems. Step directories are nested two levels deep: `Step N - Topic/Sub-Topic/file.py`.
 
 ## Directory Structure
 
@@ -13,41 +13,54 @@ Striver's A2Z Sheet/
   CLAUDE.md            (this file)
   index.html           (progress tracker; localStorage key: striver-a2z-tracker-v1)
   sync_notes.py        (filesystem -> tracker DATA generator + docstring sync)
-  Step 1 - Basics/
+  Step 1 - Learn the basics/
     Basic Hashing/
       countFrequencies.py
       highest&lowestFrequency.py
     Basic Maths/
     Basic Recursion/
     Patterns/
-  Step 2 - Sorting Techniques/
+  Step 2 - Learn Important Sorting Techniques/
     Sorting - I/
     Sorting - II/
   ...
-  Step 17 - Tries/
+  Step 17 - Tries [Theory and Problems]/
 ```
 
 Step + sub-step directories are created on demand.
 
+## Folder naming convention
+
+Step folders use `Step N - <Official Title>`, where `<Official Title>` is the exact
+section title from the takeuforward A2Z sheet (e.g. `Step 3 - Solve Problems on
+Arrays [Easy -> Medium -> Hard]`). The `Step N -` prefix keeps folders ordered on
+disk and lets `sync_notes.py` sort them via its `Step (\d+)` regex. The tracker's
+section headers (from `STEPS_BY_NUM` in `sync_notes.py`) show the bare official
+title without the `Step N -` prefix. Sub-step folder names mirror the sheet's
+sub-section names (`Basic Maths`, `Sorting - I`, `Easy`/`Medium`/`Hard`, ...).
+Filesystem-illegal characters in a title (e.g. the `/` in Step 12's
+`[Easy, Medium/Hard]`) are replaced with `-` in the folder name only.
+
 ## Steps
 
-1. Basics (Hashing, Maths, Recursion, Patterns)
-2. Sorting Techniques
-3. Arrays (Easy / Medium / Hard)
-4. Binary Search (1D / 2D / on Answers)
-5. Strings
-6. Linked Lists (Singly, Doubly, Hard)
-7. Recursion
-8. Bit Manipulation
-9. Stacks and Queues (Learning, Implementation, Monotonic, Prefix/Infix/Postfix)
-10. Sliding Window & Two Pointer Combined (Medium, Hard)
-11. Heaps
-12. Greedy Algorithms
-13. Binary Trees
-14. Binary Search Trees
-15. Graphs
-16. Dynamic Programming (1D / 2D / DP on LIS / DP on Stocks / DP on Strings / DP on Subsequences / MCM / DP on Squares)
-17. Tries
+1. Learn the basics (Hashing, Maths, Recursion, Patterns)
+2. Learn Important Sorting Techniques
+3. Solve Problems on Arrays [Easy -> Medium -> Hard]
+4. Binary Search [1D, 2D Arrays, Search Space]
+5. Strings [Basic and Medium]
+6. Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]
+7. Recursion [PatternWise]
+8. Bit Manipulation [Concepts & Problems]
+9. Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]
+10. Sliding Window & Two Pointer Combined Problems
+11. Heaps [Learning, Medium, Hard Problems]
+12. Greedy Algorithms [Easy, Medium/Hard]
+13. Binary Trees [Traversals, Medium and Hard Problems]
+14. Binary Search Trees [Concept and Problems]
+15. Graphs [Concepts & Problems]
+16. Dynamic Programming [Patterns and Problems]
+17. Tries [Theory and Problems]
+18. Strings [Advanced]
 
 ## DATA is auto-generated
 

@@ -16,7 +16,7 @@ Each sheet directory has its own `index.html` tracker, `sync_notes.py`, and shee
 - Language: Python
 - All functions must have type annotations
 - Each solution file defines a `class Solution` (LeetCode-style). The approaches are its methods, and shared helpers are methods invoked via `self.<helper>(...)`. A trailing `if __name__ == "__main__":` block instantiates `Solution()` and runs sample input.
-- Method naming differs by sheet (both are class-based): the `Striver's SDE Sheet/` uses `<name>_brute`, `<name>_better`, `<name>_optimal`; the `Striver's A2Z Sheet/` uses `findSolution`, `findSolution1`, `findSolution2`, … (brute → optimal).
+- Method naming (both sheets, class-based): approaches are methods named `<name>_brute`, `<name>_better`, `<name>_optimal` (brute → optimal), where `<name>` reflects the problem. Both `Striver's SDE Sheet/` and `Striver's A2Z Sheet/` follow this. (Legacy A2Z files may still use `findSolution`/`findSolution1`/… — these are being migrated to `_brute`/`_better`/`_optimal` as each folder is reformatted.)
 - "Implement-a-class" problems (linked lists, LRU/LFU cache, stacks/queues) keep their domain class — `Node`, `LRUCache`, etc. — alongside or instead of `Solution`.
 - Filenames are camelCase, matching the problem name (e.g., `setMatrixZeroes.py`, `nextPermutation.py`)
 - Every solution file MUST start with a `# QUESTION:` block (the source of truth for problem text — synced to the sheet's tracker) followed by a multi-approach docstring, then the `class Solution`:
