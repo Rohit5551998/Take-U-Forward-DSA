@@ -1,4 +1,3 @@
-# mypy: disable-error-code="empty-body"
 # QUESTION: Implement Stack using Queue (using single queue)
 # Implement a Last-In-First-Out (LIFO) stack using a single queue. The implemented stack should
 # support the following operations: push, pop, top, and isEmpty.
@@ -35,38 +34,57 @@
 
 
 """
-#Brute Force:
-1.
-TC -> O(), SC -> O()
-
-#Better Approach:
-1.
-TC -> O(), SC -> O()
-
-#Optimal Approach:
-1.
-TC -> O(), SC -> O()
+#Implementation (implement-a-class — SINGLE queue, push-costly):
+1. Back the stack with one FIFO queue. A queue serves oldest-first, but a stack
+   needs newest-first (LIFO). The trick: after every push, rotate the queue so
+   the just-pushed element sits at the FRONT — then the queue's natural
+   front-based get()/peek() behave exactly like a stack's top.
+2. push(x): remember s = current size BEFORE inserting. Enqueue x at the back.
+   Now x is last; to bring it to the front, dequeue-and-re-enqueue the s older
+   elements exactly s times. Each old element cycles from front to back, leaving
+   x at the front with the rest in their original relative order behind it.
+   Example: [4,8] (front=4), push 2 -> put -> [4,8,2], rotate s=2: move 4 then 8
+   -> [2,4,8], front = 2 = new top.
+3. pop(): the top is at the front by construction, so just get() the front — the
+   O(1) dequeue returns the most recently pushed element. Guard empty with a
+   raised IndexError so an empty pop fails loudly instead of blocking on get().
+4. top(): peek the front via queue.queue[0] without removing it (same empty
+   guard). This reads the internal deque directly, which is O(1).
+5. is_empty(): the stack is empty exactly when the underlying queue is empty.
+TC -> push O(n), pop/top/is_empty O(1), SC -> O(n) for n elements
 
 #KEY INSIGHT:
--
+- With a single queue, make push do the work: after enqueuing the new element,
+  rotate every older element behind it so the newest lands at the FRONT. Then
+  the queue's front IS the stack's top, and pop/top are plain O(1) dequeues.
 """
+
+from queue import Queue
+from typing import cast
 
 
 class MyStack:
     def __init__(self) -> None:
-        pass
+        self.queue: Queue[int] = Queue()
 
     def push(self, x: int) -> None:
-        pass
+        s = self.queue.qsize()
+        self.queue.put(x)
+        for _ in range(s):
+            self.queue.put(self.queue.get())
 
     def pop(self) -> int:
-        pass
+        if self.queue.qsize() == 0:
+            raise IndexError("pop from empty stack")
+        return self.queue.get()
 
     def top(self) -> int:
-        pass
+        if self.queue.qsize() == 0:
+            raise IndexError("top from empty stack")
+        return cast(int, self.queue.queue[0])
 
     def is_empty(self) -> bool:
-        pass
+        return self.queue.empty()
 
 
 if __name__ == "__main__":
